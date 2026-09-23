@@ -1,0 +1,124 @@
+{
+  "schema_version": 2,
+  "profile": "full",
+  "target": "作品/79_把游戏当命的宅男/",
+  "findings": [
+    {
+      "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+      "severity": "REVIEW",
+      "category": "facts",
+      "message": "相邻口播行含 4 汉字，上文称 3 个字；须核实引文边界",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 475,
+      "evidence": "三个字\n少打游戏"
+    },
+    {
+      "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+      "severity": "REVIEW",
+      "category": "account",
+      "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 朋友圈",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 349,
+      "evidence": "想发朋友圈"
+    },
+    {
+      "rule_id": "AI_STYLE_overcompressed-prose-tic",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 1,
+      "evidence": "今天你要体验的人生副本是 | 把游戏当命的宅男 | 系统提示 | 本副本掉率已调整为零 | 祝你好运 | 你不信"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 95,
+      "evidence": "面轮流买 可乐赢家请 排位从黑铁 爬到大师 每个赛季 它都认"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 415,
+      "evidence": "从每天 到每周 到赛季更新 你的二十九 是这么过的 窗帘拉着"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 427,
+      "evidence": "你嫌挡 她讲，凉了 你讲，等下 你跟她说过 等忙完这阵 就回家吃饭"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 551,
+      "evidence": "大姐：吃了吗 你戴上耳机 打字 来了 寻找对局中 半分钟后"
+    }
+  ],
+  "tools": [
+    {
+      "name": "ai_style_diagnostics",
+      "command": [
+        "node",
+        "/home/user/demo_5.4/skills/story-review/scripts/check-ai-patterns.js",
+        "--json",
+        "--fail-on=blocking",
+        "--profile=fuben",
+        "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md"
+      ],
+      "state": "COMPLETED",
+      "exit_code": 0,
+      "finding_count": 5
+    }
+  ],
+  "checked": [
+    "readable_nonempty_body_and_descriptive_metrics",
+    "explicit_equations_and_literal_character_counts",
+    "style_pattern_candidates_not_literary_judgment"
+  ],
+  "unverified": [
+    "editorial quality",
+    "narrative continuity and referent resolution",
+    "theme/event alignment and dialogue response",
+    "external factual truth",
+    "TTS listening",
+    "actual media consistency",
+    "platform publication",
+    "setting/body consistency: no optional setting supplied"
+  ],
+  "inputs": {
+    "body_sha256": "6e96b399b842ce78d44c8de3df4c78e1c13e930a6be5b987c6e75e908d1f0c89",
+    "body_text_sha256": "6e96b399b842ce78d44c8de3df4c78e1c13e930a6be5b987c6e75e908d1f0c89",
+    "profile_sha256": "7927311e82bd90a35448c5a0cc93110718b44ff576e81171168f4eb5f01f1e3a"
+  },
+  "policy_version": "2.0.0",
+  "body_path": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+  "metrics": {
+    "characters_repository_convention": 2570,
+    "nonempty_prose_lines": 467,
+    "longest_line_characters": 15,
+    "number_tokens": 38,
+    "number_density_per_1000": 14.8,
+    "density_denominator": 2570,
+    "assumed_cps": 6.4,
+    "estimated_duration_seconds": 401.56,
+    "duration_kind": "estimate_not_audio_measurement"
+  },
+  "status": "PASS_WITH_REVIEW",
+  "exit_code": 0,
+  "mechanical_pass": true,
+  "editorially_approved": false,
+  "release_ready": false
+}
