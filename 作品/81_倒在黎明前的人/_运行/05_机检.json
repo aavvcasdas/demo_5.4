@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "profile": "full",
+  "target": "作品/81_倒在黎明前的人/",
+  "findings": [
+    {
+      "rule_id": "AI_STYLE_overcompressed-prose-tic",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_倒在黎明前的人/正文.md",
+      "line": 1,
+      "evidence": "今天你要体验的人生副本是 | 倒在黎明前的人 | 早上五点四十 | 天刚蒙蒙亮 | 你骑着电动车等红灯 | 手机弹出一条推送"
+    }
+  ],
+  "tools": [
+    {
+      "name": "ai_style_diagnostics",
+      "command": [
+        "node",
+        "/home/user/demo_5.4/skills/story-review/scripts/check-ai-patterns.js",
+        "--json",
+        "--fail-on=blocking",
+        "--profile=fuben",
+        "/home/user/demo_5.4/作品/81_倒在黎明前的人/正文.md"
+      ],
+      "state": "COMPLETED",
+      "exit_code": 0,
+      "finding_count": 1
+    }
+  ],
+  "checked": [
+    "readable_nonempty_body_and_descriptive_metrics",
+    "explicit_equations_and_literal_character_counts",
+    "style_pattern_candidates_not_literary_judgment"
+  ],
+  "unverified": [
+    "editorial quality",
+    "narrative continuity and referent resolution",
+    "theme/event alignment and dialogue response",
+    "external factual truth",
+    "TTS listening",
+    "actual media consistency",
+    "platform publication",
+    "setting/body consistency: no optional setting supplied"
+  ],
+  "inputs": {
+    "body_sha256": "9ff596e1e6a104d183852c2d43b95a2995ac73348d51a5ecd173bdc494b2f77d",
+    "body_text_sha256": "9ff596e1e6a104d183852c2d43b95a2995ac73348d51a5ecd173bdc494b2f77d",
+    "profile_sha256": "7927311e82bd90a35448c5a0cc93110718b44ff576e81171168f4eb5f01f1e3a"
+  },
+  "policy_version": "2.0.0",
+  "body_path": "/home/user/demo_5.4/作品/81_倒在黎明前的人/正文.md",
+  "metrics": {
+    "characters_repository_convention": 1231,
+    "nonempty_prose_lines": 172,
+    "longest_line_characters": 14,
+    "number_tokens": 12,
+    "number_density_per_1000": 9.7,
+    "density_denominator": 1231,
+    "assumed_cps": 6.4,
+    "estimated_duration_seconds": 192.34,
+    "duration_kind": "estimate_not_audio_measurement"
+  },
+  "status": "PASS_WITH_REVIEW",
+  "exit_code": 0,
+  "mechanical_pass": true,
+  "editorially_approved": false,
+  "release_ready": false
+}
