@@ -1,6 +1,6 @@
 ---
 name: story
-description: "网络小说工具箱主入口。根据用户需求自动路由到对应 skill，并可管理作者习惯、启动本地 Dashboard。触发方式：/story、$story、/story dashboard、/网文、「我想写小说」「记住我的写作习惯」「打开工作台」「检查更新」。"
+description: "网文与口播稿工具箱主入口。根据用户需求自动路由到对应 skill，并可管理作者习惯、启动本地 Dashboard。**人生副本／剧本人生／第二人称人生体验／抖音口播稿走 story-short-write 的口播稿 profile v15，不是短篇小说流程**。触发方式：/story、$story、/story dashboard、/网文、/写口播、/人生副本、「我想写小说」「写人生副本」「写口播稿」「体验某种人生」「记住我的写作习惯」「打开工作台」「检查更新」。"
 metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudecode"}}
 ---
 # story：网文工具箱路由
@@ -14,8 +14,8 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 | 用户意图 | 关键词示例 | 路由到 |
 |---|---|---|
 | 写长篇 | 开书、写大纲、长篇、连载 | `/story-long-write` |
-| 人生副本口播 | 人生副本、剧本人生、体验某种人生 | `/story-short-write` 的轻量 profile，跳过小说契约 |
-| 审人生副本 | 副本审稿、口播复核、切条验收 | `fuben-review`，不路由到网文配额审核 |
+| **人生副本口播稿** | 人生副本、剧本人生、体验某种人生、写口播稿、抖音口播 | `/story-short-write` 的**口播稿 profile v15**（`/写口播`、`/人生副本` 同义）。口播稿规格：6.4 字/秒定字数、一行一个意群、一遍听懂；**写前先精读 `拆文库` 同型原文全文**；跳过小说契约 |
+| 审人生副本 | 副本审稿、口播复核、切条验收 | `fuben-review`：**审核 = 成稿复读 + 联网搜索对标**，不路由到网文配额审核，也不用脚本自动删改正文 |
 | 写短篇 | 短篇、盐言、一万字 | `/story-short-write` |
 | 长篇拆文 | 拆文、分析这本书、黄金三章 | `/story-long-analyze` |
 | 短篇拆文 | 拆短篇、分析这个故事 | `/story-short-analyze` |

@@ -2,11 +2,22 @@
 
 历轮只研究并改造 Agent 方法与手艺层，**没有写新样稿、修稿件字数或制作新的机检报告**。目标是让 Agent 真正执行强开头、爽感兑现、伏笔与侧面推进，而不是多写几句“要好看”。
 
+> **⚠️ 2026-09-23 第 5 轮已推翻本文两处结论**，见 [口播稿化与调用链修复_2026-09-23.md](口播稿化与调用链修复_2026-09-23.md)：
+> ① **`scripts/fuben_craft_scan.py` 已删除**——用户明确「不需要这么多代码去删除修改文章」，
+> 且用正则找文体问题找不到开头追看／笑点引擎／蓄势兑现／共情通道这四项；
+> ② **`fuben-craft/口播腔调与反AI味.md` 已删除并重写**为 `口播稿规格.md` + `口播排版与反流水账.md`——
+> 用户明确「这是口播不需要修改 ai 味但是不要流水账就行」。
+> 因此下文 humanizer / stop-slop 两节里凡是落到「12 条 slop」「五维评分」「scanner 分级」的映射**均已作废**，
+> 只保留两条遗产：humanizer 的 **When not to act**（人味不许清 → `反流水账 §D 保留清单`）、
+> stop-slop 的**「结构级问题不能靠词表解决」**立场（→ `口播稿规格 §G 拒录清单`）。
+> 新增主要来源是 **`ShortVideo-AI/short-video-script-skill`**（国内短视频脚本 Skill，`mode: prompt-only` 零代码）
+> 与**本仓自己的 v10.x 冻结档**。下面 §1–§4 是前几轮的记录，保持原样。
+
 > **2026-09-23 第 4 轮新增**：借鉴对象从「Agent 编排类项目」扩展到「Skill 写法类项目」
 > （`0xsline/short-drama`、`blader/humanizer` 51.6k★、`hardikpandya/stop-slop` 17.5k★、
 > `anthropics/skills` 官方、`Leonxlnx/taste-skill` 89.5k★），产出
 > [fuben-craft 手艺层](../skills/story-short-write/references/fuben-craft/README.md) 8 个文件、
-> 重建 `arena.runtime.json` 与根 `AGENTS.md`、新增只读工具 `scripts/fuben_craft_scan.py`，
+> 重建 `arena.runtime.json` 与根 `AGENTS.md`、~~新增只读工具 `scripts/fuben_craft_scan.py`~~（第 5 轮已删），
 > 并修复 2 个长期红的测试。完整的病因定位与逐条对照见
 > [skill诊断与优化_2026-09-23.md](skill诊断与优化_2026-09-23.md)。下面 §1–§3 是前三轮的记录，保持原样。
 
@@ -73,10 +84,10 @@
 | `short-drama` references/satisfaction-matrix.md | 爽点＝压抑→释放、强度分级、爽点自检、致命爽点问题 | `fuben-craft/爽点兑现.md` 四拍结构（并指明「加码」是最常被跳过的一拍）+ 五种兑现型（含本赛道独有的**钝刀断线**） |
 | `short-drama` references/villain-design.md | 反派三原则：可恨／可信／递进 | 同文件 §对手设计（可恨的手段换成语料里的话术工具箱） |
 | `short-drama` references/rhythm-curve.md | 加速／减速手段表 + 「喘息段是否也在推进剧情」 | `fuben-craft/结构与曲线.md` §节奏调控 |
-| `short-drama` SKILL.md `/review` | 五维打分表 + 分数区间处置 | `fuben-craft/口播腔调与反AI味.md` §D + `fuben-review/SKILL.md` 五维（追看/笑点/共情/兑现/腔调），加三条防 Goodhart 纪律 |
+| `short-drama` SKILL.md `/review` | 五维打分表 + 分数区间处置 | `fuben-craft/口播排版与反流水账.md` §D + `fuben-review/SKILL.md` 五维（追看/笑点/共情/兑现/腔调），加三条防 Goodhart 纪律 |
 | `humanizer` | **Watch for → Problem → Before → After** 四段式；按强弱排序（strong 见一次就改 / weak alone 需同段有其他 tell） | 同文件 §B 十二条中文口播 slop |
 | `humanizer` | **When not to act** + 「Keep the details that carry the writer's voice」 | 同文件 §C 保留清单（方言俚语、答非所问的玩笑、角色胡诌、具体怪数字、矛盾情绪、年代梗），并引 80 号审读里两个本来就正确的裁决当范例 |
-| `humanizer` | 「一个 tell 的分量与『认真写作者故意这么写的概率』成反比」 | §C 总纪律 + `fuben_craft_scan.py` 的 strong/weak 分级与「前后已有具体细节则降级」逻辑 |
+| `humanizer` | 「一个 tell 的分量与『认真写作者故意这么写的概率』成反比」 | ~~§C 总纪律 + `fuben_craft_scan.py` 的 strong/weak 分级~~ **（第 5 轮作废：scanner 已删）** |
 | `humanizer` §1/§2/§17 | not X but Y、one-line closers 与 dramatic fragments、inflated verbs | §B11（保留 humanizer 的例外条款）/ §A 行节奏 + §B6 / §B2 抽象总结代替戏 |
 | `stop-slop` structures.md | **false agency**（无生命物做人的动作）、narrator-from-a-distance、telling instead of showing、Cut quotables、two items beat three | §B3 假动作主语 / §B10 旁白讲解员 + `侧面与共情.md` §第二人称三用法 / §B2+§B7 / **§B1 口号收尾（最强一条）** / §B6 |
 | `stop-slop` SKILL.md | 5 维评分 <35 revise | §D 五维评分 |
@@ -106,13 +117,14 @@
 
 已接入的位置：
 
-- [人生副本 Agent 方法](../skills/story-short-write/references/genre-styles/人生副本_Agent方法.md)：实际分工、输入、返工目标，以及**按角色下发手艺切片**的表。
-- [主profile v14](../skills/story-short-write/references/genre-styles/人生副本实录.md) 与 [写作入口](../skills/story-short-write/SKILL.md)：指向并执行该流程，不是另放一篇无人读取的资料。
-- [fuben-craft 手艺层](../skills/story-short-write/references/fuben-craft/README.md)：开场与钩子 / 笑点机制 / 侧面与共情 / 爽点兑现 / 结构与曲线 / 口播腔调与反AI味 / 样本索引，含加载表。
-- [审核入口](../skills/fuben-review/SKILL.md) v5.3.0：按创作问题层级返工，明确独立审读与改稿分开，五维评分每分挂原句，**禁止按 `_archived` 旧配额验收**。
+- [人生副本 Agent 方法](../skills/story-short-write/references/genre-styles/人生副本_Agent方法.md)：实际分工、输入、返工目标、**按角色下发手艺切片**的表，以及 **§3.5 审读的联网对标职责**。
+- [主profile v15（口播稿）](../skills/story-short-write/references/genre-styles/人生副本实录.md) 与 [写作入口](../skills/story-short-write/SKILL.md)：指向并执行该流程，不是另放一篇无人读取的资料。
+- [fuben-craft 手艺层](../skills/story-short-write/references/fuben-craft/README.md)：**口播稿规格** / **反流水账** / 开场与钩子 / 笑点机制 / 侧面与共情 / 爽点兑现 / 结构与曲线 / 样本索引，含加载表。
+- [审核入口](../skills/fuben-review/SKILL.md) v5.4.0：**§1.5 审核 = 复读 + 搜索网页**（前半听感三问与口播规格核对，后半联网三查），五维评分每分挂原句（「腔调」维已改为「口播」维），**禁止按 `_archived` 旧配额验收，不写脚本自动删改正文**。
 - [arena.runtime.json](../arena.runtime.json) 与 [AGENTS.md](../AGENTS.md)：执行通道与根路由（此前缺失，导致 profile 里「两者都不可用就停止」的条款无处落地）。
-- [scripts/fuben_craft_scan.py](../scripts/fuben_craft_scan.py)：只读读感扫描，输出带行号候选与「不要误清」提醒，永不 BLOCK。
-- [skill诊断与优化_2026-09-23.md](skill诊断与优化_2026-09-23.md)：本轮病因定位、逐条对照与改动清单。
+- ~~`scripts/fuben_craft_scan.py`~~：**第 5 轮已删除**（见 [口播稿化与调用链修复](口播稿化与调用链修复_2026-09-23.md) §3.1）。
+- [skill诊断与优化_2026-09-23.md](skill诊断与优化_2026-09-23.md)：第 1 轮病因定位、逐条对照与改动清单。
+- **[口播稿化与调用链修复_2026-09-23.md](口播稿化与调用链修复_2026-09-23.md)：第 2 轮——调用链实证、口播稿规格、审核重定义、删除清单。**
 - `story-setup/references/{templates,opencode,codex}/agents/` 中现有的 `story-architect`、`narrative-writer`、`character-designer`：已在副本提前分流内写入各自职责，不再只有“绕过小说规则”的说明；没有新增一个空壳 Agent 名称。
 - [根路由](../AGENTS.md) 与 [调用方参考选择](../skills/story-setup/references/agent-references/agent-reference-profiles.md)：按任务动作分流，并传递对应方法片段。
 

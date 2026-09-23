@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-09-23",
   "purpose": "绑定 Arena Agent Mode 主会话作为执行器：按阶段实例化仓库里的角色定义、加载对应 profile 与手艺切片、落阶段产物、过机检。SKILL.md 不是参考文章，是执行配置。",
   "docs": "docs/Arena运行时.md",
@@ -15,9 +15,21 @@
         "roles_from": "skills/story-setup/references/templates/agents/",
         "independent_external_review": false
       },
-      "codex": { "kind": "external", "available": false, "roles_from": "skills/story-setup/references/codex/agents/" },
-      "claude-code": { "kind": "external", "available": false, "roles_from": ".claude/agents/" },
-      "opencode": { "kind": "external", "available": false, "roles_from": ".opencode/agents/" }
+      "codex": {
+        "kind": "external",
+        "available": false,
+        "roles_from": "skills/story-setup/references/codex/agents/"
+      },
+      "claude-code": {
+        "kind": "external",
+        "available": false,
+        "roles_from": ".claude/agents/"
+      },
+      "opencode": {
+        "kind": "external",
+        "available": false,
+        "roles_from": ".opencode/agents/"
+      }
     },
     "missing_config_behavior": "读本文件或 AGENTS.md 失败时报告 BLOCKED: runtime config missing 并给出缺失路径；不得用主会话直接代写正文兜底。"
   },
@@ -34,8 +46,13 @@
       ],
       "banned_loads_reason": "旧配额包（场景数、每场行数、时间标签数、内联说话行数、setup-payoff 对数、字数区间）已作废；fuben_policy.json 的 creative_rules 全部为 null，metric_thresholds 为 descriptive_only。按旧配额写与审会把稿子逼回流水账。"
     },
-    "short": { "entry": "skills/story-short-write/SKILL.md", "note": "普通短篇网文，走 Phase 1-4 与 Reference Gate" },
-    "long": { "entry": "skills/story-long-write/SKILL.md" }
+    "short": {
+      "entry": "skills/story-short-write/SKILL.md",
+      "note": "普通短篇网文，走 Phase 1-4 与 Reference Gate"
+    },
+    "long": {
+      "entry": "skills/story-long-write/SKILL.md"
+    }
   },
   "pipelines": {
     "fuben-write": {
@@ -51,13 +68,21 @@
           "id": "00",
           "name": "简报",
           "role": "主控",
-          "load": ["人生副本实录.md"],
+          "load": [
+            "人生副本实录.md"
+          ],
           "artifact": "00_简报.md",
-          "must_contain": ["用户原话", "类型（用户指定或待选）", "题面合成", "语气护栏", "已加载文件清单"]
+          "must_contain": [
+            "用户原话",
+            "类型（用户指定或待选）",
+            "题面合成",
+            "语气护栏",
+            "已加载文件清单"
+          ]
         },
         {
           "id": "01",
-          "name": "样本选择 + 主题深读 + 检索 + 分类型方向",
+          "name": "精读 Gate + 样本选择 + 主题深读 + 检索 + 分类型方向",
           "role": "story-architect（副本职责·策划）",
           "load": [
             "fuben-craft/样本索引.md",
@@ -67,18 +92,29 @@
             "拆文库/{同型 1 篇}/写作手法.md",
             "拆文库/{同型 1 篇}/原文/原文.txt（首尾）"
           ],
-          "tools": ["并行多路真实搜索（≥8 路，单批并发，留批号）"],
+          "tools": [
+            "并行多路真实搜索（≥8 路，单批并发，留批号）"
+          ],
           "artifact": "01_主题深读_检索与剧情方向.md",
           "must_contain": [
-            "本篇题意约定（标题核心概念 / 普通话解释 / 主角想得到什么 / 主要阻力 / 关键事件如何体现阻力 / 关键选择为什么改变 / 结尾用哪个行动兑现题意）",
-            "同型样本清单 + 借用的机制名（拆文库编号 + 手法名）",
-            "选志 + 选曲线 + 六段公式落位",
-            "检索词、批序号、来源、取用的质感",
-            "3-4 个分类型剧情方向（爽向/搞笑向/扎心向/温情向/悬念向，类型集按主题定）",
-            "每个方向：类型标签 / 一句话剧情线 / 开场钩子速写（写明用哪种模板）/ 主峰兑现路径（写明加码那一拍）/ 借用的语料机制 / 借用的检索质感 / 主要风险",
-            "用户选定结果（未选定不得进入 02）"
+            "精读行：读了哪几篇原文全文 + 5 行「场面写法复述」（它怎么把一个瞬间写大到能住进去）",
+            "篇幅档决定：切条/标准/全长 + 按 6.4 字/秒折算的字数带 + 这个字数装得下几个场面",
+            "同型样本清单（拆文库/NN 编号）+ 借用的机制名（来自该篇 写作手法.md）",
+            "主题深读：题眼、谁在受这个处境的罪、情感核、天然冲突类型、什么写法算跑题",
+            "一次并行多批的真实搜索记录：检索词、批序号、来源、借用的质感（下限 8 路，单批全并发）",
+            "3–4 个分类型剧情方向，每个写明：用哪种开场模板、哪种笑点引擎、加码那一拍是什么、主要风险（含文体税）"
           ],
-          "gate": "USER_CHOICE_REQUIRED"
+          "gate": "USER_CHOICE_REQUIRED",
+          "note": "第一个动作是精读原文全文，不是搜索。复述写成机制提纲（「它有爽点、在 20%」）＝视同没走流程——考点提纲不能生产质地，课文才能。同时必须定篇幅档：装不下三个场面就别指望有剧情（实证 作品/80 只有 1,117 字＝全长档下限的 40%）。",
+          "reads": [
+            "skills/story-short-write/references/genre-styles/人生副本实录.md（v15 入口）",
+            "skills/story-short-write/references/genre-styles/人生副本_Agent方法.md §1",
+            "skills/story-setup/references/templates/agents/story-architect.md（副本职责·策划）",
+            "fuben-craft/结构与曲线.md",
+            "fuben-craft/样本索引.md",
+            "fuben-craft/口播稿规格.md（§A 小说→口播对照 / §B 字数带）",
+            "拆文库/NN_*/原文/原文.txt（同型 2–3 篇中至少 1 篇的**全文**）"
+          ]
         },
         {
           "id": "02",
@@ -86,8 +122,18 @@
           "role": "narrative-writer（副本职责·成稿）",
           "load": "按方向取手艺切片，见 人生副本_Agent方法.md §2 的『带什么给主笔』表；不整包转发",
           "artifact": "02_初稿.md",
-          "must_contain": ["正文（设计语言不得出现在正文里）"],
-          "forbidden": ["候选淘汰理由", "素材研究", "编排术语", "自评分"]
+          "must_contain": [
+            "正文（设计语言不得出现在正文里）"
+          ],
+          "forbidden": [
+            "候选淘汰理由",
+            "素材研究",
+            "编排术语",
+            "自评分"
+          ],
+          "reads": [
+            "fuben-craft/口播排版与反流水账.md（§A 三判据 / §B 三件事 / §D 保留清单）"
+          ]
         },
         {
           "id": "03",
@@ -95,11 +141,19 @@
           "role": "story-architect（副本职责·审读）+ fuben-review",
           "load": [
             "fuben-review/SKILL.md",
-            "fuben-craft/口播腔调与反AI味.md（§B/§C/§D）",
+            "fuben-craft/口播排版与反流水账.md（§B/§C/§D）",
             "对应维度的那一个 craft 文件"
           ],
-          "inputs": ["当前正文", "00 简报", "必要事实"],
-          "inputs_forbidden": ["作者自评", "旧通过报告", "『这里很爽』的解释"],
+          "inputs": [
+            "当前正文",
+            "00 简报",
+            "必要事实"
+          ],
+          "inputs_forbidden": [
+            "作者自评",
+            "旧通过报告",
+            "『这里很爽』的解释"
+          ],
           "artifact": "03_审读.md",
           "must_contain": [
             "五维评分（追看/笑点/共情/兑现/腔调，每分挂原句）",
@@ -111,7 +165,10 @@
             "返工层级（结构→重构 / 场面→展开 / 表达→局部修）+ 修订目标",
             "solo 标注（无独立外部审读时）"
           ],
-          "forbidden": ["按 _archived 旧配额验收", "把总分当通过证明"]
+          "forbidden": [
+            "按 _archived 旧配额验收",
+            "把总分当通过证明"
+          ]
         },
         {
           "id": "04",
@@ -119,16 +176,38 @@
           "role": "narrative-writer",
           "load": "只加载 03 指出的那一层对应的 craft 文件",
           "artifact": "04_返工.md + 正文.md",
-          "must_contain": ["针对 03 每条诊断的实际改动", "改动涉及的全文关联依赖复核（场景/食物道具/称呼/时间/题意/压力源/结尾计数变化时）"]
+          "must_contain": [
+            "针对 03 每条诊断的实际改动",
+            "改动涉及的全文关联依赖复核（场景/食物道具/称呼/时间/题意/压力源/结尾计数变化时）"
+          ]
         },
         {
           "id": "04b",
-          "name": "复核 + 读通专项",
+          "name": "复读 + 听感三问 + 排版核对",
           "role": "story-architect（副本职责·审读）+ fuben-review",
-          "load": ["fuben-review/SKILL.md §3 读通专项 11 项"],
+          "load": [
+            "fuben-review/SKILL.md §3 读通专项 11 项"
+          ],
           "artifact": "04b_复核.md + 审核报告.md",
-          "must_contain": ["body_path", "body_text_sha256", "review_status（PROVISIONAL/BLOCK/FIX/APPROVE）", "solo/独立方式", "关键原句与改法", "仍未验证项"],
-          "binding": "报告哈希与当前正文不一致时只能是 STALE/PROVISIONAL，不得为新稿背书"
+          "must_contain": [
+            "body_path",
+            "body_text_sha256",
+            "review_status（PROVISIONAL/BLOCK/FIX/APPROVE）",
+            "solo/独立方式",
+            "关键原句与改法",
+            "仍未验证项"
+          ],
+          "binding": "报告哈希与当前正文不一致时只能是 STALE/PROVISIONAL，不得为新稿背书",
+          "note": "审核的前半：成稿之后完整复读一遍。逐处标记听感三问（哪里要回听／哪里要脑补因果／哪里念出来不像人话），一稿 ≤3 处，超出回写正文再读；标记数与改法必须写进审核报告，未写＝没做听感 QA＝不发。同时核排版：空行段 ≤6、均行长以回归夹具为基准（12–20 字/行）、判词与数字独占一行做气口、连续 ≤4 字短行不超过 3 行。判据见 references/fuben-craft/口播排版与反流水账.md §B/§D。",
+          "reads": []
+        },
+        {
+          "id": "04c",
+          "name": "联网对标复核（搜索网页）",
+          "role": "story-architect（副本职责·审读）",
+          "command": "web_search / fetch_page",
+          "artifact": "04c_联网对标.md",
+          "note": "审核的后半：复读之后必须联网，不是跑脚本。查三件事——①同题近 30 天爆款的开场写法与时长带位，本篇差在哪；②稿内外部事实、热梗时效与出处（热梗过期或出处不符＝换掉，不是加注释）；③账号既有稿的排版与字数带是否一致（6.4 字/秒对账）。结果写进审核报告『联网对标』节；未写＝审核未完成。"
         },
         {
           "id": "05",
@@ -136,24 +215,21 @@
           "role": "工具",
           "command": "python3 scripts/fuben_run.py 作品/NN_主题/ --profile full --json",
           "artifact": "05_机检.json",
-          "note": "PASS 只说明无机械阻断，不评开头、笑点、爽感或可发布。"
-        },
-        {
-          "id": "05b",
-          "name": "读感扫描（可选，只读）",
-          "role": "工具",
-          "command": "python3 scripts/fuben_craft_scan.py 作品/NN_主题/正文.md",
-          "artifact": "05b_读感扫描.txt",
-          "severity": "ADVISORY",
-          "note": "输出带行号的候选（口号收尾/梗搬运/假动作主语/碎行/未解释术语/时间戳分段器）。永不 BLOCK，不计入创作结论，只用于定位。"
+          "note": "PASS 只说明无机械阻断，不评开头、笑点、爽感或可发布。机检查的是日期、算术、事实锁、账号契约与输入完整性（SCOPED_CHARACTER_COUNT / DATE_COUNT_MISMATCH / BAD_DATE_LOCK / EXPLICIT_ARITHMETIC 一类），**不查钩子、笑点、共情、侧面描写和剧情**——这五项只能靠 04b 复读与 04c 联网对标。"
         }
       ],
       "evidence_rule": "调用证据不是话术而是文件：每个阶段产物真实存在且内容对应其职责。缺阶段产物＝调用未发生，不得声称走了管线。",
-      "topic_boundary": "以用户题面为准。题面是人生，题材元素（如游戏、健身、方言梗）只能做质感与道具，不能抢走主线；03 审读专门核这一条。"
+      "topic_boundary": "以用户题面为准。题面是人生，题材元素（如游戏、健身、方言梗）只能做质感与道具，不能抢走主线；03 审读专门核这一条。",
+      "no_auto_edit": "不许写脚本自动删改正文。口播稿不做「去 AI 味」清零，自动改写出来的稿子百分百有问题；scripts/ 下的机检只报告、只 BLOCK 明确的输入/算术/契约错误（fuben_policy.json: ai_style_patterns=REVIEW、metric_thresholds=descriptive_only、creative_rules 全为 null）。"
     },
     "fuben-review-only": {
       "profile": "fuben",
-      "stages": ["03", "04b", "05"],
+      "stages": [
+        "03",
+        "04b",
+        "04c",
+        "05"
+      ],
       "note": "用户只要审核时不自动改稿；只研究 Agent 时不启动创作。"
     }
   },
@@ -161,19 +237,39 @@
     "story-architect": {
       "file": "skills/story-setup/references/templates/agents/story-architect.md",
       "branch": "人生副本优先分流（profile=fuben）",
-      "duties": ["策划（比较驱动力不同的短开场及其兑现路径）", "创作审读（定位追看断点 + 读通专项）"],
-      "forbidden": ["普通小说铁律", "必读参考表", "细纲/申报表", "去味清零", "句长或情绪配额", "递归调用其他 Agent"]
+      "duties": [
+        "策划（比较驱动力不同的短开场及其兑现路径）",
+        "创作审读（定位追看断点 + 读通专项）"
+      ],
+      "forbidden": [
+        "普通小说铁律",
+        "必读参考表",
+        "细纲/申报表",
+        "去味清零",
+        "句长或情绪配额",
+        "递归调用其他 Agent"
+      ]
     },
     "narrative-writer": {
       "file": "skills/story-setup/references/templates/agents/narrative-writer.md",
       "branch": "人生副本优先分流（profile=fuben）",
-      "duties": ["成稿", "返工（结构/场面/表达三层按诊断处理对应范围）"],
-      "forbidden": ["把结构问题降格成换词或清零句式", "夹带候选表和自评分"]
+      "duties": [
+        "成稿",
+        "返工（结构/场面/表达三层按诊断处理对应范围）"
+      ],
+      "forbidden": [
+        "把结构问题降格成换词或清零句式",
+        "夹带候选表和自评分"
+      ]
     },
     "character-designer": {
       "file": "skills/story-setup/references/templates/agents/character-designer.md",
       "when": "仅在人物动机、台词博弈或侧面反应需要补强时参加；不必每篇都调用",
-      "checks": ["各人维护的利益", "反应为什么改变下一动作", "是否全成了给主角鼓掌的工具人"]
+      "checks": [
+        "各人维护的利益",
+        "反应为什么改变下一动作",
+        "是否全成了给主角鼓掌的工具人"
+      ]
     }
   },
   "honesty_bounds": [
