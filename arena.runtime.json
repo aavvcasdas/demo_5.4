@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。缺阶段产物视为未执行；外部执行器可用时把 executors.active 切过去，产物协议不变。",
+  "project": {
+    "kind": "fuben",
+    "entry_skill": "skills/fuben-write/SKILL.md",
+    "craft_refs": [
+      "skills/fuben-write/references/搜索与质感.md",
+      "skills/fuben-write/references/口播结构与节奏.md",
+      "skills/fuben-write/references/代入感手艺.md",
+      "skills/fuben-write/references/审读与改稿.md"
+    ],
+    "review_skill": "skills/fuben-review/SKILL.md",
+    "source_library": "拆文库/"
+  },
+  "executors": {
+    "active": "arena-inprocess",
+    "available": ["arena-inprocess"]
+  },
+  "pipeline": {
+    "name": "fuben-write",
+    "products_dir": "作品/NN_主题/_运行/",
+    "stages": [
+      { "id": "00", "name": "简报", "role": "主控", "product": "00_简报.md" },
+      { "id": "01", "name": "深读+检索+方向", "role": "策划", "product": "01_深读_检索与方向.md", "requires": { "search_min_routes": 8, "search_single_batch_parallel": true, "direction_cards": "3-4 分类型", "user_picks_direction": true } },
+      { "id": "02", "name": "场次单", "role": "策划", "product": "02_场次单.md" },
+      { "id": "03", "name": "成稿", "role": "主笔", "product": "03_初稿.md", "writes": "正文.md" },
+      { "id": "04", "name": "审读+返工", "role": "审读+主笔", "product": "04_审读与返工.md", "checks": ["追看断点", "念稿测试", "反流水账复检"] },
+      { "id": "04b", "name": "读通专项", "role": "fuben-review", "product": "审核报告.md", "requires": { "body_path": true, "body_text_sha256": true } },
+      { "id": "05", "name": "机检(可选)", "role": "scripts/fuben_run.py", "product": "05_机检.json", "note": "PASS 不是创作批准" }
+    ]
+  },
+  "rules": {
+    "no_search_no_task": true,
+    "no_draft_before_user_picks": true,
+    "deliverables": ["正文.md", "钩子备选.md"],
+    "optional_deliverables": ["正文_3分钟版.md", "分镜建议.md"],
+    "honesty": ["不编造来源与数据", "不报必爆", "solo 自检不冒充多 Agent 会审"]
+  }
+}

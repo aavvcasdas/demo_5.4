@@ -15,11 +15,11 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 Arena 会话内由仓库根目录 arena.runtime.json 定义执行通道：按配置加载角色文件与 profile 逐阶段执行并落阶段产物，缺产物视为未调用；外部执行器认证后可切换。两者都不可用时停止正文产出并报告阻塞；不经配置通道直接代写正文/候选一律禁止。此条覆盖其它文件中旧的直接写作兜底。仅做研究或明确标注的单人审稿不受此限制，但涉及实质改稿仍须走创作链。
 
 
-## 先分流：人生副本不叠加小说流程
+## 先分流：人生副本走原生口播 skill，不叠加小说流程
 
 先识别任务动作：用户只要求研究/借鉴/改造Agent时，不启动下述写稿流程，不用自写样稿替代借鉴。
 
-用户写的是「人生副本 / 剧本人生 / 第二人称体验类口播」，或项目 profile=fuben 时，**立即进入** [人生副本轻量 profile](references/genre-styles/人生副本实录.md)。只读该入口和本题需要的原文/资料；按 [副本 Agent 方法](references/genre-styles/人生副本_Agent方法.md) 分工：先选可兑现的开场，主笔成文，审读找追看断点，再按问题层级返工。优先开头、爽感、伏笔与侧面推进；机检不是创作批准。这个分支到此结束，不继续加载下方普通小说 Reference Gate、付费点、十二列表格、默认篇幅、角色配额或去味清零表。
+用户写的是「人生副本 / 剧本人生 / 第二人称体验类口播」，或项目 profile=fuben 时，**立即转入 [fuben-write](../fuben-write/SKILL.md)**（原生抖音口播稿 skill）：深读+真实检索（≥8 路）→ 分类型剧情方向交用户选定 → 场次单 → 按反流水账八件武器成稿 → 追看断点/念稿测试审读返工 → 交付逐字稿与钩子备选。人生副本的创作标准以 [代入感手艺](../fuben-write/references/代入感手艺.md) 与 [口播结构与节奏](../fuben-write/references/口播结构与节奏.md) 为准；旧 [轻量 profile](references/genre-styles/人生副本实录.md) 与 [副本 Agent 方法](references/genre-styles/人生副本_Agent方法.md) 仅作历史与分工参考，不再作为写法入口。这个分支到此结束，不继续加载下方普通小说 Reference Gate、付费点、十二列表格、默认篇幅、角色配额或去味清零表。
 
 新项目可用 `.fuben.json` 声明 `{"schema_version":1,"profile":"fuben"}`，供工具和 hooks 识别；这不是另一份创作表。现有设定的平台字段与副本开场也能识别。工具只是机械检查，不宣称已精读/听完/独立会审。人生副本的创作审读后还必须按 `fuben-review` 通读当前完整稿，检查题意、人物/物件、时间、代词、问答、序列、连接词与返工残留；报告绑定当前正文 `body_path` 与 `body_text_sha256`，正文改变后旧结论失效。
 

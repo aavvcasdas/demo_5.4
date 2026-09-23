@@ -14,7 +14,7 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 | 用户意图 | 关键词示例 | 路由到 |
 |---|---|---|
 | 写长篇 | 开书、写大纲、长篇、连载 | `/story-long-write` |
-| 人生副本口播 | 人生副本、剧本人生、体验某种人生 | `/story-short-write` 的轻量 profile，跳过小说契约 |
+| 人生副本口播 | 人生副本、剧本人生、体验某种人生、口播稿、XX的一生 | `/fuben-write`（原生抖音口播 skill，跳过小说契约） |
 | 审人生副本 | 副本审稿、口播复核、切条验收 | `fuben-review`，不路由到网文配额审核 |
 | 写短篇 | 短篇、盐言、一万字 | `/story-short-write` |
 | 长篇拆文 | 拆文、分析这本书、黄金三章 | `/story-long-analyze` |
