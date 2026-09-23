@@ -28,7 +28,7 @@
       "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
       "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
       "line": 86,
-      "evidence": "烟轮流买 可乐赢家请 排位从黑铁 爬到大师 每个赛季 它都认"
+      "evidence": "面轮流买 可乐赢家请 排位从黑铁 爬到大师 每个赛季 它都认"
     },
     {
       "rule_id": "AI_STYLE_period-stutter",
@@ -135,21 +135,21 @@
     "setting/body consistency: no optional setting supplied"
   ],
   "inputs": {
-    "body_sha256": "3bcf59ab3a592e64f272611a60901c350c2e378bcf675f1347c45740951c8937",
-    "body_text_sha256": "3bcf59ab3a592e64f272611a60901c350c2e378bcf675f1347c45740951c8937",
+    "body_sha256": "e141cd155398b95eaa65524f1300c40f47185e83bf8a36ac3cbf06c3053865aa",
+    "body_text_sha256": "e141cd155398b95eaa65524f1300c40f47185e83bf8a36ac3cbf06c3053865aa",
     "profile_sha256": "7927311e82bd90a35448c5a0cc93110718b44ff576e81171168f4eb5f01f1e3a"
   },
   "policy_version": "2.0.0",
   "body_path": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
   "metrics": {
-    "characters_repository_convention": 2570,
+    "characters_repository_convention": 2571,
     "nonempty_prose_lines": 493,
     "longest_line_characters": 15,
     "number_tokens": 38,
     "number_density_per_1000": 14.8,
-    "density_denominator": 2570,
+    "density_denominator": 2571,
     "assumed_cps": 6.4,
-    "estimated_duration_seconds": 401.56,
+    "estimated_duration_seconds": 401.72,
     "duration_kind": "estimate_not_audio_measurement"
   },
   "status": "PASS_WITH_REVIEW",
