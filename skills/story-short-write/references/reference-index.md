@@ -10,7 +10,7 @@
 | [references/submission-craft.md](submission-craft.md) | 投稿前必读（平台基调 知乎/小程序/番茄 · 导语门面 · 付费点断点） |
 | [references/short-craft.md](short-craft.md) | 写作全程参考（短篇通用底座：情绪直写与场景支撑、在场叙述、超短章节制） |
 | [references/genre-styles/](genre-styles/) | **定方向后必读**：按题材加载对应风格包（抖音口播稿专项 `人生副本实录.md` v15——「今天体验的人生副本是」开场的稿件优先于世情打脸 / 追妻火葬场 / 世情打脸 / 复仇打脸 / 总裁豪门 / 宅斗宫斗 / 民俗怪谈 / 悬疑 / 甜宠 / 双男主 / 沙雕脑洞），正文风格随之切换 |
-| [references/fuben-craft/](fuben-craft/README.md) | **人生副本口播稿专用手艺层（profile v15 起按阶段加载）**：**口播稿规格**（时长档/字数带/排版三式实测判定/秒级节奏图/一遍听懂 Gate/精读 Gate/拒录清单/小说设定对照）/ **反流水账**（三判据+三件事+80号反例解剖+保留清单+改稿顺序）/ 开场与钩子 / 笑点机制 / 侧面与共情 / 爽点兑现 / 结构与曲线 / 样本索引。示例全部出自 `拆文库/` 语料或本仓失败稿。普通短篇网文不加载 |
+| [references/fuben-craft/](../../story-koubo-write/references/fuben-craft/README.md) | **人生副本口播稿专用手艺层（profile v15 起按阶段加载）**：**口播稿规格**（时长档/字数带/排版三式实测判定/秒级节奏图/一遍听懂 Gate/精读 Gate/拒录清单/小说设定对照）/ **反流水账**（三判据+三件事+80号反例解剖+保留清单+改稿顺序）/ 开场与钩子 / 笑点机制 / 侧面与共情 / 爽点兑现 / 结构与曲线 / 样本索引。示例全部出自 `拆文库/` 语料或本仓失败稿。普通短篇网文不加载 |
 | [references/short-deslop.md](short-deslop.md) | 去AI味时必读（短篇专属，只杀真·AI腔，不杀情绪烈度） |
 | [references/workflow-design.md](workflow-design.md) | Phase 2 构思、设计字段、Agent 调用与完成门禁；Phase 3/4 不预加载 |
 | [references/workflow-draft.md](workflow-draft.md) | Phase 3 写正文前必读：参数与逐场景写作；完成门槛见入口 |
@@ -52,6 +52,6 @@
 | 格式与节奏 | **`references/short-format.md`**（短篇正文格式，两平台模板） | `references/short-craft.md`（情绪落地/三维度揉进/疏密）· `references/writing-workflow.md`（设计/精修工作流） |
 | 对话 | **`references/dialogue-mastery.md`**（对话技法主文件：差异化/潜台词/对话节奏） | `references/short-craft.md`（三类台词与对话权力博弈）· 各 `genre-styles/` 包的真实金句库 |
 | 去AI味 | **`references/short-deslop.md`**（短篇专属：只杀真·AI腔，不杀情绪烈度/审判句/火葬场预告） | `references/banned-words.md`（禁用词扫描）· `scripts/check-ai-patterns.js`（AI句式复扫）· `references/short-prose-quality.md`（成稿检查） |
-| 人生副本（口播） | **`references/genre-styles/人生副本实录.md`（口播稿 profile v15：规格 + 精读 Gate + 一遍听懂 Gate + 加载表）** | `references/fuben-craft/`（七个手艺文件）· `references/genre-styles/人生副本_Agent方法.md`（角色分工与切片下发）· `skills/fuben-review/SKILL.md`（审核判据）· `拆文库/_速拆卡.md`（样本速查） |
+| 人生副本（口播） | **`references/../../story-koubo-write/references/人生副本实录.md`（口播稿 profile v15：规格 + 精读 Gate + 一遍听懂 Gate + 加载表）** | `skills/story-koubo-write/references/fuben-craft/`（七个手艺文件）· `references/../../story-koubo-write/references/人生副本_Agent方法.md`（角色分工与切片下发）· `skills/fuben-review/SKILL.md`（审核判据）· `拆文库/_速拆卡.md`（样本速查） |
 
 ---

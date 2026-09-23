@@ -28,7 +28,7 @@ function isFubenProject(input) {
     return true;
   }
   const setting = readOptional(path.join(dir, '设定.md'));
-  if (/(?:平台|赛道|题材|模式|profile)[^\n]{0,70}(?:人生副本|抖音口播)|人生副本实录\.md/i.test(setting)) return true;
+  if (/(?:平台|赛道|题材|模式|profile)[^\n]{0,70}(?:人生副本|抖音口播|口播稿)|人生副本实录\.md|story-koubo-write/i.test(setting)) return true;
   // Supports existing source-less fuben drafts, not an arbitrary novel titled 人生副本.
   const body = isDirectory !== true && /\.(md|txt)$/i.test(absolute) ? readOptional(absolute) : readOptional(path.join(dir, '正文.md'));
   return /^今天(?:你(?:要|将)?)?体验的人生(?:副本)?是(?:[：:，,\s—-]|$)/m.test(body.slice(0, 800));

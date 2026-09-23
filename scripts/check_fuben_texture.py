@@ -2,7 +2,7 @@
 """人生副本口播稿质地计数（ADVISORY ONLY —— 不是闸，不进创作管线，不写审核结论）。
 
 原 docstring 指向「人生副本实录.md 第十四节门槛」；该节随 v13 瘦身已不存在，现行规格见
-skills/story-short-write/references/fuben-craft/口播稿规格.md。
+skills/story-koubo-write/references/fuben-craft/口播稿规格.md。
 
 本仓 2026-09-19 实测已给这类计数定性（evaluations/2026-09-19_手动对照包/冻结规则/B_旧主profile.md）：
 补上动作流计数后 75=12.9、73=14.4、66=12.4 全绿，但稿子仍是流水账——

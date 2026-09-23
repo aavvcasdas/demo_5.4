@@ -15,7 +15,7 @@
 | 用户动作 | 关键词示例 | 走哪条 | 明确不做 |
 |---|---|---|---|
 | **研究 / 借鉴 / 改造 Agent** | 「看看别人的项目」「借鉴一下」「优化这个 skill」 | 只交来源、采纳的方法、接入位置与改动；落 `docs/` | **不自写样稿替代借鉴**，不擅自转成创作任务 |
-| **写人生副本 / 剧本人生口播** | 「人生副本」「剧本人生」「体验某种人生」「来一篇 X 的剧本」 | `pipelines.fuben-write`：[人生副本实录.md](skills/story-short-write/references/genre-styles/人生副本实录.md)（v14）+ [fuben-craft/](skills/story-short-write/references/fuben-craft/README.md) | 不叠加普通小说 Reference Gate、付费点、十二列表格、默认篇幅、角色配额、去味清零表 |
+| **写人生副本 / 剧本人生口播** | 「人生副本」「剧本人生」「体验某种人生」「来一篇 X 的剧本」 | `pipelines.fuben-write`：[人生副本实录.md](skills/story-koubo-write/references/人生副本实录.md)（v14）+ [fuben-craft/](skills/story-koubo-write/references/fuben-craft/README.md) | 不叠加普通小说 Reference Gate、付费点、十二列表格、默认篇幅、角色配额、去味清零表 |
 | **审人生副本** | 「副本审稿」「口播复核」「切条验收」「看看这篇好不好看」 | [fuben-review](skills/fuben-review/SKILL.md)（按证据的定点审核/修订） | 不路由到网文配额审核；**不按 `_archived/` 旧配额验收** |
 | **写短篇网文** | 「短篇」「盐言」「一万字」 | [story-short-write](skills/story-short-write/SKILL.md) Phase 1-4 | — |
 | **写长篇网文** | 「开书」「写大纲」「日更」「续写」 | [story-long-write](skills/story-long-write/SKILL.md) | — |
@@ -40,7 +40,7 @@
    ②一次并行多路真实搜索（≥8 路，单批并发，留批号、检索词、来源、取用的质感）
    ③3–4 个分类型剧情方向 ④**用户选定结果**。用户裁决：不调用搜索即任务失败；未经选定方向不得动笔
    （用户授权「你定」时由主控代选并记录理由）。
-4. **手艺切片按需下发**：见 [人生副本_Agent方法.md §2「带什么给主笔」](skills/story-short-write/references/genre-styles/人生副本_Agent方法.md)。
+4. **手艺切片按需下发**：见 [人生副本_Agent方法.md §2「带什么给主笔」](skills/story-koubo-write/references/人生副本_Agent方法.md)。
    不把整个 fuben-craft 转发给每个角色。
 5. **返工分层**：结构→重构 / 场面→展开 / 表达→局部修。顺序不可换，
    **不许把结构问题降格成换词或清句式**。
@@ -68,23 +68,26 @@
 ## 三、目录地图
 
 ```
-skills/                     14 个 Skill（story 路由 + 13 个专项）
-  story-short-write/references/
-    genre-styles/人生副本实录.md            ← 副本口播稿 profile v15（入口）
-    genre-styles/人生副本_Agent方法.md       ← 角色分工与手艺切片下发
-    genre-styles/人生副本_通用骨架.md        ← 卡住时的排障问答
-    genre-styles/_archived/                 ← 旧配额包，史料，不加载
-    fuben-craft/                            ← 手艺层
-      README.md                             加载表 + 用法纪律
-      开场与钩子.md                          六种开场模板 + 段内钩子五型
-      笑点机制.md                            九种笑点引擎 + 剂量安全线
-      侧面与共情.md                          共情翻译器三通道 + 侧面四型
-      爽点兑现.md                            四拍结构 + 绝杀台词产品化
-      结构与曲线.md                          十大志 + 曲线 + 六段公式
-      口播稿规格.md                            小说设定→口播设定对照 + 时长档/字数带 + 排版三式实测判定
-                                              + 秒级节奏图与回位钩 + 一遍听懂 Gate + 精读 Gate + 拒录清单
-      口播排版与反流水账.md                     流水账三判据 + 反流水账三件事 + 80号反例解剖 + 保留清单 + 改稿顺序
-      样本索引.md                            写什么题读哪几篇
+skills/                     15 个 Skill（story 路由 + 12 个上游专项 + 本仓扩展 2 个：story-koubo-write、fuben-review）
+  story-koubo-write/                        ← 人生副本口播稿写作（本仓扩展，独立 Skill）
+    SKILL.md                                入口：口播稿规格摘要 + 8 阶段流程 + 审核定义 + 六条不许做
+    references/
+      人生副本实录.md                        ← 口播稿 profile v15（每次必读）
+      人生副本_Agent方法.md                   ← 角色分工 + 手艺切片下发 + §3.5 联网对标职责
+      人生副本_通用骨架.md                    ← 卡住时的排障问答
+      GPT6_人生副本剧本生成提示词.md           ← 外部模型复现配方
+      _archived/                            ← v1 旧配额包，史料，不加载
+      fuben-craft/                          ← 手艺层（按阶段加载，见其 README）
+        口播稿规格.md                        小说→口播对照 + 时长档字数带 + 排版三式实测判定
+                                            + 秒级节奏图与回位钩 + 一遍听懂 Gate + 精读 Gate + 拒录清单
+        口播排版与反流水账.md                  流水账三判据 + 反流水账三件事 + 80号反例解剖 + 保留清单 + 改稿顺序
+        开场与钩子.md                        六种开场模板 + 段内钩子五型
+        笑点机制.md                          九种笑点引擎 + 剂量安全线
+        侧面与共情.md                        共情翻译器三通道 + 侧面四型
+        爽点兑现.md                          四拍结构 + 绝杀台词产品化
+        结构与曲线.md                        十大志 + 曲线 + 六段公式
+        样本索引.md                          写什么题读哪几篇
+  story-short-write/                        ← 短篇网文（人生副本已迁出，识别到即转 story-koubo-write）
   fuben-review/                             副本审核（创作判据 + 读通专项 + 事实底线）
 scripts/                    fuben_* 机检与数据工具（查日期/算术/事实锁/契约，不查创作效果）
 拆文库/                     语料库：45 篇写作手法 + 情节节点 + 54 篇原文（手艺层的数据源）
@@ -116,5 +119,5 @@ docs/                       Arena运行时.md、短视频Agent借鉴.md、skill�
 python3 skills/story-setup/scripts/deploy-fuben-tools.py --dest /path/to/project
 ```
 
-分发 skills 时包含 `fuben-review` 这个第 14 个 Skill；旧 13 个宿主 command 文件不等于 14 个 Skill。
+分发 skills 时包含本仓扩展的 `story-koubo-write`（人生副本口播稿写作）与 `fuben-review`（副本审核），合计 15 个；旧 13 个宿主 command 文件不等于 15 个 Skill。
 不要声称只复制 SKILL.md 就安装了脚本。已经部署过的项目需通过原有 `story-setup` 同步模板。

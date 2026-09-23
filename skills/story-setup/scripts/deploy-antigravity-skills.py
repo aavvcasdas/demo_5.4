@@ -22,6 +22,7 @@ KNOWN_SKILLS = (
     "story-cover",
     "story-deslop",
     "story-import",
+    "story-koubo-write",
     "story-long-analyze",
     "story-long-scan",
     "story-long-write",

@@ -16,7 +16,7 @@
 > **2026-09-23 第 4 轮新增**：借鉴对象从「Agent 编排类项目」扩展到「Skill 写法类项目」
 > （`0xsline/short-drama`、`blader/humanizer` 51.6k★、`hardikpandya/stop-slop` 17.5k★、
 > `anthropics/skills` 官方、`Leonxlnx/taste-skill` 89.5k★），产出
-> [fuben-craft 手艺层](../skills/story-short-write/references/fuben-craft/README.md) 8 个文件、
+> [fuben-craft 手艺层](../skills/story-koubo-write/references/fuben-craft/README.md) 8 个文件、
 > 重建 `arena.runtime.json` 与根 `AGENTS.md`、~~新增只读工具 `scripts/fuben_craft_scan.py`~~（第 5 轮已删），
 > 并修复 2 个长期红的测试。完整的病因定位与逐条对照见
 > [skill诊断与优化_2026-09-23.md](skill诊断与优化_2026-09-23.md)。下面 §1–§3 是前三轮的记录，保持原样。
@@ -117,9 +117,9 @@
 
 已接入的位置：
 
-- [人生副本 Agent 方法](../skills/story-short-write/references/genre-styles/人生副本_Agent方法.md)：实际分工、输入、返工目标、**按角色下发手艺切片**的表，以及 **§3.5 审读的联网对标职责**。
-- [主profile v15（口播稿）](../skills/story-short-write/references/genre-styles/人生副本实录.md) 与 [写作入口](../skills/story-short-write/SKILL.md)：指向并执行该流程，不是另放一篇无人读取的资料。
-- [fuben-craft 手艺层](../skills/story-short-write/references/fuben-craft/README.md)：**口播稿规格** / **反流水账** / 开场与钩子 / 笑点机制 / 侧面与共情 / 爽点兑现 / 结构与曲线 / 样本索引，含加载表。
+- [人生副本 Agent 方法](../skills/story-koubo-write/references/人生副本_Agent方法.md)：实际分工、输入、返工目标、**按角色下发手艺切片**的表，以及 **§3.5 审读的联网对标职责**。
+- [主profile v15（口播稿）](../skills/story-koubo-write/references/人生副本实录.md) 与 [写作入口](../skills/story-short-write/SKILL.md)：指向并执行该流程，不是另放一篇无人读取的资料。
+- [fuben-craft 手艺层](../skills/story-koubo-write/references/fuben-craft/README.md)：**口播稿规格** / **反流水账** / 开场与钩子 / 笑点机制 / 侧面与共情 / 爽点兑现 / 结构与曲线 / 样本索引，含加载表。
 - [审核入口](../skills/fuben-review/SKILL.md) v5.4.0：**§1.5 审核 = 复读 + 搜索网页**（前半听感三问与口播规格核对，后半联网三查），五维评分每分挂原句（「腔调」维已改为「口播」维），**禁止按 `_archived` 旧配额验收，不写脚本自动删改正文**。
 - [arena.runtime.json](../arena.runtime.json) 与 [AGENTS.md](../AGENTS.md)：执行通道与根路由（此前缺失，导致 profile 里「两者都不可用就停止」的条款无处落地）。
 - ~~`scripts/fuben_craft_scan.py`~~：**第 5 轮已删除**（见 [口播稿化与调用链修复](口播稿化与调用链修复_2026-09-23.md) §3.1）。

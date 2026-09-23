@@ -12,7 +12,7 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 
 ## 人生副本工具包（仅本仓扩展）
 
-人生副本写作先走轻量 profile，审核走 `fuben-review`。本仓扩展尚未发布到上游；下方上游重装命令不能替代或覆盖当前修复版，更新前保留并比对本地改动。分发 skills 时包含这第14个 Skill；旧13个宿主 command 文件不等于14个 Skill，新增审核可以自然语言点名。不要声称只复制 SKILL.md 就安装了脚本。
+人生副本写作先走轻量 profile，审核走 `fuben-review`。本仓扩展尚未发布到上游；下方上游重装命令不能替代或覆盖当前修复版，更新前保留并比对本地改动。分发 skills 时包含本仓扩展的两个 Skill：`fuben-review`（副本审核）与 `story-koubo-write`（人生副本口播稿写作），合计 15 个；旧 13 个宿主 command 文件不等于 15 个 Skill，新增的两个都可以自然语言点名。不要声称只复制 SKILL.md 就安装了脚本。
 
 经用户授权部署到另一个项目时，从**本仓根**显式运行：
 
@@ -470,7 +470,7 @@ Reasonix（DeepSeek-Reasonix CLI）当前只部署 skills 与 `AGENTS.md`，不�
     - 安装报告必须提示：新开 Antigravity conversation 刷新 customization；Hooks 依赖 PATH 中的 `node`；外部 hook API 没有 PreCompact/PostCompact，compact 恢复由 Always-On Rule 读取 `追踪/上下文.md`；IDE 与交互式 `agy` 仍建议分别实机 smoke test；`agy 1.1.22 -p` 每次 headless 启动都可能在静默鉴权前扫描 workspace，鉴权后不重载 custom agents/hooks，因此当前不在支持面内，可能报 `subagent not found` 或回退写入 `~/.gemini/antigravity-cli/scratch/`；命令行写作从项目目录进入交互式 `agy`，确认 `/skills`、`/agents`、`/hooks` 已发现 oh-story 后再发任务，测试后检查 scratch 无意外小说产物
 10. 验证 ZCode 部署（仅当 target_cli 含 zcode 时）：
     - 检查根 `AGENTS.md` 含 ZCode `$story-*` 路由、大纲守卫和 solo/direct fallback
-    - 检查 `.zcode/skills/` 下 14 个 Skills 与 `.zcode/commands/` 下 13 个 Commands，验证 frontmatter 和命名
+    - 检查 `.zcode/skills/` 下 15 个 Skills 与 `.zcode/commands/` 下 13 个 Commands，验证 frontmatter 和命名
     - 检查 `.zcode/hooks/story_zcode_hook.js`、`.zcode/hooks/story_hook_core.js` 存在且 `node --check` 通过
     - 检查 `.zcode/config.json` JSON 有效，并按「ZCode 部署算法」第 4 步的 hooks 互斥分支校验：未装 oh-story 插件时，`hooks.enabled=true`、仅注册 ZCode 支持事件、所有 `process` args 指向项目 Hook；已装 oh-story 插件（`.zcode-plugin/plugin.json` 已全局注册这批 hooks）时，改为校验 `.zcode/config.json` 不含（或已移除）这批 oh-story hooks 注册——**不得**为了让校验通过而把 `config.json.patch` 的 hooks 块合并回去，否则同一事件双触发
     - 检查 `.zcode/skills/story-setup/references/agent-references/` 完整且所有 reference 路径可解析
