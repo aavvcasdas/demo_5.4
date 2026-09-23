@@ -19,7 +19,7 @@ Arena 会话内由仓库根目录 arena.runtime.json 定义执行通道：按配
 
 先识别任务动作：用户只要求研究/借鉴/改造Agent时，不启动下述写稿流程，不用自写样稿替代借鉴。
 
-用户写的是「人生副本 / 剧本人生 / 第二人称体验类口播」，或项目 profile=fuben 时，**立即进入** [人生副本轻量 profile](references/genre-styles/人生副本实录.md)。只读该入口和本题需要的原文/资料；按 [副本 Agent 方法](references/genre-styles/人生副本_Agent方法.md) 分工：先选可兑现的开场，主笔成文，审读找追看断点，再按问题层级返工。优先开头、爽感、伏笔与侧面推进；机检不是创作批准。这个分支到此结束，不继续加载下方普通小说 Reference Gate、付费点、十二列表格、默认篇幅、角色配额或去味清零表。
+用户写的是「人生副本 / 剧本人生 / 第二人称体验类口播」，或项目 profile=fuben 时，**立即进入** [人生副本轻量 profile v14](references/genre-styles/人生副本实录.md)。按它的**加载表**分阶段读 [fuben-craft 手艺层](references/fuben-craft/README.md)（策划→结构与曲线＋样本索引；开场→开场与钩子；搞笑→笑点机制；扎心/温情→侧面与共情；爽向→爽点兑现；全程与返工→口播腔调与反AI味），并按 [样本索引](references/fuben-craft/样本索引.md) **先选 2–3 篇同型语料读其 `拆文库/NN/情节节点.md`，再去搜索**。按 [副本 Agent 方法](references/genre-styles/人生副本_Agent方法.md) 分工：先选可兑现的开场，主笔成文，审读找追看断点，再按问题层级返工（每个角色只拿本轮需要的手艺切片，见该文件 §2 的下发表）。优先开头、笑点、爽感、共情、伏笔与侧面推进；机检不是创作批准，`scripts/fuben_craft_scan.py` 是只读扫描也永不 BLOCK。**禁止加载 `references/genre-styles/_archived/`**（旧配额包，按它写与审会把稿子逼回流水账）。这个分支到此结束，不继续加载下方普通小说 Reference Gate、付费点、十二列表格、默认篇幅、角色配额或去味清零表。
 
 新项目可用 `.fuben.json` 声明 `{"schema_version":1,"profile":"fuben"}`，供工具和 hooks 识别；这不是另一份创作表。现有设定的平台字段与副本开场也能识别。工具只是机械检查，不宣称已精读/听完/独立会审。人生副本的创作审读后还必须按 `fuben-review` 通读当前完整稿，检查题意、人物/物件、时间、代词、问答、序列、连接词与返工残留；报告绑定当前正文 `body_path` 与 `body_text_sha256`，正文改变后旧结论失效。
 

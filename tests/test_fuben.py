@@ -639,11 +639,19 @@ class DataTests(Fixture):
         self.assertEqual(len((out / 'legacy_quarantine.jsonl').read_text().splitlines()), 2)
 
     def test_old_unsafe_record_command_rejected_without_data_mutation(self):
+        # 这两个 CSV 是作者本机的历史数据，未入库；缺席时仍然必须验证「旧命令被拒绝且不产生数据变动」。
         old = [ROOT / '作品/_数据.csv', ROOT / '作品/_数据_v2.csv']
-        before = [sha256(p) for p in old]
+        present = [p for p in old if p.is_file()]
+        before = [sha256(p) for p in present]
+        data_dir = ROOT / '作品/数据'
+        before_dir = sorted(p.name for p in data_dir.rglob('*')) if data_dir.is_dir() else None
         result = run(sys.executable, ROOT / 'scripts/fuben_loop.py', 'record', '78', '123', '456')
         self.assertEqual(result.returncode, 2)
-        self.assertEqual(before, [sha256(p) for p in old])
+        self.assertEqual(before, [sha256(p) for p in present])
+        self.assertEqual([p for p in old if p.is_file()], present,
+                         'rejected command must not create the legacy CSVs')
+        after_dir = sorted(p.name for p in data_dir.rglob('*')) if data_dir.is_dir() else None
+        self.assertEqual(before_dir, after_dir, 'rejected command must not mutate 作品/数据')
 
 
 if __name__ == '__main__':
