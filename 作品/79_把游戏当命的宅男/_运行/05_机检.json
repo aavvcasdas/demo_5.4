@@ -4,22 +4,58 @@
   "target": "作品/79_把游戏当命的宅男/",
   "findings": [
     {
-      "rule_id": "ACCOUNT_BRAND_CANDIDATE",
+      "rule_id": "UNQUOTED_COUNT_CANDIDATE",
       "severity": "REVIEW",
-      "category": "account",
-      "message": "核对品牌/平台是否必要，保留账号约定；同形词不能自动删: 微信",
-      "file": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
-      "line": 67,
-      "evidence": "你的微信好友翻来翻去"
+      "category": "facts",
+      "message": "相邻口播行含 7 汉字，上文称 3 个字；须核实引文边界",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 62,
+      "evidence": "三个字\n比你的名字有名"
+    },
+    {
+      "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+      "severity": "REVIEW",
+      "category": "facts",
+      "message": "相邻口播行含 4 汉字，上文称 2 个字；须核实引文边界",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 92,
+      "evidence": "两个字\n练了一路"
+    },
+    {
+      "rule_id": "UNQUOTED_COUNT_CANDIDATE",
+      "severity": "REVIEW",
+      "category": "facts",
+      "message": "相邻口播行含 4 汉字，上文称 2 个字；须核实引文边界",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 242,
+      "evidence": "两个字\n写得很丑"
+    },
+    {
+      "rule_id": "AI_STYLE_overcompressed-prose-tic",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 1,
+      "evidence": "老刀在群里发了张请帖 | 说他下个月结婚 | 伴郎给你留着 | 群里刷满了恭喜 | 你点开请帖 | 新郎那一栏写着两个字"
     },
     {
       "rule_id": "AI_STYLE_period-stutter",
       "severity": "REVIEW",
       "category": "style",
       "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
-      "file": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
-      "line": 163,
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 76,
       "evidence": "你说 老刀 她问 那是谁 你想了想 说 网友 她没再问 过了一会儿"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
+      "line": 189,
+      "evidence": "像是没听清 叫的是他 新娘笑出声 拿胳膊碰他 叫你呢 你接着说"
     }
   ],
   "tools": [
@@ -27,15 +63,15 @@
       "name": "ai_style_diagnostics",
       "command": [
         "node",
-        "/home/user/demo/skills/story-review/scripts/check-ai-patterns.js",
+        "/home/user/demo_5.4/skills/story-review/scripts/check-ai-patterns.js",
         "--json",
         "--fail-on=blocking",
         "--profile=fuben",
-        "/home/user/demo/作品/79_把游戏当命的宅男/正文.md"
+        "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md"
       ],
       "state": "COMPLETED",
       "exit_code": 0,
-      "finding_count": 1
+      "finding_count": 3
     }
   ],
   "checked": [
@@ -45,6 +81,8 @@
   ],
   "unverified": [
     "editorial quality",
+    "narrative continuity and referent resolution",
+    "theme/event alignment and dialogue response",
     "external factual truth",
     "TTS listening",
     "actual media consistency",
@@ -52,20 +90,21 @@
     "setting/body consistency: no optional setting supplied"
   ],
   "inputs": {
-    "body_sha256": "62dc4ea1f242969c7e5a64a003a7215f815e439cfc2cfe4eca6b568904a093fb",
+    "body_sha256": "24b8167523c9fb6dabadcc71489b2fbf3f1024eaee4a6911541ba1975dcd5ea4",
+    "body_text_sha256": "24b8167523c9fb6dabadcc71489b2fbf3f1024eaee4a6911541ba1975dcd5ea4",
     "profile_sha256": "7927311e82bd90a35448c5a0cc93110718b44ff576e81171168f4eb5f01f1e3a"
   },
   "policy_version": "2.0.0",
-  "body_path": "/home/user/demo/作品/79_把游戏当命的宅男/正文.md",
+  "body_path": "/home/user/demo_5.4/作品/79_把游戏当命的宅男/正文.md",
   "metrics": {
-    "characters_repository_convention": 1565,
-    "nonempty_prose_lines": 218,
-    "longest_line_characters": 16,
-    "number_tokens": 11,
-    "number_density_per_1000": 7.0,
-    "density_denominator": 1565,
+    "characters_repository_convention": 1464,
+    "nonempty_prose_lines": 220,
+    "longest_line_characters": 18,
+    "number_tokens": 8,
+    "number_density_per_1000": 5.5,
+    "density_denominator": 1464,
     "assumed_cps": 6.4,
-    "estimated_duration_seconds": 244.53,
+    "estimated_duration_seconds": 228.75,
     "duration_kind": "estimate_not_audio_measurement"
   },
   "status": "PASS_WITH_REVIEW",
