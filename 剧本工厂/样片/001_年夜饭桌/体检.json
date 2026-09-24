@@ -1,11 +1,11 @@
 {
   "status": "PASS",
   "script_path": "剧本工厂/样片/001_年夜饭桌/剧本.md",
-  "script_sha256": "1d5412b72fbba9e858b07c8e4cfdee2e77c4602bbce3413c4fa70e929afd27bb",
+  "script_sha256": "f78eb99da2bc78a2e880dfcd65583b6c8ce12ab5778b8ddef6721ea5c35e4270",
   "metrics": {
-    "spoken_chars": 527,
-    "dialogue_ratio": 0.417,
-    "est_seconds": 125.5,
+    "spoken_chars": 525,
+    "dialogue_ratio": 0.415,
+    "est_seconds": 125.0,
     "target_seconds": 120.0,
     "beats": 7,
     "median_line_chars": 12.0,
@@ -56,7 +56,7 @@
     {
       "level": "PASS",
       "code": "DURATION",
-      "msg": "口播 527 字 ≈ 125s（目标 120s，5% 内）"
+      "msg": "口播 525 字 ≈ 125s（目标 120s，4% 内）"
     },
     {
       "level": "PASS",
