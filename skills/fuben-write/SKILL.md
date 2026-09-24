@@ -17,7 +17,7 @@ metadata: {"openclaw":{"source":"https://github.com/aavvcasdas/demo"}}
 ## 四份必读参考（写作前按序读完，只读本文件不算）
 
 1. [references/搜索与质感.md](references/搜索与质感.md) —— 检索怎么做、结果怎么变成正文里的质感
-2. [references/口播结构与节奏.md](references/口播结构与节奏.md) —— 签名开场、六段骨架、钩子公式、时长字数
+2. [references/口播结构与节奏.md](references/口播结构与节奏.md) —— 签名开场、**开头铁律（黄金 3 秒：禁定义前置）**、六段骨架、钩子公式、时长字数
 3. [references/代入感手艺.md](references/代入感手艺.md) —— **反流水账的八件手艺**，本 skill 的核心
 4. [references/审读与改稿.md](references/审读与改稿.md) —— 追看断点审读、念稿测试、分层返工
 
