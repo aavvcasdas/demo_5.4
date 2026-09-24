@@ -2,8 +2,9 @@
 """R20 语料反向体检审判台（报告见 作品/_语料反审_全闸门栈_R20_2026-09-19.md）。
 
 被审对象：拆文库 fuben 口径全部条目 原文/原文.txt（10w+ 真爆款原文）
-审判闸：  fuben_loop draft / fuben_lint / fuben_density / check_fuben_texture
-          / check-ai-patterns / check-degeneration
+审判闸：  fuben_loop draft / fuben_lint / fuben_density / check-ai-patterns
+          / check-degeneration
+（check_fuben_texture 已退役：fedex 数启发式护栏失准，质地项并入 fuben_craft/style，见 AGENTS.md 右列）
 设计层豁免：facts/design/hype/setting_years 属生产合同（需设定卡），原文无对账对象，
             不计入原文 verdict；draft 内「主线贯穿」「主线关键词可追」「事实/时间线一致性」
             单列为 design-contract 不计。
@@ -42,7 +43,7 @@ def audit_one(name, src_path):
     open(os.path.join(wd, "设定.md"), "w").write(stub)
     rec = {"id": num, "title": name.split("_", 1)[1], "money": money,
            "fail_draft": [], "fail_lint": [], "density": None,
-           "texture_fail": [], "ai_blocking": 0, "degen_note": ""}
+           "ai_blocking": 0, "degen_note": ""}
     out = run(["python3", "scripts/fuben_loop.py", "draft", wd])
     for line in out.splitlines():
         m = re.match(r"^(BAD|WARN) (\S+)", line)
@@ -60,10 +61,6 @@ def audit_one(name, src_path):
     m = re.search(r"(OK|OVER)\s+\S+\s+([\d.]+)/千字", out)
     if m:
         rec["density"] = (m.group(1), float(m.group(2)))
-    out = run(["python3", "scripts/check_fuben_texture.py", os.path.join(wd, "正文.md")])
-    for line in out.splitlines():
-        if line.startswith("BAD "):
-            rec["texture_fail"].append(line.strip()[:100])
     out = run(["node", "skills/story-review/scripts/check-ai-patterns.js", "--check",
                "--fail-on=blocking", os.path.join(wd, "正文.md")])
     rec["ai_blocking"] = out.count("[blocking]")
