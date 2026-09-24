@@ -10,6 +10,8 @@
 | 部署/同步环境 | [skills/story-setup/SKILL.md](skills/story-setup/SKILL.md) | 模板与 hooks 部署 |
 | 浏览器采集 | [skills/browser-cdp/SKILL.md](skills/browser-cdp/SKILL.md) | CDP 抓取 |
 | 研究/借鉴/改造 Agent | 只交方法与接入改动 | 不自动转成样稿 |
+| 查找/安装新能力 | [.agents/skills/find-skills/SKILL.md](.agents/skills/find-skills/SKILL.md) | 技能生态入口：`npx skills find <关键词>` → 核安装量/来源 → `npx skills add` |
+| 会话交接打包 | [.agents/skills/handoff/SKILL.md](.agents/skills/handoff/SKILL.md) | 把当前会话压成 handoff 文档给下个 agent；最新一份在 `/home/user/handoff-2026-09-24-fuben.md` |
 
 ## 人生副本管线（fuben-write）
 
