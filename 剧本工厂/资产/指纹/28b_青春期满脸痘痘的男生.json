@@ -1,0 +1,194 @@
+{
+  "entry": "28b_青春期满脸痘痘的男生",
+  "title": "28b_青春期满脸痘痘的男生",
+  "series": "剧本人生",
+  "source": "拆文库/28b_青春期满脸痘痘的男生/原文/原文.txt",
+  "chars": 3005,
+  "est_seconds_at_4_2cps": 715,
+  "hook": {
+    "text": [
+      "女生们会凑过来分给你零食",
+      "或者拉着你一起踢毽子",
+      "大家互相看着彼此的眼睛说话",
+      "距离凑得很近"
+    ],
+    "chars": 41,
+    "tags": [
+      "画面切入"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 819,
+      "spaces_top": [
+        [
+          "厅",
+          1
+        ],
+        [
+          "路",
+          1
+        ],
+        [
+          "桌",
+          1
+        ],
+        [
+          "客厅",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "医生",
+          2
+        ],
+        [
+          "妈",
+          1
+        ],
+        [
+          "同学",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 8,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "女生们会凑过来分给你零食"
+    },
+    {
+      "chars": 945,
+      "spaces_top": [
+        [
+          "路",
+          3
+        ],
+        [
+          "门",
+          2
+        ],
+        [
+          "窗",
+          2
+        ],
+        [
+          "校",
+          2
+        ]
+      ],
+      "roles_top": [
+        [
+          "同学",
+          2
+        ],
+        [
+          "哥",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 7,
+      "cue": "后来",
+      "start_line": 88,
+      "first": "后来渐渐变成了半公开的称呼"
+    },
+    {
+      "chars": 116,
+      "spaces_top": [
+        [
+          "教室",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 0,
+      "cue": "那天",
+      "start_line": 181,
+      "first": "那天下午放学"
+    },
+    {
+      "chars": 769,
+      "spaces_top": [
+        [
+          "门",
+          2
+        ],
+        [
+          "院",
+          2
+        ],
+        [
+          "医院",
+          2
+        ],
+        [
+          "路",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "同学",
+          1
+        ],
+        [
+          "医生",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 4,
+      "cue": "那天",
+      "start_line": 195,
+      "first": "那天晚上回到宿舍你"
+    },
+    {
+      "chars": 356,
+      "spaces_top": [
+        [
+          "场",
+          1
+        ],
+        [
+          "路",
+          1
+        ],
+        [
+          "房",
+          1
+        ],
+        [
+          "房间",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 5,
+      "cue": "那天",
+      "start_line": 280,
+      "first": "那天晚上"
+    }
+  ],
+  "segment_count": 5,
+  "ending": [
+    "你的脸好了",
+    "但你心里很清楚",
+    "那个十几岁时在阴天里低着头走路",
+    "连别人目光都不敢对视的少年",
+    "永远留在了过去"
+  ],
+  "line_stats": {
+    "lines": 315,
+    "median_line_chars": 9,
+    "max_line_chars": 16
+  }
+}

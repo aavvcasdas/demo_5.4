@@ -1,0 +1,68 @@
+{
+  "entry": "12_世界上只剩下你一个人",
+  "title": "的人生副本是",
+  "series": "剧本人生",
+  "source": "拆文库/12_世界上只剩下你一个人/原文/原文.txt",
+  "chars": 3257,
+  "est_seconds_at_4_2cps": 775,
+  "hook": {
+    "text": [
+      "世界上只剩下你一个人",
+      "早晨7点半",
+      "你醒了没有刺耳的闹钟",
+      "没有楼下汽车的引擎轰鸣"
+    ],
+    "chars": 36,
+    "tags": [
+      "数字锚点"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 3257,
+      "spaces_top": [
+        [
+          "路",
+          8
+        ],
+        [
+          "楼",
+          6
+        ],
+        [
+          "窗",
+          5
+        ],
+        [
+          "街",
+          4
+        ]
+      ],
+      "roles_top": [
+        [
+          "主管",
+          2
+        ]
+      ],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 23,
+      "cue": "全篇",
+      "start_line": 0,
+      "first": "世界上只剩下你一个人"
+    }
+  ],
+  "segment_count": 1,
+  "ending": [
+    "写完最后一个字",
+    "你合上书本",
+    "海浪翻涌",
+    "吞没了沙滩上的脚印",
+    "一切尘埃落定"
+  ],
+  "line_stats": {
+    "lines": 322,
+    "median_line_chars": 10.0,
+    "max_line_chars": 16
+  }
+}

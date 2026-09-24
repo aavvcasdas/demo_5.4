@@ -1,0 +1,146 @@
+{
+  "entry": "03_雇佣兵的一生",
+  "title": "雇佣兵的一生",
+  "series": "剧本人生",
+  "source": "拆文库/03_雇佣兵的一生/原文/原文.txt",
+  "chars": 2184,
+  "est_seconds_at_4_2cps": 520,
+  "hook": {
+    "text": [
+      "第一集潮湿的耗材",
+      "凌晨2点十三分",
+      "电话在震动",
+      "你没有开灯"
+    ],
+    "chars": 25,
+    "tags": [
+      "数字锚点"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 499,
+      "spaces_top": [
+        [
+          "巷",
+          3
+        ],
+        [
+          "门",
+          1
+        ],
+        [
+          "屋",
+          1
+        ],
+        [
+          "房",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 3,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "第一集潮湿的耗材"
+    },
+    {
+      "chars": 492,
+      "spaces_top": [
+        [
+          "场",
+          3
+        ]
+      ],
+      "roles_top": [
+        [
+          "主管",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 6,
+      "cue": "集切",
+      "start_line": 54,
+      "first": "第三集战术架构师"
+    },
+    {
+      "chars": 231,
+      "spaces_top": [],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "集切",
+      "start_line": 100,
+      "first": "第五集幽灵经纪人"
+    },
+    {
+      "chars": 251,
+      "spaces_top": [
+        [
+          "办公室",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "集切",
+      "start_line": 123,
+      "first": "第六集幕后造王者"
+    },
+    {
+      "chars": 264,
+      "spaces_top": [],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 3,
+      "cue": "集切",
+      "start_line": 146,
+      "first": "第七集秩序制定者"
+    },
+    {
+      "chars": 447,
+      "spaces_top": [
+        [
+          "房",
+          1
+        ],
+        [
+          "房间",
+          1
+        ],
+        [
+          "巷",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 3,
+      "cue": "集切",
+      "start_line": 173,
+      "first": "第8集不可触碰的虚无"
+    }
+  ],
+  "segment_count": 6,
+  "ending": [
+    "你关掉监控",
+    "重新陷入了那永恒的",
+    "神话般的孤独之中",
+    "循环开始了",
+    "它永远不会结束"
+  ],
+  "line_stats": {
+    "lines": 224,
+    "median_line_chars": 9.0,
+    "max_line_chars": 17
+  }
+}

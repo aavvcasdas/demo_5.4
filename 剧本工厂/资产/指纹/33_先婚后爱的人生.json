@@ -1,0 +1,261 @@
+{
+  "entry": "33_先婚后爱的人生",
+  "title": "是先婚后爱的人生",
+  "series": "剧本人生",
+  "source": "拆文库/33_先婚后爱的人生/原文/原文.txt",
+  "chars": 3288,
+  "est_seconds_at_4_2cps": 783,
+  "hook": {
+    "text": [
+      "新房门上的喜字还没褪色",
+      "边缘微微卷起",
+      "透着一点不属于这个安静空间的喜气",
+      "你坐在客厅的沙发上"
+    ],
+    "chars": 42,
+    "tags": [
+      "画面切入"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 363,
+      "spaces_top": [
+        [
+          "厅",
+          2
+        ],
+        [
+          "门",
+          2
+        ],
+        [
+          "店",
+          1
+        ],
+        [
+          "桌",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "新房门上的喜字还没褪色"
+    },
+    {
+      "chars": 327,
+      "spaces_top": [
+        [
+          "房",
+          2
+        ],
+        [
+          "厅",
+          1
+        ],
+        [
+          "桌",
+          1
+        ],
+        [
+          "房间",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "室友",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 3,
+      "cue": "那天",
+      "start_line": 39,
+      "first": "那天晚上躺在新床的两侧"
+    },
+    {
+      "chars": 239,
+      "spaces_top": [
+        [
+          "房",
+          3
+        ],
+        [
+          "厨房",
+          3
+        ],
+        [
+          "门",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 1,
+      "cue": "那天",
+      "start_line": 74,
+      "first": "那天你下班早"
+    },
+    {
+      "chars": 95,
+      "spaces_top": [],
+      "roles_top": [
+        [
+          "妈",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 0,
+      "cue": "那天",
+      "start_line": 98,
+      "first": "那天晚上的菜里有一道红烧肉"
+    },
+    {
+      "chars": 893,
+      "spaces_top": [
+        [
+          "路",
+          5
+        ],
+        [
+          "店",
+          2
+        ],
+        [
+          "窗",
+          2
+        ],
+        [
+          "屋",
+          2
+        ]
+      ],
+      "roles_top": [
+        [
+          "妈",
+          2
+        ],
+        [
+          "老板",
+          1
+        ],
+        [
+          "妈妈",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 4,
+      "cue": "后来",
+      "start_line": 109,
+      "first": "后来你才知道"
+    },
+    {
+      "chars": 315,
+      "spaces_top": [
+        [
+          "路",
+          3
+        ],
+        [
+          "街",
+          2
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 3,
+      "cue": "那天",
+      "start_line": 212,
+      "first": "那天晚上洗完热水澡躺在床上"
+    },
+    {
+      "chars": 257,
+      "spaces_top": [
+        [
+          "厅",
+          1
+        ],
+        [
+          "场",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 0,
+      "cue": "那天",
+      "start_line": 246,
+      "first": "那天晚上的卧室里"
+    },
+    {
+      "chars": 227,
+      "spaces_top": [
+        [
+          "厅",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 3,
+      "cue": "那天",
+      "start_line": 272,
+      "first": "那天晚上坐在餐厅柔和的烛光里"
+    },
+    {
+      "chars": 572,
+      "spaces_top": [
+        [
+          "厅",
+          1
+        ],
+        [
+          "场",
+          1
+        ],
+        [
+          "门",
+          1
+        ],
+        [
+          "房",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 7,
+      "cue": "后来",
+      "start_line": 297,
+      "first": "后来的日子"
+    }
+  ],
+  "segment_count": 9,
+  "ending": [
+    "你甚至在心里默默希望",
+    "每个人都能在迷茫的时候",
+    "遇到这样一个愿意陪你慢慢走的人",
+    "哪怕一开始没爱",
+    "也能在日复一日的相处中学会去爱"
+  ],
+  "line_stats": {
+    "lines": 353,
+    "median_line_chars": 9,
+    "max_line_chars": 16
+  }
+}

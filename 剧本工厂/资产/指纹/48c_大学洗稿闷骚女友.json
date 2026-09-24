@@ -1,0 +1,125 @@
+{
+  "entry": "48c_大学洗稿闷骚女友",
+  "title": "48c_大学洗稿闷骚女友",
+  "series": "剧本人生",
+  "source": "拆文库/48c_大学洗稿闷骚女友/原文/原文.txt",
+  "chars": 2039,
+  "est_seconds_at_4_2cps": 485,
+  "hook": {
+    "text": [
+      "刚开学",
+      "你就谈了个顶级闷骚的漂亮女友",
+      "平时在人前安静的不行",
+      "私下却总会露出另一面"
+    ],
+    "chars": 37,
+    "tags": [
+      "画面切入"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 251,
+      "spaces_top": [],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 3,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "刚开学"
+    },
+    {
+      "chars": 175,
+      "spaces_top": [],
+      "roles_top": [
+        [
+          "室友",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 4,
+      "cue": "后来",
+      "start_line": 26,
+      "first": "后来你偶尔找他聊天"
+    },
+    {
+      "chars": 512,
+      "spaces_top": [
+        [
+          "路",
+          2
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 12,
+      "cue": "从那以后",
+      "start_line": 49,
+      "first": "从那以后"
+    },
+    {
+      "chars": 642,
+      "spaces_top": [
+        [
+          "路",
+          1
+        ],
+        [
+          "楼",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "同学",
+          2
+        ]
+      ],
+      "quotes": 0,
+      "questions": 2,
+      "upgrade_marks": 6,
+      "cue": "第二天",
+      "start_line": 110,
+      "first": "第二天见面"
+    },
+    {
+      "chars": 303,
+      "spaces_top": [],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 5,
+      "cue": "后来",
+      "start_line": 186,
+      "first": "后来你才习惯这种反差"
+    },
+    {
+      "chars": 156,
+      "spaces_top": [],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 1,
+      "cue": "第二天",
+      "start_line": 222,
+      "first": "第二天见面却照样"
+    }
+  ],
+  "segment_count": 6,
+  "ending": [
+    "只能一直藏着",
+    "现在那些藏了很久的小心思",
+    "终于都有了出口",
+    "而这个隐藏版本",
+    "刚好只有你一个人能看到"
+  ],
+  "line_stats": {
+    "lines": 239,
+    "median_line_chars": 8,
+    "max_line_chars": 16
+  }
+}

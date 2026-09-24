@@ -1,0 +1,141 @@
+{
+  "entry": "32_你有一个打呼噜跟水牛叫一样的室友",
+  "title": "的人生副本是",
+  "series": "剧本人生",
+  "source": "拆文库/32_你有一个打呼噜跟水牛叫一样的室友/原文/原文.txt",
+  "chars": 3839,
+  "est_seconds_at_4_2cps": 914,
+  "hook": {
+    "text": [
+      "你有一个打呼噜跟水牛叫一样的室友",
+      "9月初的空气里还带着",
+      "一点没有褪去的闷热",
+      "这是你大学报到的第一天"
+    ],
+    "chars": 46,
+    "tags": [
+      "数字锚点",
+      "身份圈定"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 155,
+      "spaces_top": [
+        [
+          "门",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "室友",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 0,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "你有一个打呼噜跟水牛叫一样的室友"
+    },
+    {
+      "chars": 2256,
+      "spaces_top": [
+        [
+          "门",
+          5
+        ],
+        [
+          "阳台",
+          2
+        ],
+        [
+          "楼",
+          1
+        ],
+        [
+          "桌",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "室友",
+          13
+        ],
+        [
+          "爷",
+          8
+        ],
+        [
+          "大爷",
+          8
+        ],
+        [
+          "弟",
+          3
+        ]
+      ],
+      "quotes": 0,
+      "questions": 2,
+      "upgrade_marks": 18,
+      "cue": "直到",
+      "start_line": 14,
+      "first": "直到晚上11点半"
+    },
+    {
+      "chars": 643,
+      "spaces_top": [
+        [
+          "场",
+          2
+        ],
+        [
+          "桌",
+          2
+        ],
+        [
+          "楼",
+          1
+        ],
+        [
+          "办公室",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 5,
+      "cue": "第二天",
+      "start_line": 266,
+      "first": "第二天清晨"
+    },
+    {
+      "chars": 785,
+      "spaces_top": [],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 8,
+      "cue": "第二天",
+      "start_line": 339,
+      "first": "第二天中午"
+    }
+  ],
+  "segment_count": 4,
+  "ending": [
+    "心里并没有什么大仇得报的爽快感",
+    "甚至没有同情",
+    "只有一种荒诞的平静",
+    "你继续吃着盘子里的米饭",
+    "没有接话"
+  ],
+  "line_stats": {
+    "lines": 424,
+    "median_line_chars": 9.0,
+    "max_line_chars": 16
+  }
+}

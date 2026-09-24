@@ -1,0 +1,125 @@
+{
+  "entry": "17_外耗型人格的人生",
+  "title": "是外号型人格的人生",
+  "series": "剧本人生",
+  "source": "拆文库/17_外耗型人格的人生/原文/原文.txt",
+  "chars": 3228,
+  "est_seconds_at_4_2cps": 769,
+  "hook": {
+    "text": [
+      "从小到大",
+      "你就是人群里的那个异类或者说",
+      "在你的眼里",
+      "其他人才是难以理解的生物"
+    ],
+    "chars": 35,
+    "tags": [
+      "身份圈定"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 148,
+      "spaces_top": [
+        [
+          "路",
+          2
+        ],
+        [
+          "厅",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "同事",
+          1
+        ],
+        [
+          "同学",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 1,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "从小到大"
+    },
+    {
+      "chars": 154,
+      "spaces_top": [
+        [
+          "场",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 1,
+      "cue": "直到",
+      "start_line": 14,
+      "first": "直到有一天"
+    },
+    {
+      "chars": 2926,
+      "spaces_top": [
+        [
+          "厅",
+          4
+        ],
+        [
+          "店",
+          3
+        ],
+        [
+          "路",
+          3
+        ],
+        [
+          "收银",
+          3
+        ]
+      ],
+      "roles_top": [
+        [
+          "老板",
+          8
+        ],
+        [
+          "老太太",
+          8
+        ],
+        [
+          "哥",
+          6
+        ],
+        [
+          "服务员",
+          6
+        ]
+      ],
+      "quotes": 0,
+      "questions": 8,
+      "upgrade_marks": 15,
+      "cue": "这天",
+      "start_line": 33,
+      "first": "这天你趁着假期去热门景区旅游"
+    }
+  ],
+  "segment_count": 3,
+  "ending": [
+    "而你选择做那个制定",
+    "自己规则的活阎王",
+    "你始终坚信一句话",
+    "只要你不内耗",
+    "内耗的就一定是别人"
+  ],
+  "line_stats": {
+    "lines": 351,
+    "median_line_chars": 9,
+    "max_line_chars": 17
+  }
+}

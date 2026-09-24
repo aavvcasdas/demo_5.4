@@ -1,0 +1,144 @@
+{
+  "entry": "48b_高中同桌闷骚女友",
+  "title": "谈到",
+  "series": "剧本人生",
+  "source": "拆文库/48b_高中同桌闷骚女友/原文/原文.txt",
+  "chars": 1614,
+  "est_seconds_at_4_2cps": 384,
+  "hook": {
+    "text": [
+      "个顶级闷骚型甜妹当女朋友",
+      "高中的时候",
+      "她在班里一直是一个很不起眼的存在",
+      "平时很少跟人说话"
+    ],
+    "chars": 41,
+    "tags": [
+      "画面切入"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 113,
+      "spaces_top": [],
+      "roles_top": [
+        [
+          "妹",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 1,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "个顶级闷骚型甜妹当女朋友"
+    },
+    {
+      "chars": 446,
+      "spaces_top": [
+        [
+          "场",
+          1
+        ],
+        [
+          "校",
+          1
+        ],
+        [
+          "学校",
+          1
+        ],
+        [
+          "教室",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "同学",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 6,
+      "cue": "直到",
+      "start_line": 11,
+      "first": "直到有一天"
+    },
+    {
+      "chars": 179,
+      "spaces_top": [],
+      "roles_top": [
+        [
+          "老师",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 3,
+      "cue": "直到",
+      "start_line": 60,
+      "first": "直到有一次上体育课"
+    },
+    {
+      "chars": 123,
+      "spaces_top": [
+        [
+          "院",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 3,
+      "cue": "后来",
+      "start_line": 83,
+      "first": "后来你开始越来越喜欢逗她"
+    },
+    {
+      "chars": 753,
+      "spaces_top": [
+        [
+          "房",
+          2
+        ],
+        [
+          "门",
+          1
+        ],
+        [
+          "校",
+          1
+        ],
+        [
+          "房间",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 4,
+      "upgrade_marks": 5,
+      "cue": "后来",
+      "start_line": 97,
+      "first": "后来你们的关系越来越近"
+    }
+  ],
+  "segment_count": 5,
+  "ending": [
+    "在自己的男朋友面前",
+    "竟然会是完全不同的样子",
+    "她嘴上说没有",
+    "可她的表情",
+    "她的行动早就替她承认了一切"
+  ],
+  "line_stats": {
+    "lines": 193,
+    "median_line_chars": 8,
+    "max_line_chars": 16
+  }
+}

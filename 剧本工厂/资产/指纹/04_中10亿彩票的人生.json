@@ -1,0 +1,223 @@
+{
+  "entry": "04_中10亿彩票的人生",
+  "title": "中10亿彩票的人生第一集",
+  "series": "剧本人生",
+  "source": "拆文库/04_中10亿彩票的人生/原文/原文.txt",
+  "chars": 1331,
+  "est_seconds_at_4_2cps": 317,
+  "hook": {
+    "text": [
+      "纸片",
+      "凌晨2点半",
+      "你失眠了",
+      "因为你的房租已经拖了两个月了"
+    ],
+    "chars": 25,
+    "tags": [
+      "数字锚点"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 204,
+      "spaces_top": [
+        [
+          "桌",
+          1
+        ],
+        [
+          "屋",
+          1
+        ],
+        [
+          "房",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "主管",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 1,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "纸片"
+    },
+    {
+      "chars": 152,
+      "spaces_top": [
+        [
+          "街",
+          1
+        ],
+        [
+          "门",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "集切",
+      "start_line": 23,
+      "first": "第二集面具"
+    },
+    {
+      "chars": 165,
+      "spaces_top": [
+        [
+          "房",
+          2
+        ],
+        [
+          "楼",
+          1
+        ],
+        [
+          "门",
+          1
+        ],
+        [
+          "窗",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "主管",
+          1
+        ],
+        [
+          "姐",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 0,
+      "cue": "集切",
+      "start_line": 39,
+      "first": "第三集跨界"
+    },
+    {
+      "chars": 174,
+      "spaces_top": [
+        [
+          "房",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "亲戚",
+          1
+        ],
+        [
+          "室友",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 1,
+      "cue": "集切",
+      "start_line": 57,
+      "first": "第四集猎物"
+    },
+    {
+      "chars": 156,
+      "spaces_top": [],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "集切",
+      "start_line": 76,
+      "first": "第五集吞噬"
+    },
+    {
+      "chars": 154,
+      "spaces_top": [
+        [
+          "场",
+          1
+        ],
+        [
+          "路",
+          1
+        ],
+        [
+          "街",
+          1
+        ],
+        [
+          "门",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "司机",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 1,
+      "cue": "集切",
+      "start_line": 94,
+      "first": "第6集铁笼"
+    },
+    {
+      "chars": 326,
+      "spaces_top": [
+        [
+          "门",
+          2
+        ],
+        [
+          "窗",
+          2
+        ],
+        [
+          "院",
+          1
+        ],
+        [
+          "房",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "护士",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 3,
+      "cue": "集切",
+      "start_line": 112,
+      "first": "第7集多巴胺缺失"
+    }
+  ],
+  "segment_count": 7,
+  "ending": [
+    "注射每日定量的镇静剂",
+    "门在你身后关上",
+    "控制只是幻觉",
+    "你拥有绝对自由",
+    "也只剩绝对孤独"
+  ],
+  "line_stats": {
+    "lines": 149,
+    "median_line_chars": 9,
+    "max_line_chars": 25
+  }
+}
