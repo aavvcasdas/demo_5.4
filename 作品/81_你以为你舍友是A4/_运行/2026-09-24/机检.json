@@ -1,0 +1,204 @@
+{
+  "schema_version": 2,
+  "profile": "full",
+  "target": "作品/81_你以为你舍友是A4/",
+  "findings": [
+    {
+      "rule_id": "AI_STYLE_overcompressed-prose-tic",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 1,
+      "evidence": "今天你要体验的人生副本是 | 你以为你舍友是 A4 | 实际上他是 A8 | 系统提示 | 本副本的穷 | 均为隐藏款"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 17,
+      "evidence": "有人要搭手 他摆手 讲，箱子不重 里面没什么 这是实话 四年里"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 50,
+      "evidence": "商场取号 也叫 A8 A8 号 请用餐 巧得很 没人听懂"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 85,
+      "evidence": "汤只喝三口 就倒了 一口不多 一口不少 你嫌他浪费 他讲，嘌呤高"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 109,
+      "evidence": "他的进项 在楼道 矿泉水瓶 啤酒瓶 纸箱 全楼的瓶子"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 127,
+      "evidence": "网课贵 钱不够 你都忘了 他记着 你嫌麻烦 他讲"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 185,
+      "evidence": "大一 你说他穷 大二 你说他抠 大三 你改口了"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 205,
+      "evidence": "从九块九 砍到九块八 砍掉的一毛 他记了账 贷：拼多多 大三聚餐"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 216,
+      "evidence": "笑话你们俩 凑一桌 正好四位数 你们没吭声 回去的路上 你越想越气"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 283,
+      "evidence": "要记账的 你查了 四千七 跟你算的 一分不差 这张卡"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 300,
+      "evidence": "替他难受 你攥着卡 讲不出话 他讲 别急 先吃饭"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 359,
+      "evidence": "勿扰 体验日 你后来算过 一个月一次 全家出动 收纸箱"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 382,
+      "evidence": "垫床脚 正好 他跟你摊牌 讲得很慢 A8，八位数 千万级"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 448,
+      "evidence": "一天一百二 四十七天 五千六百四 你拿三千 把账还了 剩下的"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 468,
+      "evidence": "三万块出头 A5.3 他给你算过 离 A8 还差三位 慢慢走"
+    },
+    {
+      "rule_id": "AI_STYLE_period-stutter",
+      "severity": "REVIEW",
+      "category": "style",
+      "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+      "file": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+      "line": 504,
+      "evidence": "翻到你那页 借：老三，四千 贷：朋友 底下三个字 已还清 你讲，不对"
+    }
+  ],
+  "tools": [
+    {
+      "name": "ai_style_diagnostics",
+      "command": [
+        "node",
+        "/home/user/demo_5.4/skills/story-review/scripts/check-ai-patterns.js",
+        "--json",
+        "--fail-on=blocking",
+        "--profile=fuben",
+        "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md"
+      ],
+      "state": "COMPLETED",
+      "exit_code": 0,
+      "finding_count": 16
+    }
+  ],
+  "checked": [
+    "readable_nonempty_body_and_descriptive_metrics",
+    "explicit_equations_and_literal_character_counts",
+    "style_pattern_candidates_not_literary_judgment"
+  ],
+  "unverified": [
+    "editorial quality",
+    "narrative continuity and referent resolution",
+    "theme/event alignment and dialogue response",
+    "external factual truth",
+    "TTS listening",
+    "actual media consistency",
+    "platform publication",
+    "setting/body consistency: no optional setting supplied"
+  ],
+  "inputs": {
+    "body_sha256": "ec6ef10f116f613843fa77167ea531d454bb014433127ddc77227fc4868896b7",
+    "body_text_sha256": "ec6ef10f116f613843fa77167ea531d454bb014433127ddc77227fc4868896b7"
+  },
+  "policy_version": "2.0.0",
+  "body_path": "/home/user/demo_5.4/作品/81_你以为你舍友是A4/正文.md",
+  "metrics": {
+    "characters_repository_convention": 2274,
+    "nonempty_prose_lines": 445,
+    "longest_line_characters": 12,
+    "number_tokens": 54,
+    "number_density_per_1000": 23.7,
+    "density_denominator": 2274,
+    "assumed_cps": 6.4,
+    "estimated_duration_seconds": 355.31,
+    "duration_kind": "estimate_not_audio_measurement"
+  },
+  "status": "PASS_WITH_REVIEW",
+  "exit_code": 0,
+  "mechanical_pass": true,
+  "editorially_approved": false,
+  "release_ready": false
+}
