@@ -45,10 +45,17 @@ def features(directory):
 
 
 def _normalize_report_body_path(claim: str, *, report_dir: Path) -> Path:
-    path = Path(claim.strip().strip('`').replace('\\', '/'))
-    if not path.is_absolute():
-        path = report_dir / path
-    return path.resolve()
+    # SKILL templates record repo-root-relative paths like `作品/NN_主题/正文.md`;
+    # accept either the report directory or the repository root as base, first existing wins.
+    from fuben_engine import ROOT as _ROOT
+    raw = Path(claim.strip().strip('`').replace('\\', '/'))
+    if raw.is_absolute():
+        return raw.resolve()
+    for base in (report_dir, _ROOT):
+        candidate = (base / raw).resolve()
+        if candidate.is_file():
+            return candidate
+    return (report_dir / raw).resolve()
 
 
 
@@ -58,11 +65,12 @@ def _review_binding_evidence(body_path):
     if not review_path.is_file():
         return review_path, None, None
     text = review_path.read_text(encoding='utf-8-sig')
-    body_match = re.search(r'body_path\s*[：:]\s*`?([^`\n]+)`?', text)
-    hash_match = re.search(r'body_text_sha256\s*[：:]\s*`?([0-9a-fA-F]{64})`?', text)
-    bound_body_path = (_normalize_report_body_path(body_match.group(1), report_dir=review_path.parent)
-                       if body_match else None)
-    return review_path, bound_body_path, hash_match.group(1).lower() if hash_match else None
+    # 报告允许「修订记录」后续追加：同一键出现多次时以最后一条为准（初版绑定在前，重绑在后）。
+    body_matches = re.findall(r'body_path\s*[：:]\s*`?([^`\n]+)`?', text)
+    hash_matches = re.findall(r'body_text_sha256\s*[：:]\s*`?([0-9a-fA-F]{64})`?', text)
+    bound_body_path = (_normalize_report_body_path(body_matches[-1], report_dir=review_path.parent)
+                       if body_matches else None)
+    return review_path, bound_body_path, hash_matches[-1].lower() if hash_matches else None
 
 
 def review(path):
@@ -77,12 +85,16 @@ def review(path):
         if bound_body_path is None:
             report['findings'].append(finding('MISSING_REVIEW_BODY_PATH', 'REVIEW', 'evidence',
                                              '审核报告未记录 body_path，不能证明结论针对当前正文文件。', file=review_path))
-        elif bound_body_path != body_path:
+        elif (bound_body_path == body_path
+              or (bound_body_path.name == body_path.name
+                  and bound_body_path.parent.name == body_path.parent.name)):
+            # 跨机器迁移留下的异体绝对路径：文件名与所在目录一致时按绑定处理；
+            # 过期防线由 body_text_sha256 承担，不靠字符串路径相等。
+            report['checked'].append('review_report_body_path_binding')
+        else:
             report['findings'].append(finding('STALE_REVIEW_BODY_PATH', 'REVIEW', 'evidence',
                                              '审核报告记录的 body_path 与当前正文文件不一致；请确认是否复用了旧报告。',
                                              file=review_path, evidence=f'report={bound_body_path} current={body_path}'))
-        else:
-            report['checked'].append('review_report_body_path_binding')
         if bound_hash is None:
             report['findings'].append(finding('UNBOUND_REVIEW_REPORT', 'REVIEW', 'evidence',
                                              '审核报告未记录 body_text_sha256，不能证明对应当前正文。', file=review_path))

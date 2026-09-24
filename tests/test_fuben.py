@@ -639,7 +639,7 @@ class DataTests(Fixture):
         self.assertEqual(len((out / 'legacy_quarantine.jsonl').read_text().splitlines()), 2)
 
     def test_old_unsafe_record_command_rejected_without_data_mutation(self):
-        old = [ROOT / '作品/_数据.csv', ROOT / '作品/_数据_v2.csv']
+        old = [p for p in (ROOT / '作品/_数据.csv', ROOT / '作品/_数据_v2.csv') if p.is_file()]
         before = [sha256(p) for p in old]
         result = run(sys.executable, ROOT / 'scripts/fuben_loop.py', 'record', '78', '123', '456')
         self.assertEqual(result.returncode, 2)

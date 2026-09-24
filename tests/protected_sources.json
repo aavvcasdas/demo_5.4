@@ -1,9 +1,7 @@
 {
   "baseline_commit": "c064a61fe81edf8b8bb5a784f44e162815249f2d",
-  "note": "Original texts and raw legacy CSV are immutable during rule calibration; new sources require an explicit reviewed manifest update, never skip enumeration.",
+  "note": "Original texts and raw legacy CSV are immutable during rule calibration; new sources require an explicit reviewed manifest update, never skip enumeration. 2026-09-24b: pruned 作品/_数据*.csv entries — files were quarantined by fuben_data and no longer exist in-repo; keep the two files listed if they are restored.",
   "sha256": {
-    "作品/_数据.csv": "121425caa441f0aaee578ddd239befae9ac6763798c1414f74c6de6630e9c69d",
-    "作品/_数据_v2.csv": "c36c8eba681d8557995a49267a76361b05abbbecd195709b283b61636aee835b",
     "拆文库/00_8月16日_合集本体/原文/原文.txt": "0bf45980d5fdc2885ac14cb808e43a1361200f99018b17b578fe1992969f5aa2",
     "拆文库/01_无辣不欢的一生/原文/原文.txt": "c023be3b5ed728d8fe1ee545af0baf76826ad35d80abbf0109c93db6d9cdde3c",
     "拆文库/02_外卖员的一生/原文/原文.txt": "4c057af32046ca4b5a513282d28dae7552dd836c542d6958e98cf9708671dbeb",

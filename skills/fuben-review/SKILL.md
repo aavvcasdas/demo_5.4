@@ -1,6 +1,6 @@
 ---
 name: fuben-review
-version: 5.2.0
+version: 5.3.0
 metadata: {"openclaw":{"source":"https://github.com/aavvcasdas/demo"}}
 description: "人生副本创作审核：先判断开头追看、爽感兑现、伏笔钩子和侧面描写是否有效，再核事实与交付；机械通过不能替代好看。"
 ---
@@ -44,6 +44,9 @@ description: "人生副本创作审核：先判断开头追看、爽感兑现、
 9. 专业术语、俗语、角色自我安慰、作者旁白事实和玩笑是否混淆；未核实说法不能当专业事实。
 10. 关键转折是否由人物需要、情绪、关系或认识支撑，结尾是否以行动兑现而非只输出金句。
 11. 修改后是否遗留旧场景、旧食物名、旧时间、旧称呼、旧字数主张或旧审核结论。
+12. **账要平**：金额、位数、档位（A/B/C 级）、单价×数量、总−支出=余，逐项按文内口径反算；同一器物/欠款的数两处必须一致，要留差异必须有人物点破。跑 `fuben_craft --ledger` 全表逐条闭环，MISMATCH 未处理不得 APPROVE（81 案：4700↔「四千」、两千多称「A5」滑过 5.2 口径）。
+13. **开头 3 秒体检**：按口播结构与节奏·开头铁律——160 字内禁定义前置、系统提示 ≤2 行笑话、第 10 行内进可拍动作；`钩子备选.md` 三条同检（讲解腔钩子不得推荐）。机检 `DEFINITION_UPFRONT`/`SYS_PROMPT_OVER`/`HEAD_OVERLOAD` 有命中而未处置，不得 APPROVE。
+14. **红线复扫用工具**：无烟、禁词、对白限额引用 `fuben_run` 输出的规则号与数字，禁止「烟字 0」这类无出处手报；正文/短版/钩子逐文件扫，引用各自 findings。
 
 跨句问题必须同时给两端证据。对每个发现写：
 
@@ -63,12 +66,13 @@ description: "人生副本创作审核：先判断开头追看、爽感兑现、
 
 场景、关键食物／道具／人物称呼、时间点或跨度、标题核心概念、主要压力源、结尾金句或字数主张发生变化时：标明改动对象，查找全文直接引用和间接指代，修复受影响段落，再检查场景接缝、题意回扣与当前完整稿。改稿后必须重新审读并生成对应新版本的结论，不能复用旧稿的“通过”。全文重写不是默认答案，也不能免除复核。
 
-审核报告必须记录当前正文路径 `body_path` 和 `body_text_sha256`（以 UTF-8 解码并统一换行为 `\n` 后的 SHA-256；可直接采用 `fuben_run --json` 的 `body_path` 与 `inputs.body_text_sha256`）。报告哈希与当前正文不一致时，报告状态只能是 `STALE/PROVISIONAL`，不得为新稿背书。最低限度写成：
+审核报告必须记录当前正文路径 `body_path` 和 `body_text_sha256`（以 UTF-8 解码并统一换行为 `\n` 后的 SHA-256；可直接采用 `fuben_run --json` 的 `body_path` 与 `inputs.body_text_sha256`）。报告哈希与当前正文不一致时，报告状态只能是 `STALE/PROVISIONAL`，不得为新稿背书。APPROVE/FIX 报告还须含「**机检候选闭环表**」：逐条 `rule_id → 处置（修复/误报保留/批量判定）→ 证据`，并对 `DIALOGUE_*`、`LEDGER_*`、`VOLUME_OFF_BAND` 给出数字与处置；返工后复跑机检的前后 findings 差异一并写上。最低限度写成：
 
 ```md
 body_path: `作品/NN_主题/正文.md`
 body_text_sha256: `<64位哈希>`
 review_status: PROVISIONAL / BLOCK / FIX / APPROVE
+机检候选闭环：fuben_run full <前N条→后M条>，facts/policy 清零；<表见正文>
 ```
 
 缺 `body_path` 或缺 `body_text_sha256` 的报告，都不能拿来证明当前正文已经审过。
@@ -78,11 +82,13 @@ review_status: PROVISIONAL / BLOCK / FIX / APPROVE
 核对本篇真正涉及的事实、指代、因果、账号约定和来源；分清角色误信、倒叙、虚构和现实断言。精确数字确实错误要修，但不能把修几个字当作完成创作审核。自动检查只阻断边界明确的错误；物件位置、时间跨度、代词和新名词只能作为语义候选，必须由上述读通专项确认。
 
 ```bash
-python3 scripts/fuben_run.py 作品/NN_主题/ --json
+python3 scripts/fuben_run.py 作品/NN_主题/ --profile full --json
 python3 scripts/fuben_run.py 作品/NN_主题/正文_3分钟版.md --profile short --json
+python3 scripts/fuben_run.py 作品/NN_主题/钩子备选.md --profile full --json
+python3 scripts/fuben_products.py 作品/NN_主题   # 阶段产物与哈希绑定是否齐全
 ```
 
-BLOCK 定位明确错误；REVIEW 人审上下文；NOTE 描述或未评估；ERROR 表示工具未成功。工具缺失就如实说明。机检 PASS 只说明没有已检出的机械阻断，不评开头、爽感或可发布。
+`full` profile 含工艺门禁（craft：红线/禁词/开头铁律/对白计数/账目档位/体量带，见 fuben_craft 头注）。BLOCK 定位明确错误；REVIEW 人审上下文；NOTE 描述或未评估；ERROR 表示工具未成功。工具缺失就如实说明。机检 PASS 只说明没有已检出的机械阻断，不评开头、爽感或可发布。**闭环规则（2026-09-24b）：`facts`/`policy` 类与 `LEDGER_*` 的每条 REVIEW 必须在报告里逐条销账（修复／机检误报＋证据）；`style` 句式候选（period-stutter 等 ASR 短行体固有形态）允许批量判定，但要写明判定依据。存在未销账的 facts/policy 候选时，报告状态不得高于 FIX。**
 
 **创作结论与机器状态分开：**
 - `FIX`：开头留不住、主线散、蓄势无兑现、伏笔生硬或侧面无效，即使机检全绿也不能放行。给位置和实改。
