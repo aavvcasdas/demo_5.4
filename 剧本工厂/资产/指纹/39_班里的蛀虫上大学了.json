@@ -1,0 +1,197 @@
+{
+  "entry": "39_班里的蛀虫上大学了",
+  "title": "的人生副本是",
+  "series": "剧本人生",
+  "source": "拆文库/39_班里的蛀虫上大学了/原文/原文.txt",
+  "chars": 2127,
+  "est_seconds_at_4_2cps": 506,
+  "hook": {
+    "text": [
+      "班里的蛀虫上大学了",
+      "刚开学没多久",
+      "你刷到一个视频",
+      "一只黑白相间的小香猪趴在人怀里"
+    ],
+    "chars": 37,
+    "tags": [
+      "画面切入"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 481,
+      "spaces_top": [
+        [
+          "门",
+          4
+        ],
+        [
+          "桌",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 4,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "班里的蛀虫上大学了"
+    },
+    {
+      "chars": 208,
+      "spaces_top": [
+        [
+          "校",
+          3
+        ],
+        [
+          "学校",
+          2
+        ],
+        [
+          "路",
+          1
+        ],
+        [
+          "门",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "老师",
+          2
+        ],
+        [
+          "班长",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 1,
+      "cue": "第二天",
+      "start_line": 54,
+      "first": "第二天下午"
+    },
+    {
+      "chars": 61,
+      "spaces_top": [],
+      "roles_top": [
+        [
+          "老师",
+          1
+        ],
+        [
+          "班长",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "直到",
+      "start_line": 81,
+      "first": "直到周围的人开始回头看你"
+    },
+    {
+      "chars": 696,
+      "spaces_top": [
+        [
+          "场",
+          1
+        ],
+        [
+          "门",
+          1
+        ],
+        [
+          "校",
+          1
+        ],
+        [
+          "教室",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "老师",
+          7
+        ],
+        [
+          "班长",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 9,
+      "cue": "从那以后",
+      "start_line": 87,
+      "first": "从那以后"
+    },
+    {
+      "chars": 626,
+      "spaces_top": [
+        [
+          "场",
+          3
+        ],
+        [
+          "校",
+          3
+        ],
+        [
+          "路",
+          1
+        ],
+        [
+          "门",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 8,
+      "cue": "第二天",
+      "start_line": 164,
+      "first": "第二天中午"
+    },
+    {
+      "chars": 55,
+      "spaces_top": [
+        [
+          "校",
+          1
+        ],
+        [
+          "学校",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 1,
+      "cue": "后来",
+      "start_line": 236,
+      "first": "后来有人围着它拍照"
+    }
+  ],
+  "segment_count": 6,
+  "ending": [
+    "把照片发到学校墙上",
+    "问这是什么纪念遗址",
+    "还有人牵着狗过来朝圣",
+    "纪念牌附近陆续出现",
+    "了没有报名的新作品"
+  ],
+  "line_stats": {
+    "lines": 242,
+    "median_line_chars": 9.0,
+    "max_line_chars": 17
+  }
+}

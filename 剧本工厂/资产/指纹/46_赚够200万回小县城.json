@@ -1,0 +1,91 @@
+{
+  "entry": "46_赚够200万回小县城",
+  "title": "你要体验的人生副本是",
+  "series": "剧本人生",
+  "source": "拆文库/46_赚够200万回小县城/原文/原文.txt",
+  "chars": 1753,
+  "est_seconds_at_4_2cps": 417,
+  "hook": {
+    "text": [
+      "赚够200万回小县城",
+      "不上班的人生到底有多爽",
+      "干了十年996",
+      "靠着抠搜攒的工资"
+    ],
+    "chars": 36,
+    "tags": [
+      "数字锚点"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 81,
+      "spaces_top": [],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 1,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "赚够200万回小县城"
+    },
+    {
+      "chars": 1672,
+      "spaces_top": [
+        [
+          "房",
+          6
+        ],
+        [
+          "院",
+          5
+        ],
+        [
+          "场",
+          4
+        ],
+        [
+          "路",
+          4
+        ]
+      ],
+      "roles_top": [
+        [
+          "妈",
+          3
+        ],
+        [
+          "老板",
+          2
+        ],
+        [
+          "同事",
+          2
+        ],
+        [
+          "主管",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 6,
+      "cue": "第二天",
+      "start_line": 9,
+      "first": "第二天你把辞职信拍在老板桌上"
+    }
+  ],
+  "segment_count": 2,
+  "ending": [
+    "你笑了揣着200万",
+    "身体健康",
+    "有车有房",
+    "不用看任何人脸色",
+    "我这叫通关了"
+  ],
+  "line_stats": {
+    "lines": 201,
+    "median_line_chars": 9,
+    "max_line_chars": 16
+  }
+}

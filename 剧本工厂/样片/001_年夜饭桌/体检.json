@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "script_path": "剧本工厂/样片/001_年夜饭桌/剧本.md",
+  "script_sha256": "1d5412b72fbba9e858b07c8e4cfdee2e77c4602bbce3413c4fa70e929afd27bb",
+  "metrics": {
+    "spoken_chars": 527,
+    "dialogue_ratio": 0.417,
+    "est_seconds": 125.5,
+    "target_seconds": 120.0,
+    "beats": 7,
+    "median_line_chars": 12.0,
+    "spaces": [
+      "厨房",
+      "房",
+      "桌",
+      "椅",
+      "窗",
+      "路",
+      "车",
+      "门",
+      "院"
+    ],
+    "pressure_marks": 8
+  },
+  "energy_curve": [
+    {
+      "beat": "B1",
+      "score": 4
+    },
+    {
+      "beat": "B2",
+      "score": 7
+    },
+    {
+      "beat": "B3",
+      "score": 12
+    },
+    {
+      "beat": "B4",
+      "score": 15
+    },
+    {
+      "beat": "B5",
+      "score": 13
+    },
+    {
+      "beat": "B6",
+      "score": 7
+    },
+    {
+      "beat": "B7",
+      "score": 6
+    }
+  ],
+  "findings": [
+    {
+      "level": "PASS",
+      "code": "DURATION",
+      "msg": "口播 527 字 ≈ 125s（目标 120s，5% 内）"
+    },
+    {
+      "level": "PASS",
+      "code": "HOOK_WINDOW",
+      "msg": "B1 钩子 6s 内开口"
+    },
+    {
+      "level": "PASS",
+      "code": "DIALOGUE",
+      "msg": "台词占口播 42%"
+    },
+    {
+      "level": "PASS",
+      "code": "LINE_LEN",
+      "msg": "行长中位 12 字 / P90 15 字"
+    },
+    {
+      "level": "PASS",
+      "code": "AI_TONE",
+      "msg": "无硬禁词、软化词 ≤2"
+    },
+    {
+      "level": "PASS",
+      "code": "PRESSURE",
+      "msg": "施压句 8 处 / 疑问 2 处"
+    }
+  ],
+  "unmeasured": [
+    "好看度（只有用户/观众能判）",
+    "事实真实性与合规",
+    "表演、镜头与后期可行性",
+    "实际配音时长（需念一遍或用 TTS 实测）",
+    "术语是否被观众听懂（无法机器判定）"
+  ],
+  "note": "体检不等于批准：BLOCK 必须修；PASS 只说明可测项没问题是，不代表稿子好看。"
+}

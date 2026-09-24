@@ -1,0 +1,138 @@
+{
+  "entry": "21_大学生意外接触PG电子游戏",
+  "title": "意外接触PG电子游戏的人生",
+  "series": "剧本人生",
+  "source": "拆文库/21_大学生意外接触PG电子游戏/原文/原文.txt",
+  "chars": 3075,
+  "est_seconds_at_4_2cps": 732,
+  "hook": {
+    "text": [
+      "南方的6月",
+      "大学宿舍里弥漫着一股发酸的潮气",
+      "你的手机屏幕亮着",
+      "支付宝余额显示为412.5元"
+    ],
+    "chars": 42,
+    "tags": [
+      "数字锚点"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 724,
+      "spaces_top": [
+        [
+          "校",
+          2
+        ],
+        [
+          "场",
+          1
+        ],
+        [
+          "楼",
+          1
+        ],
+        [
+          "窗",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "室友",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 4,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "南方的6月"
+    },
+    {
+      "chars": 1651,
+      "spaces_top": [
+        [
+          "楼",
+          1
+        ],
+        [
+          "教室",
+          1
+        ],
+        [
+          "走廊",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "室友",
+          2
+        ],
+        [
+          "中介",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 13,
+      "cue": "那天",
+      "start_line": 67,
+      "first": "那天晚上"
+    },
+    {
+      "chars": 700,
+      "spaces_top": [
+        [
+          "校",
+          2
+        ],
+        [
+          "楼",
+          1
+        ],
+        [
+          "门",
+          1
+        ],
+        [
+          "学校",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "同学",
+          1
+        ],
+        [
+          "保安",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 9,
+      "cue": "第二天",
+      "start_line": 233,
+      "first": "第二天上午"
+    }
+  ],
+  "segment_count": 3,
+  "ending": [
+    "你终于明白",
+    "你从来不是什么玩家",
+    "从始至终",
+    "你就是那个被投入机器",
+    "榨干价值后随意抛弃的燃料"
+  ],
+  "line_stats": {
+    "lines": 306,
+    "median_line_chars": 10.0,
+    "max_line_chars": 19
+  }
+}

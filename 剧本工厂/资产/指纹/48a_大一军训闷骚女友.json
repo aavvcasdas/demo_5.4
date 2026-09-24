@@ -1,0 +1,159 @@
+{
+  "entry": "48a_大一军训闷骚女友",
+  "title": "谈了",
+  "series": "剧本人生",
+  "source": "拆文库/48a_大一军训闷骚女友/原文/原文.txt",
+  "chars": 1754,
+  "est_seconds_at_4_2cps": 418,
+  "hook": {
+    "text": [
+      "个极度反差的闷骚漂亮女友",
+      "看她私下是怎么在你面前频频露馅的",
+      "平时在人前装的那叫一个安静正经",
+      "跟谁都不熟的样子"
+    ],
+    "chars": 51,
+    "tags": [
+      "画面切入"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 119,
+      "spaces_top": [],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 0,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "个极度反差的闷骚漂亮女友"
+    },
+    {
+      "chars": 156,
+      "spaces_top": [
+        [
+          "路",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 2,
+      "cue": "那天",
+      "start_line": 12,
+      "first": "那天晚上"
+    },
+    {
+      "chars": 525,
+      "spaces_top": [
+        [
+          "馆",
+          1
+        ],
+        [
+          "路",
+          1
+        ],
+        [
+          "桌",
+          1
+        ],
+        [
+          "窗",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "室友",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 5,
+      "cue": "后来",
+      "start_line": 29,
+      "first": "后来偶尔也聊几句"
+    },
+    {
+      "chars": 199,
+      "spaces_top": [
+        [
+          "场",
+          2
+        ],
+        [
+          "路",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "那天",
+      "start_line": 92,
+      "first": "那天晚上他非要陪你绕操场走"
+    },
+    {
+      "chars": 66,
+      "spaces_top": [
+        [
+          "场",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 0,
+      "cue": "那天",
+      "start_line": 116,
+      "first": "那天晚上快12点了"
+    },
+    {
+      "chars": 689,
+      "spaces_top": [
+        [
+          "场",
+          1
+        ],
+        [
+          "路",
+          1
+        ],
+        [
+          "楼",
+          1
+        ],
+        [
+          "广场",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 3,
+      "upgrade_marks": 6,
+      "cue": "第二天",
+      "start_line": 126,
+      "first": "第二天见面"
+    }
+  ],
+  "segment_count": 6,
+  "ending": [
+    "那些憋了太久的喜欢",
+    "总算可以肆无忌惮的砸向你了",
+    "别人眼里那座生人勿近的万年冰山",
+    "其实早就把她最粘人最软萌的那一面",
+    "默默设置成了对你一个人的仅可见"
+  ],
+  "line_stats": {
+    "lines": 208,
+    "median_line_chars": 8.0,
+    "max_line_chars": 16
+  }
+}

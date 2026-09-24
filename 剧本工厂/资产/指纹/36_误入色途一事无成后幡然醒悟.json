@@ -1,0 +1,199 @@
+{
+  "entry": "36_误入色途一事无成后幡然醒悟",
+  "title": "一事无成后幡然醒悟的人生",
+  "series": "剧本人生",
+  "source": "拆文库/36_误入色途一事无成后幡然醒悟/原文/原文.txt",
+  "chars": 2372,
+  "est_seconds_at_4_2cps": 565,
+  "hook": {
+    "text": [
+      "初二那年的一个周末下午",
+      "你合上练习册",
+      "长舒了一口气",
+      "作为表现良好的奖励"
+    ],
+    "chars": 32,
+    "tags": [
+      "画面切入"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 188,
+      "spaces_top": [
+        [
+          "门",
+          1
+        ],
+        [
+          "窗",
+          1
+        ],
+        [
+          "房",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 0,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "初二那年的一个周末下午"
+    },
+    {
+      "chars": 338,
+      "spaces_top": [
+        [
+          "房",
+          1
+        ],
+        [
+          "房间",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "妈",
+          1
+        ],
+        [
+          "同学",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "这天",
+      "start_line": 20,
+      "first": "这天下午"
+    },
+    {
+      "chars": 814,
+      "spaces_top": [
+        [
+          "门",
+          3
+        ],
+        [
+          "街",
+          2
+        ],
+        [
+          "桌",
+          2
+        ],
+        [
+          "办公室",
+          2
+        ]
+      ],
+      "roles_top": [
+        [
+          "同学",
+          5
+        ],
+        [
+          "经理",
+          2
+        ],
+        [
+          "同事",
+          1
+        ],
+        [
+          "主管",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 5,
+      "cue": "那天",
+      "start_line": 56,
+      "first": "那天在教室讨论课题"
+    },
+    {
+      "chars": 608,
+      "spaces_top": [
+        [
+          "地铁",
+          2
+        ],
+        [
+          "路",
+          1
+        ],
+        [
+          "街",
+          1
+        ],
+        [
+          "楼",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "室友",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 7,
+      "cue": "那天",
+      "start_line": 144,
+      "first": "那天她站在地铁口"
+    },
+    {
+      "chars": 424,
+      "spaces_top": [
+        [
+          "路",
+          3
+        ],
+        [
+          "厅",
+          1
+        ],
+        [
+          "街",
+          1
+        ],
+        [
+          "窗",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "经理",
+          2
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 5,
+      "cue": "直到",
+      "start_line": 216,
+      "first": "直到双腿发软"
+    }
+  ],
+  "segment_count": 5,
+  "ending": [
+    "再也不会让自己这辈子",
+    "就这么窝囊的过下去",
+    "前方无论是什么",
+    "你都会用一个清醒的",
+    "头脑去狠狠的拼一把"
+  ],
+  "line_stats": {
+    "lines": 262,
+    "median_line_chars": 9.0,
+    "max_line_chars": 16
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "entry": "35_你有一个高壮男的男朋友",
+  "title": "的人生副本是",
+  "series": "剧本人生",
+  "source": "拆文库/35_你有一个高壮男的男朋友/原文/原文.txt",
+  "chars": 3495,
+  "est_seconds_at_4_2cps": 832,
+  "hook": {
+    "text": [
+      "你有一个高壮男的男朋友",
+      "清晨6点半",
+      "卧室里的光线还很暗",
+      "你迷迷糊糊的翻了个身"
+    ],
+    "chars": 35,
+    "tags": [
+      "数字锚点",
+      "身份圈定"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 427,
+      "spaces_top": [
+        [
+          "场",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "你有一个高壮男的男朋友"
+    },
+    {
+      "chars": 157,
+      "spaces_top": [
+        [
+          "门",
+          1
+        ],
+        [
+          "椅",
+          1
+        ],
+        [
+          "房",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 1,
+      "cue": "那天",
+      "start_line": 42,
+      "first": "那天不知道怎么了"
+    },
+    {
+      "chars": 497,
+      "spaces_top": [
+        [
+          "楼",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 4,
+      "cue": "后来",
+      "start_line": 57,
+      "first": "后来你才知道"
+    },
+    {
+      "chars": 1853,
+      "spaces_top": [
+        [
+          "门",
+          15
+        ],
+        [
+          "路",
+          6
+        ],
+        [
+          "楼",
+          6
+        ],
+        [
+          "电梯",
+          5
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 12,
+      "cue": "后来",
+      "start_line": 118,
+      "first": "后来的事情发展的自然而然"
+    },
+    {
+      "chars": 561,
+      "spaces_top": [
+        [
+          "门",
+          3
+        ],
+        [
+          "楼",
+          2
+        ],
+        [
+          "场",
+          1
+        ],
+        [
+          "路",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "直到",
+      "start_line": 314,
+      "first": "直到楼道里彻底安静下来"
+    }
+  ],
+  "segment_count": 5,
+  "ending": [
+    "你只需要靠在这副结实的臂膀上",
+    "听着他稳健的心跳",
+    "享受着这种被一整个包裹住的",
+    "实打实的",
+    "爽爆了的安全感"
+  ],
+  "line_stats": {
+    "lines": 375,
+    "median_line_chars": 9,
+    "max_line_chars": 16
+  }
+}

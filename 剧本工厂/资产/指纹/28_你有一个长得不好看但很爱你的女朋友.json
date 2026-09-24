@@ -1,0 +1,149 @@
+{
+  "entry": "28_你有一个长得不好看但很爱你的女朋友",
+  "title": "的人生副本是",
+  "series": "剧本人生",
+  "source": "拆文库/28_你有一个长得不好看但很爱你的女朋友/原文/原文.txt",
+  "chars": 3238,
+  "est_seconds_at_4_2cps": 771,
+  "hook": {
+    "text": [
+      "你有一个长得不好看",
+      "但是很爱你的女朋友",
+      "九月的风吹过小镇的街道",
+      "卷起地上的几片树叶"
+    ],
+    "chars": 38,
+    "tags": [
+      "身份圈定"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 191,
+      "spaces_top": [
+        [
+          "场",
+          1
+        ],
+        [
+          "路",
+          1
+        ],
+        [
+          "街",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "同学",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "你有一个长得不好看"
+    },
+    {
+      "chars": 1608,
+      "spaces_top": [
+        [
+          "楼",
+          2
+        ],
+        [
+          "门",
+          2
+        ],
+        [
+          "房",
+          2
+        ],
+        [
+          "馆",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "同事",
+          1
+        ],
+        [
+          "同学",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 7,
+      "cue": "直到",
+      "start_line": 18,
+      "first": "直到那天"
+    },
+    {
+      "chars": 391,
+      "spaces_top": [],
+      "roles_top": [
+        [
+          "同事",
+          1
+        ],
+        [
+          "客户",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 6,
+      "cue": "从那以后",
+      "start_line": 189,
+      "first": "从那以后"
+    },
+    {
+      "chars": 1048,
+      "spaces_top": [
+        [
+          "房",
+          6
+        ],
+        [
+          "门",
+          5
+        ],
+        [
+          "屋",
+          3
+        ],
+        [
+          "场",
+          2
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 8,
+      "cue": "后来",
+      "start_line": 231,
+      "first": "后来的几年"
+    }
+  ],
+  "segment_count": 4,
+  "ending": [
+    "就像这碗面一样",
+    "在这个世界上",
+    "只有他会心甘情愿的为你做",
+    "但当你亲手把碗打碎之后",
+    "就再也拼不回来了"
+  ],
+  "line_stats": {
+    "lines": 355,
+    "median_line_chars": 9,
+    "max_line_chars": 16
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "entry": "15_卖肾买iPhone4的人生",
+  "title": "是卖肾买iphone4的人生",
+  "series": "剧本人生",
+  "source": "拆文库/15_卖肾买iPhone4的人生/原文/原文.txt",
+  "chars": 4456,
+  "est_seconds_at_4_2cps": 1061,
+  "hook": {
+    "text": [
+      "2010年9月的正午",
+      "秋老虎的燥热死死粘在高中的走廊里",
+      "下课铃刚响",
+      "走廊尽头的那个圈子便围了起来"
+    ],
+    "chars": 45,
+    "tags": [
+      "数字锚点"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 389,
+      "spaces_top": [
+        [
+          "走廊",
+          3
+        ],
+        [
+          "楼",
+          1
+        ],
+        [
+          "桌",
+          1
+        ],
+        [
+          "校",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 0,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "2010年9月的正午"
+    },
+    {
+      "chars": 881,
+      "spaces_top": [
+        [
+          "校",
+          3
+        ],
+        [
+          "桌",
+          2
+        ],
+        [
+          "巷",
+          2
+        ],
+        [
+          "场",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "中介",
+          2
+        ],
+        [
+          "医生",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 5,
+      "cue": "那天",
+      "start_line": 34,
+      "first": "那天晚上"
+    },
+    {
+      "chars": 1703,
+      "spaces_top": [
+        [
+          "桌",
+          4
+        ],
+        [
+          "店",
+          3
+        ],
+        [
+          "门",
+          3
+        ],
+        [
+          "窗",
+          3
+        ]
+      ],
+      "roles_top": [
+        [
+          "妈",
+          1
+        ],
+        [
+          "老师",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 15,
+      "cue": "后来",
+      "start_line": 126,
+      "first": "后来你才知道"
+    },
+    {
+      "chars": 1483,
+      "spaces_top": [
+        [
+          "院",
+          5
+        ],
+        [
+          "窗",
+          3
+        ],
+        [
+          "医院",
+          3
+        ],
+        [
+          "走廊",
+          3
+        ]
+      ],
+      "roles_top": [
+        [
+          "医生",
+          7
+        ],
+        [
+          "护士",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 8,
+      "cue": "那天",
+      "start_line": 293,
+      "first": "那天晚上"
+    }
+  ],
+  "segment_count": 4,
+  "ending": [
+    "房间里只剩下墙上挂钟那",
+    "毫无生气的滴答滴答的走动声",
+    "你动了动干瘪的身躯",
+    "将长满褥疮的背部往被子里缩了缩",
+    "平静的等待着下一次透析日的到来"
+  ],
+  "line_stats": {
+    "lines": 430,
+    "median_line_chars": 10.0,
+    "max_line_chars": 21
+  }
+}

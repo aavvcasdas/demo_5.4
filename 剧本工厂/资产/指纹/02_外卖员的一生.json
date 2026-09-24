@@ -1,0 +1,203 @@
+{
+  "entry": "02_外卖员的一生",
+  "title": "外卖员的一生",
+  "series": "剧本人生",
+  "source": "拆文库/02_外卖员的一生/原文/原文.txt",
+  "chars": 3295,
+  "est_seconds_at_4_2cps": 785,
+  "hook": {
+    "text": [
+      "第一集新手入行",
+      "雨水顺着劣质头盔的",
+      "裂隙流进你的眼睛",
+      "二十三点五十八分"
+    ],
+    "chars": 32,
+    "tags": [
+      "画面切入"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 368,
+      "spaces_top": [
+        [
+          "门",
+          5
+        ],
+        [
+          "楼",
+          2
+        ],
+        [
+          "楼道",
+          1
+        ],
+        [
+          "房",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "第一集新手入行"
+    },
+    {
+      "chars": 1154,
+      "spaces_top": [
+        [
+          "店",
+          2
+        ],
+        [
+          "厅",
+          2
+        ],
+        [
+          "场",
+          2
+        ],
+        [
+          "街",
+          2
+        ]
+      ],
+      "roles_top": [
+        [
+          "老板",
+          1
+        ],
+        [
+          "客户",
+          1
+        ],
+        [
+          "哥",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 6,
+      "cue": "集切",
+      "start_line": 39,
+      "first": "第二集抢单的恶犬"
+    },
+    {
+      "chars": 372,
+      "spaces_top": [
+        [
+          "楼",
+          1
+        ],
+        [
+          "椅",
+          1
+        ],
+        [
+          "办公室",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "老板",
+          1
+        ],
+        [
+          "弟",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 5,
+      "cue": "集切",
+      "start_line": 159,
+      "first": "第五集城市的共谋者"
+    },
+    {
+      "chars": 364,
+      "spaces_top": [
+        [
+          "院",
+          1
+        ],
+        [
+          "医院",
+          1
+        ],
+        [
+          "办公室",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "老板",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 6,
+      "cue": "集切",
+      "start_line": 196,
+      "first": "第六集嗜血的困兽"
+    },
+    {
+      "chars": 1037,
+      "spaces_top": [
+        [
+          "门",
+          2
+        ],
+        [
+          "场",
+          1
+        ],
+        [
+          "楼",
+          1
+        ],
+        [
+          "楼道",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "哥",
+          1
+        ],
+        [
+          "弟",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 6,
+      "cue": "集切",
+      "start_line": 234,
+      "first": "第7集猎物的终局"
+    }
+  ],
+  "segment_count": 5,
+  "ending": [
+    "机械女声在冷风中响起",
+    "她不知道前方等待她的是什么",
+    "但她以为自己能掌控命运",
+    "你静静地看着她",
+    "闭上了眼睛"
+  ],
+  "line_stats": {
+    "lines": 344,
+    "median_line_chars": 9.5,
+    "max_line_chars": 19
+  }
+}

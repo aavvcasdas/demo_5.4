@@ -1,0 +1,151 @@
+{
+  "entry": "25_减肥圈传来噩耗",
+  "title": "的人生副本是",
+  "series": "剧本人生",
+  "source": "拆文库/25_减肥圈传来噩耗/原文/原文.txt",
+  "chars": 2680,
+  "est_seconds_at_4_2cps": 638,
+  "hook": {
+    "text": [
+      "减肥圈传来噩耗",
+      "18岁那年",
+      "你的校服是特别定制的3XL码",
+      "在你的记忆里"
+    ],
+    "chars": 32,
+    "tags": [
+      "数字锚点"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 144,
+      "spaces_top": [
+        [
+          "桌",
+          1
+        ],
+        [
+          "校",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "爷",
+          2
+        ],
+        [
+          "奶奶",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 0,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "减肥圈传来噩耗"
+    },
+    {
+      "chars": 178,
+      "spaces_top": [
+        [
+          "场",
+          1
+        ],
+        [
+          "走廊",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "直到",
+      "start_line": 15,
+      "first": "直到高中的体育课和"
+    },
+    {
+      "chars": 310,
+      "spaces_top": [
+        [
+          "房",
+          2
+        ],
+        [
+          "房间",
+          2
+        ],
+        [
+          "店",
+          1
+        ],
+        [
+          "门",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "那天",
+      "start_line": 34,
+      "first": "那天中午"
+    },
+    {
+      "chars": 184,
+      "spaces_top": [],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 2,
+      "cue": "直到",
+      "start_line": 66,
+      "first": "直到汗水顺着保鲜膜"
+    },
+    {
+      "chars": 1864,
+      "spaces_top": [
+        [
+          "店",
+          1
+        ],
+        [
+          "厅",
+          1
+        ],
+        [
+          "馆",
+          1
+        ],
+        [
+          "场",
+          1
+        ]
+      ],
+      "roles_top": [],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 12,
+      "cue": "直到",
+      "start_line": 87,
+      "first": "直到皮肤发烫发红"
+    }
+  ],
+  "segment_count": 5,
+  "ending": [
+    "以你的全面放弃而宣告结束",
+    "你吃下最后一口米饭",
+    "摸了摸圆滚滚的肚子",
+    "心安理得的靠在了沙发上",
+    "睡了过去"
+  ],
+  "line_stats": {
+    "lines": 286,
+    "median_line_chars": 9.0,
+    "max_line_chars": 20
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "entry": "29_愤怒的普通人",
+  "title": "愤怒的普通人",
+  "series": "剧本人生",
+  "source": "拆文库/29_愤怒的普通人/原文/原文.txt",
+  "chars": 2359,
+  "est_seconds_at_4_2cps": 562,
+  "hook": {
+    "text": [
+      "早晨8点或者晚上8点对你",
+      "来说并没有什么区别",
+      "你坐在流水线旁",
+      "你今年29岁"
+    ],
+    "chars": 34,
+    "tags": [
+      "数字锚点"
+    ]
+  },
+  "segments": [
+    {
+      "chars": 850,
+      "spaces_top": [
+        [
+          "房",
+          1
+        ],
+        [
+          "工位",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "室友",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 0,
+      "upgrade_marks": 5,
+      "cue": "开场",
+      "start_line": 0,
+      "first": "早晨8点或者晚上8点对你"
+    },
+    {
+      "chars": 1509,
+      "spaces_top": [
+        [
+          "场",
+          2
+        ],
+        [
+          "楼",
+          1
+        ],
+        [
+          "走廊",
+          1
+        ]
+      ],
+      "roles_top": [
+        [
+          "室友",
+          1
+        ]
+      ],
+      "quotes": 0,
+      "questions": 1,
+      "upgrade_marks": 9,
+      "cue": "直到",
+      "start_line": 96,
+      "first": "直到你的手指停顿在"
+    }
+  ],
+  "segment_count": 2,
+  "ending": [
+    "没有人说话",
+    "只有穿衣服洗漱和",
+    "拖鞋摩擦地面的声响",
+    "你跟着工友们一起走出宿舍楼",
+    "汇入前往厂区的人流中"
+  ],
+  "line_stats": {
+    "lines": 260,
+    "median_line_chars": 9.0,
+    "max_line_chars": 19
+  }
+}
