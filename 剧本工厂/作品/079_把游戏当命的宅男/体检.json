@@ -1,0 +1,127 @@
+{
+  "status": "PASS",
+  "script_path": "剧本工厂/作品/079_把游戏当命的宅男/剧本.md",
+  "script_sha256": "dbbfdc32ecea4a110a2d6387e891ba11aef3e3755d5eca40fa4966a1864e950e",
+  "metrics": {
+    "spoken_chars": 968,
+    "dialogue_ratio": 0.357,
+    "est_seconds": 230.5,
+    "target_seconds": 230.0,
+    "beats": 15,
+    "median_line_chars": 9.0,
+    "spaces": [
+      "场",
+      "屋",
+      "房",
+      "桌",
+      "楼",
+      "楼道",
+      "路",
+      "车",
+      "门"
+    ],
+    "pressure_marks": 6
+  },
+  "energy_curve": [
+    {
+      "beat": "B1",
+      "score": 4
+    },
+    {
+      "beat": "B2",
+      "score": 10
+    },
+    {
+      "beat": "B3",
+      "score": 0
+    },
+    {
+      "beat": "B4",
+      "score": 8
+    },
+    {
+      "beat": "B5",
+      "score": 13
+    },
+    {
+      "beat": "B6",
+      "score": 12
+    },
+    {
+      "beat": "B7",
+      "score": 11
+    },
+    {
+      "beat": "B8",
+      "score": 8
+    },
+    {
+      "beat": "B9",
+      "score": 6
+    },
+    {
+      "beat": "B10",
+      "score": 7
+    },
+    {
+      "beat": "B11",
+      "score": 12
+    },
+    {
+      "beat": "B12",
+      "score": 7
+    },
+    {
+      "beat": "B13",
+      "score": 12
+    },
+    {
+      "beat": "B14",
+      "score": 10
+    },
+    {
+      "beat": "B15",
+      "score": 6
+    }
+  ],
+  "findings": [
+    {
+      "level": "PASS",
+      "code": "DURATION",
+      "msg": "口播 968 字 ≈ 230s（目标 230s，0% 内）"
+    },
+    {
+      "level": "PASS",
+      "code": "HOOK_WINDOW",
+      "msg": "B1 钩子 6s 内开口"
+    },
+    {
+      "level": "PASS",
+      "code": "DIALOGUE",
+      "msg": "台词占口播 36%"
+    },
+    {
+      "level": "PASS",
+      "code": "LINE_LEN",
+      "msg": "行长中位 9 字 / P90 13 字"
+    },
+    {
+      "level": "PASS",
+      "code": "AI_TONE",
+      "msg": "无硬禁词、软化词 ≤2"
+    },
+    {
+      "level": "PASS",
+      "code": "PRESSURE",
+      "msg": "施压句 6 处 / 疑问 2 处"
+    }
+  ],
+  "unmeasured": [
+    "好看度（只有用户/观众能判）",
+    "事实真实性与合规",
+    "表演、镜头与后期可行性",
+    "实际配音时长（需念一遍或用 TTS 实测）",
+    "术语是否被观众听懂（无法机器判定）"
+  ],
+  "note": "体检不等于批准：BLOCK 必须修；PASS 只说明可测项没问题是，不代表稿子好看。"
+}

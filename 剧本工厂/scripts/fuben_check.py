@@ -132,7 +132,8 @@ def main() -> int:
     else:
         add("PASS", "HOOK_WINDOW", f"{b1['id']} 钩子 {b1['end']-b1['start']:.0f}s 内开口")
     hook_text = "".join(b1["lines"])
-    if not re.search(r"\d|问|说|走|放|拿|停|站|坐|递|掏|夹", hook_text):
+    has_speaker = any(re.match(r"^(?!旁白)[^：:]{1,6}[：:]", l) for l in b1["lines"])
+    if not (has_speaker or re.search(r"\d|问|说|走|放|拿|停|站|坐|递|掏|夹", hook_text)):
         add("WARN", "HOOK_CONCRETE", "首钩子里没有具体的人/动作/数字，只有概念")
 
     # 3 每个 beat 不超过 22s（15s 一钩的宽松上限）
