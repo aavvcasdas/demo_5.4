@@ -46,21 +46,21 @@
     "setting/body consistency: no optional setting supplied"
   ],
   "inputs": {
-    "body_sha256": "2b04c7b05839498da185fcd3d139b99a4970be173d6a24e99245e6addd1a9af8",
-    "body_text_sha256": "2b04c7b05839498da185fcd3d139b99a4970be173d6a24e99245e6addd1a9af8",
+    "body_sha256": "ccc7b304b9aeb03a4a4e46c31f255ed8ea2d3e33287324f79bc4588b5847e906",
+    "body_text_sha256": "ccc7b304b9aeb03a4a4e46c31f255ed8ea2d3e33287324f79bc4588b5847e906",
     "profile_sha256": "7927311e82bd90a35448c5a0cc93110718b44ff576e81171168f4eb5f01f1e3a"
   },
   "policy_version": "2.1.0",
   "body_path": "/home/user/demo_5.4/作品/85_你以为你舍友资产是A4实际是A8/正文.md",
   "metrics": {
-    "characters_repository_convention": 2964,
-    "nonempty_prose_lines": 431,
+    "characters_repository_convention": 3001,
+    "nonempty_prose_lines": 438,
     "longest_line_characters": 16,
-    "number_tokens": 43,
-    "number_density_per_1000": 14.5,
-    "density_denominator": 2964,
+    "number_tokens": 40,
+    "number_density_per_1000": 13.3,
+    "density_denominator": 3001,
     "assumed_cps": 6.4,
-    "estimated_duration_seconds": 463.12,
+    "estimated_duration_seconds": 468.91,
     "duration_kind": "estimate_not_audio_measurement"
   },
   "status": "PASS_WITH_REVIEW",
