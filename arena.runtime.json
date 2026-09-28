@@ -15,26 +15,114 @@
   },
   "executors": {
     "active": "arena-inprocess",
-    "available": ["arena-inprocess"]
+    "available": [
+      "arena-inprocess"
+    ]
   },
   "pipeline": {
     "name": "fuben-write",
     "products_dir": "作品/NN_主题/_运行/",
     "stages": [
-      { "id": "00", "name": "简报", "role": "主控", "product": "00_简报.md" },
-      { "id": "01", "name": "深读+检索+方向", "role": "策划", "product": "01_深读_检索与方向.md", "requires": { "search_min_routes": 8, "search_single_batch_parallel": true, "direction_cards": "3-4 分类型", "user_picks_direction": true } },
-      { "id": "02", "name": "场次单", "role": "策划", "product": "02_场次单.md" },
-      { "id": "03", "name": "成稿", "role": "主笔", "product": "03_初稿.md", "writes": "正文.md" },
-      { "id": "04", "name": "审读+返工", "role": "审读+主笔", "product": "04_审读与返工.md", "checks": ["追看断点", "念稿测试", "反流水账复检"] },
-      { "id": "04b", "name": "读通专项", "role": "fuben-review", "product": "审核报告.md", "requires": { "body_path": true, "body_text_sha256": true } },
-      { "id": "05", "name": "机检(可选)", "role": "scripts/fuben_run.py", "product": "05_机检.json", "note": "PASS 不是创作批准" }
+      {
+        "id": "00",
+        "name": "简报",
+        "role": "主控",
+        "product": "00_简报.md"
+      },
+      {
+        "id": "01",
+        "name": "深读+检索+方向",
+        "role": "策划",
+        "product": "01_深读_检索与方向.md",
+        "requires": {
+          "search_min_routes": 8,
+          "search_single_batch_parallel": true,
+          "direction_cards": "3-4 分类型",
+          "user_picks_direction": true
+        }
+      },
+      {
+        "id": "02",
+        "name": "场次单",
+        "role": "策划",
+        "product": "02_场次单.md",
+        "requires": {
+          "scene_card_fields": [
+            "入场",
+            "欲望",
+            "阻力",
+            "落子",
+            "出场",
+            "递进"
+          ],
+          "no_parallel_list_scenes": true,
+          "prop_list_ratio_max": 0.15,
+          "claim_table": "兑现认领（3-5 行，关键词必须是正文里会出现的字面）"
+        },
+        "note": "v1.3.5：六字段必填；并列陈列场不合格；共鸣器物必须进场景或压成判词"
+      },
+      {
+        "id": "03",
+        "name": "成稿",
+        "role": "主笔",
+        "product": "03_初稿.md",
+        "writes": "正文.md",
+        "requires": {
+          "blocks_are_events": true,
+          "block_selfcheck": [
+            "谁的处境变了",
+            "这块的新信息是什么",
+            "删掉这块下一块是否仍成立"
+          ]
+        }
+      },
+      {
+        "id": "04",
+        "name": "审读+返工",
+        "role": "审读+主笔",
+        "product": "04_审读与返工.md",
+        "checks": [
+          "追看断点审读（引原句+行号）",
+          "念稿测试",
+          "反流水账复检",
+          "平铺扫描（人工）",
+          "兑现对表(fuben_claims)"
+        ]
+      },
+      {
+        "id": "04b",
+        "name": "读通专项",
+        "role": "fuben-review",
+        "product": "审核报告.md",
+        "requires": {
+          "body_path": true,
+          "body_text_sha256": true
+        }
+      },
+      {
+        "id": "05",
+        "name": "机检(可选)",
+        "role": "scripts/fuben_run.py",
+        "product": "05_机检.json",
+        "note": "PASS 不是创作批准"
+      }
     ]
   },
   "rules": {
     "no_search_no_task": true,
     "no_draft_before_user_picks": true,
-    "deliverables": ["正文.md", "钩子备选.md"],
-    "optional_deliverables": ["正文_3分钟版.md", "分镜建议.md"],
-    "honesty": ["不编造来源与数据", "不报必爆", "solo 自检不冒充多 Agent 会审"]
+    "deliverables": [
+      "正文.md",
+      "钩子备选.md"
+    ],
+    "optional_deliverables": [
+      "正文_3分钟版.md",
+      "分镜建议.md"
+    ],
+    "honesty": [
+      "不编造来源与数据",
+      "不报必爆",
+      "solo 自检不冒充多 Agent 会审"
+    ]
   }
 }

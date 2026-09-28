@@ -4,7 +4,7 @@
 
 | 用户意图 | 路由到 | 说明 |
 |---|---|---|
-| 写人生副本口播稿（人生副本、剧本人生、XX 的一生、口播稿、第二人称人生体验） | [skills/fuben-write/SKILL.md](skills/fuben-write/SKILL.md) | **主链路**（v1.3.4，含共鸣元素+大额校验+口播读感四教律+数据回传台账）。深读+真实检索（≥8 路）→方向卡→场次单→反流水账成稿→审读返工（账目+对话+红线）→机检候选闭环→交付逐字稿 |
+| 写人生副本口播稿（人生副本、剧本人生、XX 的一生、口播稿、第二人称人生体验） | [skills/fuben-write/SKILL.md](skills/fuben-write/SKILL.md) | **主链路**（v1.3.5，含共鸣元素+大额校验+口播读感四教律+数据回传台账+**反水契约**）。深读+真实检索（≥8 路）→方向卡（含兑现认领）→场次单（六字段必填）→事件块成稿（块级三问）→审读返工（断点审读+平铺扫描+账目+对话+红线）→机检候选闭环→交付逐字稿 |
 | 审人生副本（副本审稿、口播复核、切条验收） | [skills/fuben-review/SKILL.md](skills/fuben-review/SKILL.md) | 创作审查＋读通专项，报告绑定 `body_path` 与 `body_text_sha256` |
 | 写中文短剧/漫剧剧本、改单集剧本、剧本审读 | [.agents/skills/short-drama-write/SKILL.md](.agents/skills/short-drama-write/SKILL.md) | 2026-09-28 新装（zenstory-ai/drama-skills，MIT）。管短剧剧本格式与可拍性，不管资产/分镜/媒体提示词；人生副本口播仍走 `fuben-write` |
 | 造/改 skill、体检技能库 | [.agents/skills/skill-creator/SKILL.md](.agents/skills/skill-creator/SKILL.md) | 2026-09-28 安装（anthropics/skills，39.2 万安装）。描述瘦身、单一职责、查重与瘦身标准 |
@@ -24,22 +24,24 @@
 → 04b fuben-review 读通专项 → 05 机检+工艺门禁(PASS≠好看,候选须闭环) → 交付
 ```
 
+**反水契约（v1.3.5，2026-09-28）**：阶段 2 每场必须写齐六字段（入场/欲望/阻力/落子/出场/递进），**禁止平行并列的陈列场**，共鸣器物必须进场景干活或压成判词（全篇清单 ≤15%，不得连续两段）；阶段 3 按事件块写、每块过三问（谁的处境变了／新信息／删掉是否仍成立）；阶段 4 **追看断点审读是第一小节且必须引原句+行号**，另做人工平铺扫描与兑现对表（`scripts/fuben_claims.py`）。判据来源与 85 证据见 [docs/短视频Agent借鉴.md](docs/短视频Agent借鉴.md) 末节。
+
 **首稿质量优先**：目标是一次写对、审读只做减法；不许把审读当默认兜底。`03_初稿.md` 同批产出钩子备选（最终定稿落根目录 `钩子备选.md`），不是跑完机检后再补写。成稿纪律：一次生成 ≤35 行就停手回读，逐段推进；长中文一次性生成易漂移。`5–12 字一行` 是口播体裁指纹（语感指引），**没有任何机检对行长设卡**；写作纪律自定行宽可以，但不要误当技能规则。
 
 阶段产物落 `作品/NN_主题/_运行/YYYY-MM-DD/`（同名阶段产物按 [arena.runtime.json](arena.runtime.json) 的 `product` 字段，用 `python3 scripts/fuben_products.py 作品/NN_主题` 验收）；不调用真实搜索即任务失败（用户裁决）；未获用户选定方向不得开写正文。`fuben_run` 默认含 craft 门禁（无烟红线/禁词/开头铁律/对白限额/账目档位/体量带；`fuben_craft --ledger` 出账目全表）；`facts`/`policy` 类候选在审读阶必须逐条销账。运行说明见 [docs/Arena运行时.md](docs/Arena运行时.md)。
 
-**scripts/ 分工**（创作期只调左列三个；右列是库级治理，不碰单篇）：
+**scripts/ 分工**（创作期只调左列四个；右列是库级治理，不碰单篇）：
 
 | 创作日常 | 库级治理（不碰单篇） |
 |---|---|
 | `fuben_run.py <作品> --profile full` 主检查（facts/style/account/policy/craft） | `fuben_health.py` 全库体检（`test_gates.py --works --corpus` 调用） |
 | `fuben_craft.py <作品> --ledger` 工艺门禁 + 账目主张全表 | `fuben_corpus.py` 受保护语料只读校准（工具行为标定） |
-| `fuben_products.py <作品>` 产物齐备/哈希绑定门禁 | `corpus_gate_audit.py` 语料反审（R20 专用，自报不兼容现行协议） |
+| `fuben_products.py <作品>` 产物齐备/哈希绑定门禁<br>`fuben_claims.py <作品> [--strict]` 场次卡六字段+兑现认领对表（v1.3.5） | `corpus_gate_audit.py` 语料反审（R20 专用，自报不兼容现行协议） |
 | `fuben_loop.py report|review <作品>` 报告生成/回读绑定 | `test_gates.py` 仓库健康总入口（unittest + works + corpus 证据） |
 | `fuben_release.py check <作品>` 发布前证据（PROVISIONAL 不代发） | `fuben_lint.py` engine 的旧别名（facts+style+account 子集，供旧调用方） |
 | — | `skills_audit.py [--strict|--json]` 技能库体检：体积/描述预算/重复/触发冲突/坏链 |
 
-描述性工具（读稿参考，不设卡）：`fuben_density.py`（数字密度）、`fuben_hype.py`（节奏统计）。`check_fuben_texture.py` 已退役删除：启发式质地判据失准（对白占比、ASCII 价格正则等会误报），其有用项已并入 craft/style 门禁。
+描述性工具（读稿参考，不设卡）：`fuben_density.py`（数字密度）、`fuben_hype.py`（节奏统计）。`check_fuben_texture.py` 已退役删除：启发式质地判据失准（对白占比、ASCII 价格正则等会误报），其有用项已并入 craft/style 门禁。**同一条纪律适用于「水」**：不用启发式脚本判剧情水（2026-09-28 曾试做平铺扫描器，在 48 篇原稿上标定发现原稿自身「零推进跨度」中位占 38.5%，判据不具区分度，已弃用）——水由 04 审读人工点名并引行号，脚本只做可核对的字段与关键词检查（`fuben_claims.py`）。
 
 ## 技能库卫生（2026-09-28 起）
 
