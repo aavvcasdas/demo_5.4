@@ -18,6 +18,7 @@ from pathlib import Path
 KNOWN_SKILLS = (
     "browser-cdp",
     "fuben-review",
+    "fuben-write",
     "story",
     "story-cover",
     "story-deslop",

@@ -266,7 +266,7 @@ def inspect_path(path, *, profile='draft', run_style=True, components=None, chec
         report['checked'].append('readable_nonempty_body_and_descriptive_metrics')
         if '\ufffd' in body:
             report['findings'].append(finding('REPLACEMENT_CHARACTER', 'REVIEW', 'input', '存在替换字符，可能是转写/编码损坏', file=body_path))
-        selected = components or {'facts', 'setting', 'style', 'account'}
+        selected = components or {'facts', 'setting', 'style', 'account', 'craft'}
         if 'facts' in selected:
             report['findings'].extend(literal_checks(body, body_path, profile))
             report['checked'].append('explicit_equations_and_literal_character_counts')
@@ -312,6 +312,10 @@ def inspect_path(path, *, profile='draft', run_style=True, components=None, chec
                         report['findings'].append(finding('ACCOUNT_BRAND_CANDIDATE', 'REVIEW', 'account',
                                                           '核对品牌/平台是否必要，保留账号约定；同形词不能自动删: ' + ', '.join(names),
                                                           file=body_path, line=no, evidence=line[:180]))
+        if 'craft' in selected:
+            from fuben_craft import craft_checks
+            report['findings'].extend(craft_checks(body, body_path, profile, policy, finding))
+            report['checked'].append('craft_gate_redline_and_budget_candidates')
         if run_style and 'style' in selected:
             findings, info = style_diagnostics(body_path, checker=checker, executable=executable, timeout=policy['tool_timeout_seconds'])
             report['findings'].extend(findings)

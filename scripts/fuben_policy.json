@@ -1,9 +1,22 @@
 {
   "schema_version": 1,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "profiles": ["draft", "full", "short", "clip", "reference"],
   "tool_timeout_seconds": 30,
   "estimated_chars_per_second": 6.4,
+  "estimated_cps_note": "机检粗估口径（≈yao-open-prompts 口播 30s/180–220 字档，不含停顿）；创作预算语感口径为该系列主播 4.5–5 字/秒（含呼吸），两口径差为停顿，估时≠实测，听感以念稿计时为准。",
+  "volume_bands": { "long": [2800, 3300], "short": [850, 1100] },
+  "profile_volume_band": { "draft": "long", "full": "long", "short": "short", "clip": "short" },
+  "volume_note": "字数＝characters_repository_convention（repo 既有口径）；带是预算不是门禁：出带必须 VOLUME_OFF_BAND 闭环（补足，或 00 简报引用用户覆盖原话后在 04 写明接受理由）。",
+  "craft": {
+    "smoke_terms": "香烟|电子烟|烟草|抽烟|吸烟|点烟|烟头|烟灰|烟味|一支烟|一根烟|半包烟|叼着烟|吞云吐雾|二手烟",
+    "ban_words": ["首先", "其次", "然而", "随着", "不禁", "值得一提的是", "眼眶一热", "五味杂陈", "五雷轰顶", "不由得", "感慨万千", "心潮澎湃", "不知不觉", "似乎在诉说着"],
+    "definition_upfront": ["先校准", "先说说", "先讲讲", "今天我们来聊", "今天聊聊", "大家好", "先来科普", "科普一下", "名词解释", "口径如下", "设定如下", "规则如下", "先对齐", "先统一口径", "解释一下", "世界观设定"],
+    "sys_prompt_max_lines": 2,
+    "head_max_chars": 50,
+    "nail_over": 12,
+    "quote_pct_over": 10.0
+  },
   "creative_rules": {
     "required_beat_count": null,
     "required_emotion_peak_position": null,
