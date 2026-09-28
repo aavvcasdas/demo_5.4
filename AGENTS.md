@@ -4,7 +4,7 @@
 
 | 用户意图 | 路由到 | 说明 |
 |---|---|---|
-| 写人生副本口播稿（人生副本、剧本人生、XX 的一生、口播稿、第二人称人生体验） | [skills/fuben-write/SKILL.md](skills/fuben-write/SKILL.md) | **主链路**（v1.3.5，含共鸣元素+大额校验+口播读感四教律+数据回传台账+**反水契约**）。深读+真实检索（≥8 路）→方向卡（含兑现认领）→场次单（六字段必填）→事件块成稿（块级三问）→审读返工（断点审读+平铺扫描+账目+对话+红线）→机检候选闭环→交付逐字稿 |
+| 写人生副本口播稿（人生副本、剧本人生、XX 的一生、口播稿、第二人称人生体验） | [skills/fuben-write/SKILL.md](skills/fuben-write/SKILL.md) | **主链路（v2.0 爽点结构版，2026-09-28 换代）**：保留真实检索（≥8 路真实骨架）＋选题三闸 →人生时间轴（5–8 站：事件/物证/一句人话；压制→谷底→反打→释放）→三秒开场（首行即钩、签名后置）＋每 15–25 秒翻面＋结尾互动钩 →投手预演七问＋平铺扫描＋账目/兑现对表 →结构自评（`fuben_viral.py`）→交付逐字稿＋标题/封面/首评/话题＋数据回传 |
 | 审人生副本（副本审稿、口播复核、切条验收） | [skills/fuben-review/SKILL.md](skills/fuben-review/SKILL.md) | 创作审查＋读通专项，报告绑定 `body_path` 与 `body_text_sha256` |
 | 写中文短剧/漫剧剧本、改单集剧本、剧本审读 | [.agents/skills/short-drama-write/SKILL.md](.agents/skills/short-drama-write/SKILL.md) | 2026-09-28 新装（zenstory-ai/drama-skills，MIT）。管短剧剧本格式与可拍性，不管资产/分镜/媒体提示词；人生副本口播仍走 `fuben-write` |
 | 造/改 skill、体检技能库 | [.agents/skills/skill-creator/SKILL.md](.agents/skills/skill-creator/SKILL.md) | 2026-09-28 安装（anthropics/skills，39.2 万安装）。描述瘦身、单一职责、查重与瘦身标准 |
@@ -18,13 +18,13 @@
 ## 人生副本管线（fuben-write）
 
 ```text
-00 简报 → 01 深读+检索(≥8路并行)+剧情方向卡(含开场方向,用户选定) → 02 场次单
-→ 03 首稿(钩子备选 A/B/C 同批写出+正文分段直写,反流水账八件武器)
-→ 04 审读(追看断点/念稿测试/账目对账)+分层返工(修正常项,非默认步)
-→ 04b fuben-review 读通专项 → 05 机检+工艺门禁(PASS≠好看,候选须闭环) → 交付
+00 简报 → 01 深读+检索(≥8路并行,四类真实骨架)+选题三闸+方向卡(用户选定) → 02 人生时间轴
+→ 03 首稿(首行即钩+签名后置+钩子备选 A/B/C 同批写出+分段直写)
+→ 04 投手预演七问(引原句+行号)+平铺扫描+账目/兑现对表+分层返工
+→ 04b fuben-review 读通专项 → 05 机检+工艺门禁+结构自评(PASS≠好看,候选须闭环) → 交付
 ```
 
-**反水契约（v1.3.5，2026-09-28）**：阶段 2 每场必须写齐六字段（入场/欲望/阻力/落子/出场/递进），**禁止平行并列的陈列场**，共鸣器物必须进场景干活或压成判词（全篇清单 ≤15%，不得连续两段）；阶段 3 按事件块写、每块过三问（谁的处境变了／新信息／删掉是否仍成立）；阶段 4 **追看断点审读是第一小节且必须引原句+行号**，另做人工平铺扫描与兑现对表（`scripts/fuben_claims.py`）。判据来源与 85 证据见 [docs/短视频Agent借鉴.md](docs/短视频Agent借鉴.md) 末节。
+**v2.0 契约（2026-09-28 换代，用户裁决原话见 SKILL 头部）**：①**保留搜索**（≥8 路、逐路表、不调用即失败）与红线（无烟/账目反算/不报必爆/数据回传）；②阶段 1 增**选题三闸**（一句话主线／观众关系爽或共鸣或猎奇／情绪出口与互动动作）与**混合源**（虚构骨架＋≥1 个可回链真实原型锚）；③阶段 2 改**人生时间轴**（5–8 站＝事件/可视物证/一句人话；爽点四段：压制→谷底 60–70%→反打由主角自己动手→释放须写清对手输了什么）；④阶段 3 **第 1 行就是钩、签名句后置第 2–3 行**，每 15–25 秒翻面，结尾＝金句＋互动钩；⑤阶段 4 改**投手预演七问**（每条引原句+行号）；⑥新增 `scripts/fuben_viral.py` 结构自评（advisory，不判水）。**v1.3.5 的反水契约（六字段/事件块三问/断点审读）降级为及格线**——86 达到了不水，仍然 1k 播放；诊断与平台基准见 [docs/技能重构诊断-2026-09-28.md](docs/技能重构诊断-2026-09-28.md)。
 
 **首稿质量优先**：目标是一次写对、审读只做减法；不许把审读当默认兜底。`03_初稿.md` 同批产出钩子备选（最终定稿落根目录 `钩子备选.md`），不是跑完机检后再补写。成稿纪律：一次生成 ≤35 行就停手回读，逐段推进；长中文一次性生成易漂移。`5–12 字一行` 是口播体裁指纹（语感指引），**没有任何机检对行长设卡**；写作纪律自定行宽可以，但不要误当技能规则。
 
@@ -36,12 +36,12 @@
 |---|---|
 | `fuben_run.py <作品> --profile full` 主检查（facts/style/account/policy/craft） | `fuben_health.py` 全库体检（`test_gates.py --works --corpus` 调用） |
 | `fuben_craft.py <作品> --ledger` 工艺门禁 + 账目主张全表 | `fuben_corpus.py` 受保护语料只读校准（工具行为标定） |
-| `fuben_products.py <作品>` 产物齐备/哈希绑定门禁<br>`fuben_claims.py <作品> [--strict]` 场次卡六字段+兑现认领对表（v1.3.5） | `corpus_gate_audit.py` 语料反审（R20 专用，自报不兼容现行协议） |
+| `fuben_products.py <作品>` 产物齐备/哈希绑定门禁<br>`fuben_claims.py <作品> [--strict]` 站点三件套/六字段＋兑现认领对表<br>`fuben_viral.py <作品>` v2.0 结构自评（首行钩/签名位/互动钩/物证/检索路数，advisory） | `corpus_gate_audit.py` 语料反审（R20 专用，自报不兼容现行协议） |
 | `fuben_loop.py report|review <作品>` 报告生成/回读绑定 | `test_gates.py` 仓库健康总入口（unittest + works + corpus 证据） |
 | `fuben_release.py check <作品>` 发布前证据（PROVISIONAL 不代发） | `fuben_lint.py` engine 的旧别名（facts+style+account 子集，供旧调用方） |
 | — | `skills_audit.py [--strict|--json]` 技能库体检：体积/描述预算/重复/触发冲突/坏链 |
 
-描述性工具（读稿参考，不设卡）：`fuben_density.py`（数字密度）、`fuben_hype.py`（节奏统计）。`check_fuben_texture.py` 已退役删除：启发式质地判据失准（对白占比、ASCII 价格正则等会误报），其有用项已并入 craft/style 门禁。**同一条纪律适用于「水」**：不用启发式脚本判剧情水（2026-09-28 曾试做平铺扫描器，在 48 篇原稿上标定发现原稿自身「零推进跨度」中位占 38.5%，判据不具区分度，已弃用）——水由 04 审读人工点名并引行号，脚本只做可核对的字段与关键词检查（`fuben_claims.py`）。
+描述性工具（读稿参考，不设卡）：`fuben_density.py`（数字密度）、`fuben_hype.py`（节奏统计）、`fuben_viral.py`（v2.0 结构自评：只查结构项存在性，不判水、不判好坏）。`check_fuben_texture.py` 已退役删除：启发式质地判据失准（对白占比、ASCII 价格正则等会误报），其有用项已并入 craft/style 门禁。**同一条纪律适用于「水」**：不用启发式脚本判剧情水（2026-09-28 曾试做平铺扫描器，在 48 篇原稿上标定发现原稿自身「零推进跨度」中位占 38.5%，判据不具区分度，已弃用）——水由 04 审读人工点名并引行号，脚本只做可核对的字段与关键词检查（`fuben_claims.py`）。
 
 ## 技能库卫生（2026-09-28 起）
 
@@ -56,6 +56,6 @@
 
 ## 手艺与事实边界
 
-- 创作标准以 [skills/fuben-write/references/代入感手艺.md](skills/fuben-write/references/代入感手艺.md) 为核心（反流水账八件武器）；对标语感读 `拆文库/` 原稿与 `写作手法.md`。
+- 创作标准以 [skills/fuben-write/references/2_选题与结构.md](skills/fuben-write/references/2_选题与结构.md)（选题三闸＋爽点四段）与 [3_口播与节奏.md](skills/fuben-write/references/3_口播与节奏.md)（三秒／翻面／互动钩）为核心，[5_代入感与禁忌.md](skills/fuben-write/references/5_代入感与禁忌.md) 保留不水纪律与红线；对标语感读 `拆文库/` 原稿与 `写作手法.md`。
 - 保留用户给定事实；检索来源注明；不编造数据与授权；不报“必爆”；机检 PASS 只说明无机械阻断。
-- 独立可复制提示词（不装 skill）：[skills/fuben-write/references/独立提示词.md](skills/fuben-write/references/独立提示词.md)。
+- 独立可复制提示词（不装 skill）：[skills/fuben-write/references/6_独立提示词.md](skills/fuben-write/references/6_独立提示词.md)。

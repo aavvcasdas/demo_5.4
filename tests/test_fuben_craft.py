@@ -66,6 +66,61 @@ class OpeningRuleTests(unittest.TestCase):
         rs = {f['rule_id']: f['severity'] for f in craft(text)}
         self.assertEqual('NOTE', rs.get('SIGNATURE_ABSENT'))
 
+    def test_signature_on_first_line_flagged_v2(self):
+        # v2.0：第 1 行必须是钩，签名句占用首行会被点名（NOTE，非阻断）
+        text = '今天你要体验的人生副本是测试\n\n系统提示\n本副本的穷\n均为隐藏款\n\n你走过去。\n'
+        rs = {f['rule_id']: f['severity'] for f in craft(text)}
+        self.assertEqual('NOTE', rs.get('SIGNATURE_FIRST_LINE'))
+
+    def test_signature_late_flagged_v2(self):
+        text = ('你先看见那道栏杆\n栏杆上挂着一把锁\n谁也没钥匙\n那是头一天的事\n'
+                '今天你要体验的人生副本是测试\n\n你走过去。\n')
+        self.assertIn('SIGNATURE_TOO_LATE', codes(craft(text)))
+
+    def test_signature_second_line_passes_v2(self):
+        text = ('村里人问了他三年的一句话\n今天你要体验的人生副本是测试\n'
+                '他一个字也没答\n' + ('风从门口过去。\n' * 60))
+        rs = codes(craft(text))
+        self.assertNotIn('SIGNATURE_FIRST_LINE', rs)
+        self.assertNotIn('SIGNATURE_TOO_LATE', rs)
+        self.assertNotIn('SIGNATURE_ABSENT', rs)
+
+
+class StructuralSelfcheckTests(unittest.TestCase):
+    """v2.0 结构自评（fuben_viral）的最小固定用例：只测结构项存在性，不测好坏。"""
+
+    def _work(self):
+        import fuben_viral
+        tmp = Path(tempfile.mkdtemp(prefix='fuben_viral_'))
+        work = tmp / '作品' / '99_测试主题'
+        run = work / '_运行' / '2099-01-01'
+        run.mkdir(parents=True)
+        (work / '正文.md').write_text(
+            '护士点着最下面那一栏\n今天你要体验的人生副本是测试\n他按了个手印\n'
+            + '你数着吊瓶的刻度。\n' * 40 + '要是你，这一栏你填谁？\n', encoding='utf-8')
+        (run / '01_深读_检索与方向.md').write_text(
+            '# 检索\n| 检索词 | 来源 | 骨架 | 用到哪站 |\n|---|---|---|---|\n'
+            + '| 词 | 源 | 事实 | 站1 |\n' * 9, encoding='utf-8')
+        (run / '02_场次单.md').write_text(
+            '# 时间轴\n## 站 1\n事件：他要签字\n可视物证：协议\n一句人话：这栏不能填本人\n'
+            '## 站 2\n事件：他被拦\n物证：锁\n一句人话：没钥匙\n'
+            '## 站 3\n事件：他动手\n物证：铅笔\n一句人话：划掉\n\n'
+            '## 兑现认领\n| 兑现点 | 认领关键词 |\n|---|---|\n| 签字 | 这栏不能填本人 |\n',
+            encoding='utf-8')
+        (work / '钩子备选.md').write_text('三条钩子\n发布声明：剧情为虚构演绎\n', encoding='utf-8')
+        return fuben_viral, work
+
+    def test_structure_checks_reported(self):
+        fuben_viral, work = self._work()
+        rep = fuben_viral.check(work)
+        got = {c['item']: c['status'] for c in rep['checks']}
+        self.assertEqual('OK', got['首行即钩'])
+        self.assertEqual('OK', got['签名句位置'])
+        self.assertEqual('OK', got['结尾互动钩'])
+        self.assertEqual('OK', got['检索路数'])
+        self.assertEqual('OK', got['虚构声明'])
+        self.assertLessEqual(rep['checks_detail']['signature_line'], 3)
+
 
 class LedgerTests(unittest.TestCase):
     def test_scale_claim_mismatch_flagged(self):

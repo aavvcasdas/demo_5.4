@@ -19,7 +19,7 @@ Arena 会话内由仓库根目录 arena.runtime.json 定义执行通道：按配
 
 先识别任务动作：用户只要求研究/借鉴/改造Agent时，不启动下述写稿流程，不用自写样稿替代借鉴。
 
-用户写的是「人生副本 / 剧本人生 / 第二人称体验类口播」，或项目 profile=fuben 时，**立即转入 [fuben-write](../fuben-write/SKILL.md)**（原生抖音口播稿 skill）：深读+真实检索（≥8 路）→ 分类型剧情方向交用户选定 → 场次单 → 按反流水账八件武器成稿 → 追看断点/念稿测试审读返工 → 交付逐字稿与钩子备选。人生副本的创作标准以 [代入感手艺](../fuben-write/references/代入感手艺.md) 与 [口播结构与节奏](../fuben-write/references/口播结构与节奏.md) 为准；旧 [轻量 profile](references/genre-styles/人生副本实录.md) 与 [副本 Agent 方法](references/genre-styles/人生副本_Agent方法.md) 仅作历史与分工参考，不再作为写法入口。这个分支到此结束，不继续加载下方普通小说 Reference Gate、付费点、十二列表格、默认篇幅、角色配额或去味清零表。
+用户写的是「人生副本 / 剧本人生 / 第二人称体验类口播」，或项目 profile=fuben 时，**立即转入 [fuben-write](../fuben-write/SKILL.md)**（原生抖音口播稿 skill）：深读+真实检索（≥8 路）→ 选题三闸 → 分类型剧情方向交用户选定 → 人生时间轴（5–8 站）→ 首行即钩成稿 → 投手预演审读返工 → 交付逐字稿与钩子备选。人生副本的创作标准以 [2_选题与结构](../fuben-write/references/2_选题与结构.md) 与 [3_口播与节奏](../fuben-write/references/3_口播与节奏.md) 为准（v2.0，2026-09-28）；旧 [轻量 profile](references/genre-styles/人生副本实录.md) 与 [副本 Agent 方法](references/genre-styles/人生副本_Agent方法.md) 仅作历史与分工参考，不再作为写法入口。这个分支到此结束，不继续加载下方普通小说 Reference Gate、付费点、十二列表格、默认篇幅、角色配额或去味清零表。
 
 新项目可用 `.fuben.json` 声明 `{"schema_version":1,"profile":"fuben"}`，供工具和 hooks 识别；这不是另一份创作表。现有设定的平台字段与副本开场也能识别。工具只是机械检查，不宣称已精读/听完/独立会审。人生副本的创作审读后还必须按 `fuben-review` 通读当前完整稿，检查题意、人物/物件、时间、代词、问答、序列、连接词与返工残留；报告绑定当前正文 `body_path` 与 `body_text_sha256`，正文改变后旧结论失效。
 

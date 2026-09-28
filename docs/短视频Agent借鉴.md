@@ -49,7 +49,7 @@
 
 | 来源 | 借了什么 | 落到哪里 |
 |---|---|---|
-| [yaojingang/yao-open-prompts](https://github.com/yaojingang/yao-open-prompts)（2.8k★，双语提示词库） | 「口播爆款文案」的分层结构与情绪波浪（每 15–20 秒一个小高潮）、时长-字数对应、「抖音爆款策划师」的黄金 3 秒开头类型与结尾类型、「爆款仿写拆解与重构」的骨肉分离（借骨架不借皮肉）、「智能润色 v3」的反 AI 腔禁词与不完美化 | `fuben-write/references/口播结构与节奏.md`、`搜索与质感.md`（借质感不借剧情）、`代入感手艺.md`（禁词与语感）、`独立提示词.md`（该库的“标题/简介/Prompt”三段式可复制格式） |
+| [yaojingang/yao-open-prompts](https://github.com/yaojingang/yao-open-prompts)（2.8k★，双语提示词库） | 「口播爆款文案」的分层结构与情绪波浪（每 15–20 秒一个小高潮）、时长-字数对应、「抖音爆款策划师」的黄金 3 秒开头类型与结尾类型、「爆款仿写拆解与重构」的骨肉分离（借骨架不借皮肉）、「智能润色 v3」的反 AI 腔禁词与不完美化 | v1.x 时代的 `口播结构与节奏.md`／`搜索与质感.md`（借质感不借剧情）／`代入感手艺.md`（禁词与语感）／`独立提示词.md`（“标题/简介/Prompt”三段式）——2026-09-28 换代后对应 [3 口播与节奏](../skills/fuben-write/references/3_口播与节奏.md)、[1 检索与真实骨架](../skills/fuben-write/references/1_检索与真实骨架.md)、[5 代入感与禁忌](../skills/fuben-write/references/5_代入感与禁忌.md)、[6 独立提示词](../skills/fuben-write/references/6_独立提示词.md) |
 | [1-SKILL/jiaoben](https://github.com/1-SKILL/jiaoben)（短视频脚本工坊） | hook 公式库、平台节奏表（语速字数校准 4–5 字/秒）、口播质检清单（单句 ≤15 字、用「你」不用「大家」、念稿测试） | `口播结构与节奏.md`（钩子公式表按叙事体改造）、`审读与改稿.md`（念稿测试） |
 | [liuyunlong2021-wq/jc-xiachen-duanshipin-jiaoben](https://github.com/liuyunlong2021-wq/jc-xiachen-duanshipin-jiaoben)（下沉短视频剧本 skill） | 扒片→结构指纹→母版剧本；高保真改编锁定“钩子、人物功能位、冲突与证据顺序、空间推进、阶段奖励、结尾兑现”结构机制而非替换名词 | `搜索与质感.md`（质感借用表＝结构指纹的口播版）、`代入感手艺.md`（场景四件套） |
 | [longmao-001/kesheng_skill](https://github.com/longmao-001/kesheng_skill)（多 agent 视频团队） | 判型先行（硬规则 #43）：口播稿＝**文案/信息驱动**（独白讲述）、剧本＝**戏剧动作驱动**（台词交锋）——两套形态不可混写 | `fuben-write/SKILL.md` 的“写的是口播逐字稿不是小说”定位；二轮修订后升级为**旁白驱动铁律**（`代入感手艺.md` 三点五：对白 ≤10%、只做激将/预警/刻度、禁乒乓回合）——首版稿把剧本手法混进口播导致「你说他说」小说腔，已返工 |
@@ -76,7 +76,7 @@
 
 已接入的位置：
 
-- [fuben-write](../skills/fuben-write/SKILL.md)（**现行人生副本入口**，原生抖音口播 skill）：[搜索与质感](../skills/fuben-write/references/搜索与质感.md)、[口播结构与节奏](../skills/fuben-write/references/口播结构与节奏.md)、[代入感手艺](../skills/fuben-write/references/代入感手艺.md)、[审读与改稿](../skills/fuben-write/references/审读与改稿.md)、[独立提示词](../skills/fuben-write/references/独立提示词.md)。
+- [fuben-write](../skills/fuben-write/SKILL.md)（**现行人生副本入口**，v2.0 爽点结构版）：[1 检索与真实骨架](../skills/fuben-write/references/1_检索与真实骨架.md)、[2 选题与结构](../skills/fuben-write/references/2_选题与结构.md)、[3 口播与节奏](../skills/fuben-write/references/3_口播与节奏.md)、[4 审读与改稿](../skills/fuben-write/references/4_审读与改稿.md)、[5 代入感与禁忌](../skills/fuben-write/references/5_代入感与禁忌.md)、[6 独立提示词](../skills/fuben-write/references/6_独立提示词.md)。
 - [人生副本 Agent 方法](../skills/story-short-write/references/genre-styles/人生副本_Agent方法.md) 与 [主profile v13](../skills/story-short-write/references/genre-styles/人生副本实录.md)：历史与分工参考，入口已迁 fuben-write。
 - [审核入口](../skills/fuben-review/SKILL.md)：按创作问题层级返工，明确独立审读与改稿分开。
 - `story-setup/references/{templates,opencode,codex}/agents/` 中现有的 `story-architect`、`narrative-writer`、`character-designer`：已在副本提前分流内写入各自职责，不再只有“绕过小说规则”的说明；没有新增一个空壳 Agent 名称。
@@ -102,7 +102,7 @@
 
 以上所有源都没有直接复用代码，没有安装宿主，没有引入新依赖；「真实存在」被核实完后不再单列 credit。
 
-另：本次同步阶段 01 的检索记录从「来源一句话」升级为**逐路表**（批号、检索词、来源、取用的质感、用于哪场）；「用户选定方向」必须引用原话。参见 [审读与改稿](../skills/fuben-write/references/审读与改稿.md) 的三·五账目对账、[口播结构与节奏](../skills/fuben-write/references/口播结构与节奏.md) 的开头铁律。
+另：本次同步阶段 01 的检索记录从「来源一句话」升级为**逐路表**（批号、检索词、来源、取用的质感、用于哪场）；「用户选定方向」必须引用原话。参见 [4 审读与改稿](../skills/fuben-write/references/4_审读与改稿.md) 的账目对账、[3 口播与节奏](../skills/fuben-write/references/3_口播与节奏.md) 的开头铁律。
 
 ## 反水调研（2026-09-28 · 「初稿剧情水」的诊断与改造）
 
@@ -145,3 +145,31 @@
 ### 四、试做后弃用的东西（记录下来，避免重犯）
 
 本轮先写了一个启发式「平铺扫描器」（连续 N 行无事件落点＝零推进窗口）。在 `拆文库` 48 篇原稿上标定后发现：**原稿自身的"零推进跨度"中位占 38.5%，最高 87%**——这类逐字判据在原稿上就已经大面积"不合格"，不具区分度，正是本仓当年退役 `check_fuben_texture.py` 的同一个坑。故**弃用脚本判"水"**，只保留可核对的确定性检查（字段齐否、认领关键词在不在），把"水"的判断交回 04 审读的人工点名+行号+处置三选一。
+
+
+---
+
+## 2026-09-28（第二轮）· v2.0 换代调研：从「不水」到「出池」
+
+**触发**：86 篇真实数据回传 **1k 播放、点赞 <10（<1%）**，低于 85 的 1.1w/80（0.73%）。用户判定「这个 skill 整体肯定有问题」，指令**保留搜索、其余全部重构**；四岔裁决：混合源／时长不限节奏优先／**爽优先**／签名后置。
+
+**查了什么（全部真实来源，逐条可回链）**
+
+| 方向 | 来源 | 取用的判据 |
+|---|---|---|
+| 平台及格线 | [CSDN 赞播比汇总](https://blog.csdn.net/hubeijzy/article/details/128959587)、[知乎问答](https://www.zhihu.com/question/407136801)、[知乎专栏](https://zhuanlan.zhihu.com/p/411261710)、[jzl 完播率&互动率](https://data.jzl.com/dydata/6124.html)、[jzl 推流机制](https://www.jzl.com/news/173)、[腾讯新闻算法汇总](https://news.qq.com/rain/a/20230925A04KHU00) | 点赞率 <3% 判劣质、3% 合格、>10% 准爆；互动率 3–5% 及格；完播 15s≥40%／45s+≥25%；冷启动池 300–1000 |
+| 前 3 秒 | [腾讯云开发者社区](https://cloud.tencent.com/developer/article/2579413)、[jzl](https://www.jzl.com/news/100) | 72% 用户在 3 秒内划走；前 3 秒留存权重约 40%；**问候/仪式开场比「直接给结果」跳出率高约 37%** |
+| 2026 权重变化 | [什么值得买](https://post.smzdm.com/p/a3mp3ee5/)、[jizhil](https://www.jizhil.com/dydata/13873.html) | 收藏率／复访率＞评论＞转发＞点赞（自媒体实测口径，非官方，仅作方向参考） |
+| 爆款共性 | [海螺社](https://www.hailuoshe.com/blog/what-viral-videos-have-in-common) | 一个具体钩子不是开场白／一条能复述的主线／一种被做透的动机／不留废镜头／让人动手的收尾 |
+| 赛道实证 | [新榜对话「剧本人生」](https://news.qq.com/rain/a/20260826A0DBMC00)、[知乎拆解 28 条涨 12.6 万粉](https://zhuanlan.zhihu.com/p/2053820536841573794)、[知乎动画副本工作流](https://zhuanlan.zhihu.com/p/2068719011622302430) | #人生副本 累计播放 61 亿；讲**自己真实人生**那条 460 万赞、7 天涨粉百万（高赞评论：「因为这就是大部分普通人的一生」）；早期虚构猎奇上万赞但赛道拥挤后失效；物证包 3 件；单条 6:34/8:31 长度成立 |
+
+**改了什么（fuben-write v2.0）**
+
+1. 阶段 1 增**选题三闸**（一句话主线／观众关系爽或共鸣或猎奇／情绪出口与互动动作）＋**黑名单**（无社会关系主角、纯制度观察、无阶段推进的流程文、灰到底无释放——86 四个死因）；检索目标从「共鸣质感」改为**真实骨架**（同类人经历／行业细节／数字政策锚／情绪现场四路线），**纪律一个不松**。
+2. 阶段 2 场次单 → **人生时间轴**（5–8 站＝事件＋可视物证＋一句人话；爽点四段：压制→谷底 60–70%→反打由主角自己动手→释放写清对手输了什么；钩点 200–250 字；物证 3 件）。
+3. 阶段 3 增 **3 秒开场铁律**：第 1 行就是钩（结果/冲突/反常/悬念），签名句后置第 2–3 行；每 15–25 秒翻面；结尾＝金句＋互动钩。
+4. 阶段 4 断点审读 → **投手预演七问**（引原句＋行号）；新增 `scripts/fuben_viral.py` 结构自评（advisory，不判水）。
+5. 阶段 5 交付新增：标题 3 选 1、封面文案、评论区首评、话题标签、**「剧情虚构演绎」声明**（混合源强制）。
+6. references 全量重写并编号 1–6；`fuben_policy.json` v2.2 记入**体量授权**（用户原话「时长不限，只要剧情节奏好不水，1-2 分钟都可以」）。
+
+**为什么改（86 的四个死因）**：主角无社会关系（观众无法代入）／写的是「一件事的流程」不是「一个人的一生」／开头是仪式不是钩／全篇零互动设计。详见 [技能重构诊断-2026-09-28.md](技能重构诊断-2026-09-28.md)。

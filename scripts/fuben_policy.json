@@ -1,13 +1,24 @@
 {
   "schema_version": 1,
-  "version": "2.1.0",
+  "version": "2.2.0",
   "profiles": ["draft", "full", "short", "clip", "reference"],
   "tool_timeout_seconds": 30,
   "estimated_chars_per_second": 6.4,
   "estimated_cps_note": "机检粗估口径（≈yao-open-prompts 口播 30s/180–220 字档，不含停顿）；创作预算语感口径为该系列主播 4.5–5 字/秒（含呼吸），两口径差为停顿，估时≠实测，听感以念稿计时为准。",
-  "volume_bands": { "long": [2800, 3300], "short": [850, 1100] },
+  "volume_bands": { "long": [2800, 3300], "short": [850, 1100], "preferred": [900, 2600] },
   "profile_volume_band": { "draft": "long", "full": "long", "short": "short", "clip": "short" },
-  "volume_note": "字数＝characters_repository_convention（repo 既有口径）；带是预算不是门禁：出带必须 VOLUME_OFF_BAND 闭环（补足，或 00 简报引用用户覆盖原话后在 04 写明接受理由）。",
+  "volume_note": "字数＝characters_repository_convention（repo 既有口径）；v2.0 起体量带降级为参考、节奏优先：出带在 04 引用 volume_authorization 的用户授权原话即可闭环（不必逐篇再找用户确认）；preferred 为默认目标带。",
+  "volume_authorization": {
+    "date": "2026-09-28",
+    "quote": "时长不限，只要剧情节奏好不水1-2分钟都可以",
+    "effect": "v2.0 起唯一体量口径：节奏与不水优先于字数，任何参考带出带均可由 04 引用本条闭环"
+  },
+  "rhythm": {
+    "signature_line_max": 3,
+    "hook_interval_chars_max": 300,
+    "station_chars_max": 400,
+    "note": "节奏项为创作纪律（见 references/3_口播与节奏.md），fuben_viral.py 只做结构自评，advisory，不判水。"
+  },
   "craft": {
     "smoke_terms": "香烟|电子烟|烟草|抽烟|吸烟|点烟|烟头|烟灰|烟味|一支烟|一根烟|半包烟|叼着烟|吞云吐雾|二手烟",
     "ban_words": ["首先", "其次", "然而", "随着", "不禁", "值得一提的是", "眼眶一热", "五味杂陈", "五雷轰顶", "不由得", "感慨万千", "心潮澎湃", "不知不觉", "似乎在诉说着"],

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""兑现与场次卡对表（确定性检查，advisory 不设卡）。
+"""兑现与站点对表（确定性检查，advisory 不设卡）。
 
-解决两个可机检的「剧情水」成因（2026-09-28 反水调研，来源见 docs/短视频Agent借鉴.md）：
+解决两个可机检的「剧情水」成因（2026-09-28 调研，来源见 docs/短视频Agent借鉴.md 与
+docs/技能重构诊断-2026-09-28.md）：
 
-1. **场次卡字段缺口**：02 场次单里每场是否写齐六字段
-   （入场 / 欲望 / 阻力 / 落子 / 出场 / 递进）。缺哪一项，正文就有很大概率写不出推进——
-   旧格式（只写「冲突/转折」）会整片标缺，属正常差异；v1.3.5 起新写的 02 必须齐。
+1. **站点结构缺口**：02 文件里每一站是否写齐 v2.0 三件套
+   （事件 / 可视物证 / 一句人话）。缺哪一项，正文就有很大概率写不出推进或画面；
+   v1.3.5 旧格式（六字段：入场/欲望/阻力/落子/出场/递进）自动识别并照旧检查。
 2. **兑现丢失**：02 末尾的「兑现认领」表承诺的兑现点，是否在正文里真的落到了字面
    （对应 shuohao-skills 的「爽点认领」门：大纲说这集有爆点，剧本必须有戏认领它）。
    只查关键词是否出现，不判写得好看不好看。
@@ -33,6 +34,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# v2.0 站三件套（见 skills/fuben-write/references/2_选题与结构.md）
+V2_FIELDS = {
+    "事件": r"事件|要什么|挡着|哪一格|变了|做什么",
+    "物证": r"物证|可视|拍得到|能拍到",
+    "一句人话": r"一句人话|人话|观众.{0,4}(说|记住)|金句|判词",
+}
+# v1.3.5 场六字段（旧格式兼容）
 SCENE_FIELDS = {
     "入场": r"入场|开场状态|初始状态|开局|此时",
     "欲望": r"欲望|要什么|想|打算|目标|图什么",
@@ -50,9 +58,11 @@ def latest_run(work: Path) -> Path | None:
 
 
 def scenes_of(text: str) -> list[dict]:
+    v2 = bool(re.search(r"可视物证|一句人话|##\s*站|物证三件", text))
+    fields = V2_FIELDS if v2 else SCENE_FIELDS
     blocks, current = [], None
     for line in text.splitlines():
-        if re.match(r"^#{2,4}\s*场", line.strip()) or re.match(r"^[-*]\s*\*\*场", line.strip()):
+        if re.match(r"^#{2,4}\s*(?:场|站)", line.strip()) or re.match(r"^[-*]\s*\*\*(?:场|站)", line.strip()):
             if current:
                 blocks.append(current)
             current = {"title": line.strip()[:40], "text": ""}
@@ -60,8 +70,8 @@ def scenes_of(text: str) -> list[dict]:
             current["text"] += line + "\n"
     if current:
         blocks.append(current)
-    return [{"scene": b["title"],
-             "missing": [k for k, pat in SCENE_FIELDS.items() if not re.search(pat, b["text"])]}
+    return [{"scene": b["title"], "format": "v2" if v2 else "legacy",
+             "missing": [k for k, pat in fields.items() if not re.search(pat, b["text"])]}
             for b in blocks]
 
 
@@ -96,7 +106,7 @@ def main(argv=None) -> int:
         raise SystemExit(f"作品目录不存在：{work}")
     run = latest_run(work)
     body = work / "正文.md"
-    scene_file = (run / "02_场次单.md") if run else None
+    scene_file = (run / "02_场次单.md") if run else None  # v2.0 内容口径＝人生时间轴，文件名沿用管线绑定
     if not body.is_file():
         raise SystemExit(f"找不到正文：{body}")
 
@@ -128,18 +138,20 @@ def main(argv=None) -> int:
         print(json.dumps({**report, "problems": problems}, ensure_ascii=False, indent=2))
         return 1 if (args.strict and problems) else 0
 
-    print(f"兑现与场次卡对表（advisory）· {report['work']}（运行目录 {report['run']}）")
+    print(f"兑现与站点对表（advisory）· {report['work']}（运行目录 {report['run']}）")
     if report["scene_status"] == "NO_SCENE_FILE":
-        print("场次卡：未找到 02_场次单.md，跳过。")
+        print("站点结构：未找到 02 文件（02_场次单.md），跳过。")
     else:
         ok = [r for r in report["scenes"] if not r["missing"]]
-        print(f"场次卡：{len(report['scenes'])} 场，六字段齐 {len(ok)} 场"
-              f"（旧格式整片标缺属正常；v1.3.5 起新写的 02 必须齐，见 SKILL 阶段 2）")
+        fmt = report["scenes"][0]["format"] if report["scenes"] else "v2"
+        unit = "站" if fmt == "v2" else "场"
+        name = "三件套（事件/物证/一句人话）" if fmt == "v2" else "六字段（v1.3.5 旧格式）"
+        print(f"站点结构：{len(report['scenes'])} {unit}（{fmt}），{name}齐 {len(ok)} {unit}")
         for row in report["scenes"]:
             if row["missing"]:
                 print(f"  {row['scene']} → 缺 {'/'.join(row['missing'])}")
     if report["claim_status"] == "NO_CLAIM_TABLE":
-        print("兑现认领：02 里没有「兑现认领」表（v1.3.5 起要求，3–5 行即可）。")
+        print("兑现认领：02 里没有「兑现认领」表（3–5 行即可，见 SKILL 阶段 2）。")
     else:
         for row in report["claims"]:
             print(f"兑现认领：{row['claim']} → 「{row['keyword']}」{'✅ 正文有' if row['found'] else '❌ 正文没有'}")

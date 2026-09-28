@@ -5,10 +5,11 @@
     "kind": "fuben",
     "entry_skill": "skills/fuben-write/SKILL.md",
     "craft_refs": [
-      "skills/fuben-write/references/搜索与质感.md",
-      "skills/fuben-write/references/口播结构与节奏.md",
-      "skills/fuben-write/references/代入感手艺.md",
-      "skills/fuben-write/references/审读与改稿.md"
+      "skills/fuben-write/references/1_检索与真实骨架.md",
+      "skills/fuben-write/references/2_选题与结构.md",
+      "skills/fuben-write/references/3_口播与节奏.md",
+      "skills/fuben-write/references/4_审读与改稿.md",
+      "skills/fuben-write/references/5_代入感与禁忌.md"
     ],
     "review_skill": "skills/fuben-review/SKILL.md",
     "source_library": "拆文库/"
@@ -31,35 +32,34 @@
       },
       {
         "id": "01",
-        "name": "深读+检索+方向",
+        "name": "深读+检索+选题",
         "role": "策划",
         "product": "01_深读_检索与方向.md",
         "requires": {
           "search_min_routes": 8,
           "search_single_batch_parallel": true,
+          "search_routes": ["同类人真实经历", "行业场景细节", "数字政策锚", "情绪现场"],
+          "topic_gates": ["一句话主线", "观众关系(爽/共鸣/猎奇)", "情绪出口与互动动作"],
           "direction_cards": "3-4 分类型",
-          "user_picks_direction": true
+          "user_picks_direction": true,
+          "source_mode": "混合源：虚构骨架+真实原型锚（≥1 个，可回链）"
         }
       },
       {
         "id": "02",
-        "name": "场次单",
+        "name": "人生时间轴（文件名沿用 02_场次单.md）",
         "role": "策划",
         "product": "02_场次单.md",
         "requires": {
-          "scene_card_fields": [
-            "入场",
-            "欲望",
-            "阻力",
-            "落子",
-            "出场",
-            "递进"
-          ],
-          "no_parallel_list_scenes": true,
-          "prop_list_ratio_max": 0.15,
+          "stations": "5-8 站",
+          "station_fields": ["事件", "可视物证", "一句人话"],
+          "emotion_curve": "压制→谷底(60-70%)→反打(主角自己动手)→释放(写清对手输了什么)",
+          "hook_interval_chars_max": 300,
+          "station_chars_max": 400,
+          "props": "物证 3 件（1 主走全篇并换义）",
           "claim_table": "兑现认领（3-5 行，关键词必须是正文里会出现的字面）"
         },
-        "note": "v1.3.5：六字段必填；并列陈列场不合格；共鸣器物必须进场景或压成判词"
+        "note": "v2.0：站点三件套；v1.3.5 六字段作废；并列/流程文不合格"
       },
       {
         "id": "03",
@@ -69,6 +69,10 @@
         "writes": "正文.md",
         "requires": {
           "blocks_are_events": true,
+          "first_line_is_hook": true,
+          "signature_line_max": 3,
+          "turn_every_15_25s": true,
+          "ending": "金句 + 互动钩",
           "block_selfcheck": [
             "谁的处境变了",
             "这块的新信息是什么",
@@ -78,15 +82,16 @@
       },
       {
         "id": "04",
-        "name": "审读+返工",
+        "name": "投手预演+返工（文件名沿用 04_审读与返工.md）",
         "role": "审读+主笔",
         "product": "04_审读与返工.md",
         "checks": [
-          "追看断点审读（引原句+行号）",
-          "念稿测试",
-          "反流水账复检",
+          "投手预演七问（引原句+行号）",
           "平铺扫描（人工）",
-          "兑现对表(fuben_claims)"
+          "念稿测试",
+          "账目对账(fuben_craft --ledger)",
+          "兑现对表(fuben_claims)",
+          "结构自评(fuben_viral)"
         ]
       },
       {
