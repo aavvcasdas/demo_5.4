@@ -1,7 +1,7 @@
 ---
 name: story-short-write
 version: 1.3.1
-description: "短篇网文写作。辅助短篇小说创作，从构思到成稿，聚焦情绪拉扯与节奏把控。触发方式：/story-short-write、/写短篇、「帮我写一篇短篇」「写个盐言故事」「人生副本」「剧本人生口播」。"
+description: "短篇网文写作。辅助短篇小说创作，从构思到成稿，聚焦情绪拉扯与节奏把控。触发方式：/story-short-write、/写短篇、「帮我写一篇短篇」「写个盐言故事」「番茄短篇」。人生副本口播不在本 skill，走 fuben-write。"
 metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudecode"}}
 ---
 # story-short-write：短篇网文写作
