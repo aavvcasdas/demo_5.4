@@ -1,0 +1,97 @@
+{
+ "generated_at": "2026-09-28T09:56:46",
+ "body_path": "作品/86_吃喝不愁的五保户/正文.md",
+ "body_text_sha256": "a85b33f1afe85ecd9f47612859072641f1be4ed01b56ef1dbee641126b9473e1",
+ "body_chars_repo_convention": 2894,
+ "body_chars_regex": 2890,
+ "status": "PASS_WITH_REVIEW",
+ "findings": [
+  {
+   "rule_id": "AI_STYLE_overcompressed-prose-tic",
+   "severity": "REVIEW",
+   "category": "style",
+   "message": "句式候选 [overcompressed-prose-tic]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+   "file": "/home/user/demo_5.4/作品/86_吃喝不愁的五保户/正文.md",
+   "line": 1,
+   "evidence": "今天你要体验的人生副本是 | 吃喝不愁的五保户 | 系统提示 | 这个编制只有一个名额 | 不用考试 | 村口的豆腐摊前面"
+  },
+  {
+   "rule_id": "AI_STYLE_period-stutter",
+   "severity": "REVIEW",
+   "category": "style",
+   "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+   "file": "/home/user/demo_5.4/作品/86_吃喝不愁的五保户/正文.md",
+   "line": 270,
+   "evidence": "三十四 在镇上搬货 被裁过两回 他问你 这个怎么进 你答了一句"
+  },
+  {
+   "rule_id": "AI_STYLE_period-stutter",
+   "severity": "REVIEW",
+   "category": "style",
+   "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+   "file": "/home/user/demo_5.4/作品/86_吃喝不愁的五保户/正文.md",
+   "line": 395,
+   "evidence": "喝到第二杯 他问你 叔 你这屋子 以后归谁 你说没想过"
+  },
+  {
+   "rule_id": "AI_STYLE_period-stutter",
+   "severity": "REVIEW",
+   "category": "style",
+   "message": "句式候选 [period-stutter]；按上下文判断表达功能，不是 AI 鉴定或强制改写命令。",
+   "file": "/home/user/demo_5.4/作品/86_吃喝不愁的五保户/正文.md",
+   "line": 582,
+   "evidence": "你听见了 没接话 进了门 把门带上 腊月二十九 你把社保卡"
+  }
+ ],
+ "metrics": {
+  "characters_repository_convention": 2894,
+  "nonempty_prose_lines": 497,
+  "longest_line_characters": 12,
+  "number_tokens": 30,
+  "number_density_per_1000": 10.4,
+  "density_denominator": 2894,
+  "assumed_cps": 6.4,
+  "estimated_duration_seconds": 452.19,
+  "duration_kind": "estimate_not_audio_measurement"
+ },
+ "hook_scan": {
+  "status": "PASS",
+  "findings": [
+   {
+    "rule_id": "SIGNATURE_ABSENT",
+    "severity": "NOTE",
+    "category": "style",
+    "message": "未见「今天你要体验的人生副本是…」签名开场；系列资产默认必用，刻意不用请在 00_简报记录理由",
+    "file": "/home/user/demo_5.4/作品/86_吃喝不愁的五保户/钩子备选.md",
+    "line": 1
+   },
+   {
+    "rule_id": "VOLUME_OFF_BAND",
+    "severity": "NOTE",
+    "category": "style",
+    "message": "体量 948 字不在 long 参考带 [2800,3300]（policy 唯一口径）；00 简报覆盖区间须引用用户同意原话，否则 04 补足或在报告写明接受理由",
+    "file": "/home/user/demo_5.4/作品/86_吃喝不愁的五保户/钩子备选.md",
+    "evidence": "band=long"
+   }
+  ]
+ },
+ "ledger": "共 0 条主张，mismatch 0；mismatch 必须在 04 逐条闭环。",
+ "claims": "兑现与场次卡对表（advisory）· 作品/86_吃喝不愁的五保户（运行目录 2026-09-28）\n场次卡：6 场，六字段齐 6 场（旧格式整片标缺属正常；v1.3.5 起新写的 02 必须齐，见 SKILL 阶段 2）\n兑现认领：全村的\"编制\"语言 → 「编制」✅ 正文有\n兑现认领：你的月供养金（判词锚） → 「九百九十一」✅ 正文有\n兑现认领：老兵的账（同村对照） → 「二百四十八」✅ 正文有\n兑现认领：村干部的账（错位总开关） → 「三十二年」✅ 正文有\n兑现认领：认定三条件＝\"有没有人\" → 「没有人」✅ 正文有\n兑现认领：住院全免（被羡慕的那一行） → 「个人自付 0.00」✅ 正文有\n兑现认领：签字栏空着 → 「关系人签字」✅ 正文有\n兑现认领：一年的账 → 「一万一千八百九十二」✅ 正文有\n兑现认领：最后一笔 → 「十二个月」✅ 正文有\n提醒：本工具只查字段与关键词，不判好看；兑现写法的好坏仍由 04 人读判定。",
+ "dialogue_stats": {
+  "cues": 0,
+  "quoted_han": 0,
+  "quote_pct": 0.0,
+  "pingpong_hits": [],
+  "note": "引语帧按「说，/讲，」+「」同帧口径；本篇全旁白分行体，无帧无引号 → 0/0.0%"
+ },
+ "unverified": [
+  "editorial quality",
+  "narrative continuity and referent resolution",
+  "theme/event alignment and dialogue response",
+  "external factual truth",
+  "TTS listening",
+  "actual media consistency",
+  "platform publication",
+  "setting/body consistency: no optional setting supplied"
+ ]
+}
