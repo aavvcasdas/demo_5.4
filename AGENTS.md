@@ -37,15 +37,17 @@
 | `fuben_products.py <作品>` 产物齐备/哈希绑定门禁 | `corpus_gate_audit.py` 语料反审（R20 专用，自报不兼容现行协议） |
 | `fuben_loop.py report|review <作品>` 报告生成/回读绑定 | `test_gates.py` 仓库健康总入口（unittest + works + corpus 证据） |
 | `fuben_release.py check <作品>` 发布前证据（PROVISIONAL 不代发） | `fuben_lint.py` engine 的旧别名（facts+style+account 子集，供旧调用方） |
+| — | `skills_audit.py [--strict|--json]` 技能库体检：体积/描述预算/重复/触发冲突/坏链 |
 
 描述性工具（读稿参考，不设卡）：`fuben_density.py`（数字密度）、`fuben_hype.py`（节奏统计）。`check_fuben_texture.py` 已退役删除：启发式质地判据失准（对白占比、ASCII 价格正则等会误报），其有用项已并入 craft/style 门禁。
 
 ## 技能库卫生（2026-09-28 起）
 
-- 现状：19 个 skill、462 文件、5.16 MB；description 合计 3,700 字符。**常驻 listing 已贴上限**——Claude Code 默认按上下文 1% 做预算、单条上限 1536 字符，超预算时按调用频次**整条丢描述**，被丢描述的 skill 只剩名字、不再触发。所以长描述不是"更清楚"，是在挤掉别的 skill。
+- 现状（2026-09-28 体检后）：在用 14 个 skill + 归档 5 个（`skills/_archive/`）、462 文件、5.16 MB；**在用 description 合计 2,325 字符**。**常驻 listing 已超预算**——Claude Code 默认按上下文 1% 做预算（200k 窗口≈1,600 字符）、单条上限 1536 字符，超预算时按调用频次**整条丢描述**，被丢描述的 skill 只剩名字、不再触发。所以长描述不是"更清楚"，是在挤掉别的 skill。
 - 规则：新增 skill 前先查重（功能重叠优先并入现有 skill，不新开）；description **≤150 字符、触发词前置**（截断时活下来的是开头）；一个 skill 只接一件事，触发词不抢别的产线（人生副本口播只归 `fuben-write`）；主体超 500 行就下沉 references。
-- 已知冗余：与他 skill 同路径同内容重复文件 72 组 / 1.23 MB（`check-ai-patterns.js`×4、`tracking_commit.py`×3、`author_memory_commit.py`×5）；8 条 description 超 150 字符；`story-setup/references/agent-references/` 的 57 个重份属**部署契约**，不按重复删。
-- 体检数据、候选对比与待裁决清单：[docs/技能库体检-2026-09-28.md](docs/技能库体检-2026-09-28.md)。
+- 已归档（低频、与主线无关，文件保留、不路由、不占 listing）：`story-long-write`、`story-long-analyze`、`story-long-scan`、`story-import`、`story-cover`；恢复方式与同步要求见 [skills/_archive/README.md](skills/_archive/README.md)。
+- 待办：在用 skill 仍有 5 条 description 超 150 字符（`browser-cdp` 389、`story-short-analyze` 308、`story-setup` 216、`story-review` 152、`skill-creator` 319 为上游原文）。
+- 体检工具：`python3 scripts/skills_audit.py`（体积 / 描述预算 / 重复 / 触发冲突 / 坏链；`--strict` 有问题时非零退出，`--json` 供脚本消费）。完整数据与候选对比：[docs/技能库体检-2026-09-28.md](docs/技能库体检-2026-09-28.md)。
 - 本沙箱注意：`curl https://skills.sh` 直连失败（SSL），但 `npx skills add` 的下载通道可用；检索走 `https://skills.sh/api/search?q=<关键词>&limit=20`。
 - 安装位置：第三方 skill 只落 `.agents/skills/`。**不要在 `skills/` 里留软链**——`skills/*/SKILL.md` 是 `story-setup` 的部署清单，`test_gates.py::test_deployment_inventory_includes_fuben_review` 会断言它等于 `deploy-antigravity-skills.py` 的 `KNOWN_SKILLS`；`npx skills add` 顺手建的软链会污染清单并让门禁变红（本轮已处理）。
 - 多份拷贝是**故意的**：`test_distributed_sources_are_identical` 强制 `check-ai-patterns.js`、`story-profile.js`、`story_hook_core.js` 在各 skill 里逐字节一致（每个 skill 要能独立部署）。改一处必须同步全部，不能只改单份。
