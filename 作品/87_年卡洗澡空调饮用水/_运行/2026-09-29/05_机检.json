@@ -1,0 +1,139 @@
+{
+ "generated_at": "2026-09-28T16:17:10",
+ "body_path": "作品/87_年卡洗澡空调饮用水/正文.md",
+ "body_text_sha256": "adad9d2e99944811990bcb732d20533faf35c7eb973b062b98faae248921ea4c",
+ "body_chars_repo_convention": 547,
+ "body_chars_regex": 547,
+ "status": "PASS",
+ "findings": [
+  {
+   "rule_id": "VOLUME_OFF_BAND",
+   "severity": "NOTE",
+   "category": "style",
+   "message": "体量 547 字不在 long 参考带 [2800,3300]（policy 唯一口径）；v2.0 起体量带降级为参考（节奏优先）：出带在 04 引用 policy `volume_authorization` 的用户授权原话（2026-09-28：「时长不限，只要剧情节奏好不水，1–2 分钟都可以」）即可闭环",
+   "file": "/home/user/demo_5.4/作品/87_年卡洗澡空调饮用水/正文.md",
+   "evidence": "band=long"
+  }
+ ],
+ "metrics": {
+  "characters_repository_convention": 547,
+  "nonempty_prose_lines": 91,
+  "longest_line_characters": 13,
+  "number_tokens": 16,
+  "number_density_per_1000": 29.3,
+  "density_denominator": 547,
+  "assumed_cps": 6.4,
+  "estimated_duration_seconds": 85.47,
+  "duration_kind": "estimate_not_audio_measurement"
+ },
+ "hook_scan": {
+  "status": "PASS",
+  "findings": [
+   {
+    "rule_id": "SIGNATURE_ABSENT",
+    "severity": "NOTE",
+    "category": "style",
+    "message": "未见「今天你要体验的人生副本是…」签名句（v2.0 要求放在第 2–3 行，首行留给钩）；刻意不用请在 00_简报记录理由",
+    "file": "/home/user/demo_5.4/作品/87_年卡洗澡空调饮用水/钩子备选.md",
+    "line": 1
+   },
+   {
+    "rule_id": "DIALOGUE_STATS",
+    "severity": "NOTE",
+    "category": "style",
+    "message": "引语帧候选 0 行（「讲，/说，」+括号引号同帧口径，跨行引语会低估）；估引语占比 2.2%；限额内也请在 04 审读记录同口径数字，禁止无工具的手工自报",
+    "file": "/home/user/demo_5.4/作品/87_年卡洗澡空调饮用水/钩子备选.md",
+    "evidence": "cues=0 pct=2.2"
+   },
+   {
+    "rule_id": "VOLUME_OFF_BAND",
+    "severity": "NOTE",
+    "category": "style",
+    "message": "体量 1050 字不在 long 参考带 [2800,3300]（policy 唯一口径）；v2.0 起体量带降级为参考（节奏优先）：出带在 04 引用 policy `volume_authorization` 的用户授权原话（2026-09-28：「时长不限，只要剧情节奏好不水，1–2 分钟都可以」）即可闭环",
+    "file": "/home/user/demo_5.4/作品/87_年卡洗澡空调饮用水/钩子备选.md",
+    "evidence": "band=long"
+   }
+  ]
+ },
+ "ledger": "共 0 条主张，mismatch 0；mismatch 必须在 04 逐条闭环。",
+ "claims": "兑现与站点对表（advisory）· 作品/87_年卡洗澡空调饮用水（运行目录 2026-09-29）\n站点结构：7 站（v2），三件套（事件/物证/一句人话）齐 7 站\n兑现认领：开场钩（题面落地） → 「三个家电」✅ 正文有\n兑现认领：家的处境 → 「没有热水」✅ 正文有\n兑现认领：替代方案的价格 → 「洗一次十五」✅ 正文有\n兑现认领：办卡（第一次翻面） → 「能洗」✅ 正文有\n兑现认领：年卡价格 → 「九百九十九」✅ 正文有\n兑现认领：三件套成型 → 「接满」✅ 正文有\n兑现认领：教练的错位（笑点） → 「洗澡」✅ 正文有\n兑现认领：教练的人味 → 「注意安全」✅ 正文有\n兑现认领：谷底（限时通知） → 「限时十五分钟」✅ 正文有\n兑现认领：谷底的动作证据 → 「脸盆」✅ 正文有\n兑现认领：反打（算账） → 「三块一」✅ 正文有\n兑现认领：反打（总账） → 「五千四百五」✅ 正文有\n兑现认领：店长的反应 → 「会籍都没算过」✅ 正文有\n兑现认领：释放（榜单） → 「到店次数第一」✅ 正文有\n兑现认领：释放（台词） → 「我是来洗澡的」✅ 正文有\n兑现认领：判词 → 「活得像个人」✅ 正文有\n兑现认领：互动钩 → 「报个数」✅ 正文有\n兑现认领：行业真相（钩子的另一半） → 「最喜欢的客人」✅ 正文有\n提醒：本工具只查字段与关键词，不判好看；兑现写法的好坏仍由 04 人读判定。",
+ "dialogue_stats": {
+  "cues": 0,
+  "quoted_han": 0,
+  "quote_pct": 0.0,
+  "pingpong_hits": [],
+  "note": "全稿 547 汉字 < 800 → 按 craft 设计只留结构扫描、引语帧与百分比归零（短稿口径，勿与长稿数字比较）；钉子句改由 04 人工对号计 5 拍。钩子文件（1050 字）工具口径：引语帧 0 行、估引语占比 2.2%。"
+ },
+ "viral": {
+  "target": "/home/user/demo_5.4/作品/87_年卡洗澡空调饮用水",
+  "run": "2026-09-29",
+  "disposition": "advisory_not_a_gate",
+  "checks": [
+   {
+    "item": "首行即钩",
+    "status": "OK",
+    "detail": "首行＝「我把健身年卡用成了三个家电」"
+   },
+   {
+    "item": "签名句位置",
+    "status": "OK",
+    "detail": "签名句在第 2 行"
+   },
+   {
+    "item": "结尾互动钩",
+    "status": "OK",
+    "detail": "末 6 行命中「评论区」"
+   },
+   {
+    "item": "站点数",
+    "status": "OK",
+    "detail": "02 里数到 7 站（v2.0 目标 5–8）"
+   },
+   {
+    "item": "物证登记",
+    "status": "OK",
+    "detail": "02 里「物证」出现 11 次（目标 ≥3 件，且每件要干活）"
+   },
+   {
+    "item": "兑现认领",
+    "status": "OK",
+    "detail": "02 兑现认领表 18 行（3–5 行为宜）"
+   },
+   {
+    "item": "检索路数",
+    "status": "OK",
+    "detail": "01 逐路表 21 行（≥8 路；不调用搜索即失败）"
+   },
+   {
+    "item": "虚构声明",
+    "status": "OK",
+    "detail": "发布建议/审核报告里有「剧情虚构演绎」声明（混合源强制）"
+   },
+   {
+    "item": "体量估时",
+    "status": "OK",
+    "detail": "汉字 547 字；语感 4.5–5 字/秒 ≈ 109–122 秒；机检 6.4 字/秒 ≈ 85 秒"
+   }
+  ],
+  "notes": [],
+  "words": 547,
+  "checks_detail": {
+   "station_count": 7,
+   "prop_mentions": 11,
+   "claim_rows": 18,
+   "search_rows": 21,
+   "signature_line": 2
+  },
+  "check_count": 0
+ },
+ "unverified": [
+  "editorial quality",
+  "narrative continuity and referent resolution",
+  "theme/event alignment and dialogue response",
+  "external factual truth",
+  "TTS listening",
+  "actual media consistency",
+  "platform publication",
+  "setting/body consistency: no optional setting supplied"
+ ]
+}
