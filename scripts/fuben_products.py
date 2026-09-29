@@ -36,6 +36,12 @@ def _rel(path) -> str:
 
 def load_pipeline():
     cfg = json.loads((ROOT / 'arena.runtime.json').read_text(encoding='utf-8'))
+    # Arena 主项目已经迁到 screenplay；历史作品仍需要旧产物门禁回归。
+    # 不让 fuben_products 误读新剧本目录，也不让迁移破坏历史测试。
+    if cfg.get('project', {}).get('kind') == 'screenplay':
+        legacy = cfg.get('legacy_pipeline', {})
+        if legacy.get('pipeline'):
+            return legacy['pipeline'], legacy.get('rules', {})
     return cfg['pipeline'], cfg.get('rules', {})
 
 

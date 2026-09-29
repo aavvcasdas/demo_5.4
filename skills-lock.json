@@ -4,26 +4,26 @@
     "find-skills": {
       "source": "vercel-labs/skills",
       "sourceType": "github",
-      "skillPath": "skills/find-skills/SKILL.md",
-      "computedHash": "913b9d37d0d54047dd65222bb8c67b2bf04e3cb87dcad1729068d7a8b2c8c396"
+      "skillPath": ".agents/skills/find-skills/SKILL.md",
+      "computedHash": "776a21e1f5a5c22c8d0bbcef7fa7a92fee63079d546fb1bba1c57056344d65a5"
     },
     "handoff": {
       "source": "mattpocock/skills",
       "sourceType": "github",
-      "skillPath": "skills/productivity/handoff/SKILL.md",
-      "computedHash": "20e5f4afdef502637510bc5c64d27645d3c85c88df9cb006824bbb0980166319"
+      "skillPath": ".agents/skills/handoff/SKILL.md",
+      "computedHash": "7c62de979fdc7ac32fb5ddb2146156c917f80ee070d30fadc9d40343c4b6ed25"
     },
     "short-drama-write": {
       "source": "zenstory-ai/drama-skills",
       "sourceType": "github",
-      "skillPath": "skills/short-drama-write/SKILL.md",
-      "computedHash": "4efdfb566b1e934f9936b85a5a9128b77debfb031f752efc94c62a6567e57476"
+      "skillPath": ".agents/skills/short-drama-write/SKILL.md",
+      "computedHash": "da55f07db5d92ec63192fc7510fc52cc0e7f5142050155c8d5945a02eb82e111"
     },
     "skill-creator": {
       "source": "anthropics/skills",
       "sourceType": "github",
-      "skillPath": "skills/skill-creator/SKILL.md",
-      "computedHash": "5ea13a6d9f0d4bb694405d79acd00cadec0d21bb138c4dd10fcf3c500cb835c2"
+      "skillPath": ".agents/skills/skill-creator/SKILL.md",
+      "computedHash": "dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf"
     }
   }
 }

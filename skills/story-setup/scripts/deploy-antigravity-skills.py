@@ -20,6 +20,7 @@ from pathlib import Path
 # skills/_archive/，不参与部署；恢复时用 `git mv skills/_archive/<name> skills/`
 # 并把它加回本元组，同时更新 tests/test_fuben.py 的部署清单断言。
 KNOWN_SKILLS = (
+    "arena-screenplay",
     "browser-cdp",
     "fuben-review",
     "fuben-write",

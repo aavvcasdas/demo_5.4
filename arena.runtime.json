@@ -1,18 +1,22 @@
 {
-  "schema_version": 1,
-  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。缺阶段产物视为未执行；外部执行器可用时把 executors.active 切过去，产物协议不变。",
+  "schema_version": 2,
+  "comment": "Arena 会话执行通道：本项目主链路是中文单集剧本。每阶段落产物；机械检查与编辑审读分离；缺正文或缺审读证据不得声称完成。",
   "project": {
-    "kind": "fuben",
-    "entry_skill": "skills/fuben-write/SKILL.md",
+    "kind": "screenplay",
+    "entry_skill": "skills/arena-screenplay/SKILL.md",
     "craft_refs": [
-      "skills/fuben-write/references/1_检索与真实骨架.md",
-      "skills/fuben-write/references/2_选题与结构.md",
-      "skills/fuben-write/references/3_口播与节奏.md",
-      "skills/fuben-write/references/4_审读与改稿.md",
-      "skills/fuben-write/references/5_代入感与禁忌.md"
+      "skills/arena-screenplay/references/剧本契约.md",
+      "skills/arena-screenplay/references/抖音原生剧本.md",
+      "skills/arena-screenplay/references/拆文语料使用.md",
+      "skills/arena-screenplay/references/审读契约.md"
     ],
-    "review_skill": "skills/fuben-review/SKILL.md",
-    "source_library": "拆文库/"
+    "review_skill": "skills/arena-screenplay/SKILL.md",
+    "source_library": "拆文库/",
+    "legacy_project": {
+      "kind": "fuben-copywriting",
+      "entry_skill": "skills/fuben-write/SKILL.md",
+      "scope": "仅维护历史作品/与旧工具回归；新任务不自动进入该管线"
+    }
   },
   "executors": {
     "active": "arena-inprocess",
@@ -21,113 +25,160 @@
     ]
   },
   "pipeline": {
-    "name": "fuben-write",
-    "products_dir": "作品/NN_主题/_运行/",
+    "name": "arena-screenplay",
+    "products_dir": "剧集/EP<NNN>/",
     "stages": [
       {
         "id": "00",
-        "name": "简报",
+        "name": "项目简报",
         "role": "主控",
-        "product": "00_简报.md"
+        "product": "项目简报.md",
+        "requires": [
+          "观看承诺",
+          "主角目标",
+          "阻力策略",
+          "本集兑现与退出状态",
+          "时长/拍摄/事实边界（如有）"
+        ]
       },
       {
         "id": "01",
-        "name": "深读+检索+选题",
-        "role": "策划",
-        "product": "01_深读_检索与方向.md",
+        "name": "素材与必要检索",
+        "role": "研究/策划",
+        "product": "素材记录.md（需要时）",
         "requires": {
-          "search_min_routes": 8,
-          "search_single_batch_parallel": true,
-          "search_routes": ["同类人真实经历", "行业场景细节", "数字政策锚", "情绪现场"],
-          "topic_gates": ["一句话主线", "观众关系(爽/共鸣/猎奇)", "情绪出口与互动动作"],
-          "direction_cards": "3-4 分类型",
-          "user_picks_direction": true,
-          "source_mode": "混合源：虚构骨架+真实原型锚（≥1 个，可回链）"
+          "read_owned_source_first": true,
+          "search": "按需；只查会影响行动可信度的现实细节",
+          "no_search_quota": true,
+          "no_copy_source_lines": true
         }
       },
       {
         "id": "02",
-        "name": "人生时间轴（文件名沿用 02_场次单.md）",
+        "name": "单集因果锁定",
         "role": "策划",
-        "product": "02_场次单.md",
+        "product": "上下文契约（默认不另落节拍表）",
         "requires": {
-          "stations": "5-8 站",
-          "station_fields": ["事件", "可视物证", "一句人话"],
-          "emotion_curve": "压制→谷底(60-70%)→反打(主角自己动手)→释放(写清对手输了什么)",
-          "hook_interval_chars_max": 300,
-          "station_chars_max": 400,
-          "props": "物证 3 件（1 主走全篇并换义）",
-          "claim_table": "兑现认领（3-5 行，关键词必须是正文里会出现的字面）"
-        },
-        "note": "v2.0：站点三件套；v1.3.5 六字段作废；并列/流程文不合格"
+          "each_scene": [
+            "goal",
+            "opposition",
+            "action",
+            "result/state_change"
+          ],
+          "parallel_listing_is_not_drama": true
+        }
       },
       {
         "id": "03",
-        "name": "成稿",
+        "name": "剧本正文",
         "role": "主笔",
-        "product": "03_初稿.md",
-        "writes": "正文.md",
+        "product": "剧集/EP<NNN>/剧本.md",
         "requires": {
-          "blocks_are_events": true,
-          "first_line_is_hook": true,
-          "signature_line_max": 3,
-          "turn_every_15_25s": true,
-          "ending": "金句 + 互动钩",
-          "block_selfcheck": [
-            "谁的处境变了",
-            "这块的新信息是什么",
-            "删掉这块下一块是否仍成立"
-          ]
+          "single_canonical_body": true,
+          "scene_heading": "## EP001-SC001 内·地点·时间",
+          "action_and_dialogue": true,
+          "every_scene_changes_state": true,
+          "cta_not_in_story": true
         }
       },
       {
         "id": "04",
-        "name": "投手预演+返工（文件名沿用 04_审读与返工.md）",
-        "role": "审读+主笔",
-        "product": "04_审读与返工.md",
-        "checks": [
-          "投手预演七问（引原句+行号）",
-          "平铺扫描（人工）",
-          "念稿测试",
-          "账目对账(fuben_craft --ledger)",
-          "兑现对表(fuben_claims)",
-          "结构自评(fuben_viral)"
-        ]
-      },
-      {
-        "id": "04b",
-        "name": "读通专项",
-        "role": "fuben-review",
-        "product": "审核报告.md",
+        "name": "编辑审读与定点返工",
+        "role": "审读→主笔",
+        "product": "审核/EP<NNN>.md",
         "requires": {
-          "body_path": true,
-          "body_text_sha256": true
+          "quote_and_line_evidence": true,
+          "reviewer_not_author_self_approval": true,
+          "status_before_independent_review": "PROVISIONAL",
+          "questions": [
+            "最早失去追看的场景",
+            "目标/阻力/行动/结果",
+            "最弱对白或说明段",
+            "视觉/声音可拍性",
+            "结尾兑现与代价"
+          ]
         }
       },
       {
         "id": "05",
-        "name": "机检(可选)",
-        "role": "scripts/fuben_run.py",
-        "product": "05_机检.json",
-        "note": "PASS 不是创作批准"
+        "name": "机械校验与绑定",
+        "role": "scripts/arena_screenplay_check.py",
+        "product": "审核/EP<NNN>.md 内的机械摘要",
+        "checks": [
+          "UTF-8/正文存在",
+          "场景标题与编号",
+          "空场与对白格式",
+          "明显审核元话语",
+          "正文 SHA-256 绑定"
+        ],
+        "note": "mechanical_status=PASS 不是 editorial_status=APPROVED，也不是发布许可"
       }
     ]
   },
   "rules": {
-    "no_search_no_task": true,
-    "no_draft_before_user_picks": true,
     "deliverables": [
-      "正文.md",
-      "钩子备选.md"
-    ],
-    "optional_deliverables": [
-      "正文_3分钟版.md",
-      "分镜建议.md"
+      "剧集/EP<NNN>/剧本.md",
+      "审核/EP<NNN>.md"
     ],
     "honesty": [
-      "不编造来源与数据",
       "不报必爆",
-      "solo 自检不冒充多 Agent 会审"
+      "不把搜索路数、关键词数量、物证数量或机器 PASS 当创作质量",
+      "不把主会话自检冒充独立多人会审",
+      "正文改变后旧审核必须标记 STALE"
     ]
+  },
+  "legacy_pipeline": {
+    "pipeline": {
+      "name": "fuben-write",
+      "products_dir": "作品/NN_主题/_运行/",
+      "stages": [
+        {
+          "id": "00",
+          "name": "简报",
+          "role": "主控",
+          "product": "00_简报.md"
+        },
+        {
+          "id": "01",
+          "name": "深读+检索+选题",
+          "role": "策划",
+          "product": "01_深读_检索与方向.md"
+        },
+        {
+          "id": "02",
+          "name": "人生时间轴",
+          "role": "策划",
+          "product": "02_场次单.md"
+        },
+        {
+          "id": "03",
+          "name": "成稿",
+          "role": "主笔",
+          "product": "03_初稿.md"
+        },
+        {
+          "id": "04",
+          "name": "审读与返工",
+          "role": "审读+主笔",
+          "product": "04_审读与返工.md"
+        },
+        {
+          "id": "05",
+          "name": "机检",
+          "role": "旧 fuben 工具",
+          "product": "05_机检.json"
+        }
+      ]
+    },
+    "rules": {
+      "deliverables": [
+        "正文.md",
+        "钩子备选.md"
+      ],
+      "optional_deliverables": [
+        "正文_3分钟版.md",
+        "分镜建议.md"
+      ]
+    }
   }
 }
