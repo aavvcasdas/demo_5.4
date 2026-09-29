@@ -1,29 +1,34 @@
 {
- "generated_at": "2026-09-28T16:17:10",
+ "generated_at": "2026-09-29T08:48:36",
  "body_path": "作品/87_年卡洗澡空调饮用水/正文.md",
- "body_text_sha256": "adad9d2e99944811990bcb732d20533faf35c7eb973b062b98faae248921ea4c",
- "body_chars_repo_convention": 547,
- "body_chars_regex": 547,
+ "body_text_sha256": "befacdc6deb3fc71c312aece90bf7a274aea5970fe54b1c459b1d64a91abec7d",
+ "body_chars_repo_convention": 617,
+ "body_chars_regex": 617,
+ "narrative_person": {
+  "你": 32,
+  "我": 8,
+  "note": "第二人称口播稿（用户 2026-09-29 指令）；「我」仅出现在引号内主角自述"
+ },
  "status": "PASS",
  "findings": [
   {
    "rule_id": "VOLUME_OFF_BAND",
    "severity": "NOTE",
    "category": "style",
-   "message": "体量 547 字不在 long 参考带 [2800,3300]（policy 唯一口径）；v2.0 起体量带降级为参考（节奏优先）：出带在 04 引用 policy `volume_authorization` 的用户授权原话（2026-09-28：「时长不限，只要剧情节奏好不水，1–2 分钟都可以」）即可闭环",
+   "message": "体量 617 字不在 long 参考带 [2800,3300]（policy 唯一口径）；v2.0 起体量带降级为参考（节奏优先）：出带在 04 引用 policy `volume_authorization` 的用户授权原话（2026-09-28：「时长不限，只要剧情节奏好不水，1–2 分钟都可以」）即可闭环",
    "file": "/home/user/demo_5.4/作品/87_年卡洗澡空调饮用水/正文.md",
    "evidence": "band=long"
   }
  ],
  "metrics": {
-  "characters_repository_convention": 547,
-  "nonempty_prose_lines": 91,
+  "characters_repository_convention": 617,
+  "nonempty_prose_lines": 108,
   "longest_line_characters": 13,
-  "number_tokens": 16,
-  "number_density_per_1000": 29.3,
-  "density_denominator": 547,
+  "number_tokens": 13,
+  "number_density_per_1000": 21.1,
+  "density_denominator": 617,
   "assumed_cps": 6.4,
-  "estimated_duration_seconds": 85.47,
+  "estimated_duration_seconds": 96.41,
   "duration_kind": "estimate_not_audio_measurement"
  },
  "hook_scan": {
@@ -62,7 +67,7 @@
   "quoted_han": 0,
   "quote_pct": 0.0,
   "pingpong_hits": [],
-  "note": "全稿 547 汉字 < 800 → 按 craft 设计只留结构扫描、引语帧与百分比归零（短稿口径，勿与长稿数字比较）；钉子句改由 04 人工对号计 5 拍。钩子文件（1050 字）工具口径：引语帧 0 行、估引语占比 2.2%。"
+  "note": "全稿 617 汉字 < 800 → 按 craft 设计只留结构扫描、引语帧与百分比归零（短稿口径）；钉子句改由 04 人工对号计 6 拍"
  },
  "viral": {
   "target": "/home/user/demo_5.4/作品/87_年卡洗澡空调饮用水",
@@ -72,7 +77,7 @@
    {
     "item": "首行即钩",
     "status": "OK",
-    "detail": "首行＝「我把健身年卡用成了三个家电」"
+    "detail": "首行＝「你把健身年卡用成了三个家电」"
    },
    {
     "item": "签名句位置",
@@ -102,7 +107,7 @@
    {
     "item": "检索路数",
     "status": "OK",
-    "detail": "01 逐路表 21 行（≥8 路；不调用搜索即失败）"
+    "detail": "01 逐路表 28 行（≥8 路；不调用搜索即失败）"
    },
    {
     "item": "虚构声明",
@@ -112,16 +117,16 @@
    {
     "item": "体量估时",
     "status": "OK",
-    "detail": "汉字 547 字；语感 4.5–5 字/秒 ≈ 109–122 秒；机检 6.4 字/秒 ≈ 85 秒"
+    "detail": "汉字 617 字；语感 4.5–5 字/秒 ≈ 123–137 秒；机检 6.4 字/秒 ≈ 96 秒"
    }
   ],
   "notes": [],
-  "words": 547,
+  "words": 617,
   "checks_detail": {
    "station_count": 7,
    "prop_mentions": 11,
    "claim_rows": 18,
-   "search_rows": 21,
+   "search_rows": 28,
    "signature_line": 2
   },
   "check_count": 0
