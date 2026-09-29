@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Materialize oh-story skills into a project-local Antigravity skill root.
 
-Only the 14 known oh-story directories are replaced. Unknown user skills are
+Only the known oh-story directories are replaced. Unknown user skills are
 preserved. An existing ``.agents/skills`` symlink is never followed for writes;
 it can be materialized only after the caller explicitly opts in.
 """
@@ -15,17 +15,16 @@ import tempfile
 from pathlib import Path
 
 
+# 本仓在用的 skill 清单。长篇网文线（story-long-write / story-long-analyze /
+# story-long-scan、story-import、story-cover）已于 2026-09-28 归档到
+# skills/_archive/，不参与部署；恢复时用 `git mv skills/_archive/<name> skills/`
+# 并把它加回本元组，同时更新 tests/test_fuben.py 的部署清单断言。
 KNOWN_SKILLS = (
     "browser-cdp",
     "fuben-review",
     "fuben-write",
     "story",
-    "story-cover",
     "story-deslop",
-    "story-import",
-    "story-long-analyze",
-    "story-long-scan",
-    "story-long-write",
     "story-review",
     "story-setup",
     "story-short-analyze",

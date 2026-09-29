@@ -3,8 +3,8 @@
 
 把 SKILL 里原本只靠人自觉的硬约束变成机检候选：
   红线      NO_SMOKE（用户裁决 2026-09-23：正文/钩子/短版不得出现烟）
-  语感      BANWORD（书面腔/AI 腔清单，见代入感手艺·四）
-  开头      OPENING（禁定义前置、系统提示≤2 行、首行超载；见口播结构与节奏·开头铁律）
+  语感      BANWORD（书面腔/AI 腔清单，见 5_代入感与禁忌·四）
+  开头      OPENING（禁定义前置、系统提示≤2 行、首行超载；见 3_口播与节奏·一）
   对白      DIALOGUE（引语帧/钉子句/乒乓回合计数，粗口径候选，04 逐项闭环）
   账目      LEDGER（位数主张与档位主张须与同段金额对账；数字判词链的机检下限）
   体量      VOLUME（字数参考带按 profile；不达标只报不判，但 04 必须写明处置）
@@ -184,7 +184,7 @@ def pingpong_hits(text):
 
 
 def opening_findings(text, cfg):
-    """开头铁律的可机检子集（硬规见口播结构与节奏·开头铁律）。
+    """开头铁律的可机检子集（硬规见 3_口播与节奏·一）。
 
     场景行号口径（机械可分辨的下限，非最终裁决，人审复核标记线索能亲手「采」的物件/动作/人名/具体地点）：
       签名＝开头非空首行自带「副本/今天要体验的人生副本/最近…都在传/大家管这叫」的提示基调；
@@ -197,6 +197,9 @@ def opening_findings(text, cfg):
     head = re.sub(r'\s+', '', text)[:DEFINITION_WINDOW]
     out['definer'] = next((w for w in cfg['definition_upfront'] if w in head), None)
     out['sig'] = bool(re.search(r'今天.{0,4}体验.{0,6}人生副本', head[:120])) if lines else False
+    # v2.0：签名句位置（1-based 非空行号）——要求出现在第 2–3 行，首行留给钩
+    out['sig_line'] = next((i for i, l in enumerate(lines[:5], 1)
+                            if re.search(r'今天.{0,4}体验.{0,6}人生副本', l)), None)
     first = lines[0] if lines else ''
     out['head_len'] = len(re.sub(r'\s', '', first))
     stanzas = [s for s in re.split(r'\n\s*\n', text) if s.strip()]
@@ -234,13 +237,13 @@ def craft_checks(text, path, profile, policy, finding):
         hits = [i for i, line in enumerate(text.splitlines(), 1) if w in line]
         if hits:
             result.append(finding('BANWORD', 'REVIEW', 'style',
-                                 f'书面腔/AI 腔禁词「{w}」命中 {len(hits)} 处（代入感手艺·四清单）；逐处改写或说明保留理由',
+                                 f'书面腔/AI 腔禁词「{w}」命中 {len(hits)} 处（5_代入感与禁忌·四清单）；逐处改写或说明保留理由',
                                  file=path, line=hits[0], evidence='; '.join(text.splitlines()[i - 1].strip() for i in hits[:4])[:160]))
 
     op = opening_findings(text, cfg)
     if op['definer']:
         result.append(finding('DEFINITION_UPFRONT', 'REVIEW', 'style',
-                              f"开头 {DEFINITION_WINDOW} 字内出现讲解腔标记「{op['definer']}」——黄金 3 秒禁定义前置，名词解释后置到剧情第一次用到的地方（口播结构与节奏·开头铁律）",
+                              f"开头 {DEFINITION_WINDOW} 字内出现讲解腔标记「{op['definer']}」——黄金 3 秒禁定义前置，名词解释后置到剧情第一次用到的地方（3_口播与节奏·一）",
                               file=path, line=1, evidence=''.join(l for l in text.splitlines() if l.strip())[:80]))
     if op['sys_lines'] is not None and op['sys_lines'] > cfg['sys_prompt_max_lines']:
         result.append(finding('SYS_PROMPT_OVER', 'REVIEW', 'style',
@@ -252,8 +255,16 @@ def craft_checks(text, path, profile, policy, finding):
                               file=path, line=1))
     if text.strip() and not op['sig']:
         result.append(finding('SIGNATURE_ABSENT', 'NOTE', 'style',
-                             '未见「今天你要体验的人生副本是…」签名开场；系列资产默认必用，刻意不用请在 00_简报记录理由',
+                             '未见「今天你要体验的人生副本是…」签名句（v2.0 要求放在第 2–3 行，首行留给钩）；刻意不用请在 00_简报记录理由',
                              file=path, line=1))
+    elif op['sig_line'] == 1:
+        result.append(finding('SIGNATURE_FIRST_LINE', 'NOTE', 'style',
+                             '签名句占用了首行——v2.0 要求第 1 行给钩（结果/冲突/反常/悬念四型），签名句后置到第 2–3 行；仪式感开场会拉高跳出（踩坑记录见 docs/技能重构诊断-2026-09-28.md）',
+                             file=path, line=1, evidence=op.get('sig_line')))
+    elif op['sig_line'] and op['sig_line'] > 3:
+        result.append(finding('SIGNATURE_TOO_LATE', 'NOTE', 'style',
+                             f"签名句在第 {op['sig_line']} 行，v2.0 要求 ≤3 行内（首行钩、第 2–3 行签名）",
+                             file=path, line=op['sig_line']))
 
     cues, quoted, pct = dialogue_stats(text)
     # 对白限额只对整稿成立：短文/切片样本（<800 汉字）上百分比会失真，只留结构扫描。
@@ -263,7 +274,7 @@ def craft_checks(text, path, profile, policy, finding):
         msg = f'引语帧候选 {cues} 行（「讲，/说，」+括号引号同帧口径，跨行引语会低估）；估引语占比 {pct}%'
         if cues > cfg['nail_over'] or pct > cfg['quote_pct_over']:
             result.append(finding('DIALOGUE_OVER_BUDGET', 'REVIEW', 'style',
-                                  msg + f'；超限额（钉子候选≤{cfg["nail_over"]}、引语≤{cfg["quote_pct_over"]}%）。04 审读必须给逐项排除表：哪些是转述/微刻度不计句数，剩余的必须收拢（代入感手艺·三点五）',
+                                  msg + f'；超限额（钉子候选≤{cfg["nail_over"]}、引语≤{cfg["quote_pct_over"]}%）。04 审读必须给逐项排除表：哪些是转述/微刻度不计句数，剩余的必须收拢（5_代入感与禁忌·三）',
                                   file=path, line=1, evidence=f'cues={cues} pct={pct}'))
         else:
             result.append(finding('DIALOGUE_STATS', 'NOTE', 'style',
@@ -271,7 +282,7 @@ def craft_checks(text, path, profile, policy, finding):
                                   file=path, evidence=f'cues={cues} pct={pct}'))
     for start, end in pingpong_hits(text):
         result.append(finding('PINGPONG', 'REVIEW', 'style',
-                              f'L{start}-L{end} 连续 3 行以上「你说/他说」交替——口播禁乒乓回合，交锋改旁白转述（代入感手艺·三点五）',
+                              f'L{start}-L{end} 连续 3 行以上「你说/他说」交替——口播禁乒乓回合，交锋改旁白转述（5_代入感与禁忌·三）',
                               file=path, line=start))
 
     for row in ledger_rows(text):
@@ -296,7 +307,7 @@ def craft_checks(text, path, profile, policy, finding):
         lo, hi = bands[1]
         if not lo <= n <= hi:
             result.append(finding('VOLUME_OFF_BAND', 'NOTE', 'style',
-                                  f"体量 {n} 字不在 {bands[0]} 参考带 [{lo},{hi}]（policy 唯一口径）；00 简报覆盖区间须引用用户同意原话，否则 04 补足或在报告写明接受理由",
+                                  f"体量 {n} 字不在 {bands[0]} 参考带 [{lo},{hi}]（policy 唯一口径）；v2.0 起体量带降级为参考（节奏优先）：出带在 04 引用 policy `volume_authorization` 的用户授权原话（2026-09-28：「时长不限，只要剧情节奏好不水，1–2 分钟都可以」）即可闭环",
                                   file=path, evidence=f'band={bands[0]}'))
     return result
 

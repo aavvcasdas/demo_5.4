@@ -551,8 +551,8 @@ Reasonix（DeepSeek-Reasonix CLI）当前只部署 skills 与 `AGENTS.md`，不�
 
 | 时机 | 跳转到 | 命令 |
 |---|---|---|
-| 部署完成，开始写作 | story-long-write / story-short-write | `/story-long-write` 或 `/story-short-write` |
-| 导入已有小说做拆解 | story-import | `/story-import` |
+| 部署完成，开始写作 | story-short-write | `/story-short-write` |
+| 长篇线（story-long-write / analyze / scan、story-import、story-cover） | 已归档 `skills/_archive/` | 需用时 `git mv skills/_archive/<name> skills/` 恢复，并同步部署清单 |
 | 需要浏览器登录态（扫榜/拆文取原文） | browser-cdp | `/browser-cdp`；generic 需平台允许本地脚本/浏览器控制 |
 
 各端调用语法：Claude `/名`、Codex/ZCode `$名`、Antigravity 通过 `/skills` 浏览或直接点名、OpenClaw `/skill 名`、Reasonix / generic 直接点名 skill。

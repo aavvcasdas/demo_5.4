@@ -438,13 +438,18 @@ class RouteTests(Fixture):
         self.assertIn('fuben-review', actual)
 
     def test_distributed_sources_are_identical(self):
-        scripts = [ROOT / 'skills' / name / 'scripts' for name in ('story-review', 'story-short-write', 'story-long-write', 'story-deslop')]
-        for name in ('check-ai-patterns.js', 'story-profile.js'):
-            self.assertEqual(len({(p / name).read_bytes() for p in scripts}), 1)
+        # 分发包（在用 + 归档）里的同名脚本必须逐字节一致：每个 skill 要能独立部署，
+        # 单份手改会让门禁变红。归档 skill 的拷贝同样在扫描范围内，防止它悄悄漂移。
+        patterns = sorted((ROOT / 'skills').rglob('scripts/check-ai-patterns.js'))
+        profiles = sorted((ROOT / 'skills').rglob('scripts/story-profile.js'))
+        self.assertGreaterEqual(len(patterns), 3)
+        self.assertGreaterEqual(len(profiles), 3)
+        for name, copies in (('check-ai-patterns.js', patterns), ('story-profile.js', profiles)):
+            self.assertEqual(len({p.read_bytes() for p in copies}), 1, f'{name} 的分发拷贝不一致')
         core_paths = [self.core, ROOT / 'skills/story-setup/references/opencode/story_hook_core.js',
                       ROOT / 'skills/story-setup/references/antigravity/hooks/story_hook_core.js', ROOT / 'skills/story-setup/references/zcode/hooks/story_hook_core.js']
         self.assertEqual(len({p.read_bytes() for p in core_paths}), 1)
-        helper = (scripts[0] / 'story-profile.js').read_text()
+        helper = profiles[0].read_text()
         inline = helper[helper.index('function readOptional'):helper.index('module.exports')].rstrip()
         self.assertIn(inline, self.core.read_text())
 

@@ -1,0 +1,131 @@
+{
+ "generated_at": "2026-09-28T15:47:44",
+ "body_path": "作品/87_天天健身偷吃练成脂包肌/正文.md",
+ "body_text_sha256": "c59c3508cc28ff241e5ec9c8132690f69270ac8e1ac5b30f6752dbad336c58db",
+ "body_chars_repo_convention": 530,
+ "body_chars_regex": 530,
+ "status": "PASS",
+ "findings": [
+  {
+   "rule_id": "VOLUME_OFF_BAND",
+   "severity": "NOTE",
+   "category": "style",
+   "message": "体量 530 字不在 long 参考带 [2800,3300]（policy 唯一口径）；v2.0 起体量带降级为参考（节奏优先）：出带在 04 引用 policy `volume_authorization` 的用户授权原话（2026-09-28：「时长不限，只要剧情节奏好不水，1–2 分钟都可以」）即可闭环",
+   "file": "/home/user/demo_5.4/作品/87_天天健身偷吃练成脂包肌/正文.md",
+   "evidence": "band=long"
+  }
+ ],
+ "metrics": {
+  "characters_repository_convention": 530,
+  "nonempty_prose_lines": 85,
+  "longest_line_characters": 13,
+  "number_tokens": 11,
+  "number_density_per_1000": 20.8,
+  "density_denominator": 530,
+  "assumed_cps": 6.4,
+  "estimated_duration_seconds": 82.81,
+  "duration_kind": "estimate_not_audio_measurement"
+ },
+ "hook_scan": {
+  "status": "PASS",
+  "findings": [
+   {
+    "rule_id": "SIGNATURE_ABSENT",
+    "severity": "NOTE",
+    "category": "style",
+    "message": "未见「今天你要体验的人生副本是…」签名句（v2.0 要求放在第 2–3 行，首行留给钩）；刻意不用请在 00_简报记录理由",
+    "file": "/home/user/demo_5.4/作品/87_天天健身偷吃练成脂包肌/钩子备选.md",
+    "line": 1
+   },
+   {
+    "rule_id": "VOLUME_OFF_BAND",
+    "severity": "NOTE",
+    "category": "style",
+    "message": "体量 950 字不在 long 参考带 [2800,3300]（policy 唯一口径）；v2.0 起体量带降级为参考（节奏优先）：出带在 04 引用 policy `volume_authorization` 的用户授权原话（2026-09-28：「时长不限，只要剧情节奏好不水，1–2 分钟都可以」）即可闭环",
+    "file": "/home/user/demo_5.4/作品/87_天天健身偷吃练成脂包肌/钩子备选.md",
+    "evidence": "band=long"
+   }
+  ]
+ },
+ "ledger": "共 0 条主张，mismatch 0；mismatch 必须在 04 逐条闭环。",
+ "claims": "兑现与站点对表（advisory）· 作品/87_天天健身偷吃练成脂包肌（运行目录 2026-09-28）\n站点结构：5 站（v2），三件套（事件/物证/一句人话）齐 5 站\n兑现认领：题面落地（脂包肌） → 「脂包肌」✅ 正文有\n兑现认领：体脂判决 → 「二十四点八」✅ 正文有\n兑现认领：同一台机器不可信 → 「十八点九」✅ 正文有\n兑现认领：他其实很勤 → 「三百一十二次」✅ 正文有\n兑现认领：行业真相 → 「七点二次」✅ 正文有\n兑现认领：一顿夜宵的账 → 「一千一百九十四」✅ 正文有\n兑现认领：欺骗餐只多烧一点 → 「一百一十五」✅ 正文有\n兑现认领：被看见的那一句 → 「你是不是练过」✅ 正文有\n兑现认领：判词 → 「镜子不认」✅ 正文有\n提醒：本工具只查字段与关键词，不判好看；兑现写法的好坏仍由 04 人读判定。",
+ "dialogue_stats": {
+  "cues": 0,
+  "quoted_han": 0,
+  "quote_pct": 0.0,
+  "pingpong_hits": [],
+  "note": "全稿 530 汉字 < 800 → 按 craft 设计只留结构扫描、百分比与引语帧归零（短稿口径，勿与长稿数字比较）；钉子句改由 04 人工对号计 4 处"
+ },
+ "viral": {
+  "target": "/home/user/demo_5.4/作品/87_天天健身偷吃练成脂包肌",
+  "run": "2026-09-28",
+  "disposition": "advisory_not_a_gate",
+  "checks": [
+   {
+    "item": "首行即钩",
+    "status": "OK",
+    "detail": "首行＝「健身三年，没人看出来我健身」"
+   },
+   {
+    "item": "签名句位置",
+    "status": "OK",
+    "detail": "签名句在第 2 行"
+   },
+   {
+    "item": "结尾互动钩",
+    "status": "OK",
+    "detail": "末 6 行命中「评论区」"
+   },
+   {
+    "item": "站点数",
+    "status": "OK",
+    "detail": "02 里数到 5 站（v2.0 目标 5–8）"
+   },
+   {
+    "item": "物证登记",
+    "status": "OK",
+    "detail": "02 里「物证」出现 7 次（目标 ≥3 件，且每件要干活）"
+   },
+   {
+    "item": "兑现认领",
+    "status": "OK",
+    "detail": "02 兑现认领表 9 行（3–5 行为宜）"
+   },
+   {
+    "item": "检索路数",
+    "status": "OK",
+    "detail": "01 逐路表 22 行（≥8 路；不调用搜索即失败）"
+   },
+   {
+    "item": "虚构声明",
+    "status": "OK",
+    "detail": "发布建议/审核报告里有「剧情虚构演绎」声明（混合源强制）"
+   },
+   {
+    "item": "体量估时",
+    "status": "OK",
+    "detail": "汉字 530 字；语感 4.5–5 字/秒 ≈ 106–118 秒；机检 6.4 字/秒 ≈ 83 秒"
+   }
+  ],
+  "notes": [],
+  "words": 530,
+  "checks_detail": {
+   "station_count": 5,
+   "prop_mentions": 7,
+   "claim_rows": 9,
+   "search_rows": 22,
+   "signature_line": 2
+  },
+  "check_count": 0
+ },
+ "unverified": [
+  "editorial quality",
+  "narrative continuity and referent resolution",
+  "theme/event alignment and dialogue response",
+  "external factual truth",
+  "TTS listening",
+  "actual media consistency",
+  "platform publication",
+  "setting/body consistency: no optional setting supplied"
+ ]
+}

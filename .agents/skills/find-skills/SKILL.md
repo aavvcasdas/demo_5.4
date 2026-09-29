@@ -1,6 +1,6 @@
 ---
 name: find-skills
-description: Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.
+description: "Find and install agent skills (\"find a skill for X\", \"is there a skill for...\"). Use when the user needs a capability that might exist as a skill."
 ---
 
 # Find Skills
@@ -29,6 +29,36 @@ The Skills CLI (`npx skills`) is the package manager for the open agent skills e
 - `npx skills update` - Update all installed skills
 
 **Browse skills at:** https://skills.sh/
+
+## 本地分叉说明（2026-09-28）
+
+本文件已被本仓修改（上游：`vercel-labs/skills`，描述瘦身 + 增加检索兜底），**与 `skills-lock.json` 记录的哈希不再一致**；`npx skills update` 会从上游覆盖这两处改动。需要重装上游版本时先备份本文件。
+
+### 检索通道兜底（skills.sh 不可达时）
+
+`npx skills find` 依赖 CLI 直连 `https://skills.sh`；在部分沙箱/内网里这条通道会失败（表现为「No skills found」或 SSL 错误），但**安装通道通常仍可用**。按下面顺序兜底：
+
+1. **注册表检索 API**（优先）：
+   ```bash
+   curl -sS "https://skills.sh/api/search?q=<urlencoded-关键词>&limit=20"
+   ```
+   返回 JSON：`skills[].id / source / skillId / name / installs`；加 `&owner=<owner>` 可按来源收窄。若 `curl` 不通，用宿主自带的网页抓取工具取同一 URL。
+2. **GitHub 兜底**（前两条都不可用，或需要看源码质量）：
+   ```bash
+   gh api search/repositories -X GET -f q='<关键词> SKILL.md'      # 找候选仓库（部分环境不支持 code search）
+   gh api repos/<owner>/<repo>/contents --jq '.[].name'            # 列目录
+   gh api repos/<owner>/<repo>/contents/<path>/SKILL.md --jq .content | base64 -d   # 读内容（raw.githubusercontent 常被墙）
+   ```
+3. **安装**：仓库来源确认后照常安装，别因为检索失败就放弃：
+   ```bash
+   npx -y skills add <owner>/<repo> --skill <name> -y
+   ```
+   已验证：即使 `curl https://skills.sh` 失败，安装仍可完成。
+
+### 安装后的两条纪律
+
+- **别让 skill 变多到互相抢触发**：一次只装真正缺的那 1–2 个；功能重叠时优先并进已有 skill。常驻 description 有预算（Claude Code 默认按上下文 1%，超预算会整条丢最少使用的描述），装得多会让原本能触发的 skill 静默失效。
+- **安装位置**：第三方 skill 落 `.agents/skills/`（或宿主对应目录）。若宿主仓库用自己的 `skills/` 目录做部署清单/测试断言，安装器顺带建的 `skills/<name>` 软链和 `agent/skills/<name>` 拷贝要清掉，否则清单与门禁会被污染（见 2026-09-28 本仓体检记录）。
 
 ## How to Help Users Find Skills
 

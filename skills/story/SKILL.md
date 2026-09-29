@@ -13,21 +13,21 @@ metadata: {"openclaw":{"source":"https://github.com/zenstory-ai/oh-story-claudec
 
 | 用户意图 | 关键词示例 | 路由到 |
 |---|---|---|
-| 写长篇 | 开书、写大纲、长篇、连载 | `/story-long-write` |
+| 写长篇 | 开书、写大纲、长篇、连载 | 已归档：`skills/_archive/story-long-write/`（不自动路由） |
 | 人生副本口播 | 人生副本、剧本人生、体验某种人生、口播稿、XX的一生 | `/fuben-write`（原生抖音口播 skill，跳过小说契约） |
 | 审人生副本 | 副本审稿、口播复核、切条验收 | `fuben-review`，不路由到网文配额审核 |
 | 写短篇 | 短篇、盐言、一万字 | `/story-short-write` |
-| 长篇拆文 | 拆文、分析这本书、黄金三章 | `/story-long-analyze` |
+| 长篇拆文 | 拆文、分析这本书、黄金三章 | 已归档：`skills/_archive/story-long-analyze/` |
 | 短篇拆文 | 拆短篇、分析这个故事 | `/story-short-analyze` |
-| 长篇扫榜 | 长篇排行、什么火、起点/番茄/晋江 | `/story-long-scan` |
-| 选题决策 | 写什么能爆、帮我选题、选题方向 | `/story-long-scan` |
+| 长篇扫榜 | 长篇排行、什么火、起点/番茄/晋江 | 已归档：`skills/_archive/story-long-scan/` |
+| 选题决策 | 写什么能爆、帮我选题、选题方向 | 已归档：`skills/_archive/story-long-scan/` |
 | 短篇扫榜 | 短篇排行、知乎盐言排行 | `/story-short-scan` |
 | 去 AI 味 | 去 AI 味、太 AI、去味 | `/story-deslop` |
 | 审查稿件 | 审查、审稿、帮我审一下、一致性检查、看看有没有问题 | `/story-review` |
-| 封面 | 封面、封面图 | `/story-cover` |
+| 封面 | 封面、封面图 | 已归档：`skills/_archive/story-cover/` |
 | 环境部署 | 准备写书、搭环境、初始化 | `/story-setup` |
 | 浏览器操控 | 浏览器、抓取、登录态 | `/browser-cdp` |
-| 导入小说 | 导入、反向解析、导入小说、把我的书导进来 | `/story-import` |
+| 导入小说 | 导入、反向解析、导入小说、把我的书导进来 | 已归档：`skills/_archive/story-import/` |
 | 工作台 | dashboard、工作台、看拆文库、浏览项目文件、打开项目面板 | 见下方「Dashboard 工作台」 |
 | 检查/更新版本 | 检查更新、有新版本吗、升级、更新工具箱 | 见下方「版本更新检查」 |
 | 切换/列出书目 | 切书、换书、列出我的书、我在写哪几本、切换项目 | 见下方「多书切换」 |
