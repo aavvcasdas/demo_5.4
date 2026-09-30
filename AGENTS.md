@@ -15,7 +15,7 @@
 | 查找/安装新能力 | [.agents/skills/find-skills/SKILL.md](.agents/skills/find-skills/SKILL.md) | 技能生态入口：`npx skills find <关键词>` → 核安装量/来源 → `npx skills add`；skills.sh 直连失败时按该文件的 GitHub 兜底通道 |
 | 会话交接打包 | [.agents/skills/handoff/SKILL.md](.agents/skills/handoff/SKILL.md) | 把当前会话压成 handoff 文档给下个 agent |
 
-## 人生副本管线（fuben-write v3.0）
+## 人生副本管线（fuben-write v3.0.2）
 
 ```text
 00 简报 → 01 深读+检索(≥8路并行,四类真实骨架)+选题三闸+方向卡(用户选定)
@@ -32,6 +32,8 @@
 3. **已删除 16 个创作类脚本**（craft/claims/viral/consistency/scene_check/setting_years/density/hype/shotmap/trial_blind/corpus/health/lint/corpus_*/audit_analyze_lib）——它们原来对禁词、开头、对白、账目档位、体量、结构、一致性下判罚；规则已并入提示词。
 4. **保留的硬承诺**：真实检索（≥8 路，不调用即任务失败）、未获用户选定方向不得开写、全程无烟、账目可反算、不报「必爆」不编造来源、混合源加「剧情为虚构演绎」声明、发布后数据回填台账。
 5. **阶段 05 改名**：产物为 `05_自检.md`（旧作品仍是 `05_机检.json`，`fuben_products` 用 `product_aliases` 兼容）。
+6. **v3.0.1 加一步**：方向定板后必须再跑一批**定向补检索**（批号 `B<日期>-NN`、≥4 路、只进「人／事件／物证／一句人话」，未跑则该篇不得标可交付）。
+7. **v3.0.2 回写两条 88 教训**：①**见证链**——释放必须有人在现场看见并接住，02 加「谁在场」一行、04 加「在场的人扫描」；②**正文零算式**——数字只准用于对比/事实/背叛/动作，加减乘除与换算全部进 04 后台手算表，谷底由人的反应造成。
 
 产物落 `作品/NN_主题/_运行/YYYY-MM-DD/`（产品清单见 [arena.runtime.json](arena.runtime.json)；`python3 scripts/fuben_products.py 作品/NN_主题` 核对产物与哈希绑定）。运行说明见 [docs/Arena运行时.md](docs/Arena运行时.md)；v3.0 改造前后对照见 [docs/改造说明-v3.0-2026-09-30.md](docs/改造说明-v3.0-2026-09-30.md)。
 
