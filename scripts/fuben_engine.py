@@ -52,6 +52,20 @@ def text_sha256(path):
     return hashlib.sha256(text.encode('utf-8')).hexdigest()
 
 
+BODY_NAMES = ('旁白.md', '正文.md')  # v3.0：主交付是 剧本.md，可念轨单独抽成 旁白.md
+
+
+def resolve_body(directory):
+    """目录 → 机检要读的那份文本：优先 旁白.md（配音轨），回落 正文.md（历史稿）。"""
+    from pathlib import Path as _P
+    d = _P(directory)
+    for name in BODY_NAMES:
+        cand = d / name
+        if cand.is_file():
+            return cand
+    return d / BODY_NAMES[-1]
+
+
 def char_count(text):
     # Existing repository convention, retained for before/after comparability.
     lines = [l for l in text.splitlines() if l.strip() and not l.lstrip().startswith('#')]
@@ -63,7 +77,9 @@ def metrics(text, cps=6.4):
     lines = [(i, l.strip()) for i, l in enumerate(text.splitlines(), 1)
              if l.strip() and not l.lstrip().startswith('#')]
     tokens, denominator, per1000 = density(text)
+    han_total = len(re.findall(r'[\u4e00-\u9fff]', ''.join(l for _, l in lines)))
     return {'characters_repository_convention': char_count(text), 'nonempty_prose_lines': len(lines),
+            'han_per_line': round(han_total / len(lines), 1) if lines else 0,
             'longest_line_characters': max((char_count(l) for _, l in lines), default=0),
             'number_tokens': tokens, 'number_density_per_1000': per1000,
             'density_denominator': denominator, 'assumed_cps': cps,
@@ -241,7 +257,7 @@ def inspect_path(path, *, profile='draft', run_style=True, components=None, chec
     report = {'schema_version': 2, 'profile': profile, 'target': str(path), 'findings': [], 'tools': [],
               'checked': [], 'unverified': ['editorial quality', 'narrative continuity and referent resolution',
                                           'theme/event alignment and dialogue response', 'external factual truth',
-                                          'TTS listening', 'actual media consistency', 'platform publication'],
+                                          'TTS listening', 'actual media consistency', 'platform publication', 'shootability of each scene (needs a human or a set)'],
               'inputs': {}}
     try:
         policy = load_policy()
@@ -249,9 +265,9 @@ def inspect_path(path, *, profile='draft', run_style=True, components=None, chec
         if profile not in policy['profiles']:
             raise ValueError('unknown profile: ' + profile)
         source = Path(path).resolve()
-        body_path = source / '正文.md' if source.is_dir() else source
+        body_path = resolve_body(source) if source.is_dir() else source
         if not body_path.is_file():
-            raise OSError('正文文件不存在: ' + str(body_path))
+            raise OSError('正文/旁白文件不存在: ' + str(body_path))
         body = body_path.read_text(encoding='utf-8-sig')
         report['body_path'] = str(body_path)
         report['inputs']['body_sha256'] = sha256(body_path)
@@ -336,7 +352,8 @@ def emit(report, *, json_output=False, label='FUBEN'):
         print(f"{label}: {report['status']} | profile={report['profile']} | {report['target']}")
         if report.get('metrics'):
             m = report['metrics']
-            print(f"INFO 字数 {m['characters_repository_convention']}；{m['nonempty_prose_lines']}行；"
+            print(f"INFO 念白字数 {m['characters_repository_convention']}；{m['nonempty_prose_lines']}行；"
+                  f"每行汉字 {m.get('han_per_line')}（拆文原稿指纹≈9.3，低于 8＝把一句话拆成多行，行数虚胖）；"
                   f"数字密度 {m['number_density_per_1000']}/千字；估时 {m['estimated_duration_seconds']}s（非实测）")
         ordered = sorted(report['findings'], key=lambda f: SEVERITIES.index(f['severity']))
         hard = [f for f in ordered if f['severity'] in ('ERROR', 'BLOCK')]

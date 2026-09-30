@@ -20,9 +20,7 @@ from fuben_engine import inspect_path, literal_checks, sha256, style_diagnostics
 from fuben_numbers import number, numeric
 from fuben_hype import _cn_value
 import fuben_data as data
-import fuben_release as release
-from fuben_scene_check import inspect_scenes
-from fuben_loop import review
+from fuben_engine import resolve_body
 
 
 def run(*args, cwd=ROOT, **kwargs):
@@ -210,37 +208,24 @@ class EngineTests(Fixture):
         (self.dir / '.deslop-whitelist').write_text(self.body.read_text())
         self.assertEqual(inspect_path(self.body)['exit_code'], 1)
 
-    def test_review_is_not_self_approval_or_vacuous_callbacks(self):
-        report = review(self.dir)
-        self.assertEqual(report['review_status'], 'PROVISIONAL')
-        self.assertFalse(report['editorially_approved'])
-        self.assertNotIn('0/0', json.dumps(report))
+    def test_body_resolution_prefers_narration_track(self):
+        # v3.0：主交付是 剧本.md，机检读配音轨 旁白.md；两者都在时不再回落到旧的 正文.md
+        (self.dir / '旁白.md').write_text('旁白：你把饭端上桌。\n', encoding='utf-8')
+        (self.dir / '剧本.md').write_text('## 场1（城中村·夜）\n画面：风扇\n旁白：你把饭端上桌。\n', encoding='utf-8')
+        self.assertEqual(resolve_body(self.dir).name, '旁白.md')
+        rep = inspect_path(self.dir, profile='full', run_style=False)
+        self.assertTrue(rep['body_path'].endswith('旁白.md'), rep['body_path'])
 
-    def test_review_report_must_bind_current_body_path_and_text_hash(self):
-        report_path = self.dir / '审核报告.md'
-        current_hash = text_sha256(self.body)
-        report_path.write_text(
-            f'# 审核报告\nbody_path: `{self.body.resolve()}`\nbody_text_sha256: `{current_hash}`\n',
-            encoding='utf-8')
-        bound = review(self.dir)
-        self.assertIn('review_report_body_path_binding', bound['checked'])
-        self.assertIn('review_report_body_text_hash_binding', bound['checked'])
-        self.assertFalse(any(f['rule_id'] in ('STALE_REVIEW_BODY_PATH', 'STALE_REVIEW_REPORT') for f in bound['findings']))
-
-        self.body.write_text('正文改了，旧审核不能继续背书。', encoding='utf-8')
-        stale = review(self.dir)
-        finding = next(f for f in stale['findings'] if f['rule_id'] == 'STALE_REVIEW_REPORT')
-        self.assertEqual(finding['severity'], 'BLOCK')
-        self.assertEqual(stale['status'], 'FAIL')
-
-    def test_review_report_missing_body_path_and_hash_are_review_candidates(self):
-        (self.dir / '审核报告.md').write_text('# 审核报告\n结论：通过。\n', encoding='utf-8')
-        report = review(self.dir)
-        self.assertTrue(any(f['rule_id'] == 'MISSING_REVIEW_BODY_PATH' and f['severity'] == 'REVIEW'
-                            for f in report['findings']))
-        self.assertTrue(any(f['rule_id'] == 'UNBOUND_REVIEW_REPORT' and f['severity'] == 'REVIEW'
-                            for f in report['findings']))
-        self.assertFalse(report['editorially_approved'])
+    def test_review_binding_layer_retired(self):
+        # v3.0 删掉审核报告的哈希绑定与产物门禁：机检只报稿子本身，不再核对绑定
+        rep = inspect_path(self.dir, profile='full', run_style=False)
+        self.assertFalse(rep['editorially_approved'])
+        self.assertNotIn('review_report_body_text_hash_binding', rep['checked'])
+        self.assertFalse(any(f['rule_id'].startswith(('STALE_REVIEW', 'MISSING_REVIEW', 'UNBOUND_REVIEW'))
+                             for f in rep['findings']))
+        for gone in ('fuben_products.py', 'fuben_loop.py', 'fuben_release.py', 'fuben_scene_check.py',
+                     'fuben_viral.py', 'fuben_claims.py'):
+            self.assertFalse((ROOT / 'scripts' / gone).exists(), gone + ' 应已退役')
 
     def test_regression_work_80_red_and_green_fixtures_cover_current_scope(self):
         red = ROOT / '作品/_regression/80_练薄肌的人活在大耍起时代_红样'
@@ -251,17 +236,8 @@ class EngineTests(Fixture):
         self.assertTrue(any(f['rule_id'] == 'SCOPED_CHARACTER_COUNT' and f['severity'] == 'BLOCK'
                             for f in red_mechanical['findings']))
 
-        red_review = review(red)
-        self.assertTrue(any(f['rule_id'] == 'MISSING_REVIEW_BODY_PATH' for f in red_review['findings']))
-        self.assertTrue(any(f['rule_id'] == 'UNBOUND_REVIEW_REPORT' for f in red_review['findings']))
-
         green_mechanical = inspect_path(green)
         self.assertEqual(green_mechanical['status'], 'PASS')
-        green_review = review(green)
-        self.assertIn('review_report_body_path_binding', green_review['checked'])
-        self.assertIn('review_report_body_text_hash_binding', green_review['checked'])
-        self.assertFalse(any(f['rule_id'] in ('MISSING_REVIEW_BODY_PATH', 'UNBOUND_REVIEW_REPORT', 'STALE_REVIEW_REPORT')
-                             for f in green_review['findings']))
 
     def test_missing_node_checker_crash_bad_json_and_exit_mismatch(self):
         fixtures = ["require('not-installed-for-fuben-test');",
@@ -286,12 +262,9 @@ class EngineTests(Fixture):
 
     def test_clis_share_fact_severity(self):
         self.body.write_text('你写了五个字「欢迎回家」。')
-        for name in ('fuben_run.py', 'fuben_lint.py', 'fuben_consistency.py'):
+        for name in ('fuben_run.py', 'fuben_consistency.py'):
             result = run(sys.executable, ROOT / 'scripts' / name, self.dir)
             self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
-        result = run(sys.executable, ROOT / 'scripts/fuben_loop.py', 'review', self.dir, '--json')
-        self.assertEqual(result.returncode, 1)
-        self.assertFalse(json.loads(result.stdout)['editorially_approved'])
 
     def test_density_advisory_and_shotmap_argument_parsing(self):
         self.body.write_text('123 456 789\n' * 50)
@@ -485,96 +458,6 @@ class InventoryTests(Fixture):
         self.assertEqual(report['errors'], 1)
 
 
-class SceneTests(Fixture):
-    def test_missing_optional_table_not_claimed_pass(self):
-        result = inspect_scenes(self.dir)
-        self.assertEqual(result['scene_status'], 'NOT_ASSESSED')
-        self.assertTrue(result['mechanical_pass'])
-
-    def test_global_word_hit_does_not_prove_local_scene(self):
-        self.body.write_text('甲场景\n碗\n乙场景\n手机')
-        evidence = {'schema_version': 1, 'body_sha256': sha256(self.body),
-                    'scenes': [{'name': '甲', 'start_line': 1, 'end_line': 2, 'props': ['手机']}]}
-        file = self.dir / '场面证据.json'
-        file.write_text(json.dumps(evidence))
-        result = inspect_scenes(self.dir)
-        self.assertTrue(any(f['rule_id'] == 'SCENE_SPAN_MISS' for f in result['findings']))
-        evidence['scenes'][0]['props'] = []
-        file.write_text(json.dumps(evidence))
-        self.assertEqual(inspect_scenes(self.dir)['status'], 'ERROR')
-        self.body.write_text('改稿')
-        self.assertEqual(inspect_scenes(self.dir)['status'], 'FAIL')
-
-
-class ReleaseTests(Fixture):
-    def valid_fixture(self):
-        # Simulated media and mock metadata only. No actual listening claimed by tests.
-        (self.dir / '成片.mp4').write_bytes(b'fixture: not a real media asset')
-        (self.dir / '审核报告.md').write_text('测试审核证据：此为隔离夹具，不是真实发布结论。')
-        document = release.template(self.dir)
-        document['media'] = {'path': '成片.mp4', 'sha256': sha256(self.dir / '成片.mp4')}
-        document['owner_publication_authorized'] = True
-        for name, item in document['reviews'].items():
-            item.update(status='APPROVED', reviewer='fixture-reviewer', reviewed_at='2026-09-19T16:00:00+08:00')
-            item['evidence']['sha256'] = sha256(self.dir / '审核报告.md')
-            if name == 'media':
-                item['reviewed_media_sha256'] = document['media']['sha256']
-        return document
-
-    def check(self, document=None, **kwargs):
-        if document is not None:
-            (self.dir / '.发布证据.json').write_text(json.dumps(document))
-        return release.check(self.dir, probe=kwargs.get('probe', lambda path: {'duration_seconds': 20, 'measurement': 'TEST_FIXTURE'}))
-
-    def test_missing_evidence_and_template_are_provisional(self):
-        self.assertEqual(self.check()['status'], 'PROVISIONAL')
-        self.assertEqual(self.check(release.template(self.dir))['exit_code'], 3)
-
-    def test_valid_fixture_is_not_publication(self):
-        result = self.check(self.valid_fixture())
-        self.assertEqual(result['status'], 'READY_FOR_OWNER_CONFIRMATION')
-        self.assertFalse(result['published'])
-        self.assertFalse(result['attestation_identity_verified'])
-
-    def test_changed_body_and_refreshing_manifest_cannot_launder_old_review(self):
-        document = self.valid_fixture()
-        self.body.write_text('正文已经改了，审核仍是原来那次。')
-        self.assertEqual(self.check(document)['status'], 'BLOCKED')
-        document['inputs_sha256'] = release.inputs(self.dir, '正文.md')
-        result = self.check(document)
-        self.assertTrue(any(i['code'] == 'STALE_REVIEW_BINDING' for i in result['issues']))
-
-    def test_setting_media_and_review_hash_changes_block(self):
-        for path in ('设定.md', '成片.mp4', '审核报告.md'):
-            with self.subTest(path=path):
-                document = self.valid_fixture()
-                (self.dir / path).write_text('changed')
-                self.assertEqual(self.check(document)['status'], 'BLOCKED')
-
-    def test_refreshed_media_hash_still_needs_media_review(self):
-        document = self.valid_fixture()
-        (self.dir / '成片.mp4').write_bytes(b'new clip')
-        document['media']['sha256'] = sha256(self.dir / '成片.mp4')
-        result = self.check(document)
-        self.assertTrue(any(i['code'] == 'STALE_MEDIA_REVIEW' for i in result['issues']))
-
-    def test_media_tool_failure_is_not_estimated_pass(self):
-        def fail(path):
-            raise ValueError('no ffprobe')
-        self.assertEqual(self.check(self.valid_fixture(), probe=fail)['status'], 'ERROR')
-        with patch('fuben_release.subprocess.run', side_effect=FileNotFoundError()):
-            with self.assertRaises(ValueError):
-                release.probe_media(self.dir / '成片.mp4')
-
-    def test_explicit_duration_limit_and_reviewer_fix(self):
-        document = self.valid_fixture()
-        document['constraints'] = {'max_duration_seconds': 15}
-        self.assertEqual(self.check(document)['status'], 'BLOCKED')
-        document['constraints'] = {}
-        document['reviews']['facts']['status'] = 'FIX'
-        self.assertEqual(self.check(document)['status'], 'BLOCKED')
-
-
 class DataTests(Fixture):
     def setUp(self):
         super().setUp()
@@ -646,7 +529,7 @@ class DataTests(Fixture):
     def test_old_unsafe_record_command_rejected_without_data_mutation(self):
         old = [p for p in (ROOT / '作品/_数据.csv', ROOT / '作品/_数据_v2.csv') if p.is_file()]
         before = [sha256(p) for p in old]
-        result = run(sys.executable, ROOT / 'scripts/fuben_loop.py', 'record', '78', '123', '456')
+        result = run(sys.executable, ROOT / 'scripts/fuben_data.py', 'record', '78', '123', '456')
         self.assertEqual(result.returncode, 2)
         self.assertEqual(before, [sha256(p) for p in old])
 

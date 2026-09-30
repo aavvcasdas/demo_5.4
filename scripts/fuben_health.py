@@ -6,7 +6,7 @@ from collections import Counter
 import json
 from pathlib import Path
 import re
-from fuben_engine import ROOT, inspect_path, sha256
+from fuben_engine import ROOT, inspect_path, resolve_body, sha256
 
 
 def discover_works(root=ROOT):
@@ -24,7 +24,7 @@ def inspect_collection(*, corpus=False, variants=True, root=ROOT):
         items = []
         excluded = []
         for directory in discover_works(root):
-            items.append((directory / '正文.md', 'full', 'work'))
+            items.append((resolve_body(directory), 'full', 'work'))
             if variants:
                 items.extend((p, 'short', 'variant') for p in sorted(directory.glob('正文_*.md')))
             excluded.extend(str(p.relative_to(root)) + '（制作单内嵌脚本；未当作独立正文或音频检测）'

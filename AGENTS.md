@@ -1,61 +1,62 @@
-# AGENTS.md — 本仓库 Skill 路由入口
+# AGENTS.md — Arena · 人生副本可拍剧本（skill 项目）
 
-本仓库是抖音「人生副本/剧本人生」口播稿生成库：`skills/` 为创作与工具 skill，`拆文库/` 为 39 个故事段（另收 28b、46、48a–c 补充原文与 00 合集本体，共 45 个目录）ASR 原稿拆解（写作手法蒸馏源），`作品/` 为产出，`scripts/` 为机检工具。按用户意图路由：
+本仓库是**由 skill 驱动的抖音「人生副本／剧本人生」短剧本创作项目**（v3.0，2026-09-29 从「口播逐字稿」换代为「旁白驱动·可拍剧本」）：`skills/` 为创作与治理 skill，`拆文库/` 为 45 篇赛道原稿的拆解（语感与手法蒸馏源，受保护只读），`作品/` 为产出（`剧本.md`＋`旁白.md`），`scripts/` 为**只留能真出错那部分**的机检工具。按用户意图路由：
 
 | 用户意图 | 路由到 | 说明 |
 |---|---|---|
-| 写人生副本口播稿（人生副本、剧本人生、XX 的一生、口播稿、第二人称人生体验） | [skills/fuben-write/SKILL.md](skills/fuben-write/SKILL.md) | **主链路（v2.0 爽点结构版，2026-09-28 换代）**：保留真实检索（≥8 路真实骨架）＋选题三闸 →人生时间轴（5–8 站：事件/物证/一句人话；压制→谷底→反打→释放）→三秒开场（首行即钩、签名后置）＋每 15–25 秒翻面＋结尾互动钩 →投手预演七问＋平铺扫描＋账目/兑现对表 →结构自评（`fuben_viral.py`）→交付逐字稿＋标题/封面/首评/话题＋数据回传 |
-| 审人生副本（副本审稿、口播复核、切条验收） | [skills/fuben-review/SKILL.md](skills/fuben-review/SKILL.md) | 创作审查＋读通专项，报告绑定 `body_path` 与 `body_text_sha256` |
-| 写中文短剧/漫剧剧本、改单集剧本、剧本审读 | [.agents/skills/short-drama-write/SKILL.md](.agents/skills/short-drama-write/SKILL.md) | 2026-09-28 新装（zenstory-ai/drama-skills，MIT）。管短剧剧本格式与可拍性，不管资产/分镜/媒体提示词；人生副本口播仍走 `fuben-write` |
-| 造/改 skill、体检技能库 | [.agents/skills/skill-creator/SKILL.md](.agents/skills/skill-creator/SKILL.md) | 2026-09-28 安装（anthropics/skills，39.2 万安装）。描述瘦身、单一职责、查重与瘦身标准 |
+| 写人生副本可拍剧本（人生副本、剧本人生、XX 的一生、副本改剧本、第二人称人生体验） | [skills/fuben-write/SKILL.md](skills/fuben-write/SKILL.md) | **主链路（v3.0）**：真实检索（≥8 路）＋选题三闸 → 分场表（5–8 场）→ `剧本.md`（画面/旁白/对白/秒数）＋`旁白.md` → 划走点三扫三问 → 交付剧本＋配音轨＋发布包 |
+| 审人生副本剧本（副本审稿、剧本读通、切条前复核） | [skills/fuben-review/SKILL.md](skills/fuben-review/SKILL.md) | 三扫（衔接/密度/念不出来）＋可拍三问，🔴🟡🟢 分级；**不再要求哈希绑定与闭环销账表** |
+| 写多集真人短剧/漫剧剧本、分镜、图片视频提示词 | [.agents/skills/short-drama-write/SKILL.md](.agents/skills/short-drama-write/SKILL.md) | 上游 zenstory-ai/drama-skills（MIT，2.4k★）。**单条人生副本不走这条**；它管 EP/SC 格式、资产与制作链。要下游（分镜表/提示词）时转过去，不在本仓复刻 |
+| 造/改 skill、体检技能库 | [.agents/skills/skill-creator/SKILL.md](.agents/skills/skill-creator/SKILL.md) | 描述瘦身、单一职责、查重与瘦身标准 |
 | 写普通短篇/长篇网文、拆书、扫榜、去 AI 味、封面、导入 | [skills/story/SKILL.md](skills/story/SKILL.md) | 网文工具箱路由（小说口径；人生副本不走此线） |
-| 部署/同步环境 | [skills/story-setup/SKILL.md](skills/story-setup/SKILL.md) | 模板与 hooks 部署 |
+| 部署/同步环境 | [skills/story-setup/SKILL.md](skills/story-setup/SKILL.md) | 模板与 hooks 部署（`KNOWN_SKILLS` 清单由测试绑定，勿随意增删 `skills/` 目录） |
 | 浏览器采集 | [skills/browser-cdp/SKILL.md](skills/browser-cdp/SKILL.md) | CDP 抓取 |
 | 研究/借鉴/改造 Agent | 只交方法与接入改动 | 不自动转成样稿 |
-| 查找/安装新能力 | [.agents/skills/find-skills/SKILL.md](.agents/skills/find-skills/SKILL.md) | 技能生态入口：`npx skills find <关键词>` → 核安装量/来源 → `npx skills add` |
-| 会话交接打包 | [.agents/skills/handoff/SKILL.md](.agents/skills/handoff/SKILL.md) | 把当前会话压成 handoff 文档给下个 agent；最新一份在 `/home/user/handoff-2026-09-25d-fuben-85.md` |
+| 查找/安装新能力 | [.agents/skills/find-skills/SKILL.md](.agents/skills/find-skills/SKILL.md) | `npx skills find <词>`；沙箱内 curl 直连 skills.sh 会 SSL 失败，走 `https://skills.sh/api/search?q=<词>` 兜底 |
+| 会话交接打包 | [.agents/skills/handoff/SKILL.md](.agents/skills/handoff/SKILL.md) | 把当前会话压成 handoff 文档给下个 agent |
 
-## 人生副本管线（fuben-write）
+## 剧本管线（fuben-write v3.0）
 
 ```text
-00 简报 → 01 深读+检索(≥8路并行,四类真实骨架)+选题三闸+方向卡(用户选定) → 02 人生时间轴
-→ 03 首稿(首行即钩+签名后置+钩子备选 A/B/C 同批写出+分段直写)
-→ 04 投手预演七问(引原句+行号)+平铺扫描+账目/兑现对表+分层返工
-→ 04b fuben-review 读通专项 → 05 机检+工艺门禁+结构自评(PASS≠好看,候选须闭环) → 交付
+00 简报（题面+时长档）→ 01 检索≥8路+选题三闸+方向卡(用户选定) → 02 分场表（5–8 场：事件/画面主体/旁白字数/对白句数/秒数/钩点）
+→ 03 成稿：剧本.md（首行即钩＋每场必有 画面： 行＋旁白驱动）→ 抽 旁白.md
+→ 04 划走点三扫（衔接/密度/念不出来）＋可拍三问 → 🔴🟡🟢 处置 → 分层返工
+→ 05 机检（fuben_run full + fuben_craft --ledger，可选落 05_机检.json）→ 交付：剧本+旁白+钩子备选+发布包
 ```
 
-**v2.0 契约（2026-09-28 换代，用户裁决原话见 SKILL 头部）**：①**保留搜索**（≥8 路、逐路表、不调用即失败）与红线（无烟/账目反算/不报必爆/数据回传）；②阶段 1 增**选题三闸**（一句话主线／观众关系爽或共鸣或猎奇／情绪出口与互动动作）与**混合源**（虚构骨架＋≥1 个可回链真实原型锚）；③阶段 2 改**人生时间轴**（5–8 站＝事件/可视物证/一句人话；爽点四段：压制→谷底 60–70%→反打由主角自己动手→释放须写清对手输了什么）；④阶段 3 **第 1 行就是钩、签名句后置第 2–3 行**，每 15–25 秒翻面，结尾＝金句＋互动钩；⑤阶段 4 改**投手预演七问**（每条引原句+行号）；⑥新增 `scripts/fuben_viral.py` 结构自评（advisory，不判水）。**v1.3.5 的反水契约（六字段/事件块三问/断点审读）降级为及格线**——86 达到了不水，仍然 1k 播放；诊断与平台基准见 [docs/技能重构诊断-2026-09-28.md](docs/技能重构诊断-2026-09-28.md)。
+**v3.1 增补（2026-09-29，作品 88 初稿被用户判"数词太多、远不如 87"）**：可念轨数字串 ≤70/千字、量词数串 ≤20/千字（只数带记账单位的量词：年/次/块/元/斤/千卡/节/顿…；「一个·一样·一下」这类虚指不计）、同一数复现 ≤3 次、装饰性时间词 ≤2 次；审读从三扫改**四扫**（新增"数词与比喻"）；规则是"能算的账只留一处、其余数字写进画面单据"与"一篇只养一个比喻"，来源里的上限不得当等号用。
 
-**首稿质量优先**：目标是一次写对、审读只做减法；不许把审读当默认兜底。`03_初稿.md` 同批产出钩子备选（最终定稿落根目录 `钩子备选.md`），不是跑完机检后再补写。成稿纪律：一次生成 ≤35 行就停手回读，逐段推进；长中文一次性生成易漂移。`5–12 字一行` 是口播体裁指纹（语感指引），**没有任何机检对行长设卡**；写作纪律自定行宽可以，但不要误当技能规则。
+**v3.0 契约（用户裁决原话：「审核脚本删到会咬人就行」）**：①主交付是**能拍的剧本**——`## 场N（地点·日夜·25—45 秒）` ＋ `画面：` ＋ `旁白：` ＋ `角色（提示）：台词`，标签集封闭（不自造）；②**体量下限恢复为门禁**：终稿旁白轨 <700 字＝`VOLUME_UNDER_FLOOR`（REVIEW），上限仍自由（policy `volume_authorization`）；③**旁白驱动可机检**：剧本形态按标签行数占比，对白 >25% 报 `VO_TRACK_OVER`，并取消旧版「<800 字对白统计归零」的豁免（v2.0 把稿子压到 600 字级正好落进免检区）；④可拍性检查 `SCENE_NO_VISUAL`/`SCENE_SPARSE`/`SCENE_OVER`；⑤**退役审核剧场**：删除产物齐备门禁、审核报告哈希绑定、发布前证据、数关键词的结构自评、兑现认领对表（见 `arena.runtime.json` 的 `project.retired_in_v3`）。换代诊断与赛道证据见 [docs/剧本化改造诊断-2026-09-29.md](docs/剧本化改造诊断-2026-09-29.md)。
 
-阶段产物落 `作品/NN_主题/_运行/YYYY-MM-DD/`（同名阶段产物按 [arena.runtime.json](arena.runtime.json) 的 `product` 字段，用 `python3 scripts/fuben_products.py 作品/NN_主题` 验收）；不调用真实搜索即任务失败（用户裁决）；未获用户选定方向不得开写正文。`fuben_run` 默认含 craft 门禁（无烟红线/禁词/开头铁律/对白限额/账目档位/体量带；`fuben_craft --ledger` 出账目全表）；`facts`/`policy` 类候选在审读阶必须逐条销账。运行说明见 [docs/Arena运行时.md](docs/Arena运行时.md)。
+**保留不动的红线**：真实检索（≥8 路、逐路表、不调用即任务失败）、选题三闸一票否决、未获用户选定方向不写正文、全程无烟、账目可反算、不报「必爆」、不编造来源与授权、发布带「剧情为虚构演绎」声明、发布后数据回填台账。
 
-**scripts/ 分工**（创作期只调左列四个；右列是库级治理，不碰单篇）：
+**过程文件是脚手架**：`_运行/YYYY-MM-DD/00–04` 每份 ≤80 行，正文（剧本.md）的预算优先于自证；**不许用文档长度证明工作质量**（v2.0 的 87 篇：审读文档 4000+ 字，正文 617 字）。一次只写一场（≤35 行）再回读；`5–12 字一行` 是情绪钉子的语感，**不是把一句话拆成三行的许可**（对标每行≈9.3 汉字，机检 INFO 报「每行汉字」）。
 
-| 创作日常 | 库级治理（不碰单篇） |
+阶段产物与交付文件名以 [arena.runtime.json](arena.runtime.json) 为准（旧作品仍叫 `02_场次单.md`/`04_审读与返工.md`/`正文.md`，机检按 `旁白.md → 正文.md` 回落，不必回填改名）。运行说明见 [docs/Arena运行时.md](docs/Arena运行时.md)。
+
+## scripts/ 分工（v3.0 瘦身后）
+
+| 创作日常（只这两个） | 库级治理（不碰单篇） |
 |---|---|
-| `fuben_run.py <作品> --profile full` 主检查（facts/style/account/policy/craft） | `fuben_health.py` 全库体检（`test_gates.py --works --corpus` 调用） |
-| `fuben_craft.py <作品> --ledger` 工艺门禁 + 账目主张全表 | `fuben_corpus.py` 受保护语料只读校准（工具行为标定） |
-| `fuben_products.py <作品>` 产物齐备/哈希绑定门禁<br>`fuben_claims.py <作品> [--strict]` 站点三件套/六字段＋兑现认领对表<br>`fuben_viral.py <作品>` v2.0 结构自评（首行钩/签名位/互动钩/物证/检索路数，advisory） | `corpus_gate_audit.py` 语料反审（R20 专用，自报不兼容现行协议） |
-| `fuben_loop.py report|review <作品>` 报告生成/回读绑定 | `test_gates.py` 仓库健康总入口（unittest + works + corpus 证据） |
-| `fuben_release.py check <作品>` 发布前证据（PROVISIONAL 不代发） | `fuben_lint.py` engine 的旧别名（facts+style+account 子集，供旧调用方） |
-| — | `skills_audit.py [--strict|--json]` 技能库体检：体积/描述预算/重复/触发冲突/坏链 |
+| `fuben_run.py <作品> --profile full` 红线/禁词/开头/对白占比/账目/体量/可拍性/**数字预算**（数词密度·同数复现·装饰时间词） | `fuben_health.py` 全库体检（`test_gates.py --works --corpus` 调用） |
+| `fuben_craft.py <剧本或旁白> --ledger` 数字判词链对账全表 | `fuben_corpus.py` 受保护语料只读校准（工具行为标定） |
+| `fuben_data.py record|report` 发布后真实数据回填（严格 schema） | `skills_audit.py [--strict|--json]` 技能库体检：体积/描述预算/重复/触发冲突/坏链 |
+| `fuben_shotmap.py`／`fuben_density.py`／`fuben_hype.py` 描述性读数（不设卡、不判好坏） | `test_gates.py` 仓库健康总入口（unittest + works + corpus 证据） |
 
-描述性工具（读稿参考，不设卡）：`fuben_density.py`（数字密度）、`fuben_hype.py`（节奏统计）、`fuben_viral.py`（v2.0 结构自评：只查结构项存在性，不判水、不判好坏）。`check_fuben_texture.py` 已退役删除：启发式质地判据失准（对白占比、ASCII 价格正则等会误报），其有用项已并入 craft/style 门禁。**同一条纪律适用于「水」**：不用启发式脚本判剧情水（2026-09-28 曾试做平铺扫描器，在 48 篇原稿上标定发现原稿自身「零推进跨度」中位占 38.5%，判据不具区分度，已弃用）——水由 04 审读人工点名并引行号，脚本只做可核对的字段与关键词检查（`fuben_claims.py`）。
+- 描述性工具不判「水」、不判剧情质量：**同一条纪律适用于「水」和一切启发式打分**（本仓已退役过两个：`check_fuben_texture.py` 与平铺扫描器——在 48 篇原稿上标定发现原稿自身「零推进跨度」中位 38.5%，判据无区分度）。水由 04 人工点名＋场号，脚本只查在场性之外真正会出错的东西。
+- 已删除（2026-09-29）：`fuben_viral.py`、`fuben_products.py`、`fuben_loop.py`、`fuben_release.py`、`fuben_scene_check.py`、`fuben_claims.py`、`fuben_lint.py`、`corpus_gate_audit.py`。别再写回来：能数关键词的「✅」只会让人少改稿。
 
-## 技能库卫生（2026-09-28 起）
+## 技能库卫生
 
-- 现状（2026-09-28 体检后）：在用 14 个 skill + 归档 5 个（`skills/_archive/`）、462 文件、5.16 MB；**在用 description 合计 2,325 字符**。**常驻 listing 已超预算**——Claude Code 默认按上下文 1% 做预算（200k 窗口≈1,600 字符）、单条上限 1536 字符，超预算时按调用频次**整条丢描述**，被丢描述的 skill 只剩名字、不再触发。所以长描述不是"更清楚"，是在挤掉别的 skill。
-- 规则：新增 skill 前先查重（功能重叠优先并入现有 skill，不新开）；description **≤150 字符、触发词前置**（截断时活下来的是开头）；一个 skill 只接一件事，触发词不抢别的产线（人生副本口播只归 `fuben-write`）；主体超 500 行就下沉 references。
-- 已归档（低频、与主线无关，文件保留、不路由、不占 listing）：`story-long-write`、`story-long-analyze`、`story-long-scan`、`story-import`、`story-cover`；恢复方式与同步要求见 [skills/_archive/README.md](skills/_archive/README.md)。
-- 待办：在用 skill 仍有 5 条 description 超 150 字符（`browser-cdp` 389、`story-short-analyze` 308、`story-setup` 216、`story-review` 152、`skill-creator` 319 为上游原文）。
-- 体检工具：`python3 scripts/skills_audit.py`（体积 / 描述预算 / 重复 / 触发冲突 / 坏链；`--strict` 有问题时非零退出，`--json` 供脚本消费）。完整数据与候选对比：[docs/技能库体检-2026-09-28.md](docs/技能库体检-2026-09-28.md)。
-- 本沙箱注意：`curl https://skills.sh` 直连失败（SSL），但 `npx skills add` 的下载通道可用；检索走 `https://skills.sh/api/search?q=<关键词>&limit=20`。
-- 安装位置：第三方 skill 只落 `.agents/skills/`。**不要在 `skills/` 里留软链**——`skills/*/SKILL.md` 是 `story-setup` 的部署清单，`test_gates.py::test_deployment_inventory_includes_fuben_review` 会断言它等于 `deploy-antigravity-skills.py` 的 `KNOWN_SKILLS`；`npx skills add` 顺手建的软链会污染清单并让门禁变红（本轮已处理）。
-- 多份拷贝是**故意的**：`test_distributed_sources_are_identical` 强制 `check-ai-patterns.js`、`story-profile.js`、`story_hook_core.js` 在各 skill 里逐字节一致（每个 skill 要能独立部署）。改一处必须同步全部，不能只改单份。
+- **先查重再新建 skill**（功能重叠优先并入现有 skill）；description **≤150 字符、触发词前置**；一个 skill 只接一件事；主体超 500 行就下沉 references。常驻 listing 有预算（Claude Code 默认按上下文 1%≈1,600 字符），超预算按调用频次**整条丢描述**——被丢描述的 skill 只剩名字、不再触发。
+- 触发词分工：「人生副本／剧本人生／XX 的一生」→ `fuben-write`；「短剧／漫剧／EP」多集与制作链 → `short-drama-write`；「审副本／剧本读通」→ `fuben-review`。跑 `python3 scripts/skills_audit.py` 看当前重叠与坏链。
+- 现状（2026-09-29 体检）：19 个 skill（在用 14＋归档 5）、464 文件、5.14 MB；**常驻描述合计约 2270 字符 > 预算 ≈1600**。本轮两条主链描述已压到 81／58 字符；仍超 150 的是 `browser-cdp` 389、`skill-creator` 319（上游原文）、`story-short-analyze` 308、`story-setup` 216、`story-review` 152——待办是逐条瘦身，不是再装新 skill。已知触发冲突：「剧本」`short-drama-write`↔`fuben-write`（分工见上表，边界已写死）；完整数据：`python3 scripts/skills_audit.py`。
+- 第三方 skill 只落 `.agents/skills/`，**不要在 `skills/` 里留软链**（`skills/*/SKILL.md` 是 `story-setup` 的部署清单，`test_gates` 断言它等于 `deploy-antigravity-skills.py` 的 `KNOWN_SKILLS`）。
+- 多份拷贝是**故意的**：`test_distributed_sources_are_identical` 强制 `check-ai-patterns.js`、`story-profile.js`、`story_hook_core.js` 各拷贝逐字节一致（每个 skill 要能独立部署）；改一处必须同步全部。
+- 归档区：`skills/_archive/`（低频、不路由、文件保留），恢复方式见 [skills/_archive/README.md](skills/_archive/README.md)。
 
 ## 手艺与事实边界
 
-- 创作标准以 [skills/fuben-write/references/2_选题与结构.md](skills/fuben-write/references/2_选题与结构.md)（选题三闸＋爽点四段）与 [3_口播与节奏.md](skills/fuben-write/references/3_口播与节奏.md)（三秒／翻面／互动钩）为核心，[5_代入感与禁忌.md](skills/fuben-write/references/5_代入感与禁忌.md) 保留不水纪律与红线；对标语感读 `拆文库/` 原稿与 `写作手法.md`。
-- 保留用户给定事实；检索来源注明；不编造数据与授权；不报“必爆”；机检 PASS 只说明无机械阻断。
+- 创作标准以 [references/0_剧本格式与分场表.md](skills/fuben-write/references/0_剧本格式与分场表.md)（体裁契约）＋[2_选题与结构.md](skills/fuben-write/references/2_选题与结构.md)（三闸＋爽点四段＋分场）＋[3_口播与节奏.md](skills/fuben-write/references/3_口播与节奏.md)（三秒／翻面／行宽／体量）＋[5_代入感与禁忌.md](skills/fuben-write/references/5_代入感与禁忌.md)（旁白驱动与红线）为核心；对标语感读 `拆文库/*/写作手法.md` 与 `原文/原文.txt`。
+- 保留用户给定事实；检索来源注明；不编造数据与授权；不报「必爆」；机检 PASS 只说明无机械阻断，审读意见只说明有人读过并点了位置——**两者都不是流量预测**。
 - 独立可复制提示词（不装 skill）：[skills/fuben-write/references/6_独立提示词.md](skills/fuben-write/references/6_独立提示词.md)。

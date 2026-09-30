@@ -1,32 +1,114 @@
 {
   "schema_version": 1,
-  "version": "2.2.0",
-  "profiles": ["draft", "full", "short", "clip", "reference"],
+  "version": "3.1.0",
+  "profiles": [
+    "draft",
+    "full",
+    "short",
+    "clip",
+    "reference"
+  ],
   "tool_timeout_seconds": 30,
   "estimated_chars_per_second": 6.4,
-  "estimated_cps_note": "机检粗估口径（≈yao-open-prompts 口播 30s/180–220 字档，不含停顿）；创作预算语感口径为该系列主播 4.5–5 字/秒（含呼吸），两口径差为停顿，估时≠实测，听感以念稿计时为准。",
-  "volume_bands": { "long": [2800, 3300], "short": [850, 1100], "preferred": [900, 2600] },
-  "profile_volume_band": { "draft": "long", "full": "long", "short": "short", "clip": "short" },
-  "volume_note": "字数＝characters_repository_convention（repo 既有口径）；v2.0 起体量带降级为参考、节奏优先：出带在 04 引用 volume_authorization 的用户授权原话即可闭环（不必逐篇再找用户确认）；preferred 为默认目标带。",
+  "estimated_cps_note": "机检粗估口径（旁白念白字数/秒，不含镜头切换与留白）；创作语感口径 4.5–5 字/秒（含呼吸）。两口径差为停顿，估时≠实测，听感以念稿计时为准。",
+  "volume_bands": {
+    "drama_vo": [
+      900,
+      1600
+    ],
+    "long": [
+      1600,
+      2600
+    ],
+    "short": [
+      350,
+      900
+    ],
+    "clip": [
+      200,
+      500
+    ]
+  },
+  "profile_volume_band": {
+    "draft": "drama_vo",
+    "full": "drama_vo",
+    "short": "short",
+    "clip": "clip"
+  },
+  "volume_floor": 700,
+  "volume_note": "v3.0（2026-09-29）：主交付＝可拍剧本，字数只统计【旁白轨】（配音念的那份：剧本.md 的旁白行或旁白.md）。上限仍是自由（写得下就写得完），**下限恢复成会咬人的门禁**：旁白 < volume_floor（700 字）报 VOLUME_UNDER_FLOOR（REVIEW）。这条是对 87 篇塌陷到 617 字的直接修复——v2.0 把体量带降级为参考后，一篇只有 617 字的稿子拿不到任何红灯，而拆文库 45 篇原稿的中位数是 2908 字、每行 9.3 汉字。",
   "volume_authorization": {
-    "date": "2026-09-28",
-    "quote": "时长不限，只要剧情节奏好不水1-2分钟都可以",
-    "effect": "v2.0 起唯一体量口径：节奏与不水优先于字数，任何参考带出带均可由 04 引用本条闭环"
+    "date": "2026-09-29",
+    "quote": "（2026-09-28 原授权）时长不限，只要剧情节奏好不水，1–2 分钟都可以；（2026-09-29 补充裁决）审核脚本删到会咬人就行：只留能真出错的确定性检查",
+    "effect": "上限不设带（超 1600 字只报 NOTE，引用本条即可闭环，不必逐篇找用户确认）；**下限不再靠自觉**：低于 volume_floor 直接 REVIEW，必须在 04 处置（补场或改题面为单事件段子并登记）。"
   },
   "rhythm": {
     "signature_line_max": 3,
     "hook_interval_chars_max": 300,
-    "station_chars_max": 400,
-    "note": "节奏项为创作纪律（见 references/3_口播与节奏.md），fuben_viral.py 只做结构自评，advisory，不判水。"
+    "scene_chars_max": 400,
+    "scene_seconds": [
+      25,
+      45
+    ],
+    "han_chars_per_line_target": 8,
+    "note": "节奏项是创作纪律（见 references/3_口播与节奏.md 与 0_剧本格式与分场表.md）。v3.0 起删除 fuben_viral.py 那种「数关键词出现次数」的结构自评：它能被格式刷出全绿，不证明任何好看。"
   },
   "craft": {
     "smoke_terms": "香烟|电子烟|烟草|抽烟|吸烟|点烟|烟头|烟灰|烟味|一支烟|一根烟|半包烟|叼着烟|吞云吐雾|二手烟",
-    "ban_words": ["首先", "其次", "然而", "随着", "不禁", "值得一提的是", "眼眶一热", "五味杂陈", "五雷轰顶", "不由得", "感慨万千", "心潮澎湃", "不知不觉", "似乎在诉说着"],
-    "definition_upfront": ["先校准", "先说说", "先讲讲", "今天我们来聊", "今天聊聊", "大家好", "先来科普", "科普一下", "名词解释", "口径如下", "设定如下", "规则如下", "先对齐", "先统一口径", "解释一下", "世界观设定"],
+    "ban_words": [
+      "首先",
+      "其次",
+      "然而",
+      "随着",
+      "不禁",
+      "值得一提的是",
+      "眼眶一热",
+      "五味杂陈",
+      "五雷轰顶",
+      "不由得",
+      "感慨万千",
+      "心潮澎湃",
+      "不知不觉",
+      "似乎在诉说着"
+    ],
+    "definition_upfront": [
+      "先校准",
+      "先说说",
+      "先讲讲",
+      "今天我们来聊",
+      "今天聊聊",
+      "大家好",
+      "先来科普",
+      "科普一下",
+      "名词解释",
+      "口径如下",
+      "设定如下",
+      "规则如下",
+      "先对齐",
+      "先统一口径",
+      "解释一下",
+      "世界观设定"
+    ],
     "sys_prompt_max_lines": 2,
     "head_max_chars": 50,
     "nail_over": 12,
-    "quote_pct_over": 10.0
+    "quote_pct_over": 10.0,
+    "scene_min": 5,
+    "scene_max": 10,
+    "label_dialogue_pct_over": 25.0,
+    "scene_chars_max": 400,
+    "number_string_per_1k_max": 70.0,
+    "quantifier_per_1k_max": 20.0,
+    "number_repeat_max": 3,
+    "decoy_span_words": [
+      "三年",
+      "两年",
+      "四年",
+      "五年",
+      "十年",
+      "这些年"
+    ],
+    "decoy_span_max": 2
   },
   "creative_rules": {
     "required_beat_count": null,
@@ -61,14 +143,81 @@
     "BAD_DATE_LOCK": "BLOCK"
   },
   "account_policy": {
-    "brand_candidates": ["资生堂", "Mac", "MAC", "空军一号", "AJ", "耐克", "阿迪", "苹果", "iPhone", "华为", "小米", "星巴克", "瑞幸", "喜茶", "优衣库", "ZARA", "微博", "微信", "朋友圈"],
+    "brand_candidates": [
+      "资生堂",
+      "Mac",
+      "MAC",
+      "空军一号",
+      "AJ",
+      "耐克",
+      "阿迪",
+      "苹果",
+      "iPhone",
+      "华为",
+      "小米",
+      "星巴克",
+      "瑞幸",
+      "喜茶",
+      "优衣库",
+      "ZARA",
+      "微博",
+      "微信",
+      "朋友圈"
+    ],
     "candidate_disposition": "REVIEW",
     "note": "保留账号品牌约定，语义确认在发布审核执行；苹果/小米辣等同形词不能机械定罪。原文校准不施加本账号商业约定。"
   },
   "review": {
-    "required_for_release": ["facts", "story", "account_policy"],
+    "required_for_release": [
+      "facts",
+      "story",
+      "account_policy"
+    ],
     "missing_evidence": "PROVISIONAL",
-    "automatic_release": false
+    "automatic_release": false,
+    "binding_note": "v3.0 起审读报告不再要求 body_text_sha256 绑定与「机检候选闭环表」：报告标题写清「审的是哪个文件的哪个版本（场号/末场标题）」即可。哈希绑定只证明文件没被改过，不证明有人读过（借鉴 zenstory short-drama-review：引用只用文件名/场号/行号/短引文，不建哈希与第二套状态）。"
   },
-  "scope": "机械阻断只用于明确的输入/算术/契约错误；模糊正则命中交给证据化复核，不自动判文笔、事实真假或流量。"
+  "scope": "机械阻断只用于明确的输入/算术/契约错误；模糊正则命中交给证据化复核，不自动判文笔、事实真假或流量。",
+  "number_budget": {
+    "why": "v3.0 首篇样稿（作品 88）自查：数字串 79.8/千字、量词数串 43.6/千字、「三百」复现 4 次、「三年」当装饰词 4 次——比被批评的 87 更密，读起来像对账不像戏。全部 6 份 reference 只把「具体数字」当美德、没有一条上限，机检也只有描述性读数（fuben_density 自述 not a gate），所以没人咬。",
+    "corpus_baseline_per_1k": {
+      "87": {
+        "数字串": 61.6,
+        "量词数串": 14.6,
+        "汉字": 617
+      },
+      "80": {
+        "数字串": 50.1,
+        "量词数串": 6.3,
+        "汉字": 1117
+      },
+      "86": {
+        "数字串": 59.9,
+        "量词数串": 15.6,
+        "汉字": 2890
+      },
+      "88_初稿": {
+        "数字串": 79.8,
+        "量词数串（旧口径·含虚指一个）": 43.6,
+        "汉字": 802,
+        "同数复现": "三百×4",
+        "装饰时间词": "三年×4"
+      },
+      "88_改后": {
+        "数字串": 68.6,
+        "量词数串": 12.2,
+        "汉字": 656
+      }
+    },
+    "caps": {
+      "数字串/千字": 70.0,
+      "量词数串/千字": 20.0,
+      "同一数字复现": ">3 次",
+      "装饰性时间词": ">2 次"
+    },
+    "cap_basis": "数字串上限取全库最高读数（86：59.9）加一成余量；量词口径只数带记账单位的量词（年/次/块/元/斤/千卡/节/顿…），「一个·一样·一下」这类虚指不计——否则正常中文也会被打红。判词链允许同数复现到 3 次，第 4 次起换承载物。",
+    "measure_on": "只量可念轨（旁白＋台词）；画面/字幕/音效行的数字不计——机检与 v3.0 的「旁白驱动」同一口径。",
+    "hard_rule_ref": "references/0_剧本格式与分场表.md·六（数字预算）与 5_代入感与禁忌.md（装饰时间词、上限当等号）",
+    "quantifier_scope": "量词口径只数带记账单位的量词（年/次/块/元/斤/公斤/千卡/大卡/节/顿/天/岁/串/笔/行…）；「一个·一样·一下·一半」这类虚指不计，否则正常中文也会被打红（v3.1 校准时踩到）。"
+  }
 }
