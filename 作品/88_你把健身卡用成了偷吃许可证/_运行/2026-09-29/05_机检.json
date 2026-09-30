@@ -1,0 +1,157 @@
+{
+ "schema_version": 2,
+ "note": "v3.1 双档双读。数字预算三条读数（NUMBER_STUFFING/NUMBER_REPEAT/DECOY_SPAN）已入 policy 3.1.0；处置见 04，不写哈希与闭环销账表。",
+ "run_short": {
+  "schema_version": 2,
+  "profile": "short",
+  "target": "作品/88_你把健身卡用成了偷吃许可证",
+  "findings": [
+   {
+    "rule_id": "DIALOGUE_STATS",
+    "severity": "NOTE",
+    "category": "style",
+    "message": "引语帧候选 1 行（「讲，/说，」+括号引号同帧口径，跨行引语会低估）；估引语占比 1.0%；限额内",
+    "file": "/home/user/demo_5.4/作品/88_你把健身卡用成了偷吃许可证/旁白.md",
+    "evidence": "cues=1 pct=1.0"
+   }
+  ],
+  "tools": [
+   {
+    "name": "ai_style_diagnostics",
+    "command": [
+     "node",
+     "/home/user/demo_5.4/skills/story-review/scripts/check-ai-patterns.js",
+     "--json",
+     "--fail-on=blocking",
+     "--profile=fuben",
+     "/home/user/demo_5.4/作品/88_你把健身卡用成了偷吃许可证/旁白.md"
+    ],
+    "state": "COMPLETED",
+    "exit_code": 0,
+    "finding_count": 0
+   }
+  ],
+  "checked": [
+   "readable_nonempty_body_and_descriptive_metrics",
+   "explicit_equations_and_literal_character_counts",
+   "craft_gate_redline_and_budget_candidates",
+   "style_pattern_candidates_not_literary_judgment"
+  ],
+  "unverified": [
+   "editorial quality",
+   "narrative continuity and referent resolution",
+   "theme/event alignment and dialogue response",
+   "external factual truth",
+   "TTS listening",
+   "actual media consistency",
+   "platform publication",
+   "shootability of each scene (needs a human or a set)",
+   "setting/body consistency: no optional setting supplied"
+  ],
+  "inputs": {
+   "body_sha256": "7d4a55d086aeb45df28f226d59ddc95fda5789e1cdde6271f358bdb13241efe5",
+   "body_text_sha256": "7d4a55d086aeb45df28f226d59ddc95fda5789e1cdde6271f358bdb13241efe5",
+   "profile_sha256": "d3d20e844895c3f7c63ac25415772d28ff4144bd59bd112c55d470724778700d"
+  },
+  "policy_version": "3.1.0",
+  "body_path": "/home/user/demo_5.4/作品/88_你把健身卡用成了偷吃许可证/旁白.md",
+  "metrics": {
+   "characters_repository_convention": 656,
+   "nonempty_prose_lines": 27,
+   "han_per_line": 24.3,
+   "longest_line_characters": 39,
+   "number_tokens": 3,
+   "number_density_per_1000": 4.6,
+   "density_denominator": 656,
+   "assumed_cps": 6.4,
+   "estimated_duration_seconds": 102.5,
+   "duration_kind": "estimate_not_audio_measurement"
+  },
+  "status": "PASS",
+  "exit_code": 0,
+  "mechanical_pass": true,
+  "editorially_approved": false,
+  "release_ready": false
+ },
+ "run_full": {
+  "schema_version": 2,
+  "profile": "full",
+  "target": "作品/88_你把健身卡用成了偷吃许可证",
+  "findings": [
+   {
+    "rule_id": "DIALOGUE_STATS",
+    "severity": "NOTE",
+    "category": "style",
+    "message": "引语帧候选 1 行（「讲，/说，」+括号引号同帧口径，跨行引语会低估）；估引语占比 1.0%；限额内",
+    "file": "/home/user/demo_5.4/作品/88_你把健身卡用成了偷吃许可证/旁白.md",
+    "evidence": "cues=1 pct=1.0"
+   },
+   {
+    "rule_id": "VOLUME_UNDER_FLOOR",
+    "severity": "REVIEW",
+    "category": "structure",
+    "message": "旁白轨 656 字低于体量下限 700 字：这个体量撑不起「一生／多年跨度」，只会写成段子（87 篇塌陷到 617 字的直接教训）。处置二选一：①按 02 分场表把缺的场次补上；②题面确为单事件段子，在 00 简报登记「本篇是段子，不走一生弧」后由人工放行。",
+    "file": "/home/user/demo_5.4/作品/88_你把健身卡用成了偷吃许可证/旁白.md",
+    "evidence": "chars=656 floor=700 band=drama_vo"
+   }
+  ],
+  "tools": [
+   {
+    "name": "ai_style_diagnostics",
+    "command": [
+     "node",
+     "/home/user/demo_5.4/skills/story-review/scripts/check-ai-patterns.js",
+     "--json",
+     "--fail-on=blocking",
+     "--profile=fuben",
+     "/home/user/demo_5.4/作品/88_你把健身卡用成了偷吃许可证/旁白.md"
+    ],
+    "state": "COMPLETED",
+    "exit_code": 0,
+    "finding_count": 0
+   }
+  ],
+  "checked": [
+   "readable_nonempty_body_and_descriptive_metrics",
+   "explicit_equations_and_literal_character_counts",
+   "craft_gate_redline_and_budget_candidates",
+   "style_pattern_candidates_not_literary_judgment"
+  ],
+  "unverified": [
+   "editorial quality",
+   "narrative continuity and referent resolution",
+   "theme/event alignment and dialogue response",
+   "external factual truth",
+   "TTS listening",
+   "actual media consistency",
+   "platform publication",
+   "shootability of each scene (needs a human or a set)",
+   "setting/body consistency: no optional setting supplied"
+  ],
+  "inputs": {
+   "body_sha256": "7d4a55d086aeb45df28f226d59ddc95fda5789e1cdde6271f358bdb13241efe5",
+   "body_text_sha256": "7d4a55d086aeb45df28f226d59ddc95fda5789e1cdde6271f358bdb13241efe5",
+   "profile_sha256": "d3d20e844895c3f7c63ac25415772d28ff4144bd59bd112c55d470724778700d"
+  },
+  "policy_version": "3.1.0",
+  "body_path": "/home/user/demo_5.4/作品/88_你把健身卡用成了偷吃许可证/旁白.md",
+  "metrics": {
+   "characters_repository_convention": 656,
+   "nonempty_prose_lines": 27,
+   "han_per_line": 24.3,
+   "longest_line_characters": 39,
+   "number_tokens": 3,
+   "number_density_per_1000": 4.6,
+   "density_denominator": 656,
+   "assumed_cps": 6.4,
+   "estimated_duration_seconds": 102.5,
+   "duration_kind": "estimate_not_audio_measurement"
+  },
+  "status": "PASS_WITH_REVIEW",
+  "exit_code": 0,
+  "mechanical_pass": true,
+  "editorially_approved": false,
+  "release_ready": false
+ },
+ "craft_on_剧本": "NOTE DIALOGUE_STATS L-: 引语帧候选 1 行（「讲，/说，」+括号引号同帧口径，跨行引语会低估）；估引语占比 1.1%；限额内\nNOTE VO_TRACK_STATS L-: 旁白轨 741 字／对白轨 19 字（对白 2.5%，上限 25.0%）\nREVIEW SCENE_SPARSE L-: 共 4 场，超出 5–10 场目标带：少了撑不起一生弧（写成段子），多了每场不到 25 秒（拍成流水切换）\nNOTE VOLUME_UNDER_BAND L-: 旁白轨 773 字低于 drama_vo 参考带下沿 900 字：够播（>体量下限），但按\"一生／多年跨度\"的形态偏薄——段子体在 00 简报登记即可；本条只提醒不拦（87 篇的教训是下限失守，不是长度本身有罪）\nRESULT: 4 条（BLOCK 0 / REVIEW 1 / NOTE 3）；BLOCK>0 必须清零，REVIEW 须逐项闭环。"
+}

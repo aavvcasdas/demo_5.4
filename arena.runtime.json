@@ -1,10 +1,13 @@
 {
   "schema_version": 1,
-  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。缺阶段产物视为未执行；外部执行器可用时把 executors.active 切过去，产物协议不变。",
+  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。v3.0 起主交付＝可拍剧本（剧本.md＋旁白.md），审核层只留能真出错的确定性检查；不再要求产物齐备门禁与哈希绑定报告。外部执行器可用时把 executors.active 切过去，产物协议不变。",
   "project": {
-    "kind": "fuben",
+    "kind": "fuben-drama",
+    "display_name": "Arena · 人生副本可拍剧本",
     "entry_skill": "skills/fuben-write/SKILL.md",
+    "format_contract": "skills/fuben-write/references/0_剧本格式与分场表.md",
     "craft_refs": [
+      "skills/fuben-write/references/0_剧本格式与分场表.md",
       "skills/fuben-write/references/1_检索与真实骨架.md",
       "skills/fuben-write/references/2_选题与结构.md",
       "skills/fuben-write/references/3_口播与节奏.md",
@@ -12,7 +15,20 @@
       "skills/fuben-write/references/5_代入感与禁忌.md"
     ],
     "review_skill": "skills/fuben-review/SKILL.md",
-    "source_library": "拆文库/"
+    "source_library": "拆文库/",
+    "retired_in_v3": [
+      "scripts/fuben_products.py（产物齐备＋哈希绑定门禁）",
+      "scripts/fuben_loop.py（报告回读绑定；数据回传改走 scripts/fuben_data.py）",
+      "scripts/fuben_release.py（发布前证据）",
+      "scripts/fuben_scene_check.py（场面证据.json）",
+      "scripts/fuben_viral.py（数关键词的结构自评）",
+      "scripts/fuben_claims.py（兑现认领对表）",
+      "scripts/fuben_lint.py（旧别名）",
+      "scripts/corpus_gate_audit.py（自报不兼容）",
+      "审核报告.md 的 body_text_sha256 绑定与机检候选闭环表",
+      "02 末尾的兑现认领表"
+    ],
+    "version": "3.1.0"
   },
   "executors": {
     "active": "arena-inprocess",
@@ -22,112 +38,171 @@
   },
   "pipeline": {
     "name": "fuben-write",
+    "version": "3.1.0",
     "products_dir": "作品/NN_主题/_运行/",
+    "process_budget_lines": 80,
     "stages": [
       {
         "id": "00",
         "name": "简报",
         "role": "主控",
-        "product": "00_简报.md"
+        "product": "00_简报.md",
+        "requires": {
+          "topic_from_user_verbatim": true,
+          "duration_band": "默认 3–5 分钟／旁白轨 900–1600 字；终稿下限 700 字",
+          "register_if_short_single_event": "题面确为单事件段子时，在此登记「本篇是段子，不走一生弧」"
+        }
       },
       {
         "id": "01",
-        "name": "深读+检索+选题",
+        "name": "检索+选题",
         "role": "策划",
         "product": "01_深读_检索与方向.md",
         "requires": {
           "search_min_routes": 8,
           "search_single_batch_parallel": true,
-          "search_routes": ["同类人真实经历", "行业场景细节", "数字政策锚", "情绪现场"],
-          "topic_gates": ["一句话主线", "观众关系(爽/共鸣/猎奇)", "情绪出口与互动动作"],
+          "search_routes": [
+            "同类人真实经历",
+            "行业场景细节",
+            "数字政策锚",
+            "情绪现场"
+          ],
+          "search_table_columns": [
+            "检索词",
+            "来源(可回链)",
+            "取用的真实骨架",
+            "用到第几场"
+          ],
+          "search_table_max_lines": 80,
+          "topic_gates": [
+            "一句话主线(含时间跨度)",
+            "观众关系(爽/共鸣/猎奇)+证据句",
+            "情绪出口与互动动作"
+          ],
           "direction_cards": "3-4 分类型",
           "user_picks_direction": true,
           "source_mode": "混合源：虚构骨架+真实原型锚（≥1 个，可回链）"
-        }
+        },
+        "note": "保留项：不调用真实搜索即任务失败；未获用户选定方向不得开写正文"
       },
       {
         "id": "02",
-        "name": "人生时间轴（文件名沿用 02_场次单.md）",
+        "name": "分场表",
         "role": "策划",
-        "product": "02_场次单.md",
+        "product": "02_分场表.md",
+        "legacy_product_alias": "02_场次单.md",
         "requires": {
-          "stations": "5-8 站",
-          "station_fields": ["事件", "可视物证", "一句人话"],
+          "scenes": "5-8 场",
+          "scene_fields": [
+            "事件(谁要什么→谁挡着→变了哪一格)",
+            "画面主体(物证)",
+            "旁白字数",
+            "对白句数",
+            "秒数",
+            "钩点"
+          ],
           "emotion_curve": "压制→谷底(60-70%)→反打(主角自己动手)→释放(写清对手输了什么)",
-          "hook_interval_chars_max": 300,
-          "station_chars_max": 400,
-          "props": "物证 3 件（1 主走全篇并换义）",
-          "claim_table": "兑现认领（3-5 行，关键词必须是正文里会出现的字面）"
+          "props": "物证 3 件（1 主走全篇并换义；每件必须落进某场的 画面： 行）",
+          "foreshadow_max": 3,
+          "hook_interval_chars_max": 300
         },
-        "note": "v2.0：站点三件套；v1.3.5 六字段作废；并列/流程文不合格"
+        "note": "v3.0：兑现认领表已删（只查关键词在场，能被格式刷出来）；v1.3.5 六字段作废"
       },
       {
         "id": "03",
         "name": "成稿",
         "role": "主笔",
         "product": "03_初稿.md",
-        "writes": "正文.md",
+        "writes": [
+          "剧本.md",
+          "旁白.md"
+        ],
         "requires": {
-          "blocks_are_events": true,
+          "scene_header": "## 场N（地点 · 日/夜 · 25—45 秒）",
+          "labels": [
+            "画面",
+            "旁白",
+            "对白(角色（提示）：台词)",
+            "音效",
+            "字幕",
+            "转场"
+          ],
+          "every_scene_has_visual_line": true,
+          "narration_chars_per_scene": "100-200（上限 400）",
+          "dialogue_share_max_pct": 25,
           "first_line_is_hook": true,
           "signature_line_max": 3,
-          "turn_every_15_25s": true,
-          "ending": "金句 + 互动钩",
-          "block_selfcheck": [
-            "谁的处境变了",
-            "这块的新信息是什么",
-            "删掉这块下一块是否仍成立"
-          ]
+          "person": "第二人称「你」全程；引号内角色自称「我」",
+          "line_density": "一行一句完整的话（≤30 字）；每行汉字 <8＝碎行，回稿合并",
+          "extract_narration_track": "写完 剧本.md 再抽 旁白.md；两份不一致＝主稿作废"
         }
       },
       {
         "id": "04",
-        "name": "投手预演+返工（文件名沿用 04_审读与返工.md）",
+        "name": "划走点四扫+返工",
         "role": "审读+主笔",
-        "product": "04_审读与返工.md",
+        "product": "04_审读.md",
+        "legacy_product_alias": "04_审读与返工.md",
         "checks": [
-          "投手预演七问（引原句+行号）",
-          "平铺扫描（人工）",
-          "念稿测试",
-          "账目对账(fuben_craft --ledger)",
-          "兑现对表(fuben_claims)",
-          "结构自评(fuben_viral)"
-        ]
-      },
-      {
-        "id": "04b",
-        "name": "读通专项",
-        "role": "fuben-review",
-        "product": "审核报告.md",
-        "requires": {
-          "body_path": true,
-          "body_text_sha256": true
-        }
+          "三扫：衔接断裂／信息密度／念不出来（逐场，引场号或行号）",
+          "可拍三问：这场拍什么／旁白有没有复述画面／局面是否主角自己动手",
+          "处置分级：🔴必改 🟡建议 🟢保留（一句理由）",
+          "账目对账：fuben_craft --ledger",
+          "机检差异：改前→改后 findings 两行"
+        ],
+        "forbidden": [
+          "机检候选逐条销账表",
+          "body_text_sha256 绑定",
+          "结构自评存在性打勾",
+          "十条自审模板"
+        ],
+        "notes": "四扫（衔接/密度/念不出来/数词与比喻）＋可拍三问＋🔴🟡🟢；≤80 行；不写闭环表与哈希。"
       },
       {
         "id": "05",
         "name": "机检(可选)",
         "role": "scripts/fuben_run.py",
         "product": "05_机检.json",
-        "note": "PASS 不是创作批准"
+        "note": "PASS 不是创作批准；目录形态优先读 旁白.md，回落 正文.md"
       }
-    ]
+    ],
+    "machine_checks": {},
+    "number_budget": {
+      "added_in": "3.1.0",
+      "rules": [
+        "NUMBER_STUFFING（可念轨数字串 >70/千字 或量词数串 >20/千字 → REVIEW）",
+        "NUMBER_REPEAT（同一个数复现 >3 次 → REVIEW）",
+        "DECOY_SPAN（「三年/五年/这些年」类装饰时间词 >2 次 → NOTE）"
+      ],
+      "measures": "只量可念轨（旁白＋台词）；画面/字幕/音效行的数字不计——数字优先写进单据特写，不从嘴里念",
+      "baseline": {
+        "87": "61.6/17.8",
+        "80": "50.1/11.6",
+        "86": "59.9/22.1",
+        "88 初稿（反面教材）": "84.3/48.7"
+      },
+      "why": "v3.0 全部 reference 只把\"具体数字\"当美德、没有上限，机检密度读数自述非门禁；首篇样稿因此比被修的 87 更密。阈值取全库最高基线加一成余量。"
+    }
   },
   "rules": {
     "no_search_no_task": true,
     "no_draft_before_user_picks": true,
     "deliverables": [
-      "正文.md",
+      "剧本.md",
+      "旁白.md",
       "钩子备选.md"
     ],
     "optional_deliverables": [
-      "正文_3分钟版.md",
-      "分镜建议.md"
+      "审读意见.md",
+      "剧本_90秒版.md",
+      "分镜表.md（用户点名才做，本仓不做下游提示词）"
     ],
+    "process_files_are_scaffolding": "00–04 每份 ≤80 行；正文预算优先于自证",
     "honesty": [
       "不编造来源与数据",
       "不报必爆",
-      "solo 自检不冒充多 Agent 会审"
+      "solo 自检不冒充多 Agent 会审",
+      "机检 PASS 不表述为可发布"
     ]
   }
 }

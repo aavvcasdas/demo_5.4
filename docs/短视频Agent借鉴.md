@@ -173,3 +173,38 @@
 6. references 全量重写并编号 1–6；`fuben_policy.json` v2.2 记入**体量授权**（用户原话「时长不限，只要剧情节奏好不水，1-2 分钟都可以」）。
 
 **为什么改（86 的四个死因）**：主角无社会关系（观众无法代入）／写的是「一件事的流程」不是「一个人的一生」／开头是仪式不是钩／全篇零互动设计。详见 [技能重构诊断-2026-09-28.md](技能重构诊断-2026-09-28.md)。
+---
+
+## 2026-09-29（第三轮）· 第四轮：从「口播逐字稿」改成「可拍剧本」，并把审核层删到会咬人
+
+**触发**：v2.0 首两篇的真实结果——85/86 未出池，87 换代后塌陷到 **617 字／每行 5.7 汉字／对白乒乓**，而过程文件＋审读报告写到 **1.44 万字**（正文的 23 倍）。用户指令：「在原有架构上修改删除；看最新生成的文章为何是这样的，还有奇怪的审核脚本；读一下 skill 生成的稿子和拆文原稿；搜抖音；用 find-skills 找可借鉴的；把项目改成 arena 的 skill 剧本项目」。四岔裁决：主交付＝旁白驱动可拍剧本／审核删到会咬人／第三方 skill 只借鉴不装／本轮不写样稿。诊断与数据见 [剧本化改造诊断-2026-09-29.md](剧本化改造诊断-2026-09-29.md)。
+
+### 一、装了什么：一个都没装（记录原因，防止下轮"再装一个就解决了"）
+
+`npx skills find short-drama` → `No skills found`（CLI 直连 skills.sh 在本沙箱 SSL 失败，与上轮记录一致）；改走 `https://skills.sh/api/search?q=…` 兜底检索成功。实收候选与安装量：`zenstory-ai/drama-skills` 全家桶（`-write` 604／`-storyboard` 594／`-short-drama` 路由 585／`-review` 559／`-assets` 553，仓库 2380★，pushed 2026-09-28）、`dontbesilent2025/dbskill/dbs-script-flow` 14,250、`vickyhan924/self-media-script/douyin-viral-content` 1,673、`aaron-he-zhu/aaron-marketing-skills/short-video-scripter` 1,106、`alchaincyf/huashu-skills/huashu-douyin-script` 968，`jtydhr88/screenwriting-skills` 39–51、`jakerains/agentskills/shot-list` 70、`zhangzhangco/film-production-skills` 19，GitHub 侧 `yanshangcha01/libtv-shortdrama-storyboard` 9★。
+
+**不装的三条理由**：①常驻 listing 预算已超（在用 skill 描述合计 2314 字符 > ≈1600），再装会挤掉现有 skill 的描述、让它静默不触发；②`skills_audit.py` 已经报「剧本」触发词被 `short-drama-write` 与 `fuben-write` 双占，再装同族只会抢得更凶；③本仓缺的不是能力入口，是**主链路的交付形态与判据**——本仓已装同族 `-write`，把它的路由原则抄进文档比多装一个 skill 有效。
+
+### 二、借了什么、接到哪（只借判据，未复制代码／未引入依赖）
+
+| 来源 | 借的判据 | 落到 v3.0 的哪里 |
+|---|---|---|
+| `zenstory-ai/drama-skills/short-drama-review` | 「引用只使用文件名、标题 ID、行号或短引文；**不建立 sources 声明、哈希、record ID 或第二套状态**」 | 删审核报告的 `body_text_sha256` 绑定与机检候选闭环表；`审读意见.md` 只留「版本＋结论＋逐条位置与处置」 |
+| `zenstory-ai/drama-skills/short-drama`（路由） | creator-first「一集只维护一份真相文档」＋「**不要为补齐名义流水线伪造上游**」 | 删 `fuben_products.py`（产物齐备门禁）；`剧本.md` 为唯一真相、`旁白.md` 是它的投影（两份不一致＝主稿作废）；02 不再产"兑现认领表"这类自证表 |
+| `zenstory-ai/drama-skills/short-drama-write` | 「每场改变信息／权力／关系／情绪／物理状态或风险；无变化的场删掉或合并」 | 02 分场表的「变了哪一格」列 ＋ 04 可拍三问第 3 条（局面是否主角自己动手） |
+| `dontbesilent2025/dbskill/dbs-script-flow` | 划走三因（**逻辑断裂／信息密度掉了／口播卡壳**）＋🔴🟡🟢 风险分级＋"逐段扫、给可执行修法" | 04 的「三扫」与处置分级；审读文件 ≤80 行的预算（它的报告形态就是几行一条，不写自证） |
+| 抖音短剧工程口径（[塔猴](https://www.tahou.com/article/214766891445907461)／[CSDN](https://blog.csdn.net/weixin_43726381/article/details/160787770)／[2026 征集格式](https://www.wzbj1616.com/short-drama-submission/)／[红果编剧第一课](https://news.qq.com/rain/a/20251031A04KVO00)） | 每场带 **预估时长**、单集 300–500 字台词、每集 5–8 镜、**每集必须有画面事件**（摔杯子／推开门／手机响）、对白 ≤3 轮、转折处配**视觉符号**、「先写得清楚比写得惊艳重要」 | `0_剧本格式与分场表.md`：场标题带秒数区间（25–45s）、每场旁白 100–200 字、每场必有 `画面：` 行、对白占比 ≤25%、`SCENE_*`/`VO_TRACK_OVER` 机检 |
+| 赛道实证（[新榜·剧本人生](https://news.qq.com/rain/a/20260826A0DBMC00)） | 「网友们已经看了太多虚构的人生副本」；爆款＝**被压缩的一生产业链**（职高→进厂→服务员→保安），不是单点段子 | 选题闸一补「**这句话必须含时间跨度**」；单事件段子必须显式登记并人工放行体量下限——段子可以写，但别自称"一生" |
+
+### 三、本仓自己修的两处"自废门禁"（不来自任何外部仓库，是数据打出来的）
+
+1. `fuben_craft.dialogue_stats` 的「<800 汉字百分比归零」豁免：v2.0 把稿子压到 600 字级，**正好整篇落进免检区**，于是"旁白驱动、引语 ≤10%"这条铁律在最需要它的长度上失效。改为：剧本形态按 `旁白：`/`角色：` 标签行直接数占比（>25% 报 `VO_TRACK_OVER`），逐字稿形态仍用引语口径；只有 <200 汉字的样本降为 NOTE（比例在这个量级无意义），**不再整段隐形**。
+2. `VOLUME_OFF_BAND` 是 NOTE 且 policy 写明「引用用户授权原话即可闭环」＝**永不红灯**。改为双轨：上限自由（超带 NOTE），**下限 `volume_floor: 700` 命中即 REVIEW**，处置只有两种——补场，或题面确为段子时显式登记后人工放行。
+
+### 四、借而未收
+
+- `short-drama-storyboard`／`-image-prompts`／`-video-prompts`：制作链下游，本仓不做（用户点名要分镜或提示词时转 `.agents/skills/short-drama-write` 那条线，不在本仓复刻一套）。
+- `dbs-script-flow` 的"逐段功能标注表"：它要求每段标「开场／铺垫／论证／案例／高潮」，对 5–8 场的剧本是多余的第二套结构，只取其三维扫描。
+- 抖音征集模板的「80–100 集、总 3–5 万字」：那是投剧本卖本子的口径，与本账号单条内容不同用途。
+- `huashu-douyin-script`／`douyin-viral-content` 的带货口播分层：与叙事体第二人称不同层。
+- 上游 `-review` 的 `REV-001` 规则编号体系：我们不要规则号，只要「场号＋原句＋🔴🟡🟢」。
