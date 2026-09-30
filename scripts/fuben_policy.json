@@ -1,74 +1,29 @@
 {
   "schema_version": 1,
-  "version": "2.2.0",
+  "version": "3.0.0",
   "profiles": ["draft", "full", "short", "clip", "reference"],
   "tool_timeout_seconds": 30,
   "estimated_chars_per_second": 6.4,
-  "estimated_cps_note": "机检粗估口径（≈yao-open-prompts 口播 30s/180–220 字档，不含停顿）；创作预算语感口径为该系列主播 4.5–5 字/秒（含呼吸），两口径差为停顿，估时≠实测，听感以念稿计时为准。",
-  "volume_bands": { "long": [2800, 3300], "short": [850, 1100], "preferred": [900, 2600] },
-  "profile_volume_band": { "draft": "long", "full": "long", "short": "short", "clip": "short" },
-  "volume_note": "字数＝characters_repository_convention（repo 既有口径）；v2.0 起体量带降级为参考、节奏优先：出带在 04 引用 volume_authorization 的用户授权原话即可闭环（不必逐篇再找用户确认）；preferred 为默认目标带。",
-  "volume_authorization": {
-    "date": "2026-09-28",
-    "quote": "时长不限，只要剧情节奏好不水1-2分钟都可以",
-    "effect": "v2.0 起唯一体量口径：节奏与不水优先于字数，任何参考带出带均可由 04 引用本条闭环"
+  "estimated_cps_note": "机检粗估口径（不含停顿）；创作语感口径为该系列主播 4.5–5 字/秒（含呼吸）。估时≠实测，听感以念稿计时为准。",
+  "volume_reference": {
+    "short_flat": [400, 900],
+    "mid": [1800, 2600],
+    "long": [2800, 3300],
+    "note": "v3.0：只是历史参考带，不是门禁。写多长由「每 15–25 秒翻一次面」决定；用户 2026-09-28 授权「时长不限，只要剧情节奏好不水，1–2 分钟都可以」。"
   },
-  "rhythm": {
-    "signature_line_max": 3,
-    "hook_interval_chars_max": 300,
-    "station_chars_max": 400,
-    "note": "节奏项为创作纪律（见 references/3_口播与节奏.md），fuben_viral.py 只做结构自评，advisory，不判水。"
+  "creative_rules_location": {
+    "prompts": "skills/fuben-write/SKILL.md",
+    "references": [
+      "skills/fuben-write/references/1_检索与真实骨架.md",
+      "skills/fuben-write/references/2_选题与结构.md",
+      "skills/fuben-write/references/3_口播与节奏.md",
+      "skills/fuben-write/references/4_审读与改稿.md",
+      "skills/fuben-write/references/5_代入感与禁忌.md",
+      "skills/fuben-write/references/6_独立提示词.md",
+      "skills/fuben-write/references/7_自检与评分.md",
+      "skills/fuben-write/references/8_拆文库与对标.md"
+    ],
+    "note": "无烟红线、禁词表、开头铁律、对白限额、账目纪律、体量口径、结构评分全部在提示词与 references 内，脚本不再对创作下判断（2026-09-30 用户裁决）。"
   },
-  "craft": {
-    "smoke_terms": "香烟|电子烟|烟草|抽烟|吸烟|点烟|烟头|烟灰|烟味|一支烟|一根烟|半包烟|叼着烟|吞云吐雾|二手烟",
-    "ban_words": ["首先", "其次", "然而", "随着", "不禁", "值得一提的是", "眼眶一热", "五味杂陈", "五雷轰顶", "不由得", "感慨万千", "心潮澎湃", "不知不觉", "似乎在诉说着"],
-    "definition_upfront": ["先校准", "先说说", "先讲讲", "今天我们来聊", "今天聊聊", "大家好", "先来科普", "科普一下", "名词解释", "口径如下", "设定如下", "规则如下", "先对齐", "先统一口径", "解释一下", "世界观设定"],
-    "sys_prompt_max_lines": 2,
-    "head_max_chars": 50,
-    "nail_over": 12,
-    "quote_pct_over": 10.0
-  },
-  "creative_rules": {
-    "required_beat_count": null,
-    "required_emotion_peak_position": null,
-    "required_dialogue_ratio": null,
-    "required_sensory_word_count": null,
-    "required_callback_count": null,
-    "required_word_count": null,
-    "required_tables": [],
-    "ai_style_patterns": "REVIEW",
-    "chronological_order": "REVIEW",
-    "metric_thresholds": "descriptive_only"
-  },
-  "legacy_fact_disposition": {
-    "MISSING_SETTING": "NOTE",
-    "MISSING_BODY": "BLOCK",
-    "NO_FACT_LOCK": "NOTE",
-    "NO_STATE_LEDGER": "NOTE",
-    "WEAK_STATE_LEDGER": "REVIEW",
-    "GAME_MIX": "REVIEW",
-    "UNIT_DRIFT": "REVIEW",
-    "CARD_UNIT_DRIFT": "REVIEW",
-    "FREQUENCY_DRIFT": "REVIEW",
-    "NUMBER_DRIFT": "REVIEW",
-    "OMEN_DRIFT": "REVIEW",
-    "NO_OFFICIAL_CHECK": "REVIEW",
-    "YEAR_BACKTRACK": "REVIEW",
-    "DATE_BACKTRACK": "REVIEW",
-    "DURATION_CONFLICT": "REVIEW",
-    "TICKET_NO_MISMATCH": "REVIEW",
-    "DATE_COUNT_MISMATCH": "BLOCK",
-    "BAD_DATE_LOCK": "BLOCK"
-  },
-  "account_policy": {
-    "brand_candidates": ["资生堂", "Mac", "MAC", "空军一号", "AJ", "耐克", "阿迪", "苹果", "iPhone", "华为", "小米", "星巴克", "瑞幸", "喜茶", "优衣库", "ZARA", "微博", "微信", "朋友圈"],
-    "candidate_disposition": "REVIEW",
-    "note": "保留账号品牌约定，语义确认在发布审核执行；苹果/小米辣等同形词不能机械定罪。原文校准不施加本账号商业约定。"
-  },
-  "review": {
-    "required_for_release": ["facts", "story", "account_policy"],
-    "missing_evidence": "PROVISIONAL",
-    "automatic_release": false
-  },
-  "scope": "机械阻断只用于明确的输入/算术/契约错误；模糊正则命中交给证据化复核，不自动判文笔、事实真假或流量。"
+  "scope": "脚本只做输入/算术/产物/哈希/发布证据等技术核对；不要用脚本判文笔、剧情水不水、能不能爆。"
 }

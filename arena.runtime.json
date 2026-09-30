@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。缺阶段产物视为未执行；外部执行器可用时把 executors.active 切过去，产物协议不变。",
+  "schema_version": 2,
+  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。缺阶段产物视为未执行；外部执行器可用时把 executors.active 切过去，产物协议不变。v3.0（2026-09-30）：创作规则全部在提示词里，脚本只做技术核对。",
   "project": {
     "kind": "fuben",
     "entry_skill": "skills/fuben-write/SKILL.md",
@@ -9,7 +9,10 @@
       "skills/fuben-write/references/2_选题与结构.md",
       "skills/fuben-write/references/3_口播与节奏.md",
       "skills/fuben-write/references/4_审读与改稿.md",
-      "skills/fuben-write/references/5_代入感与禁忌.md"
+      "skills/fuben-write/references/5_代入感与禁忌.md",
+      "skills/fuben-write/references/6_独立提示词.md",
+      "skills/fuben-write/references/7_自检与评分.md",
+      "skills/fuben-write/references/8_拆文库与对标.md"
     ],
     "review_skill": "skills/fuben-review/SKILL.md",
     "source_library": "拆文库/"
@@ -23,6 +26,7 @@
   "pipeline": {
     "name": "fuben-write",
     "products_dir": "作品/NN_主题/_运行/",
+    "rule_source": "提示词与 references（v3.0 起创作规则不再由脚本执行）",
     "stages": [
       {
         "id": "00",
@@ -37,7 +41,6 @@
         "product": "01_深读_检索与方向.md",
         "requires": {
           "search_min_routes": 8,
-          "search_single_batch_parallel": true,
           "search_routes": ["同类人真实经历", "行业场景细节", "数字政策锚", "情绪现场"],
           "topic_gates": ["一句话主线", "观众关系(爽/共鸣/猎奇)", "情绪出口与互动动作"],
           "direction_cards": "3-4 分类型",
@@ -55,11 +58,10 @@
           "station_fields": ["事件", "可视物证", "一句人话"],
           "emotion_curve": "压制→谷底(60-70%)→反打(主角自己动手)→释放(写清对手输了什么)",
           "hook_interval_chars_max": 300,
-          "station_chars_max": 400,
           "props": "物证 3 件（1 主走全篇并换义）",
           "claim_table": "兑现认领（3-5 行，关键词必须是正文里会出现的字面）"
         },
-        "note": "v2.0：站点三件套；v1.3.5 六字段作废；并列/流程文不合格"
+        "note": "自检按 references/7_自检与评分.md，不用脚本判"
       },
       {
         "id": "03",
@@ -89,9 +91,8 @@
           "投手预演七问（引原句+行号）",
           "平铺扫描（人工）",
           "念稿测试",
-          "账目对账(fuben_craft --ledger)",
-          "兑现对表(fuben_claims)",
-          "结构自评(fuben_viral)"
+          "账目手算表",
+          "十项自检与五维对标（references/7_自检与评分.md）"
         ]
       },
       {
@@ -106,12 +107,29 @@
       },
       {
         "id": "05",
-        "name": "机检(可选)",
-        "role": "scripts/fuben_run.py",
-        "product": "05_机检.json",
-        "note": "PASS 不是创作批准"
+        "name": "自检与技术核对",
+        "role": "主笔",
+        "product": "05_自检.md",
+        "product_aliases": ["05_机检.json"],
+        "note": "先过提示词八问并落纸；再跑 fuben_run（输入/算术/指标，--style 可选）与 fuben_products（产物+哈希绑定）。技术 PASS 不是创作批准。"
       }
     ]
+  },
+  "tools": {
+    "technical_only": [
+      "scripts/fuben_run.py",
+      "scripts/fuben_products.py",
+      "scripts/fuben_loop.py",
+      "scripts/fuben_release.py",
+      "scripts/fuben_data.py"
+    ],
+    "removed_in_v3": [
+      "fuben_craft.py", "fuben_claims.py", "fuben_viral.py", "fuben_consistency.py",
+      "fuben_scene_check.py", "fuben_setting_years.py", "fuben_density.py", "fuben_hype.py",
+      "fuben_shotmap.py", "fuben_trial_blind.py", "fuben_corpus.py", "fuben_health.py",
+      "fuben_lint.py", "corpus_gate_audit.py", "corpus_node_scan.py", "audit_analyze_lib.py"
+    ],
+    "note": "删除的 16 个脚本原本对创作下判罚（禁词/开头/对白/账目档位/体量/结构/一致性/密度/爽点/分镜/盲评/语料校准）；这些规则已整体写入提示词与 references。"
   },
   "rules": {
     "no_search_no_task": true,
@@ -121,13 +139,14 @@
       "钩子备选.md"
     ],
     "optional_deliverables": [
-      "正文_3分钟版.md",
+      "正文_短版.md",
       "分镜建议.md"
     ],
     "honesty": [
       "不编造来源与数据",
       "不报必爆",
-      "solo 自检不冒充多 Agent 会审"
+      "solo 自检不冒充多 Agent 会审",
+      "机检 PASS 不是创作批准"
     ]
   }
 }
