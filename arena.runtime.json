@@ -26,7 +26,7 @@
   "pipeline": {
     "name": "fuben-write",
     "products_dir": "作品/NN_主题/_运行/",
-    "rule_source": "提示词与 references（v3.0 起创作规则不再由脚本执行）",
+    "rule_source": "提示词与 references（v3.0 起创作规则不再由脚本执行；v3.0.5 搜索升级＋笑点工程＋默认中档）",
     "stages": [
       {
         "id": "00",
@@ -40,8 +40,11 @@
         "role": "策划",
         "product": "01_深读_检索与方向.md",
         "requires": {
-          "search_min_routes": 8,
-          "search_routes": ["同类人真实经历", "行业场景细节", "数字政策锚", "情绪现场"],
+          "search_min_routes": 16,
+          "search_min_routes_hot": 8,
+          "search_first_batch_min": 12,
+          "search_time_share": "30%-50%",
+          "search_routes": ["热帖热评（贴吧/抖音/知乎/小红书/微博：笑点机制、观众原话、名场面、情绪现场）", "同类人真实经历", "行业场景细节", "数字政策锚"],
           "topic_gates": ["一句话主线", "观众关系(爽/共鸣/猎奇)", "情绪出口与互动动作"],
           "direction_cards": "3-4 分类型",
           "user_picks_direction": true,
@@ -54,8 +57,8 @@
         "role": "策划",
         "product": "02_场次单.md",
         "requires": {
-          "stations": "5-8 站",
-          "station_fields": ["事件", "可视物证", "一句人话"],
+          "stations": "6-9 站（默认中档 1800-2600 字）",
+          "station_fields": ["事件", "可视物证", "一句人话", "笑点/名场面（每站 ≥1、全篇 ≥8、谷底站不加）"],
           "emotion_curve": "压制→谷底(60-70%)→反打(主角自己动手)→释放(写清对手输了什么)",
           "hook_interval_chars_max": 300,
           "props": "物证 3 件（1 主走全篇并换义）",
@@ -75,6 +78,7 @@
           "signature_line_max": 3,
           "turn_every_15_25s": true,
           "ending": "金句 + 互动钩",
+          "humor": "笑点从热帖热评借机制不抄句；每站 ≥1、全篇 ≥8；谷底站不加笑点",
           "block_selfcheck": [
             "谁的处境变了",
             "这块的新信息是什么",
@@ -92,7 +96,7 @@
           "平铺扫描（人工）",
           "念稿测试",
           "账目手算表",
-          "十项自检与五维对标（references/7_自检与评分.md）"
+          "十一项自检（满分 22，references/7_自检与评分.md；v3.0.5 新增笑点项）与五个自查问题"
         ]
       },
       {
