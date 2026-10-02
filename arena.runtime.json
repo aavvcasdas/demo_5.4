@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。缺阶段产物视为未执行；外部执行器可用时把 executors.active 切过去，产物协议不变。v3.0（2026-09-30）：创作规则全部在提示词里，脚本只做技术核对。",
+  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。缺阶段产物视为未执行；外部执行器可用时把 executors.active 切过去，产物协议不变。v3.0（2026-09-30）：创作规则全部在提示词里，脚本只做技术核对。v3.6（2026-10-02）：对白转述术＋情绪四配方。",
   "project": {
     "kind": "fuben",
     "entry_skill": "skills/fuben-write/SKILL.md",
@@ -26,7 +26,7 @@
   "pipeline": {
     "name": "fuben-write",
     "products_dir": "作品/NN_主题/_运行/",
-    "rule_source": "提示词与 references（v3.0 起创作规则不再由脚本执行；v3.0.5 搜索升级＋笑点工程＋默认中档）",
+    "rule_source": "提示词与 references（v3.0 起创作规则不再由脚本执行；v3.6＝对白转述术＋情绪四配方＋情绪关）",
     "stages": [
       {
         "id": "00",
@@ -52,16 +52,18 @@
           "emotion_gates_min": 2,
           "dialogue_quote_share_max_v35": 0.15,
           "quote_nails_per_scene": 1,
+          "quote_nails_total_max_v36": 3,
+          "emotion_recipes_v36": ["深度三型：行话透视/自知独白/被问住", "笑点三源：同化/称呼通胀/错位的正经", "共鸣：家当细节", "爽：一个小反抗"],
+          "dialogue_retell_v36": ["转述四法：问答链/台词升成动作/台词升成画面/全场只留一句原声", "引号只给原声证据或≤14字反差句", "两稿法：先写对白稿→再转述化"],
           "seam_writing_types_v34": ["动作接续", "物件接力", "同一句话回声", "半句悬着", "数字/时间接力", "反差直切", "声响先行", "人物反应接续", "同地点换时段", "物件换义"],
           "seam_types_min": 6,
           "line_echo_max": 2,
-          "dialogue_share_max": 0.35,
+          "dialogue_share_max": 0.15,
           "verdict_max": 2,
           "checklist_items": 12,
           "checklist_full_score": 24,
           "checklist_pass_score": 20,
           "script_gates_v33": ["戏关：每站≥1场两人同框有来有回的戏，全篇≥6场", "悬念关：最大底牌≥55%才揭", "代价关：反打必须付代价", "毛边：主角缺点/自欺/嘴硬≥2处", "结尾：人能说出口的一句话＋可拍动作，判词≤1且禁作者总结腔"],
-          "dialogue_share_max": 0.25,
           "suspense_reveal_min_pct": 55,
           "script_gates_v32": ["事件关：每站一件不可撤回的事（一句话『他____了』），事件链≥6环且环环相扣", "名场面关：全篇≥2个可截图可复述场景，≥1个能直接当标题", "密度关：每2行(≈3-5秒)落一个新信息点"],
           "event_chain_min": 6,
@@ -78,7 +80,7 @@
         "product": "02_场次单.md",
         "requires": {
           "stations": "6-9 站（默认中档 1800-2600 字）",
-          "station_fields": ["事件", "可视物证", "一句人话", "笑点/名场面（每站 ≥1、全篇 ≥8、谷底站不加）"],
+          "station_fields": ["事件", "可视物证", "一句人话", "笑点/名场面（每站 ≥1、全篇 ≥8、谷底站不加）", "情绪：深/笑/共/爽（v3.6 规划行）"],
           "emotion_curve": "压制→谷底(60-70%)→反打(主角自己动手)→释放(写清对手输了什么)",
           "hook_interval_chars_max": 300,
           "props": "物证 3 件（1 主走全篇并换义）",
@@ -112,11 +114,11 @@
         "role": "审读+主笔",
         "product": "04_审读与返工.md",
         "checks": [
-          "投手预演七问（引原句+行号）",
+          "投手预演十问（引原句+行号）",
           "平铺扫描（人工）",
           "念稿测试",
           "账目手算表",
-          "十一项自检（满分 22，references/7_自检与评分.md；v3.0.5 新增笑点项）与五个自查问题"
+          "十二项自检（满分 24、判定线 20，references/7_自检与评分.md；v3.4 第12项接缝、v3.5 情绪关门禁、v3.6 转述）与五个自查问题"
         ]
       },
       {
@@ -135,7 +137,7 @@
         "role": "主笔",
         "product": "05_自检.md",
         "product_aliases": ["05_机检.json"],
-        "note": "先过提示词八问并落纸；再跑 fuben_run（输入/算术/指标，--style 可选）与 fuben_products（产物+哈希绑定）。技术 PASS 不是创作批准。"
+        "note": "先过提示词十一问并落纸；再跑 fuben_run（输入/算术/指标，--style 可选）与 fuben_products（产物+哈希绑定）。技术 PASS 不是创作批准。"
       }
     ]
   },
