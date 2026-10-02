@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Compatibility entry point for the lightweight fuben workflow.
+"""审核报告生成与版本绑定核对（v3.0：技术性检查，保留）。
+
+Original header: Compatibility entry point for the lightweight fuben workflow.
 
   design <brief-file>        check supplied brief readability, not quota tables
   draft|facts <body-or-dir>  shared mechanical checks
