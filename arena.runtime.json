@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。缺阶段产物视为未执行；外部执行器可用时把 executors.active 切过去，产物协议不变。",
+  "schema_version": 2,
+  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。缺阶段产物视为未执行；外部执行器可用时把 executors.active 切过去，产物协议不变。v3.0（2026-09-30）：创作规则全部在提示词里，脚本只做技术核对。v3.6（2026-10-02）：对白转述术＋情绪四配方。",
   "project": {
     "kind": "fuben",
     "entry_skill": "skills/fuben-write/SKILL.md",
@@ -9,7 +9,10 @@
       "skills/fuben-write/references/2_选题与结构.md",
       "skills/fuben-write/references/3_口播与节奏.md",
       "skills/fuben-write/references/4_审读与改稿.md",
-      "skills/fuben-write/references/5_代入感与禁忌.md"
+      "skills/fuben-write/references/5_代入感与禁忌.md",
+      "skills/fuben-write/references/6_独立提示词.md",
+      "skills/fuben-write/references/7_自检与评分.md",
+      "skills/fuben-write/references/8_拆文库与对标.md"
     ],
     "review_skill": "skills/fuben-review/SKILL.md",
     "source_library": "拆文库/"
@@ -23,6 +26,7 @@
   "pipeline": {
     "name": "fuben-write",
     "products_dir": "作品/NN_主题/_运行/",
+    "rule_source": "提示词与 references（v3.0 起创作规则不再由脚本执行；v3.6＝对白转述术＋情绪四配方＋情绪关）",
     "stages": [
       {
         "id": "00",
@@ -36,10 +40,34 @@
         "role": "策划",
         "product": "01_深读_检索与方向.md",
         "requires": {
-          "search_min_routes": 8,
-          "search_single_batch_parallel": true,
-          "search_routes": ["同类人真实经历", "行业场景细节", "数字政策锚", "情绪现场"],
+          "search_min_routes": 16,
+          "search_min_routes_hot": 8,
+          "search_first_batch_min": 12,
+          "search_time_share": "30%-50%",
+          "search_routes": ["热帖热评（贴吧/抖音/知乎/小红书/微博：笑点机制、观众原话、名场面、情绪现场）", "同类人真实经历", "行业场景细节", "数字政策锚"],
           "topic_gates": ["一句话主线", "观众关系(爽/共鸣/猎奇)", "情绪出口与互动动作"],
+          "topic_four_gates_v31": ["身份关：主角是一类人（有社会标签）", "代价关：有不可逆的代价或转折", "数字/物证关：标题或开场有具体数字或可拍物证", "判词关：标题带态度词"],
+          "benchmark_titles_min": 20,
+          "emotion_gates_v35": ["深度≥1处（从处境长出来的认识，非旁白总结腔）", "笑点≥3处（不自觉会笑，不是可怜的笑）", "共鸣≥1行", "爽≥1行"],
+          "emotion_gates_min": 2,
+          "dialogue_quote_share_max_v35": 0.15,
+          "quote_nails_per_scene": 1,
+          "quote_nails_total_max_v36": 3,
+          "emotion_recipes_v36": ["深度三型：行话透视/自知独白/被问住", "笑点三源：同化/称呼通胀/错位的正经", "共鸣：家当细节", "爽：一个小反抗"],
+          "dialogue_retell_v36": ["转述四法：问答链/台词升成动作/台词升成画面/全场只留一句原声", "引号只给原声证据或≤14字反差句", "两稿法：先写对白稿→再转述化"],
+          "seam_writing_types_v34": ["动作接续", "物件接力", "同一句话回声", "半句悬着", "数字/时间接力", "反差直切", "声响先行", "人物反应接续", "同地点换时段", "物件换义"],
+          "seam_types_min": 6,
+          "line_echo_max": 2,
+          "dialogue_share_max": 0.15,
+          "verdict_max": 2,
+          "checklist_items": 12,
+          "checklist_full_score": 24,
+          "checklist_pass_score": 20,
+          "script_gates_v33": ["戏关：每站≥1场两人同框有来有回的戏，全篇≥6场", "悬念关：最大底牌≥55%才揭", "代价关：反打必须付代价", "毛边：主角缺点/自欺/嘴硬≥2处", "结尾：人能说出口的一句话＋可拍动作，判词≤1且禁作者总结腔"],
+          "suspense_reveal_min_pct": 55,
+          "script_gates_v32": ["事件关：每站一件不可撤回的事（一句话『他____了』），事件链≥6环且环环相扣", "名场面关：全篇≥2个可截图可复述场景，≥1个能直接当标题", "密度关：每2行(≈3-5秒)落一个新信息点"],
+          "event_chain_min": 6,
+          "setpiece_min": 2,
           "direction_cards": "3-4 分类型",
           "user_picks_direction": true,
           "source_mode": "混合源：虚构骨架+真实原型锚（≥1 个，可回链）"
@@ -51,15 +79,14 @@
         "role": "策划",
         "product": "02_场次单.md",
         "requires": {
-          "stations": "5-8 站",
-          "station_fields": ["事件", "可视物证", "一句人话"],
+          "stations": "6-9 站（默认中档 1800-2600 字）",
+          "station_fields": ["事件", "可视物证", "一句人话", "笑点/名场面（每站 ≥1、全篇 ≥8、谷底站不加）", "情绪：深/笑/共/爽（v3.6 规划行）"],
           "emotion_curve": "压制→谷底(60-70%)→反打(主角自己动手)→释放(写清对手输了什么)",
           "hook_interval_chars_max": 300,
-          "station_chars_max": 400,
           "props": "物证 3 件（1 主走全篇并换义）",
           "claim_table": "兑现认领（3-5 行，关键词必须是正文里会出现的字面）"
         },
-        "note": "v2.0：站点三件套；v1.3.5 六字段作废；并列/流程文不合格"
+        "note": "自检按 references/7_自检与评分.md，不用脚本判"
       },
       {
         "id": "03",
@@ -73,6 +100,7 @@
           "signature_line_max": 3,
           "turn_every_15_25s": true,
           "ending": "金句 + 互动钩",
+          "humor": "笑点从热帖热评借机制不抄句；每站 ≥1、全篇 ≥8；谷底站不加笑点",
           "block_selfcheck": [
             "谁的处境变了",
             "这块的新信息是什么",
@@ -86,12 +114,11 @@
         "role": "审读+主笔",
         "product": "04_审读与返工.md",
         "checks": [
-          "投手预演七问（引原句+行号）",
+          "投手预演十问（引原句+行号）",
           "平铺扫描（人工）",
           "念稿测试",
-          "账目对账(fuben_craft --ledger)",
-          "兑现对表(fuben_claims)",
-          "结构自评(fuben_viral)"
+          "账目手算表",
+          "十二项自检（满分 24、判定线 20，references/7_自检与评分.md；v3.4 第12项接缝、v3.5 情绪关门禁、v3.6 转述）与五个自查问题"
         ]
       },
       {
@@ -106,12 +133,29 @@
       },
       {
         "id": "05",
-        "name": "机检(可选)",
-        "role": "scripts/fuben_run.py",
-        "product": "05_机检.json",
-        "note": "PASS 不是创作批准"
+        "name": "自检与技术核对",
+        "role": "主笔",
+        "product": "05_自检.md",
+        "product_aliases": ["05_机检.json"],
+        "note": "先过提示词十一问并落纸；再跑 fuben_run（输入/算术/指标，--style 可选）与 fuben_products（产物+哈希绑定）。技术 PASS 不是创作批准。"
       }
     ]
+  },
+  "tools": {
+    "technical_only": [
+      "scripts/fuben_run.py",
+      "scripts/fuben_products.py",
+      "scripts/fuben_loop.py",
+      "scripts/fuben_release.py",
+      "scripts/fuben_data.py"
+    ],
+    "removed_in_v3": [
+      "fuben_craft.py", "fuben_claims.py", "fuben_viral.py", "fuben_consistency.py",
+      "fuben_scene_check.py", "fuben_setting_years.py", "fuben_density.py", "fuben_hype.py",
+      "fuben_shotmap.py", "fuben_trial_blind.py", "fuben_corpus.py", "fuben_health.py",
+      "fuben_lint.py", "corpus_gate_audit.py", "corpus_node_scan.py", "audit_analyze_lib.py"
+    ],
+    "note": "删除的 16 个脚本原本对创作下判罚（禁词/开头/对白/账目档位/体量/结构/一致性/密度/爽点/分镜/盲评/语料校准）；这些规则已整体写入提示词与 references。"
   },
   "rules": {
     "no_search_no_task": true,
@@ -121,13 +165,14 @@
       "钩子备选.md"
     ],
     "optional_deliverables": [
-      "正文_3分钟版.md",
+      "正文_短版.md",
       "分镜建议.md"
     ],
     "honesty": [
       "不编造来源与数据",
       "不报必爆",
-      "solo 自检不冒充多 Agent 会审"
+      "solo 自检不冒充多 Agent 会审",
+      "机检 PASS 不是创作批准"
     ]
   }
 }
