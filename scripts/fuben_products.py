@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""阶段产物完整性门禁（2026-09-24b 增补）。
+"""阶段产物完整性核对（v3.0：仍保留，属技术性检查）。
 
-把 AGENTS.md「缺阶段产物视为未执行」从口号变成可跑的检查：按 arena.runtime.json
+把 AGENTS.md「缺阶段产物视为未执行」从口号变成可跑的技术核对：按 arena.runtime.json
 的 pipeline.stages 清单核对 `作品/NN_主题/_运行/YYYY-MM-DD/` 下各阶段产物是否存在、
 非空，根目录交付物（正文.md、钩子备选.md 等）是否存在，以及 `审核报告.md` 的
 body_path / body_text_sha256 是否仍绑定当前正文。
@@ -11,7 +11,7 @@ body_path / body_text_sha256 是否仍绑定当前正文。
 
 命名规范：一次运行一个日期目录 `_运行/YYYY-MM-DD/`（同日多轮加后缀 b/c…）；阶段文件
 名以 arena.runtime.json 的 product 字段为准（00_简报.md … 05_机检.json）。
-本检查只证明「走了管线」，不评价管线里的判断好坏。
+本检查只证明「走了管线、产物与哈希对得上」，不评价管线里的判断好坏，也不为创作背书。
 """
 from __future__ import annotations
 import argparse
@@ -68,8 +68,13 @@ def check(work: Path, run: str | None = None):
         product = stage.get('product')
         if not product:
             continue
+        candidates = [product, *stage.get('product_aliases', [])]
         rel = Path(product)
-        path = (work / rel) if rel.name == '审核报告.md' else (run_dir / rel)
+        if rel.name == '审核报告.md':
+            path = work / rel
+        else:
+            path = next((run_dir / Path(c) for c in candidates if (run_dir / Path(c)).is_file()),
+                        run_dir / rel)
         if not path.is_file():
             report['status'] = 'MISSING' if report['status'] == 'OK' else report['status']
             report['missing'].append(_rel(path))
@@ -103,7 +108,9 @@ def check(work: Path, run: str | None = None):
         current = text_sha256(body)
         report['review_binding']['current_body_text_sha256'] = current
         review = work / '审核报告.md'
-        if review.is_file():
+        if not review.is_file():
+            report['review_binding']['state'] = 'MISSING_REPORT'
+        else:
             text = review.read_text(encoding='utf-8')
             # 报告「修订记录」追加体例：同一键出现多次时以最后一条为准。
             hash_matches = re.findall(r'body_text_sha256\s*[：:]\s*`?([0-9a-fA-F]{64})`?', text)
@@ -140,7 +147,7 @@ def main(argv=None):
             print(f"EMPTY {item}")
         for item in report['notes']:
             print(f"NOTE {item}")
-        print('本门禁只核对管线是否留下产物与哈希绑定；不为创作质量背书。')
+        print('本核对只检查产物是否留下、报告哈希是否仍绑定当前正文；不为创作质量背书。')
     return 1 if report['status'] != 'OK' else 0
 
 

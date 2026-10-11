@@ -1,6 +1,8 @@
 """Software invariants, counterexamples, and failure injection; no model calls.
 
-Temporary fixtures are not corpus originals. A passing suite is not editorial QA.
+v3.0（2026-09-30）：创作类门禁脚本已删除，本套测试只覆盖**保留的技术层**——
+中文数字解析、显式算式与字数主张、输入边界、审核报告哈希绑定、产物完整性、
+发布证据、数据台账与仓库不变量。测试通过不代表稿子好看。
 """
 import copy
 from decimal import Decimal
@@ -18,10 +20,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from fuben_engine import inspect_path, literal_checks, sha256, style_diagnostics, text_sha256
 from fuben_numbers import number, numeric
-from fuben_hype import _cn_value
 import fuben_data as data
 import fuben_release as release
-from fuben_scene_check import inspect_scenes
 from fuben_loop import review
 
 
@@ -56,7 +56,6 @@ class NumberTests(unittest.TestCase):
         for text, expected in examples.items():
             with self.subTest(text=text):
                 self.assertEqual(number(text), expected)
-                self.assertEqual(Decimal(str(_cn_value(text))), expected)
 
     def test_ambiguous_colloquial_requires_opt_in(self):
         for text, expected in [('二百五', 250), ('一千二', 1200), ('七万二', 72000)]:
@@ -71,11 +70,11 @@ class NumberTests(unittest.TestCase):
 
 
 class EngineTests(Fixture):
-    def test_no_novel_or_sensory_quotas(self):
-        text = '今天体验的人生副本是：一直赢的普通人\n' + '你又猜对了。\n' * 100
-        report = self.inspect(text)
+    def test_metrics_are_descriptive_and_never_editorial(self):
+        report = self.inspect('你又猜对了。\n' * 100)
         self.assertTrue(report['mechanical_pass'])
-        self.assertFalse(any(f['severity'] == 'BLOCK' and f['category'] == 'style' for f in report['findings']))
+        self.assertIn('characters_repository_convention', report['metrics'])
+        self.assertEqual(report['metrics']['duration_kind'], 'estimate_not_audio_measurement')
         self.assertFalse(report['editorially_approved'])
         self.assertFalse(report['release_ready'])
 
@@ -125,7 +124,6 @@ class EngineTests(Fixture):
         self.assertEqual(findings[0]['line'], 3)
         self.assertIn('该短语有 4 个汉字，不是 2 个', findings[0]['message'])
         self.assertNotIn('九个字', findings[0]['evidence'])
-
         self.assertEqual(self.inspect('人生就四字\n练完再耍')['status'], 'PASS')
         self.assertEqual(self.inspect('人生就四字：练完再耍')['status'], 'PASS')
 
@@ -153,7 +151,6 @@ class EngineTests(Fixture):
                 self.assertEqual(self.inspect(text)['status'], 'PASS')
         for text in ('第5个字「我」', '第 5 个字「我」', '第五个字「我」'):
             self.assertFalse(any(f['severity'] == 'BLOCK' for f in literal_checks(text, self.body, 'draft')))
-        # A layout/ASR gap cannot be silently joined into a certain assertion.
         self.assertFalse(any(f['severity'] == 'BLOCK' for f in
                              literal_checks('5\n个字「我信一次」', self.body, 'draft')))
 
@@ -192,23 +189,10 @@ class EngineTests(Fixture):
                 self.assertTrue(report['mechanical_pass'])
                 self.assertFalse(any(f['severity'] == 'BLOCK' for f in report['findings']))
 
-    def test_flashback_and_different_objects_not_hard_errors(self):
-        (self.dir / '设定.md').write_text('## 事实锁\n她搬来七年。\n')
-        report = self.inspect('2026年你回家。\n2019年她来过这里。\n你的猫八年没换过窝。')
-        self.assertTrue(report['mechanical_pass'])
-        self.assertTrue(any(f['rule_id'] == 'YEAR_BACKTRACK' and f['severity'] == 'REVIEW' for f in report['findings']))
-
-    def test_explicit_daily_date_count_still_blocks(self):
-        (self.dir / '设定.md').write_text('## 事实锁\n每天一张\n起始日期：2026-01-01\n第4张：2026-01-02\n')
-        self.assertTrue(any(f['rule_id'] == 'DATE_COUNT_MISMATCH' and f['severity'] == 'BLOCK' for f in self.inspect()['findings']))
-        # Without a daily-frequency promise, arithmetic must not assume one.
-        (self.dir / '设定.md').write_text('## 事实锁\n起始日期：2026-01-01\n第4张：2026-01-02\n')
-        self.assertFalse(any(f['rule_id'] == 'DATE_COUNT_MISMATCH' for f in self.inspect()['findings']))
-
     def test_style_whitelist_never_exempts_math(self):
         self.body.write_text('你写了五个字「欢迎回家」。')
         (self.dir / '.deslop-whitelist').write_text(self.body.read_text())
-        self.assertEqual(inspect_path(self.body)['exit_code'], 1)
+        self.assertEqual(inspect_path(self.body, run_style=True)['exit_code'], 1)
 
     def test_review_is_not_self_approval_or_vacuous_callbacks(self):
         report = review(self.dir)
@@ -273,10 +257,10 @@ class EngineTests(Fixture):
             with self.subTest(script=script):
                 checker = self.dir / 'broken.js'
                 checker.write_text(script)
-                report = inspect_path(self.body, checker=checker)
+                report = inspect_path(self.body, run_style=True, checker=checker)
                 self.assertEqual(report['status'], 'ERROR')
                 self.assertEqual(report['exit_code'], 2)
-        self.assertEqual(inspect_path(self.body, executable='/no/such/node')['status'], 'ERROR')
+        self.assertEqual(inspect_path(self.body, run_style=True, executable='/no/such/node')['status'], 'ERROR')
 
     def test_checker_timeout_is_error(self):
         with patch('fuben_engine.subprocess.run', side_effect=subprocess.TimeoutExpired('node', 1)):
@@ -286,23 +270,11 @@ class EngineTests(Fixture):
 
     def test_clis_share_fact_severity(self):
         self.body.write_text('你写了五个字「欢迎回家」。')
-        for name in ('fuben_run.py', 'fuben_lint.py', 'fuben_consistency.py'):
-            result = run(sys.executable, ROOT / 'scripts' / name, self.dir)
-            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        result = run(sys.executable, ROOT / 'scripts/fuben_run.py', self.dir)
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
         result = run(sys.executable, ROOT / 'scripts/fuben_loop.py', 'review', self.dir, '--json')
         self.assertEqual(result.returncode, 1)
         self.assertFalse(json.loads(result.stdout)['editorially_approved'])
-
-    def test_density_advisory_and_shotmap_argument_parsing(self):
-        self.body.write_text('123 456 789\n' * 50)
-        result = run(sys.executable, ROOT / 'scripts/fuben_density.py', self.body, '--json')
-        self.assertEqual(result.returncode, 0)
-        self.assertEqual(json.loads(result.stdout)[0]['status'], 'DESCRIPTIVE')
-        result = run(sys.executable, ROOT / 'scripts/fuben_shotmap.py', self.dir, '--cps', '6.4', '--json')
-        self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(json.loads(result.stdout)[0]['cps'], 6.4)
-        for value in ('0', '-1', 'nan', 'inf'):
-            self.assertEqual(run(sys.executable, ROOT / 'scripts/fuben_shotmap.py', self.dir, '--cps', value).returncode, 2)
 
 
 class RouteTests(Fixture):
@@ -438,8 +410,7 @@ class RouteTests(Fixture):
         self.assertIn('fuben-review', actual)
 
     def test_distributed_sources_are_identical(self):
-        # 分发包（在用 + 归档）里的同名脚本必须逐字节一致：每个 skill 要能独立部署，
-        # 单份手改会让门禁变红。归档 skill 的拷贝同样在扫描范围内，防止它悄悄漂移。
+        # 分发包（在用 + 归档）里的同名脚本必须逐字节一致：每个 skill 要能独立部署。
         patterns = sorted((ROOT / 'skills').rglob('scripts/check-ai-patterns.js'))
         profiles = sorted((ROOT / 'skills').rglob('scripts/story-profile.js'))
         self.assertGreaterEqual(len(patterns), 3)
@@ -464,46 +435,22 @@ class RouteTests(Fixture):
         result = run(sys.executable, dest / 'scripts/fuben_run.py', body, '--json', cwd=self.dir)
         self.assertEqual(result.returncode, 0, result.stderr)
         report = json.loads(result.stdout)
-        self.assertEqual(report['tools'][0]['state'], 'COMPLETED')
+        self.assertEqual(report['status'], 'PASS')
+        self.assertIn('explicit_equations_and_literal_character_counts', report['checked'])
         (dest / 'scripts/fuben_run.py').write_text('# user edited')
         self.assertEqual(run(sys.executable, installer, '--dest', dest).returncode, 2)
 
 
-class InventoryTests(Fixture):
-    def test_new_sources_are_discovered_and_missing_inputs_are_not_skipped(self):
-        from fuben_corpus import discover
-        from fuben_health import inspect_collection
-        source = self.dir / '拆文库/99_新样本/原文/自定义文件名.txt'
-        source.parent.mkdir(parents=True)
-        source.write_text('这是后来加的新原文。')
-        self.assertEqual(discover(self.dir), [source])
-        (self.dir / '拆文库/100_遗漏原文').mkdir()
-        with self.assertRaises(ValueError): discover(self.dir)
-        (self.dir / '作品/999_缺正文').mkdir(parents=True)
-        report = inspect_collection(root=self.dir)
-        self.assertEqual(report['coverage']['work'], 1)
-        self.assertEqual(report['errors'], 1)
-
-
-class SceneTests(Fixture):
-    def test_missing_optional_table_not_claimed_pass(self):
-        result = inspect_scenes(self.dir)
-        self.assertEqual(result['scene_status'], 'NOT_ASSESSED')
-        self.assertTrue(result['mechanical_pass'])
-
-    def test_global_word_hit_does_not_prove_local_scene(self):
-        self.body.write_text('甲场景\n碗\n乙场景\n手机')
-        evidence = {'schema_version': 1, 'body_sha256': sha256(self.body),
-                    'scenes': [{'name': '甲', 'start_line': 1, 'end_line': 2, 'props': ['手机']}]}
-        file = self.dir / '场面证据.json'
-        file.write_text(json.dumps(evidence))
-        result = inspect_scenes(self.dir)
-        self.assertTrue(any(f['rule_id'] == 'SCENE_SPAN_MISS' for f in result['findings']))
-        evidence['scenes'][0]['props'] = []
-        file.write_text(json.dumps(evidence))
-        self.assertEqual(inspect_scenes(self.dir)['status'], 'ERROR')
-        self.body.write_text('改稿')
-        self.assertEqual(inspect_scenes(self.dir)['status'], 'FAIL')
+class ProductsTests(Fixture):
+    def test_missing_run_dir_is_reported_as_missing_not_pass(self):
+        result = run(sys.executable, ROOT / 'scripts/fuben_products.py', self.dir, '--json')
+        self.assertEqual(result.returncode, 1)
+        report = json.loads(result.stdout)
+        self.assertEqual(report['status'], 'MISSING')
+        self.assertEqual(report['review_binding']['state'], 'MISSING_REPORT')
+        (self.dir / '审核报告.md').write_text('# 审核报告\n结论：通过。\n', encoding='utf-8')
+        report = json.loads(run(sys.executable, ROOT / 'scripts/fuben_products.py', self.dir, '--json').stdout)
+        self.assertEqual(report['review_binding']['state'], 'UNBOUND')
 
 
 class ReleaseTests(Fixture):

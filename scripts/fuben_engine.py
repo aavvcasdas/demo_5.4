@@ -1,10 +1,21 @@
 #!/usr/bin/env python3
-"""Single severity/protocol implementation for fuben entry points.
+"""技术核对核心（v3.0，2026-09-30）。
 
-BLOCK = a reproducible input / arithmetic / explicit-contract defect.
-REVIEW = contextual candidate, not a verdict. NOTE = descriptive / unassessed.
-ERROR = a checker failed; it must never turn into PASS.
-Mechanical success does not mean an editor read, approved or listened to the work.
+只做三类**可复现的技术核对**，不做创作判断：
+
+  1. 输入完整性：正文是否存在、可解码、非空。
+  2. 算术与字数主张：显式算式、引文汉字数等**字面自相矛盾**的错误。
+  3. 描述性指标：字数、行数、数字密度、估时（都带口径名，不是实测）。
+
+创作规则（无烟、禁词、开头、对白、账目档位、体量、结构评分等）不在这里判，
+它们已整体写进 `skills/fuben-write/` 的提示词与 references——由写作者与审读者按
+提示词逐条自检。本模块的 BLOCK 只用于「确定的输入/算术错误」；其余一律
+REVIEW/NOTE，交给人的判断。
+
+  python3 scripts/fuben_run.py 作品/NN_主题/ --json          # 技术核对（默认）
+  python3 scripts/fuben_run.py 作品/NN_主题/ --style --json   # 附加 AI 腔句式候选（可选）
+
+PASS 只说明没有检出确定的机械错误，不代表稿子好看、账目已核或可以发布。
 """
 from __future__ import annotations
 import argparse
@@ -37,8 +48,6 @@ def load_policy():
         n = value.get(key)
         if type(n) not in (int, float) or not math.isfinite(n) or n <= 0:
             raise ValueError('invalid policy numeric value: ' + key)
-    if not isinstance(value.get('legacy_fact_disposition'), dict):
-        raise ValueError('invalid fact severity map')
     return value
 
 
@@ -58,16 +67,22 @@ def char_count(text):
     return len(re.sub(r'[，。、？！：；「」\"\'\s]', '', ''.join(lines)))
 
 
+NUMBER_TOKEN = re.compile(NUM_PATTERN)
+
+
 def metrics(text, cps=6.4):
-    from fuben_density import density
+    """Descriptive only: named units, no literary verdict."""
     lines = [(i, l.strip()) for i, l in enumerate(text.splitlines(), 1)
              if l.strip() and not l.lstrip().startswith('#')]
-    tokens, denominator, per1000 = density(text)
-    return {'characters_repository_convention': char_count(text), 'nonempty_prose_lines': len(lines),
+    body = ''.join(re.sub(r'[，。、？！：；「」\"\'\s]', '', l) for _, l in lines)
+    tokens = len(NUMBER_TOKEN.findall(body))
+    denominator = len(body) or 1
+    total = char_count(text)
+    return {'characters_repository_convention': total, 'nonempty_prose_lines': len(lines),
             'longest_line_characters': max((char_count(l) for _, l in lines), default=0),
-            'number_tokens': tokens, 'number_density_per_1000': per1000,
+            'number_tokens': tokens, 'number_density_per_1000': round(tokens / denominator * 1000, 1),
             'density_denominator': denominator, 'assumed_cps': cps,
-            'estimated_duration_seconds': round(char_count(text) / cps, 2),
+            'estimated_duration_seconds': round(total / cps, 2),
             'duration_kind': 'estimate_not_audio_measurement'}
 
 
@@ -142,23 +157,21 @@ def literal_checks(text, path, profile):
                                   line=text.count('\n', 0, m.start()) + 1, evidence=m[0]))
     # Only a directly quoted pure-Han string yields an unambiguous character count.
     n = r'[一二两三四五六七八九十百\d]+'
-    quoted_group = r'(?P<quoted>(?:[“「"][^\n”」"]{1,60}[”」"][、,， ]*){1,8})'
+    quoted_group = r'(?P<quoted>(?:[“「\"][^\n”」\"]{1,60}[”」\"][、,， ]*){1,8})'
     # Horizontal spacing is formatting, not a reason to miss an explicit claim.
-    # Do not cross line boundaries to manufacture a quote/count association.
     count_claim = rf'(?P<n>{n})[ \t]*个?[ \t]*(?:汉)?字'
     patterns = [quoted_group + r'(?:这|共|一共|只有|就|总共)?' + count_claim,
                 count_claim + r'[：:,， ]*' + quoted_group]
     seen = set()
     for regex in patterns:
         for m in re.finditer(regex, text):
-            # “第5个字「我」” identifies an index, not the length of the quote.
             if text[:m.start()].rstrip().endswith('第'):
                 continue
             if m.span() in seen:
                 continue
             seen.add(m.span())
             count = numeric(m['n'], colloquial=False)
-            quote = ''.join(re.findall(r'[“「"]([^\n”」"]+)[”」"]', m['quoted']))
+            quote = ''.join(re.findall(r'[“「\"]([^\n”」\"]+)[”」\"]', m['quoted']))
             actual = len(re.findall(r'[\u4e00-\u9fff]', quote))
             pure = bool(re.fullmatch(r'[\u4e00-\u9fff]+', quote))
             if count is not None and count != actual:
@@ -168,8 +181,6 @@ def literal_checks(text, path, profile):
                                       file=path, line=text.count('\n', 0, m.start()) + 1, evidence=m[0]))
 
     # A narrow unquoted form used by line-broken oral scripts: "人生就四字\n练完再耍".
-    # Count only the phrase after the colon or on the next non-empty line. Do not let an
-    # outer claim such as "回了九个字" consume this inner scope or an entire paragraph.
     lines = text.splitlines()
     scoped = re.compile(rf'^(?P<label>[^，。！？：:,]{{1,24}}?)就(?P<n>{n})[ \t]*个?[ \t]*(?:汉)?字[ \t]*(?:[：:,，][ \t]*(?P<inline>[^\n]{{1,40}}))?[ \t]*$')
     for index, raw_line in enumerate(lines):
@@ -210,6 +221,7 @@ def literal_checks(text, path, profile):
 
 
 def style_diagnostics(path, *, checker=AI_CHECKER, executable='node', timeout=30):
+    """可选：AI 腔句式候选（通用去 AI 味检查器，advisory，从不 BLOCK）。"""
     command = [executable, str(checker), '--json', '--fail-on=blocking', '--profile=fuben', str(path)]
     info = {'name': 'ai_style_diagnostics', 'command': command, 'state': 'ERROR'}
     try:
@@ -237,11 +249,11 @@ def style_diagnostics(path, *, checker=AI_CHECKER, executable='node', timeout=30
         return [finding('STYLE_TOOL_ERROR', 'ERROR', 'tool', str(exc), file=checker)], info
 
 
-def inspect_path(path, *, profile='draft', run_style=True, components=None, checker=AI_CHECKER, executable='node'):
-    report = {'schema_version': 2, 'profile': profile, 'target': str(path), 'findings': [], 'tools': [],
+def inspect_path(path, *, profile='draft', run_style=False, checker=AI_CHECKER, executable='node'):
+    report = {'schema_version': 3, 'profile': profile, 'target': str(path), 'findings': [], 'tools': [],
               'checked': [], 'unverified': ['editorial quality', 'narrative continuity and referent resolution',
-                                          'theme/event alignment and dialogue response', 'external factual truth',
-                                          'TTS listening', 'actual media consistency', 'platform publication'],
+                                            'theme/event alignment and dialogue response', 'external factual truth',
+                                            'TTS listening', 'actual media consistency', 'platform publication'],
               'inputs': {}}
     try:
         policy = load_policy()
@@ -266,64 +278,23 @@ def inspect_path(path, *, profile='draft', run_style=True, components=None, chec
         report['checked'].append('readable_nonempty_body_and_descriptive_metrics')
         if '\ufffd' in body:
             report['findings'].append(finding('REPLACEMENT_CHARACTER', 'REVIEW', 'input', '存在替换字符，可能是转写/编码损坏', file=body_path))
-        selected = components or {'facts', 'setting', 'style', 'account', 'craft'}
-        if 'facts' in selected:
-            report['findings'].extend(literal_checks(body, body_path, profile))
-            report['checked'].append('explicit_equations_and_literal_character_counts')
+        report['findings'].extend(literal_checks(body, body_path, profile))
+        report['checked'].append('explicit_equations_and_literal_character_counts')
         profile_path = body_path.parent / '.fuben.json'
         if profile != 'reference' and profile_path.exists():
             config = json.loads(profile_path.read_text(encoding='utf-8'))
             if not isinstance(config, dict) or type(config.get('schema_version')) is not int or config.get('schema_version') != 1 or config.get('profile') != 'fuben':
                 raise ValueError('invalid .fuben.json: expected schema_version=1, profile=fuben')
             report['inputs']['profile_sha256'] = sha256(profile_path)
-        setting_path = body_path.parent / '设定.md'
-        if profile == 'reference':
-            report['not_applicable'] = ['author project design', 'account commercial policy', 'production QA artifacts']
-        else:
-            if setting_path.exists():
-                setting = setting_path.read_text(encoding='utf-8-sig')
-                report['inputs']['setting_sha256'] = sha256(setting_path)
-                if 'facts' in selected:
-                    from fuben_consistency import check_text
-                    report['findings'].extend(literal_checks(setting, setting_path, profile))
-                    for _, code, message in check_text(setting, body):
-                        severity = policy['legacy_fact_disposition'].get(code, 'REVIEW')
-                        setting_codes = {'MISSING_SETTING', 'NO_FACT_LOCK', 'NO_STATE_LEDGER', 'WEAK_STATE_LEDGER',
-                                         'CARD_UNIT_DRIFT', 'DATE_COUNT_MISMATCH', 'BAD_DATE_LOCK'}
-                        origin = setting_path if code in setting_codes else body_path
-                        line_match = re.search(r'(?:^|[：; ])L(\d+)', message)
-                        if severity == 'REVIEW':
-                            message = '候选（待确认对象/语境）：' + message
-                        report['findings'].append(finding(code, severity, 'facts', message, file=origin,
-                                                        line=int(line_match[1]) if line_match else None))
-                    report['checked'].append('optional_fact_lock_diagnostics')
-                if 'setting' in selected:
-                    from fuben_setting_years import check_text as setting_checks
-                    for message in setting_checks(setting, body):
-                        report['findings'].append(finding('SETTING_CLAIM_CANDIDATE', 'REVIEW', 'facts', message, file=setting_path))
-                    report['checked'].append('optional_setting_claim_diagnostics')
-            else:
-                report['unverified'].append('setting/body consistency: no optional setting supplied')
-            if 'account' in selected:
-                terms = policy['account_policy']['brand_candidates']
-                for no, line in enumerate(body.splitlines(), 1):
-                    names = [t for t in terms if re.search(r'(?<![A-Za-z])' + re.escape(t) + r'(?![A-Za-z])', line, re.I)]
-                    if names:
-                        report['findings'].append(finding('ACCOUNT_BRAND_CANDIDATE', 'REVIEW', 'account',
-                                                          '核对品牌/平台是否必要，保留账号约定；同形词不能自动删: ' + ', '.join(names),
-                                                          file=body_path, line=no, evidence=line[:180]))
-        if 'craft' in selected:
-            from fuben_craft import craft_checks
-            report['findings'].extend(craft_checks(body, body_path, profile, policy, finding))
-            report['checked'].append('craft_gate_redline_and_budget_candidates')
-        if run_style and 'style' in selected:
-            findings, info = style_diagnostics(body_path, checker=checker, executable=executable, timeout=policy['tool_timeout_seconds'])
+        if run_style:
+            findings, info = style_diagnostics(body_path, checker=checker, executable=executable,
+                                               timeout=policy['tool_timeout_seconds'])
             report['findings'].extend(findings)
             report['tools'].append(info)
             if info['state'] == 'COMPLETED':
                 report['checked'].append('style_pattern_candidates_not_literary_judgment')
         else:
-            report['unverified'].append('style diagnostics not requested in this partial command')
+            report['unverified'].append('optional AI-style pattern scan not requested (--style)')
     except (OSError, ValueError, TypeError, ImportError, KeyError, ZeroDivisionError) as exc:
         report['findings'].append(finding('INPUT_OR_ENGINE_ERROR', 'ERROR', 'tool', str(exc), file=path))
     return finish(report)
@@ -341,28 +312,24 @@ def emit(report, *, json_output=False, label='FUBEN'):
         ordered = sorted(report['findings'], key=lambda f: SEVERITIES.index(f['severity']))
         hard = [f for f in ordered if f['severity'] in ('ERROR', 'BLOCK')]
         soft = [f for f in ordered if f['severity'] not in ('ERROR', 'BLOCK')]
-        shown = hard + soft[:8]
-        for item in shown:
+        for item in hard + soft:
             loc = f" L{item['line']}" if item.get('line') else ''
             print(f"{item['severity']} {item['rule_id']}{loc}: {item['message']}")
-        if len(soft) > 8:
-            print(f'NOTE 另有 {len(soft) - 8} 条非阻断候选/说明；--json 查看全部，不需逐条清零。')
-        print('范围：机械检查，不代表精读、事实全真、TTS 已听或可发布。')
-        if report['unverified']:
-            print('未验证：' + '; '.join(report['unverified']))
+        print('技术核对只覆盖输入与算术；创作规则按 fuben-write 提示词自检，PASS 不是发布批准。')
     return report['exit_code']
 
 
-def cli(argv=None, *, label='FUBEN', components=None):
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('path', help='作品目录，或任意正文文件（含3m/切片/原文）')
+def cli(argv=None, *, label='FUBEN'):
+    parser = argparse.ArgumentParser(description='人生副本剧本技术核对（输入/算术/指标）')
+    parser.add_argument('path', help='作品目录，或任意正文文件')
     parser.add_argument('--profile', choices=load_policy()['profiles'], default='draft')
+    parser.add_argument('--style', action='store_true', help='附加 AI 腔句式候选（advisory，需要 node）')
     parser.add_argument('--json', action='store_true')
-    # Compatibility only. The old flag never meant the reviewer had read it.
     parser.add_argument('--apply', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('--human', action='store_true', help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
-    return emit(inspect_path(args.path, profile=args.profile, components=components), json_output=args.json, label=label)
+    report = inspect_path(args.path, profile=args.profile, run_style=args.style)
+    return emit(report, json_output=args.json, label=label)
 
 
 if __name__ == '__main__':
