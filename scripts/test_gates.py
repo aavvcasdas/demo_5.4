@@ -1,36 +1,33 @@
 #!/usr/bin/env python3
-"""Software regressions + dynamic corpus/work coverage (no allowlisted green works).
+"""仓库体检总入口（v3.0：只做软件回归与受保护语料校验）。
 
---works reports ALL current numeric work dirs + standalone body variants, including
-content BLOCKs. Those are not software-test failures. --strict-works additionally
-returns 1 for a current manuscript BLOCK (use only when all works must be ready).
---corpus requires no creative-style BLOCKs; it is not a claim of literary quality.
+v3.0（2026-09-30）起删除了对稿件下创作判罚的采集式扫描（works/corpus 门禁曾依赖已删除的
+fuben_craft/fuben_health/fuben_corpus）。本入口现在只回答两个技术问题：
+  1. 软件测试是否全绿（unittest，见 tests/）；
+  2. 受保护语料（拆文库/*/原文/*）是否与 tests/protected_sources.json 逐字节一致。
+稿件好不好、水不水、能不能发，一律由 fuben-write 的提示词自检与人工审读判断。
+
+    python3 scripts/test_gates.py [--output report.json]
 """
 from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-import re
-import subprocess
 import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from fuben_engine import sha256
-from fuben_health import inspect_collection
+from fuben_engine import sha256  # noqa: E402
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--works', action='store_true')
-    parser.add_argument('--corpus', action='store_true')
-    parser.add_argument('--strict-works', action='store_true')
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     result = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.discover(str(ROOT / 'tests')))
-    summary = {'software_tests': result.testsRun, 'software_pass': result.wasSuccessful(),
-               'test_failures': len(result.failures), 'test_errors': len(result.errors), 'collections': {}}
+    summary = {'schema_version': 3, 'software_tests': result.testsRun, 'software_pass': result.wasSuccessful(),
+               'test_failures': len(result.failures), 'test_errors': len(result.errors)}
     failure = not result.wasSuccessful()
     manifest = json.loads((ROOT / 'tests/protected_sources.json').read_text(encoding='utf-8'))['sha256']
     actual_paths = {str(p.relative_to(ROOT)) for p in (ROOT / '拆文库').glob('*/原文/*') if p.is_file()}
@@ -40,27 +37,14 @@ def main():
         mismatches += sorted(actual_paths ^ recorded_paths)
     summary['protected_input_changes'] = mismatches
     failure |= bool(mismatches)
-    for scope, enabled in [('works', args.works or args.strict_works), ('corpus', args.corpus)]:
-        if not enabled:
-            continue
-        report = inspect_collection(corpus=scope == 'corpus')
-        style_blocks = [row['source'] for row in report['rows'] if any(
-            f['severity'] == 'BLOCK' and f['category'] == 'style' for f in row['result']['findings'])]
-        summary['collections'][scope] = {'coverage': report['coverage'], 'statuses': report['status_counts'],
-                                        'tool_errors': report['errors'], 'creative_style_blocks': style_blocks,
-                                        'content_blocked': [row['source'] for row in report['rows'] if row['result']['status'] == 'FAIL'],
-                                        'unassessed': report['excluded_or_unassessed']}
-        failure |= bool(report['errors'] or style_blocks)
-        if scope == 'works' and args.strict_works:
-            failure |= bool(report['blocks'])
-    summary['software_and_coverage_pass'] = not failure
+    summary['software_and_sources_pass'] = not failure
     summary['not_a_release_verdict'] = True
+    summary['scope'] = 'software tests + protected sources only; no manuscript quality gate exists in v3.0'
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(summary, ensure_ascii=False, indent=2))
-    print('SOFTWARE-AND-COVERAGE:', 'FAIL' if failure else 'PASS')
-    print('各稿的内容 BLOCK 和待核实项另列；本结果不是稿件通过或发布批准。')
+    print('SOFTWARE-AND-SOURCES:', 'FAIL' if failure else 'PASS')
     return 1 if failure else 0
 
 
