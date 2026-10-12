@@ -1,0 +1,16 @@
+{
+  "version": "2.0",
+  "word_count": 55773,
+  "genre_detected": "古言重生·复仇追夫·认知反转·甜宠",
+  "created_at": "2026-09-16T11:15:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 6,
+    "setup_clues": 5,
+    "character_archetypes": 4,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  }
+}

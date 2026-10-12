@@ -1,0 +1,23 @@
+{
+  "version": "2.0",
+  "word_count": 16176,
+  "word_count_note": "源文件为多篇合集（同一 txt 串联多部知乎作品，共 230848 字符）；本篇为合集首篇，正文边界止于下一部作品标题「江山作聘」之前。去重/截取后本篇正文 16176 字符（其中汉字 13105）。",
+  "genre_detected": "宫斗宅斗",
+  "created_at": "2026-09-16T10:29:56Z",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 15,
+    "setup_clues": 7,
+    "character_archetypes": 5,
+    "reusable_structures": 6,
+    "reversal_type": "认知反转"
+  }
+}

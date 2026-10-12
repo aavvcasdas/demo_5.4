@@ -1,0 +1,44 @@
+{
+  "version": "2.0",
+  "book_title": "不落的朝阳",
+  "source_path": "短篇/知乎(14)/不落的朝阳.txt",
+  "source_encoding": "GBK",
+  "word_count": 16082,
+  "platform": "知乎盐选",
+  "genre_detected": "拐卖救赎悬疑（知乎盐选/世情）",
+  "narrative_pov": "第一人称限知（晨曦）+ 后记第三人称全知（冯小宁）",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "node_count": 47,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 6,
+    "setup_clues": 4,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "reversal_detail": "主反转：陆朝阳身份 前男友→同伙/人贩→卧底线人（认知反转）；辅：信息反转（第7节回收误导）；meta：后记全知视角推翻正文幻觉（视角/真相反转）",
+  "five_dim_scores": {
+    "structure": 5,
+    "emotion": 5,
+    "reversal": 5,
+    "character_arc": 4,
+    "opening_ending": 4
+  },
+  "acceptance": {
+    "ai_tone_selfcheck": "pass",
+    "structure_counts_valid": "pass",
+    "block_items_scan": "pass"
+  },
+  "review_mode": "solo",
+  "review_rubric": "zhihu",
+  "created_by": "story-short-analyze + story-review (solo)",
+  "last_stage_in_progress": null,
+  "created_at": "2026-09-15T00:58:21Z"
+}

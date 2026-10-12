@@ -1,0 +1,18 @@
+{
+  "version": "2.0",
+  "word_count": 12600,
+  "word_count_note": "原文文件为同一故事重复6段的下载冗余，word_count 按去重后的唯一正文计；文件总字符约72511",
+  "genre_detected": "穿越·甜宠·救赎",
+  "platform_detected": "知乎盐言",
+  "created_at": "2026-09-16T08:00:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 5,
+    "setup_clues": 4,
+    "character_archetypes": 3,
+    "reusable_structures": 4,
+    "reversal_type": "时间线反转"
+  }
+}

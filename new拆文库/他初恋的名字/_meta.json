@@ -1,0 +1,24 @@
+{
+  "version": "2.0",
+  "word_count": 12443,
+  "genre_detected": "都市情感·白月光错位·追夫火葬场觉醒",
+  "platform_detected": "知乎盐言",
+  "created_at": "2026-09-16",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 5,
+    "setup_clues": 4,
+    "character_archetypes": 3,
+    "reusable_structures": 4,
+    "reversal_type": "信息反转"
+  },
+  "notes": "源文件为下载件，唯一正文重复 6 次并夹带公众号推广水印；分析基于去重后唯一副本（约第 10-1172 行）。短篇管道拆解。Rubric 采用 zhihu。"
+}

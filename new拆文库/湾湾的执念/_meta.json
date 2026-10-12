@@ -1,0 +1,16 @@
+{
+  "version": "2.0",
+  "word_count": 24068,
+  "genre_detected": "古穿今/复仇虐渣/豪门",
+  "created_at": "2026-09-16T10:00:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 10,
+    "setup_clues": 5,
+    "character_archetypes": 5,
+    "reusable_structures": 5,
+    "reversal_type": "身份反转"
+  }
+}

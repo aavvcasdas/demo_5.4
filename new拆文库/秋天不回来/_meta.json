@@ -1,0 +1,37 @@
+{
+  "version": "2.0",
+  "book_title": "秋天不回来",
+  "source_platform": "zhihu",
+  "source_type": "付费盐言短篇",
+  "word_count": 14233,
+  "genre_detected": "世情",
+  "genre_note": "暗黑校园霸凌+伪骨科禁忌+伦理救赎向",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "structure_counts": {
+    "beats": 4,
+    "hooks": 5,
+    "setup_clues": 5,
+    "character_archetypes": 4,
+    "reusable_structures": 5,
+    "reversal_type": "身份反转"
+  },
+  "node_count": 56,
+  "five_dim_scores": {
+    "结构完整度": 5,
+    "情节密度与节奏": 5,
+    "人物立体度": 5,
+    "情感拉扯力": 4,
+    "反转立意冲击力": 5
+  },
+  "acceptance_checks": {
+    "ai_flavor_selfcheck": "pass",
+    "structure_counts_validation": "pass",
+    "block_scan": "pass"
+  },
+  "review": {
+    "mode": "solo",
+    "rubric": "zhihu",
+    "rubric_source": "file",
+    "fallback": "stale agents -> solo"
+  }
+}

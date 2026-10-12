@@ -1,0 +1,16 @@
+{
+  "version": "2.0",
+  "word_count": 26287,
+  "genre_detected": "豪门（真假千金打脸）",
+  "created_at": "2026-09-16T00:00:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 4,
+    "hooks": 3,
+    "setup_clues": 0,
+    "character_archetypes": 2,
+    "reusable_structures": 3,
+    "reversal_type": "无反转"
+  }
+}

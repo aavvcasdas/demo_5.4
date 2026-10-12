@@ -1,0 +1,16 @@
+{
+  "version": "2.0",
+  "word_count": 25633,
+  "genre_detected": "沙雕（反套路穿书）",
+  "created_at": "2026-09-16T00:00:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 4,
+    "hooks": 4,
+    "setup_clues": 4,
+    "character_archetypes": 3,
+    "reusable_structures": 3,
+    "reversal_type": "身份反转"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": "2.0",
+  "word_count": 17016,
+  "genre_detected": "古言重生复仇/女帝谋权",
+  "created_at": "2026-09-15T13:50:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 6,
+    "setup_clues": 5,
+    "character_archetypes": 4,
+    "reusable_structures": 5,
+    "reversal_type": "动机反转"
+  }
+}

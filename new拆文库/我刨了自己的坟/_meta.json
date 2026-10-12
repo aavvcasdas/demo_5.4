@@ -1,0 +1,22 @@
+{
+  "version": "2.0",
+  "word_count": 15708,
+  "genre_detected": "死人文学",
+  "created_at": "2026-09-15T14:46:44Z",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 12,
+    "setup_clues": 3,
+    "character_archetypes": 5,
+    "reusable_structures": 5,
+    "reversal_type": "无反转"
+  }
+}

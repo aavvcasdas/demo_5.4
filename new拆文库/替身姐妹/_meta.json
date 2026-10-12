@@ -1,0 +1,23 @@
+{
+  "version": "2.0",
+  "word_count": 29891,
+  "word_count_note": "源文件为 6 次重复拼接（182797 字符 = 同一 30466 字符块重复 6 次，块内含首尾各一段盗版站广告水印）。已按去重后唯一正文拆解：29891 字符（其中汉字 23958）。",
+  "genre_detected": "世情",
+  "created_at": "2026-09-16T10:29:56Z",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 6,
+    "hooks": 15,
+    "setup_clues": 8,
+    "character_archetypes": 6,
+    "reusable_structures": 6,
+    "reversal_type": "认知反转"
+  }
+}

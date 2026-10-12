@@ -1,0 +1,44 @@
+{
+  "version": "2.0",
+  "book_title": "废墟之下",
+  "source_path": "短篇/知乎(11)/废墟之下.txt",
+  "source_encoding": "GBK",
+  "word_count": 16283,
+  "platform": "知乎盐选",
+  "genre_detected": "白月光虐恋+追妻/虐渣（知乎盐选/婚姻）",
+  "narrative_pov": "第一人称限知（宋妍）+ 第7-8节切贺川第三人称限知",
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "node_count": 50,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 6,
+    "setup_clues": 5,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "动机反转"
+  },
+  "reversal_detail": "主反转：宋妍全程『诈死复仇』动机贯穿，开篇明牌，反转落在兑现方式；辅：第7-8节切贺川视角（视角反转），把『他冷漠』翻为『他悔恨』；信息反转：孩子/画册前文轻埋、贺川视角集中回收",
+  "five_dim_scores": {
+    "structure": 5,
+    "emotion": 5,
+    "reversal": 4,
+    "character_arc": 4,
+    "opening_ending": 5
+  },
+  "acceptance": {
+    "ai_tone_selfcheck": "pass",
+    "structure_counts_valid": "pass",
+    "block_items_scan": "pass"
+  },
+  "review_mode": "solo",
+  "review_rubric": "zhihu",
+  "created_by": "story-short-analyze + story-review (solo)",
+  "last_stage_in_progress": null,
+  "created_at": "2026-09-15T01:10:14Z"
+}

@@ -1,0 +1,16 @@
+{
+  "version": "2.0",
+  "word_count": 16965,
+  "genre_detected": "悬疑/世情（不可靠叙述·家庭黑暗伦理）",
+  "created_at": "2026-09-15T13:20:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 6,
+    "setup_clues": 6,
+    "character_archetypes": 4,
+    "reusable_structures": 5,
+    "reversal_type": "身份反转"
+  }
+}

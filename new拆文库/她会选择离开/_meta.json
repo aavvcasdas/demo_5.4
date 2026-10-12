@@ -1,0 +1,16 @@
+{
+  "version": "2.0",
+  "word_count": 104650,
+  "genre_detected": "豪门/假千金互换/逃婚甜宠",
+  "created_at": "2026-09-16T00:00:00Z",
+  "stages_completed": [2, 3, 4, 5, 6],
+  "last_stage_in_progress": null,
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 4,
+    "setup_clues": 0,
+    "character_archetypes": 3,
+    "reusable_structures": 4,
+    "reversal_type": "无反转"
+  }
+}

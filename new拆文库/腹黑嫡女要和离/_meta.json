@@ -1,0 +1,24 @@
+{
+  "version": "2.0",
+  "word_count": 14521,
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "structure_counts": {
+    "beats": 5,
+    "hooks": 6,
+    "setup_clues": 5,
+    "character_archetypes": 3,
+    "reusable_structures": 5,
+    "reversal_type": "认知反转"
+  },
+  "source_note": "原始下载文件含盗版重复副本（行431起为全文重复）及推广水印；本拆解基于首份干净副本（行12-408，约14521字）。清单声明30483字，疑为含重本口径。",
+  "book_title": "腹黑嫡女要和离",
+  "genre_detected": "古言·宅斗·大女主爽文",
+  "last_stage_in_progress": null,
+  "created_at": "2026-09-16T00:33:08Z"
+}
