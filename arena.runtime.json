@@ -18,7 +18,9 @@
     "source_library": "拆文库/（语感与节奏：同赛道 ASR 拆解）",
     "structure_library": "new拆文库/_索引.md（结构与处境：114 篇 NL 编号）",
     "structure_cards": "new拆文库/_卡库.md（写前抄 3 条结构＋1 条避坑）",
-    "structure_index_tool": "python3 scripts/newlib_index.py --check"
+    "structure_index_tool": "python3 scripts/newlib_index.py --check",
+  "sourcing_priority": "①抖音同赛道近期爆款（≤30 天） ＞ ②new拆文库结构机制 ＞ ③知乎古言（需转译）",
+  "sourcing_ref": "docs/抖音同赛道爆款调研-2026-10-12.md"
   },
   "executors": {
     "active": "arena-inprocess",
@@ -50,6 +52,8 @@
           "search_routes": ["热帖热评（贴吧/抖音/知乎/小红书/微博：笑点机制、观众原话、名场面、情绪现场）", "同类人真实经历", "行业场景细节", "数字政策锚"],
           "topic_gates": ["一句话主线", "观众关系(爽/共鸣/猎奇)", "情绪出口与互动动作"],
           "topic_four_gates_v31": ["身份关：主角是一类人（有社会标签）", "代价关：有不可逆的代价或转折", "数字/物证关：标题或开场有具体数字或可拍物证", "判词关：标题带态度词"],
+          "douyin_bench_min": 3,
+          "douyin_bench_table": "账号 | 标题 | 日期 | 显示数据 | 借到的机制（不抄句）",
           "benchmark_titles_min": 20,
           "structure_bench_min": 2,
           "structure_borrow": "抄 3 条可复用结构＋1 条避坑，每条带 NL-编号（new拆文库/_卡库.md）",
@@ -124,12 +128,13 @@
         "product": "04_审读与返工.md",
         "product_aliases": ["04_审读.md"],
         "checks": [
-          "投手预演十二问（引原句+行号；v3.9 第11问传播关、v3.10 第12问结构对照）",
+          "投手预演十三问（引原句+行号；v3.9 第11问传播关、v3.10 第12问结构对照、v3.10.1 第13问收藏物）",
           "平铺扫描（人工）",
           "念稿测试",
           "账目手算表",
           "十二项自检（满分 24、判定线 20，references/7_自检与评分.md；v3.4 第12项接缝、v3.5 情绪关门禁、v3.6 转述）与五个自查问题",
-          "结构对照（v3.10，不打分）：谷底落点% vs 参照篇峰值%（NL-编号）、翻转次数 N:M、抄的 3 条结构落在哪一行"
+          "结构对照（v3.10，不打分）：谷底落点% vs 参照篇峰值%（NL-编号）、翻转次数 N:M、抄的 3 条结构落在哪一行",
+          "收藏物（v3.10.1）：正文里 1 件可存下来的东西（账/流程/能照做的话）＋行号；抖音取材表 ≥3 条并标口径"
         ]
       },
       {
@@ -148,7 +153,7 @@
         "role": "主笔",
         "product": "05_自检.md",
         "product_aliases": ["05_机检.json"],
-        "note": "先过提示词十一问并落纸；再跑 fuben_run（输入/算术/指标，--style 可选）与 fuben_products（产物+哈希绑定）。技术 PASS 不是创作批准。"
+        "note": "先过提示词十四问（v3.9 十二问＋v3.10 结构对照＋v3.10.1 收藏物）并落纸；再跑 fuben_run（输入/算术/指标，--style 可选）与 fuben_products（产物+哈希绑定）。技术 PASS 不是创作批准。"
       }
     ]
   },
