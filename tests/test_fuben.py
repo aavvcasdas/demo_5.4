@@ -598,5 +598,35 @@ class DataTests(Fixture):
         self.assertEqual(before, [sha256(p) for p in old])
 
 
+class NewLibraryIndex(unittest.TestCase):
+    """new拆文库索引器（技术工具）不变量：只读原库、产物齐备、不打分。"""
+
+    LIB = ROOT / 'new拆文库'
+    INDEX = LIB / '_index.json'
+
+    def test_index_is_up_to_date(self):
+        result = run(sys.executable, ROOT / 'scripts/newlib_index.py', '--check')
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_every_entry_is_indexed_and_no_extra_writes(self):
+        payload = json.loads(self.INDEX.read_text(encoding='utf-8'))
+        dirs = {p.name for p in self.LIB.iterdir() if p.is_dir() and not p.name.startswith(('_', '.'))}
+        self.assertEqual({e['name'] for e in payload['entries']}, dirs)
+        self.assertEqual(payload['count'], len(dirs))
+        self.assertEqual(sorted(payload['by_tier']), ['A', 'B', 'C', 'D'])
+        self.assertEqual(sorted(f.name for f in self.LIB.glob('_*.md')) ,
+                         ['_卡库.md', '_总览.md', '_索引.md'])
+        # 索引只做抽取：不得出现任何打分/排名/播放量字段
+        banned = {'score', 'rank', 'rating', 'plays', 'likes', 'viral'}
+        for entry in payload['entries']:
+            self.assertFalse(banned & set(entry), entry['name'])
+
+    def test_indexed_entries_carry_structure_pointers(self):
+        payload = json.loads(self.INDEX.read_text(encoding='utf-8'))
+        usable = [e for e in payload['entries'] if e['has_report']]
+        self.assertGreater(len(usable), 100)
+        self.assertGreater(sum(1 for e in payload['entries'] if e['reuse']), 100)
+
+
 if __name__ == '__main__':
     unittest.main()

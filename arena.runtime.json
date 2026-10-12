@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。缺阶段产物视为未执行；外部执行器可用时把 executors.active 切过去，产物协议不变。v3.0（2026-09-30）：创作规则全部在提示词里，脚本只做技术核对。v3.6（2026-10-02）：对白转述术＋情绪四配方。",
+  "comment": "Arena 会话执行通道：主会话按阶段实例化角色并落产物。缺阶段产物视为未执行；外部执行器可用时把 executors.active 切过去，产物协议不变。v3.0（2026-09-30）：创作规则全部在提示词里，脚本只做技术核对。v3.6（2026-10-02）：对白转述术＋情绪四配方。v3.10（2026-10-12）：new拆文库接入（选题与剧情结构参照库，scripts/newlib_index.py）。",
   "project": {
     "kind": "fuben",
     "entry_skill": "skills/fuben-write/SKILL.md",
@@ -15,7 +15,10 @@
       "skills/fuben-write/references/8_拆文库与对标.md"
     ],
     "review_skill": "skills/fuben-review/SKILL.md",
-    "source_library": "拆文库/"
+    "source_library": "拆文库/（语感与节奏：同赛道 ASR 拆解）",
+    "structure_library": "new拆文库/_索引.md（结构与处境：114 篇 NL 编号）",
+    "structure_cards": "new拆文库/_卡库.md（写前抄 3 条结构＋1 条避坑）",
+    "structure_index_tool": "python3 scripts/newlib_index.py --check"
   },
   "executors": {
     "active": "arena-inprocess",
@@ -48,6 +51,9 @@
           "topic_gates": ["一句话主线", "观众关系(爽/共鸣/猎奇)", "情绪出口与互动动作"],
           "topic_four_gates_v31": ["身份关：主角是一类人（有社会标签）", "代价关：有不可逆的代价或转折", "数字/物证关：标题或开场有具体数字或可拍物证", "判词关：标题带态度词"],
           "benchmark_titles_min": 20,
+          "structure_bench_min": 2,
+          "structure_borrow": "抄 3 条可复用结构＋1 条避坑，每条带 NL-编号（new拆文库/_卡库.md）",
+          "structure_translate": {"A": "可直接现实化", "B": "必须转译（古言/重生/豪门→现代权力结构）", "C": "只借关系机制", "D": "整书式：读剧情/情绪模块.md"},
           "emotion_gates_v35": ["深度≥1处（从处境长出来的认识，非旁白总结腔）", "笑点≥3处（不自觉会笑，不是可怜的笑）", "共鸣≥1行", "爽≥1行"],
           "emotion_gates_min": 2,
           "dialogue_quote_share_max_v35": 0.15,
@@ -79,6 +85,9 @@
         "role": "策划",
         "product": "02_场次单.md",
         "requires": {
+          "curve_types_v310": ["倒V早爆(谷底3-30%)", "压缩弹簧(40-65%)", "末段引爆(78-100%)", "台阶递进(翻转≥18次)"],
+          "curve_default_gut_pct": "60-70%（偏离须写明曲线与理由）",
+          "per_station_fields_v310": ["曲线位置（第几成/谷底落点%）", "借自 NL-编号"],
           "stations": "6-9 站（默认中档 1800-2600 字）",
           "station_fields": ["事件", "可视物证", "一句人话", "笑点/名场面（每站 ≥1、全篇 ≥8、谷底站不加）", "情绪：深/笑/共/爽（v3.6 规划行）"],
           "emotion_curve": "压制→谷底(60-70%)→反打(主角自己动手)→释放(写清对手输了什么)",
@@ -113,12 +122,14 @@
         "name": "投手预演+返工（文件名沿用 04_审读与返工.md）",
         "role": "审读+主笔",
         "product": "04_审读与返工.md",
+        "product_aliases": ["04_审读.md"],
         "checks": [
-          "投手预演十问（引原句+行号）",
+          "投手预演十二问（引原句+行号；v3.9 第11问传播关、v3.10 第12问结构对照）",
           "平铺扫描（人工）",
           "念稿测试",
           "账目手算表",
-          "十二项自检（满分 24、判定线 20，references/7_自检与评分.md；v3.4 第12项接缝、v3.5 情绪关门禁、v3.6 转述）与五个自查问题"
+          "十二项自检（满分 24、判定线 20，references/7_自检与评分.md；v3.4 第12项接缝、v3.5 情绪关门禁、v3.6 转述）与五个自查问题",
+          "结构对照（v3.10，不打分）：谷底落点% vs 参照篇峰值%（NL-编号）、翻转次数 N:M、抄的 3 条结构落在哪一行"
         ]
       },
       {
