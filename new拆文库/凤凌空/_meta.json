@@ -3,7 +3,13 @@
   "word_count": 14800,
   "genre_detected": "重生复仇",
   "created_at": "2026-09-15T01:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "无反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我的未婚夫带着一女子游历归来。 / 那女子张扬明媚：「这就是你的未婚妻吗？看起来的确无趣。」",
+  "core_premise": "将军府遗孤在婚前置被未婚夫与敌国公主当众羞辱，重生回羞辱当日，开启清算。",
+  "mother_theme": "M1_猎物即猎手反杀局",
+  "plot_engine": "P1_诱敌加码三底牌锁死",
+  "fuben_track": "Track_A_设局反杀"
 }

@@ -3,7 +3,13 @@
   "word_count": 24068,
   "genre_detected": "古穿今/复仇虐渣/豪门",
   "created_at": "2026-09-16T10:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 5,
     "reusable_structures": 5,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_copies": 6,
+  "opening_hook": "知乎盐选 | 湾湾的执念 / 阿姐被穿越女杀害。",
+  "core_premise": "大齐镇国公嫡二女周湾，阿姐周玥被穿越女林瑶害得未婚夫身死、自身受辱后红衣自焚；林瑶拿半块古玉逃回现代，周湾持另半块玉穿到现代，顶替豪门林家流落在外的私生女林湾。",
+  "mother_theme": "M1_猎物即猎手反杀局",
+  "plot_engine": "P1_诱敌加码三底牌锁死",
+  "fuben_track": "Track_A_设局反杀"
 }

@@ -3,7 +3,13 @@
   "word_count": 10619,
   "genre_detected": "甜宠",
   "created_at": "2026-09-14T00:20:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 5,
     "reversal_type": "信息反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "分手一个月后，我挂了妇科号，没想到给我接诊的是前男友。 / 看着眼前帅气的男医生。",
+  "core_premise": "分手一个月，女主因月经推迟去挂妇科专家号，接诊医生是前男友，一张\"孕酮偏高\"的化验单把她重新推回他身边。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

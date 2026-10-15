@@ -3,7 +3,13 @@
   "word_count": 19177,
   "genre_detected": "文娱/娱乐圈",
   "created_at": "2026-09-15T15:30:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "视角反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "周澍的第一场十万人演唱会，他唱着很多年前写给我的情歌，向他的新欢求婚了。 / 镜头扫过全场，也有一秒掠过我。",
+  "core_premise": "胃癌晚期的唐容，是明星周澍相伴十一年的经纪人兼隐婚妻子。周澍走红后抛弃她、向师妹罗秋求婚，还发 KTV 照片泼她脏水。唐容隐瞒病情，用离婚、要钱、以及死前布局的定时微博录音，把周澍拉下神坛。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

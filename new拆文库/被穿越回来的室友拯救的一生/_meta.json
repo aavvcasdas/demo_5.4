@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 40405,
+  "word_count": 18563,
   "genre_detected": "重生校园甜宠爽文（双穿越·复仇打脸）",
   "created_at": "2026-09-16T11:30:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,12 @@
     "character_archetypes": 4,
     "reusable_structures": 5,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_inflated_word_count": 40405,
+  "raw_copies": 2,
+  "opening_hook": "室友声称她是从未来回来的，要我立刻甩掉渣男朋友，放手去追校草周弛。 / 我五脸懵逼。",
+  "core_premise": "室友李亚男声称从十年后穿越回来，警告女主立刻甩掉渣男赵智伟、去追校草周弛；故事尾声揭示——周弛其实也是重生者，上辈子为救女主车祸而死。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

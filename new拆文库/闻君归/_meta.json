@@ -3,7 +3,13 @@
   "word_count": 28242,
   "genre_detected": "死人文学",
   "created_at": "2026-09-16T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "皇太孙是个疯子。 / 他在甬道被狗咬，我拿棒槌把狗打。",
+  "core_premise": "冷宫傻白甜小宫婢阿温十岁\"救\"了被獒犬咬的皇太孙周承翊（实则太孙穿宝甲不需她救），被养成、诱哄为妃；太子谋逆后太孙放火借密道带她逃生，隐居四年生两子；太孙为夺位做戏娶表妹、册后，阿温为护子撞剑而亡。",
+  "mother_theme": "M2_不可靠叙述与创伤错位",
+  "plot_engine": "P4_不可靠叙述与物证掀翻",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

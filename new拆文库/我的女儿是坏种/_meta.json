@@ -3,7 +3,13 @@
   "word_count": 16965,
   "genre_detected": "悬疑/世情（不可靠叙述·家庭黑暗伦理）",
   "created_at": "2026-09-15T13:20:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 4,
     "reusable_structures": 5,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我想杀了我女儿。 / 我一直不相信世上有天生坏种，直到女儿出生。",
+  "core_premise": "一个母亲用第一人称逐年记录女儿的暴行，读者读到末尾才发现，这个自称母亲的叙述者是丈夫本人扮演的。",
+  "mother_theme": "M4_规则怪谈与罪案审判",
+  "plot_engine": "P4_不可靠叙述与物证掀翻",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

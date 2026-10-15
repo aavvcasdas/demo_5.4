@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 35777,
+  "word_count": 14506,
   "genre_detected": "小三/婚恋",
   "created_at": "2026-09-16T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,12 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_inflated_word_count": 35777,
+  "raw_copies": 2,
+  "opening_hook": "确诊胃癌的那天，我握着验孕棒坐在医院外面发了很久的呆。 / 手机震动，是我八年的恋人，江驰。",
+  "core_premise": "胃癌晚期且怀孕的女孩，在八年恋人因新人露出动摇时，选择不摊牌、不纠缠、默默捐献器官离世。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

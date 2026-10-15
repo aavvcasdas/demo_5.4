@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 52021,
+  "word_count": 23451,
   "genre_detected": "科幻奇幻·蛇人养成·腹黑反转·强制爱",
   "created_at": "2026-09-16T10:30:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,12 @@
     "character_archetypes": 4,
     "reusable_structures": 5,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_inflated_word_count": 52021,
+  "raw_copies": 2,
+  "opening_hook": "他的蛇尾缠上了我，在我耳边一字一句道:「姐姐关了我这么久，现在自然也该轮到你了……」 / 身为生物研究所一级生物学家，实验失败后，我被自己亲手养大的蛇人报复性绑架了……",
+  "core_premise": "2070年au病毒只杀动物不杀人，研究所将人类基因注入动物企图延续物种；女生物学家叶臻从血蟒蛋孵出半人半蛇的试验品叶熙，亲手抚养三年。",
+  "mother_theme": "M5_绝境受限阶梯破局",
+  "plot_engine": "P2_受限空间四阶能力破局",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

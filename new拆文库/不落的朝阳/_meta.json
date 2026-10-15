@@ -40,5 +40,11 @@
   "review_rubric": "zhihu",
   "created_by": "story-short-analyze + story-review (solo)",
   "last_stage_in_progress": null,
-  "created_at": "2026-09-15T00:58:21Z"
+  "created_at": "2026-09-15T00:58:21Z",
+  "raw_copies": 1,
+  "opening_hook": "知乎盐选 | 不落的朝阳 / 被拐进大山的第二年，去给侄子开家长会。",
+  "core_premise": "一个被拐进深山两年的女人，在家长会上撞见失踪的前男友——如今他是全村敬重的支教老师。她一次次试图借他脱身，却反复被「他是同伙」的表象击碎希望；直到逃亡最后关头，他才坦白自己是为救她而卧底的线人。然而后记以新闻报道与幸存者视角翻转：大火中女警全数殉职，男友死在面包车里，被拐女人精神",
+  "mother_theme": "M4_规则怪谈与罪案审判",
+  "plot_engine": "P4_不可靠叙述与物证掀翻",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

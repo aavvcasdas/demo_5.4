@@ -1,0 +1,22 @@
+{
+  "version": "2.0",
+  "title": "心悦君兮君不配：红颜易碎琉璃脆",
+  "Author": null,
+  "platform": "知乎/番茄",
+  "genre": "长篇/专栏合集",
+  "word_count": 719141,
+  "sections": 0,
+  "ending": "多样",
+  "pov": "多视角/第一人称",
+  "reversal_count": 0,
+  "reversal_types": [
+    "认知反转",
+    "身份反转"
+  ],
+  "raw_copies": 1,
+  "opening_hook": "玉阶寒 / 我和沈玉睡的那天，他的白月光，阮容容，正在阁楼外面弹琴。",
+  "core_premise": "女主算清代价 → 她仍然下手 → 男主误判她的动机 → 她拒绝辩解",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
+}

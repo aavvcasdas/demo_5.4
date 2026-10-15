@@ -3,7 +3,13 @@
   "word_count": 13021,
   "genre_detected": "小三/婚恋",
   "created_at": "2026-09-15T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 5,
     "reversal_type": "视角反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "相爱十五年的爱人红着眼狠狠掐着我的脖子。 / 可是被掐的人在笑，掐人的在哭。",
+  "core_premise": "相爱十五年的妻子发现丈夫与酷似自己年轻时的女学生出轨，女儿病危时丈夫在酒店、第三者删信阻断，女儿死在赶往急诊的路上。",
+  "mother_theme": "M2_不可靠叙述与创伤错位",
+  "plot_engine": "P4_不可靠叙述与物证掀翻",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

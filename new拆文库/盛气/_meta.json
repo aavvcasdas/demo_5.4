@@ -3,7 +3,13 @@
   "word_count": 14138,
   "genre_detected": "甜宠",
   "created_at": "2026-09-15T08:30:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 4,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 3,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "常年第一的清冷学神，被一个女生拉下神坛。 / 成绩不好，但可爱黏人。",
+  "core_premise": "常年第二的冷漠学霸秦栖，把学神林昼当假想敌，把校霸程况当\"解压工具\"，却不知程况是保送清华的黑马且早已暗恋她。",
+  "mother_theme": "M6_双盲掉马与错位博弈",
+  "plot_engine": "P3_核心道具三次语义翻转",
+  "fuben_track": "Track_C_清醒断供算账"
 }

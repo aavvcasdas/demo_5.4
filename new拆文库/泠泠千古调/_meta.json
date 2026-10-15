@@ -3,7 +3,13 @@
   "word_count": 10224,
   "genre_detected": "宫斗宅斗",
   "created_at": "2026-09-14T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 5,
     "reusable_structures": 5,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "「不过是一个穿越女，怎么斗得过世家贵族培养了十几年的大家闺秀？」 / 苏贵妃看着我，笑容轻慢。",
+  "core_premise": "本朝盛产穿越女，穿越女凭现代知识惊艳后宫，然后一个接一个死在苏贵妃手里；第三个「穿越女」沈才人也是这个路数，只有她自己知道这个身份是装的。",
+  "mother_theme": "M1_猎物即猎手反杀局",
+  "plot_engine": "P1_诱敌加码三底牌锁死",
+  "fuben_track": "Track_A_设局反杀"
 }

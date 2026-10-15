@@ -3,7 +3,13 @@
   "word_count": 47347,
   "genre_detected": "古言宫廷·双生姊妹身份互换·替身悲剧",
   "created_at": "2026-09-16T13:30:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 4,
     "reusable_structures": 5,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我和阿姊是同日成婚，大家婚后各自安好。 / 然而有一天，我夫君受伤昏迷不醒，身为皇后的阿姊深夜前来说要同我交换身份。惊诧之余，床榻之上的夫君迷糊间竟然喊着一声「柔儿」，那是我阿姊的闺名！",
+  "core_premise": "双生姐妹唐柔（阿姊）与唐婉同日出嫁——阿姊为皇后嫁皇上杨墨祁，唐婉为景王妃嫁王爷杨墨礼。王爷心中只有唐柔，重伤昏迷后阿姊借机请求与唐婉互换身份前去照料；唐婉代姐入宫，与温柔的皇上杨墨祁朝夕相处竟互生情愫，而杨墨礼对唐柔的执念在占有与谋反中走向疯狂。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

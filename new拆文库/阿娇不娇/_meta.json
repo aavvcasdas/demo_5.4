@@ -3,7 +3,13 @@
   "word_count": 17016,
   "genre_detected": "古言重生复仇/女帝谋权",
   "created_at": "2026-09-15T13:50:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 4,
     "reusable_structures": 5,
     "reversal_type": "动机反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "从小我就知道，我要嫁的人不是太子。 / 而是我嫁给谁，谁就是太子。",
+  "core_premise": "陈阿娇前一世把丈夫送上皇位，换来外戚被拔、废后与冷宫十年，死后魂魄困在深宫几十年不得转世，亲眼看着刘彻宠爱一个又一个女人。她重生了，回到刘彘还没说出那句「金屋藏娇」的时候。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

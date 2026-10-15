@@ -18,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 5,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "闺蜜给我老公发来了暧昧短信。 / 可她低估了我和我老公的感情。",
+  "core_premise": "新认识的闺蜜给「我」老公发来暧昧好友申请，而「我」没有拆穿，顶着老公的微信继续跟她聊。",
+  "mother_theme": "M1_猎物即猎手反杀局",
+  "plot_engine": "P1_诱敌加码三底牌锁死",
+  "fuben_track": "Track_A_设局反杀"
 }

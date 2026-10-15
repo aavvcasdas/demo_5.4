@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 90254,
+  "word_count": 14489,
   "genre_detected": "校园霸凌/梦魇复仇",
   "created_at": "2026-09-16T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,12 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_inflated_word_count": 90254,
+  "raw_copies": 6,
+  "opening_hook": "如果可以和霸凌你的人互换身体，你是否愿意？ / 我用粘满鲜血的手，颤抖着写下了愿意两个字，然后陷入了一片漆黑。",
+  "core_premise": "女大学生张玥遭室友王莹（富家女）、吴曦、刘丽丽长期霸凌；一个早夭后化为梦魔、生前一直守护张玥的\"我\"，获得进入梦境、篡改记忆与魂魄的能力，借机在梦中替张玥完成现实里缺席的复仇。",
+  "mother_theme": "M4_规则怪谈与罪案审判",
+  "plot_engine": "P4_不可靠叙述与物证掀翻",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

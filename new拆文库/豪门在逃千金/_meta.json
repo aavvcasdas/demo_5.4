@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 26287,
+  "word_count": 11629,
   "genre_detected": "豪门（真假千金打脸）",
   "created_at": "2026-09-16T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 4,
@@ -12,5 +18,12 @@
     "character_archetypes": 2,
     "reusable_structures": 3,
     "reversal_type": "无反转"
-  }
+  },
+  "raw_inflated_word_count": 26287,
+  "raw_copies": 2,
+  "opening_hook": "亲生女儿被找到后，养父母把我赶出了家门。 / 我还没来得及难过，一个气质出尘的妇人就把我抱进了怀里，她情绪激动，眼圈泛红：「女儿，妈妈终于找到你了！」",
+  "core_premise": "被养父母当免费保姆养大的女孩，被赶出家门后得知自己是首富顾家流落民间十六年的亲生女儿。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

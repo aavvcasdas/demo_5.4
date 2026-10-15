@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 28827,
+  "word_count": 10830,
   "genre_detected": "悬疑·规则怪谈",
   "created_at": "2026-09-16T00:52:00+08:00",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,12 @@
     "character_archetypes": 3,
     "reusable_structures": 5,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_inflated_word_count": 28827,
+  "raw_copies": 2,
+  "opening_hook": "惊魂诡故事：天黑有人叫，你不要回头 / 查看详情",
+  "core_premise": "高考考场突降「规则怪谈」——监考老师塞纸条下死亡规则，违反即死；主角卷入后逐步发现整个诡异世界是死者张厉的审判场。",
+  "mother_theme": "M4_规则怪谈与罪案审判",
+  "plot_engine": "P4_不可靠叙述与物证掀翻",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

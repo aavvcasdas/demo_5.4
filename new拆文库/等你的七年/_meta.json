@@ -3,7 +3,13 @@
   "word_count": 17448,
   "genre_detected": "甜宠",
   "created_at": "2026-09-15T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 6,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我的爸爸是消防员，那天他为了救队友，死在了火海里。那天我妈刚好分娩，生下我后她才知道这件事。 / 生下我的第二天，她就跳了楼，令所有人都没有想到。",
+  "core_premise": "消防员救队友牺牲，遗孤林纯被那位被救的消防员江叔叔领养，暗恋养父之子江淮深多年。",
+  "mother_theme": "M8_无声牺牲与数字墓碑",
+  "plot_engine": "P3_核心道具三次语义翻转",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

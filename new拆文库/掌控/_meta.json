@@ -3,7 +3,13 @@
   "word_count": 10249,
   "genre_detected": "悬疑",
   "created_at": "2026-09-13T17:19:17Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 6,
@@ -12,5 +18,11 @@
     "character_archetypes": 6,
     "reusable_structures": 5,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "「念念，高利贷还不上了，我记得你有意外险，残疾也在保额范围内。」男友半开玩笑似的地开口。 / 我惊悚地望着他。",
+  "core_premise": "苏念清楚男友周辞是把女人往缅川贩卖的线人，也清楚他盯上了自己，但她没有跑。",
+  "mother_theme": "M1_猎物即猎手反杀局",
+  "plot_engine": "P1_诱敌加码三底牌锁死",
+  "fuben_track": "Track_A_设局反杀"
 }

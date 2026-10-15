@@ -3,7 +3,13 @@
   "word_count": 14579,
   "genre_detected": "世情",
   "created_at": "2026-09-15T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 5,
     "reusable_structures": 4,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "儿子回国的第一天，竟然是逼我滚出集团，还要和我最看重的儿媳妇离婚。 / 我眼神如冰刀。",
+  "core_premise": "一手把集团做大的女董事长，被亲儿子带着交际花逼宫，要她让位、还要和她最看重的儿媳离婚。",
+  "mother_theme": "M1_猎物即猎手反杀局",
+  "plot_engine": "P1_诱敌加码三底牌锁死",
+  "fuben_track": "Track_A_设局反杀"
 }

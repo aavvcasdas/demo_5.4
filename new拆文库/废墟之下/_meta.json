@@ -40,5 +40,11 @@
   "review_rubric": "zhihu",
   "created_by": "story-short-analyze + story-review (solo)",
   "last_stage_in_progress": null,
-  "created_at": "2026-09-15T01:10:14Z"
+  "created_at": "2026-09-15T01:10:14Z",
+  "raw_copies": 1,
+  "opening_hook": "西川地震那天，老公抛下我，飞去另一个城市找他的白月光。 / 我被埋在废墟中，给他发信息：「贺川，地震了，我被埋在地下，好黑啊，我好怕……」",
+  "core_premise": "被白月光横刀夺爱的妻子，在地震被埋、丈夫为白月光弃她而去后，故意发「诈死」短信让丈夫以为自己与胎儿俱亡，以此实施一场漫长的愧疚复仇；最终离婚、打脸小三、开启新生活，而渣男在悔恨中溃败。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

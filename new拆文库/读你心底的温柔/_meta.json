@@ -3,7 +3,13 @@
   "word_count": 15928,
   "genre_detected": "婚姻+甜宠（读心术脑洞/豪门）",
   "created_at": "2026-09-15T08:40:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 5,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "婚礼当天，我有了读心术。 / 听到微笑执手，正在为我戴婚戒的丈夫内心：",
+  "core_premise": "婚礼当天女主宋宜书突然获得读心术，读到新郎时琛真实心声——他娶她只为布局坑害养父吕伟明，自己是博弈工具人；此后她靠读心术在豪门婚姻里反向博弈，逐渐发现时琛腹黑外壳下的护短与真情。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

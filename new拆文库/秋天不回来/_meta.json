@@ -6,7 +6,13 @@
   "word_count": 14233,
   "genre_detected": "世情",
   "genre_note": "暗黑校园霸凌+伪骨科禁忌+伦理救赎向",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "structure_counts": {
     "beats": 4,
     "hooks": 5,
@@ -33,5 +39,11 @@
     "rubric": "zhihu",
     "rubric_source": "file",
     "fallback": "stale agents -> solo"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "校园霸凌我的人，成了我哥哥。 / 他白天在学校里把我推进厕所羞辱。",
+  "core_premise": "被重组家庭「哥哥」长期校园霸凌与精神控制的女主，在发现对方施暴的深层动机，竟源于自己高中时期逼死其亲妹（即自己同母异父的妹妹）的原罪后，又被当场揭露与霸凌者实为同母异父的亲兄妹（共享生母陆妈）；警笛救场、漫长赎罪与暗中守护者的温暖，共同收束成一场暗黑伦理下的救赎闭环。",
+  "mother_theme": "M4_规则怪谈与罪案审判",
+  "plot_engine": "P4_不可靠叙述与物证掀翻",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

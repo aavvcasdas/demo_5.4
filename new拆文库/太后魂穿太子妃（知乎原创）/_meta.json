@@ -3,7 +3,13 @@
   "word_count": 161348,
   "genre_detected": "古言穿魂/沙雕宫斗/虐恋BE",
   "created_at": "2026-09-16T12:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 8,
     "reusable_structures": 5,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我万万没想到，一睁眼我竟成了个太子妃？ / 我好不容易才熬到太后的位置，没快活几年，降成了太子妃？",
+  "core_premise": "天赢朝的福禄寿太后秦不祥，被自己一手扶上皇位、又一直当作孝顺儿子的皇帝秦厢琏用转魂咒换了魂魄，借一个十八岁的候选太子妃盛雪依的身体还阳。她生前死后两世的记忆与势力，全落进一个宫女的位置里。",
+  "mother_theme": "M1_猎物即猎手反杀局",
+  "plot_engine": "P1_诱敌加码三底牌锁死",
+  "fuben_track": "Track_A_设局反杀"
 }

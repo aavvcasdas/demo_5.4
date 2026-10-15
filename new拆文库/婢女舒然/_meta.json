@@ -3,7 +3,13 @@
   "word_count": 51613,
   "genre_detected": "古言宫廷·婢女视角·帝王无情·治愈",
   "created_at": "2026-09-16T09:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 4,
     "reusable_structures": 5,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我是皇上的婢女，跟在他身边十多年，看着他从爽朗皇子变成阴狠帝王。 / 所有人都以为他会将我纳入后宫，可我一直知道——",
+  "core_premise": "婢女舒然跟在皇帝（文博礼）身边十多年，亲历他抄家灭门、赐死婢女、构陷忠良，终于识破\"帝王之爱廉价、皇上看不起奴婢\"的真相；恩人李伯以一生换取她出宫自由，舒然走出宫墙，在民间重新活成\"李舒然\"。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

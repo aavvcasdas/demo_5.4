@@ -3,7 +3,13 @@
   "word_count": 24824,
   "genre_detected": "世情",
   "created_at": "2026-09-16T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 6,
@@ -12,5 +18,11 @@
     "character_archetypes": 4,
     "reusable_structures": 4,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我和宁安一起出了车祸，一死一伤。 / 从病床上苏醒的瞬间，我妈满脸的血，哭得有些歇斯底里。",
+  "core_premise": "双胞胎姐妹宁安、宁意同车出车祸一死一伤，活下来的「笨」妹妹宁意被妈妈当作死去的学霸姐姐宁安的替身，承受持续多年的精神虐待。",
+  "mother_theme": "M4_规则怪谈与罪案审判",
+  "plot_engine": "P4_不可靠叙述与物证掀翻",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

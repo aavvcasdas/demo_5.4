@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 29611,
+  "word_count": 12878,
   "genre_detected": "古言·穿书·宫斗",
   "created_at": "2026-09-16T01:30:00+08:00",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,12 @@
     "character_archetypes": 3,
     "reusable_structures": 5,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_inflated_word_count": 29611,
+  "raw_copies": 2,
+  "opening_hook": "父皇找回流落民间的公主。 / 她将会夺走我的一切。",
+  "core_premise": "昭仁是「话本世界」里的恶毒女配，觉醒后想避开\"和亲惨死、尸挂城墙\"的结局；更关键的是父皇也觉醒了——他看过话本后续，成了\"手握剧本的男人\"，反向宠溺昭仁、压制真女主昭阳。",
+  "mother_theme": "M7_全员失格唯我独醒",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_C_清醒断供算账"
 }

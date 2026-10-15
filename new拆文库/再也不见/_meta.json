@@ -6,7 +6,13 @@
   "word_count": 13257,
   "genre_detected": "追妻火葬场",
   "genre_note": "绝症+娱乐圈向，女主不回头因生命尽头而非新生活",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "structure_counts": {
     "beats": 4,
     "hooks": 5,
@@ -33,5 +39,11 @@
     "rubric": "zhihu",
     "rubric_source": "file",
     "fallback": "stale agents -> solo"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我刚做完化疗的样子，被人发到网上，配文：贱女人得癌症了，哈哈哈。 / 不到十分钟，明星前夫给我打电话，我挂断了。",
+  "core_premise": "陪流量前夫隐婚 8 年、查出胃癌晚期的妻子林倾，在遭遇出轨与离婚勒索、被剪辑录音泼脏水后，选择删除万字曝光稿安静离世；前夫江慕丞（原名江寒）得知真相后疯魔挽回，却只换来她一句「我不爱你了」，番外补出他殉情的迟来火葬场。核心冲突：名利场对爱的吞噬，与迟来深情在死亡面前的无效。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

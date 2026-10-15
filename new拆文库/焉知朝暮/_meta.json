@@ -3,7 +3,13 @@
   "word_count": 17773,
   "genre_detected": "死人文学",
   "created_at": "2026-09-15T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "付衍终于在微博上公开宣布我是他女朋友。 / 开始满世界疯狂找我的时候，",
+  "core_premise": "白朝朝与影帝付衍相恋七年，被亲妹白暮暮顶替身份、长期霸凌网暴，抑郁自杀；死后灵魂被困在付衍身边，目睹他与前女友般宠溺白暮暮，并一步步揭开\"自己才是付衍早年伯乐与真爱对象、却被妹妹冒名顶替\"的真相。",
+  "mother_theme": "M2_不可靠叙述与创伤错位",
+  "plot_engine": "P4_不可靠叙述与物证掀翻",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

@@ -3,7 +3,13 @@
   "word_count": 22991,
   "genre_detected": "甜宠",
   "created_at": "2026-09-15T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 4,
     "reusable_structures": 3,
     "reversal_type": "无反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "联赛前几天，喜欢的人和我的室友在一起了。 / 我成为了各大高校的谈资。",
+  "core_premise": "研一女生陶染染暗恋师兄段琛，段琛却与她的室友范筱若在一起，她反被全高校当作\"靠队友躺赢\"的谈资，直到隔壁学校联赛大佬蔚蕴棠主动邀她组队。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

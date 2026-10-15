@@ -18,5 +18,11 @@
     "character_archetypes": 5,
     "reusable_structures": 5,
     "reversal_type": "无反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我把自己的坟给刨了。 / 我被闺蜜害死，爸妈却认她当干女儿。",
+  "core_premise": "被闺蜜害死三年的鬼魂，困在自己墓地方圆百米内，不能托梦、不能触碰活人，唯一能做的是把自家的坟刨出动静来。",
+  "mother_theme": "M5_绝境受限阶梯破局",
+  "plot_engine": "P2_受限空间四阶能力破局",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

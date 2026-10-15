@@ -3,7 +3,13 @@
   "word_count": 17674,
   "genre_detected": "宫斗宅斗",
   "created_at": "2026-09-15T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我刚出生就被身为户部尚书的父亲悄悄扔到了城外的雪地里差点冻死。 / 后来我成为了镇国大将军的嫡女，看着我妹妹费力巴结我的样子，我只好好心告诉她，我就是那个被宋家抛弃的嫡长女。",
+  "core_premise": "镇国公府嫡女沈荣华（实为被户部尚书宋家抛弃的嫡长女，生在鬼节被扔雪地）嫁给太子，太子却爱上她的亲妹妹宋灼华，洞房夜牵着妹妹的手说只爱她一人。",
+  "mother_theme": "M1_猎物即猎手反杀局",
+  "plot_engine": "P1_诱敌加码三底牌锁死",
+  "fuben_track": "Track_A_设局反杀"
 }

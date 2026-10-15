@@ -3,7 +3,13 @@
   "word_count": 14397,
   "genre_detected": "甜宠",
   "created_at": "2026-09-15T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 4,
     "reusable_structures": 4,
     "reversal_type": "无反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "穿越后我隐世了十年，再出来时剧情已经大结局很久了。 / 「我找了你十年，终于找到你了。」",
+  "core_premise": "穿越进正在追的末世文，穿在末世开始前半年，身份是无名背景板；她抵押一切资产租下一座度假小岛，准备独自躲过整个末世。",
+  "mother_theme": "M5_绝境受限阶梯破局",
+  "plot_engine": "P2_受限空间四阶能力破局",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

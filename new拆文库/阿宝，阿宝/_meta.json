@@ -3,7 +3,13 @@
   "word_count": 19038,
   "genre_detected": "追妻火葬场",
   "created_at": "2026-09-15T15:20:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "无反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我已经记不清这是第多少次撞见徐望跟别的女孩子接吻了。 / 我想冲上去质问他却只能躲在角落里落泪。",
+  "core_premise": "童念爱了徐望十年，从十八岁到二十八岁，一路被出轨、冷落、爽约。绝症闺蜜小婳去世后，她终于觉醒，离开徐望、开甜品店、遇到良人秦炘，重新学会爱自己。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

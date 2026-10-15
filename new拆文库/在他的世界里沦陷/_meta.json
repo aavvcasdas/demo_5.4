@@ -3,7 +3,13 @@
   "word_count": 17718,
   "genre_detected": "甜宠",
   "created_at": "2026-09-15T15:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "幼儿园开学第一天。 / 好大儿抱着警察叔叔哭成狗。",
+  "core_premise": "单亲妈妈苏芷带儿子桐桐上幼儿园，撞见分手四年的前任江屿，对方恰是桐桐的警察\"叔叔\"，也是桐桐的生父。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

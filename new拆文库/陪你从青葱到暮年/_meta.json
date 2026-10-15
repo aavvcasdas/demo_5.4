@@ -3,7 +3,13 @@
   "word_count": 11828,
   "genre_detected": "甜宠",
   "created_at": "2026-09-14T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 6,
     "reusable_structures": 5,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "游戏直播，匹配到刚上幼儿园的小老弟儿，我口嗨喊了句：「儿砸，叫妈。」 / 我好大儿激动得大喊大叫：「爸，我找到我妈了！」",
+  "core_premise": "八十万粉的游戏主播孔伊人直播时被匹配到一个陌生小孩张口喊妈，旁边一个野怪玩家跟着自称孩子他爸还给她刷了一百多个嘉年华，全网都默认她是那个人的老婆、那个孩子的妈。",
+  "mother_theme": "M6_双盲掉马与错位博弈",
+  "plot_engine": "P3_核心道具三次语义翻转",
+  "fuben_track": "Track_C_清醒断供算账"
 }

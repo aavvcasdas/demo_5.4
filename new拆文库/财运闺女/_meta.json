@@ -3,7 +3,13 @@
   "word_count": 11811,
   "genre_detected": "世情",
   "created_at": "2026-09-14T14:45:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 4,
     "reusable_structures": 4,
     "reversal_type": "动机反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "算命的说我八字旺，命里带财。 / 我亲爸不信，对我不屑一顾：「有啥用，丫头片子一个！」",
+  "core_premise": "| 出生时被算命批\"八字旺、命里带财\"，亲爸为生儿子把产后妻女扫地出门 |",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

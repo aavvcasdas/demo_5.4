@@ -3,7 +3,13 @@
   "word_count": 33171,
   "genre_detected": "古言·甜宠（仙侠喜剧）",
   "created_at": "2026-09-16T00:52:00+08:00",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 5,
     "reversal_type": "身份反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "「想看本王脱是吗，行，本王现在就脱给你看！」 / 「什么？！」",
+  "core_premise": "天定姻缘的「商业联姻」里，冷漠太子实为暗恋的傲娇龙，贪吃龙公主直到三生石前才知自己本是饕餮精魂——他用少年时一缕神力，把仇家灭族的遗孤改成了命定妻子。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

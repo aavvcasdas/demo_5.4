@@ -18,5 +18,11 @@
     "character_archetypes": 4,
     "reusable_structures": 5,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我穿越成王宝钏，成了薛平贵此生得不到的女人。 / 十八年后，薛平贵龙袍加身，再见到我时红了眼眶。",
+  "core_premise": "现代人穿越成王宝钏，对「王宝钏苦等十八年」传说拥有全知视角，落入击掌决裂现场。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

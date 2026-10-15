@@ -1,0 +1,22 @@
+{
+  "version": "2.0",
+  "title": "什么叫我洗白后，她们全部黑化了",
+  "Author": null,
+  "platform": "知乎/番茄",
+  "genre": "长篇/专栏合集",
+  "word_count": 686155,
+  "sections": 0,
+  "ending": "多样",
+  "pov": "多视角/第一人称",
+  "reversal_count": 0,
+  "reversal_types": [
+    "认知反转",
+    "身份反转"
+  ],
+  "raw_copies": 1,
+  "opening_hook": "作者：黑暗加鲁鲁兽 / 连载状态：连载中",
+  "core_premise": "（引用 `剧情/情绪模块.md` 第一节）本书底层「读者想看什么」可抽象为 6 条情绪引擎，与 `analysis_corpus.json` 高频基调高度吻合（轻松 990 / 紧张 946 / 爽 256 / 压抑 231 / 甜 219 / 温馨 186）：",
+  "mother_theme": "M7_全员失格唯我独醒",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_C_清醒断供算账"
+}

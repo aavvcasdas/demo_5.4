@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 28659,
+  "word_count": 11691,
   "genre_detected": "世情",
   "created_at": "2026-09-16T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,12 @@
     "character_archetypes": 4,
     "reusable_structures": 5,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_inflated_word_count": 28659,
+  "raw_copies": 2,
+  "opening_hook": "儿子喜欢上了保姆的女儿，还跟我叫嚷着真爱至上。 / 行，真爱至上，那就跟你的法拉利、保时捷、兰博基尼说拜拜吧。",
+  "core_premise": "豪门女总裁的儿子陷入恋爱脑，为灰姑娘保姆女儿要退婚、断绝母子关系，甚至被戴绿帽。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

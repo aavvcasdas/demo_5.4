@@ -18,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "任务收网时，我亲手为他戴上了手铐。 / 他仰着头问我。",
+  "core_premise": "女卧底江若琳潜入毒枭陈伯彦身边，假意相恋两年，收网时亲手给他戴铐；他越狱后报复，把她掳走囚禁并注射海洛因成瘾；她借假结婚与针剂沉沦作局，最终用汽油火焚同归于尽，捣毁贩毒集团。",
+  "mother_theme": "M8_无声牺牲与数字墓碑",
+  "plot_engine": "P3_核心道具三次语义翻转",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 63343,
+  "word_count": 28919,
   "genre_detected": "现代言情·追妻火葬场·救赎·身份反转",
   "created_at": "2026-09-16T12:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,12 @@
     "character_archetypes": 4,
     "reusable_structures": 5,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_inflated_word_count": 63343,
+  "raw_copies": 2,
+  "opening_hook": "男友的车翻下悬崖。我风餐露宿找了几个月。 / 好不容易见到人，他却一脸冷漠的告诉我，他没死，只是不想娶我而已。",
+  "core_premise": "唐柔与富二代赛车手周世卿相恋两年，周世卿以\"车翻悬崖\"假死，实为试探她是否图钱、顺便脱身；唐柔怀孕，被迫嫁给其瘸子兄长周政。童年噩梦般的小混混厉冬出狱后已成\"厉少\"，数次救她，身份与真心皆反转。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

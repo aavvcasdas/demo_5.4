@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 104650,
+  "word_count": 16854,
   "genre_detected": "豪门/假千金互换/逃婚甜宠",
   "created_at": "2026-09-16T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,12 @@
     "character_archetypes": 3,
     "reusable_structures": 4,
     "reversal_type": "无反转"
-  }
+  },
+  "raw_inflated_word_count": 104650,
+  "raw_copies": 6,
+  "opening_hook": "我是被抱错的假千金。 / 真千金找上门，说要让我离开这个家。",
+  "core_premise": "被抱错的假千金徐婕在攀比成性的豪门长大，亲妈早逝、后妈\"特别关心\"，同辈近四十堂兄弟三十堂姐妹步步紧逼；一份亲子鉴定把她换回真千金冯欢，她本想逃，却被桩桩件件拽回，最终由男主言川助她逃婚、远走自由。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }

@@ -3,7 +3,13 @@
   "word_count": 12984,
   "genre_detected": "追妻",
   "created_at": "2026-09-15T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 5,
     "reusable_structures": 4,
     "reversal_type": "动机反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "男友失忆了，把追他的学妹当成是我，要跟她结婚。 / 我把戒指还给他，不小心发现他是装的。",
+  "core_premise": "男友受伤后「失忆」，把追他的学妹认成女友，还要和她结婚；她把戒指还回去，却当场识破他是装的。",
+  "mother_theme": "M2_不可靠叙述与创伤错位",
+  "plot_engine": "P4_不可靠叙述与物证掀翻",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

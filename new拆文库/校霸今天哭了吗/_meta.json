@@ -3,7 +3,13 @@
   "word_count": 13736,
   "genre_detected": "甜宠",
   "created_at": "2026-09-15T00:40:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,11 @@
     "character_archetypes": 2,
     "reusable_structures": 5,
     "reversal_type": "动机反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "我发现了校霸不为人知的一面。 / 原来每次打完架，他都会悄悄躲起来哭一场。",
+  "core_premise": "第一人称女主易临偶然撞见校霸叶尽打架后躲巷子里哭，发现这个人人害怕的校霸其实是个没妈、爸酗酒、常年吃泡面的脆弱少年。",
+  "mother_theme": "M6_双盲掉马与错位博弈",
+  "plot_engine": "P3_核心道具三次语义翻转",
+  "fuben_track": "Track_C_清醒断供算账"
 }

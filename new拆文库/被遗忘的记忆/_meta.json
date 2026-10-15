@@ -3,7 +3,13 @@
   "word_count": 26506,
   "genre_detected": "追妻火葬场（失忆+双男主虐文）",
   "created_at": "2026-09-16T00:00:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 4,
@@ -12,5 +18,11 @@
     "character_archetypes": 3,
     "reusable_structures": 3,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_copies": 1,
+  "opening_hook": "一觉醒来，我失忆了。 / 我发现，我和暗恋多年的竹马结婚了。",
+  "core_premise": "路时晚失忆醒来，发现自己嫁给了暗恋多年的竹马慕承，身体却对他只有厌恶；记忆逐步恢复，真相是她早已移情顾然，婚姻是慕承用阴谋抢来的。",
+  "mother_theme": "M2_不可靠叙述与创伤错位",
+  "plot_engine": "P4_不可靠叙述与物证掀翻",
+  "fuben_track": "Track_B_悬疑规则破局"
 }

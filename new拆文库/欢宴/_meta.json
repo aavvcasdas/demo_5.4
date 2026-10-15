@@ -1,9 +1,15 @@
 {
   "version": "2.0",
-  "word_count": 55773,
+  "word_count": 24460,
   "genre_detected": "古言重生·复仇追夫·认知反转·甜宠",
   "created_at": "2026-09-16T11:15:00Z",
-  "stages_completed": [2, 3, 4, 5, 6],
+  "stages_completed": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
   "last_stage_in_progress": null,
   "structure_counts": {
     "beats": 5,
@@ -12,5 +18,12 @@
     "character_archetypes": 4,
     "reusable_structures": 5,
     "reversal_type": "认知反转"
-  }
+  },
+  "raw_inflated_word_count": 55773,
+  "raw_copies": 2,
+  "opening_hook": "上一世，秦宴死在了我为他冲喜的那夜。 / 他生前，我恨他囚我于深苑，拆我与太子的姻缘。",
+  "core_premise": "女主苏妙是太傅府嫡长女，上一世误信温润太子、恨透\"奸臣\"秦宴，家破人亡后才知秦宴才是护她全族之人、太子才是真凶；重生回七年前及笄年，携前世记忆改写命运。",
+  "mother_theme": "M3_工具人算账清醒抽身",
+  "plot_engine": "P5_算账断供系统自塌",
+  "fuben_track": "Track_A_设局反杀"
 }
